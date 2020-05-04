@@ -1,5 +1,6 @@
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
+import 'package:app/Employees/Login.dart';
 import 'package:app/GiveToUs/Dashboard.dart';
 import 'package:app/GiveToUs/History.dart';
 import 'package:app/GiveToUs/Orders.dart';
@@ -7,20 +8,27 @@ import 'package:app/GiveToUs/Profile.dart';
 import 'package:app/GiveToUs/Scheduled.dart';
 import 'package:app/GiveToUs/SpecialPick.dart';
 import 'package:flutter/material.dart';
-
+import 'package:device_preview/device_preview.dart';
 
 
 
 
 void main() {
-  runApp(MyApp());
+  
+runApp(
+  DevicePreview(
+    builder: (context) => MyApp(),
+  ),
+);
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Count Increasing App',
+      locale: DevicePreview.of(context).locale, // <--- Add the locale
+      builder: DevicePreview.appBuilder,
+      title: 'Waste Management App',
       home:Login() ,
 
 //To write routes names
@@ -40,7 +48,9 @@ class MyApp extends StatelessWidget {
      '/special':(context)=>SpecialPick(),
       '/scheduled':(context)=>Scheduled(),
       
+//employee 
 
+  '/logemp':(context)=>Loginemp(),
 
       },
 
