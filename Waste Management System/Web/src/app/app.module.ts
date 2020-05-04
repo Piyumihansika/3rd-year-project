@@ -47,7 +47,7 @@ import {FooterComponent} from './Layout/Components/footer/footer.component';
 
 // Dashboards
 
-import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analutics.component';
+import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
 
 // Pages
 

@@ -8,7 +8,7 @@ import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component
 
 // Dashboards
 
-import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analutics.component';
+import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
 
 // Pages
 
