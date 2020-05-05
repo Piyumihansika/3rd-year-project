@@ -15,6 +15,7 @@ class _ProfileState extends State<Profile> {
 
         child:Image(
           
+          
           image: AssetImage('assets/images/logo.jpg'),
           //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'),
   )

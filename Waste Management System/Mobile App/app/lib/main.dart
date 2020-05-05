@@ -1,5 +1,6 @@
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
+import 'package:app/Employees/Login.dart';
 import 'package:app/GiveToUs/Dashboard.dart';
 import 'package:app/GiveToUs/History.dart';
 import 'package:app/GiveToUs/Orders.dart';
@@ -40,7 +41,9 @@ class MyApp extends StatelessWidget {
      '/special':(context)=>SpecialPick(),
       '/scheduled':(context)=>Scheduled(),
       
+//employee 
 
+  '/logemp':(context)=>Loginemp(),
 
       },
 
