@@ -162,17 +162,25 @@ Navigator.of(context).pushNamed('/second');
     // label: "second",
     
     backgroundColor: Colors.yellow,
-  )
+  ),
+
+
+SpeedDialChild(
+    child: Icon(Icons.phone_in_talk),
+    label: "Career",
+    // onTap: ()=>print("firstone"),
+     onTap: (){
+Navigator.of(context).pushNamed('/logemp');
+
+     },
+  ),
+
+
 ],
 
 ),
             
-// floatingActionButton: Row(
-//   children: [
-//     RaisedButton(child: Text('Button1'), onPressed: (){}),
-//     RaisedButton(child: Text('Button1'), onPressed: (){}),
-//   ]
-// ),
+
           
             
             // 
