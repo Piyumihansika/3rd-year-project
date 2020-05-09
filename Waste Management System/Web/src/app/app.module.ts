@@ -49,11 +49,17 @@ import {FooterComponent} from './Layout/Components/footer/footer.component';
 
 import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
 
-// Pages
+// User Pages
 
 import {ForgotPasswordBoxedComponent} from './DemoPages/UserPages/forgot-password-boxed/forgot-password-boxed.component';
 import {LoginBoxedComponent} from './DemoPages/UserPages/login-boxed/login-boxed.component';
 import {RegisterBoxedComponent} from './DemoPages/UserPages/register-boxed/register-boxed.component';
+
+// buyer pages
+import { BuyerHomeComponent } from './Buyer/buyer-home/buyer-home.component';
+import { CategoriesComponent } from './Buyer/categories/categories.component';
+import { BuyerLayoutComponent } from './Layout/buyer-layout/buyer-layout.component';
+import { BuyerSidebarComponent } from './Layout/Components/buyer-sidebar/buyer-sidebar.component';
 
 
 
@@ -106,6 +112,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ForgotPasswordBoxedComponent,
     LoginBoxedComponent,
     RegisterBoxedComponent,
+
+    //buyer pages
+    BuyerHomeComponent,
+    CategoriesComponent,
+    BuyerLayoutComponent,
+    BuyerSidebarComponent,
+    
 
    
 
