@@ -7,6 +7,7 @@ import 'package:app/GiveToUs/Orders.dart';
 import 'package:app/GiveToUs/Profile.dart';
 import 'package:app/GiveToUs/Scheduled.dart';
 import 'package:app/GiveToUs/SpecialPick.dart';
+import 'package:app/GiveToUs/SpecialSecond.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
     '/order':(context)=>Orders(),
      '/special':(context)=>SpecialPick(),
       '/scheduled':(context)=>Scheduled(),
+        '/addGarbageList':(context)=>AddList(),
+
       
 //employee 
 
