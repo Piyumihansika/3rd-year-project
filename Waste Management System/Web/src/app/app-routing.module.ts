@@ -20,6 +20,11 @@ import {RegisterBoxedComponent} from './DemoPages/UserPages/register-boxed/regis
 // buyer pages
 import { BuyerHomeComponent } from './Buyer/buyer-home/buyer-home.component';
 import { CategoriesComponent } from './Buyer/categories/categories.component';
+import { NotificationsComponent } from './Buyer/notifications/notifications.component';
+import { ProfileComponent } from './Buyer/profile/profile.component';
+import { CartComponent } from './Buyer/cart/cart.component';
+import { ProductsComponent } from './Buyer/products/products.component';
+import { ProgressComponent } from './Buyer/progress/progress.component';
 
 
 const routes: Routes = [
@@ -42,6 +47,12 @@ const routes: Routes = [
     children: [
       //homePage
       {path: 'Buyer/buyerHome', component: BuyerHomeComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Categories', component: CategoriesComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Profile', component: ProfileComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Cart', component: CartComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Notification', component: NotificationsComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Products', component: ProductsComponent, data: {extraParameter: 'buyerHome'}},
+      {path: 'buyer/Progress', component: ProgressComponent, data: {extraParameter: 'buyerHome'}},
     ]
   },
   
