@@ -60,6 +60,11 @@ import { BuyerHomeComponent } from './Buyer/buyer-home/buyer-home.component';
 import { CategoriesComponent } from './Buyer/categories/categories.component';
 import { BuyerLayoutComponent } from './Layout/buyer-layout/buyer-layout.component';
 import { BuyerSidebarComponent } from './Layout/Components/buyer-sidebar/buyer-sidebar.component';
+import { ProductsComponent } from './Buyer/products/products.component';
+import { CartComponent } from './Buyer/cart/cart.component';
+import { NotificationsComponent } from './Buyer/notifications/notifications.component';
+import { ProfileComponent } from './Buyer/profile/profile.component';
+import { ProgressComponent } from './Buyer/progress/progress.component';
 
 
 
@@ -118,6 +123,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CategoriesComponent,
     BuyerLayoutComponent,
     BuyerSidebarComponent,
+    ProductsComponent,
+    CartComponent,
+    NotificationsComponent,
+    ProfileComponent,
+    ProgressComponent,
     
 
    
