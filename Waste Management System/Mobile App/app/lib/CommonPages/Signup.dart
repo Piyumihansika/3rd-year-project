@@ -16,11 +16,13 @@ TextEditingController phoneController = TextEditingController();
 TextEditingController firstController = TextEditingController();
 TextEditingController lastController = TextEditingController();
 
- 
+  
   @override
   Widget build(BuildContext context) {
     var scaffold = Scaffold(
      
+
+
         //appBar: AppBar(
           // title: Text('Sample App'),
        // ),
@@ -47,6 +49,7 @@ TextEditingController lastController = TextEditingController();
                       style: TextStyle(fontSize: 28,color:Colors.green),
                     )),
                 
+
                 Container(
                   padding: EdgeInsets.all(10),
                   child: TextField(
@@ -63,6 +66,11 @@ TextEditingController lastController = TextEditingController();
                       //icon: Icon(Icons.account_circle),
                     ),
                   ),
+
+
+                  // 
+
+                  // 
                 ),
                 
 

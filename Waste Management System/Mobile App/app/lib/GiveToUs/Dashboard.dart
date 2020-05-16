@@ -284,7 +284,8 @@ class MyMenu5 extends StatelessWidget {
      margin: EdgeInsets.all(8.0),   
      child: InkWell(
 onTap: (){
-  Navigator.of(context).pushNamed('/history');
+  // Navigator.of(context).pushNamed('/history');
+  Navigator.of(context).pushNamed('/test');
 },
 splashColor:Colors.green[100] ,
 child: Center(
