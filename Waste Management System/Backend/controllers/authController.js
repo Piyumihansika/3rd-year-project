@@ -3,54 +3,60 @@ const router = Router();
 
 const User = require('../model/userModel');
 const Customer = require('../model/customerModel');
+const Buyer = require('../model/buyerModel')
 const verifyToken = require('./verifyToken');
 
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-router.post('/customerSignup', async(req, res) => {
+
+//EMAIL LOGIN
+router.post('/emailLogin', async(req, res) => {
     try{
-        
-        const {firstName,lastName,email,username,address,contactNumber,password} = req.body;
-
-        const user = new User({
-            firstName,
-            lastName,
-            email,
-            username,
-            address,
-            contactNumber,
-            password
+        const buyer = await Buyer.findOne({ email: req.body.email })
+       
+        if(!buyer){
+            return res.status(404).send("The email doesn't exist")
+        }
+        const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+        if(!validPassword){
+            return res.status(401).send({ auth: false, token: null});
+        }
+        const token = jwt.sign({ id: buyer._id }, config.secret, {
+            expiresIn: '24h'
         });
-        user.password = await user.encryptPassword(password);
-        await user.save();
-
-        const token = jwt.sign({ id: user.id}, config.secret, {
-            expiresIn: "24h"
-        });
-        res.status(200).json({ auth: true, token})
-
+        if(token){
+            res.status(200).json({ auth: true, id: buyer._id, token});
+        }
+       
     }catch(e){
         console.log(e);
-        res.status(500).send('There was a problem signin');
+        res.status(500).send("There was a problem signin");
 
     }
 });
 
-router.post('/Signin', async(req, res) => {
+
+//USERNAME LOGIN
+router.post('/usernameLogin', async(req, res) => {
     try{
-        const user = await User.findOne({ username: req.body.username })
-        if(!user){
+        const customer = await Customer.findOne({ username: req.body.username })
+
+        if(!customer){
             return res.status(404).send("The username doesn't exist")
         }
-        const validPassword = await user.validatePassword(req.body.password, user.password);
+        const validPassword = await customer.validatePassword(req.body.password, customer.password);
         if(!validPassword){
             return res.status(401).send({ auth: false, token: null});
         }
-        const token = jwt.sign({ id: user._id }, config.secret, {
-            expiresIn: '24h'
-        });
-        res.status(200).json({ auth: true, token });
+
+        if(customer){
+            const token = jwt.sign({ id: customer._id }, config.secret, {
+                expiresIn: '24h'
+            });
+            res.status(200).json({ auth: true, token , id: customer._id});
+        }
+        
     }catch(e){
         console.log(e);
         res.status(500).send("There was a problem signin");
