@@ -24,6 +24,8 @@ router.post('/addemployee', async(req, res) => {
             driverlicenseNo
         });
         employee.epassword = await employee.encryptPassword(epassword);
+        
+
         await employee.save();
 
         // const token = jwt.sign({ id: user.id}, config.secret, {
@@ -40,19 +42,31 @@ router.post('/addemployee', async(req, res) => {
 
 router.post('/addbuyer', async(req, res) => {
     try{
-        const {firstName,lastName,email,busername,companyaddress,contactNumber,bpassword} = req.body;
+        const {companyName,address,email,landNumber,mobileNumber,registrationNumber,password} = req.body;
 
         const buyer = new Buyer({
-            firstName,
-            lastName,
+            companyName,
+            address,
             email,
-            busername,
-            companyaddress,
-            contactNumber,
-            bpassword
+            landNumber,
+            mobileNumber,
+            registrationNumber,
+            password
         });
 
-        buyer.epassword = await buyer.encryptPassword(epassword);
+        buyer.password = await buyer.encryptPassword(password);
+        const Email = await Buyer.findOne({email:req.body.email})
+
+        if(!Email){
+            await buyer.save();
+            const token = jwt.sign({id:buyer.id}, config.secret,{
+                expiresIn:"24h"
+            });
+            res.status(200).json({auth:true,token})
+        } else{
+            res.status(403).send("email already exist")
+        }
+
         await buyer.save();
 
         // const token = jwt.sign({ id: user.id}, config.secret, {
