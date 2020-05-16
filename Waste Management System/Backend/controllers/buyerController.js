@@ -8,47 +8,6 @@ const verifyToken = require('./verifyToken');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-
-// ADD  A NEW BUYER
-router.post('/buyerAdd', async(req, res) => {
-    try{
-    
-        const {companyName,address,email,landNumber,mobileNumber,registrationNumber,password} = req.body;
-
-        const buyer = new Buyer({
-            companyName,
-            address,
-            email,
-            landNumber,
-            mobileNumber,
-            registrationNumber,
-            password
-        });
-        buyer.password = await buyer.encryptPassword(password);
-
-        const Email = await Buyer.findOne({ email: req.body.email })
-
-        if(!Email){
-            await buyer.save();
-
-            const token = jwt.sign({ id: buyer.id}, config.secret, {
-                expiresIn: "24h"
-            });
-            res.status(200).json({ auth: true, token})
-            
-        }else{
-
-            res.status(403).send("email already exist")
-          
-        }
-   
-    }catch(e){
-        console.log(e);
-        res.status(500).send('There was a problem signUp');
-
-    }
-});
-
 //UPDATE BUYER DETAILS
 router.put("/updateBuyer/:id", async(req, res) => {
   
