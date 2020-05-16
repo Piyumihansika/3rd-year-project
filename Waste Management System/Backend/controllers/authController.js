@@ -2,6 +2,7 @@ const {Router} = require('express');
 const router = Router();
 
 const User = require('../model/userModel');
+const Customer = require('../model/customerModel');
 const verifyToken = require('./verifyToken');
 
 const jwt = require('jsonwebtoken');
@@ -9,6 +10,7 @@ const config = require('../config');
 
 router.post('/customerSignup', async(req, res) => {
     try{
+        
         const {firstName,lastName,email,username,address,contactNumber,password} = req.body;
 
         const user = new User({
@@ -35,7 +37,7 @@ router.post('/customerSignup', async(req, res) => {
     }
 });
 
-router.post('/customerSignin', async(req, res) => {
+router.post('/Signin', async(req, res) => {
     try{
         const user = await User.findOne({ username: req.body.username })
         if(!user){
