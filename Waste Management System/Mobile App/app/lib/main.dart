@@ -1,3 +1,4 @@
+import 'package:app/CommonPages/ForgotPsw.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       //'/second':(context)=>A(),
       '/login':(context)=>Login(),
       '/register':(context)=>Signup(),
+      '/forgot':(context)=>Forgot(),
      
 
       //customers give their garbage
