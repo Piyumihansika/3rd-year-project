@@ -154,16 +154,16 @@ import 'package:flutter/material.dart';
 class Test extends StatelessWidget {  
   @override  
   Widget build(BuildContext context) {  
-    final appTitle = 'Register';  
-    return MaterialApp(  
-      title: appTitle,  
-      home: Scaffold(  
+     
+    return  
+       
+      Scaffold(  
         appBar: AppBar(  
-          title: Text(appTitle),
+          title: Text('Register'),
           backgroundColor: Colors.green,  
         ),  
         body: MyCustomForm(),  
-      ),  
+        
     );  
   }  
 }  
@@ -206,6 +206,15 @@ class MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,  
         
         children: <Widget>[  
+
+          Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                
+                  child: Image(
+                    image: AssetImage('assets/images/logo.jpg'),
+                    //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'),
+                  )),
           TextFormField(  
             decoration: const InputDecoration(  
               icon: const Icon(Icons.person,color: Colors.green,),  
@@ -340,7 +349,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                      print(passwordController.text);
                   }  
                 },  
-              )),  
+              )
+              
+              ),  
         ],  
       ),  
     );  

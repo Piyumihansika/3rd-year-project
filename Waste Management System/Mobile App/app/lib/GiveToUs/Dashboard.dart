@@ -57,11 +57,14 @@ body: Container(
     
 
 MyMenu1(title: 'Home',icon: Icons.home,warna: Colors.green,),
-MyMenu2(title: 'Scheduled Pickup',icon: Icons.access_alarm,warna: Colors.yellow,),
-MyMenu3(title: 'Special Pickup',icon: Icons.directions_bus,warna: Colors.red,),
-MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
-MyMenu5(title: 'Notifications',icon: Icons.message,warna: Colors.brown,),
-MyMenu6(title: 'Profile',icon: Icons.library_books,warna: Colors.pink,),
+// MyMenu2(title: 'Scheduled Pickup',icon: Icons.access_alarm,warna: Colors.yellow,),
+// MyMenu3(title: 'Special Pickup',icon: Icons.directions_bus,warna: Colors.red,),
+// MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
+MyMenu2(title: 'Sell Item',icon: Icons.access_alarm,warna: Colors.yellow,),
+MyMenu3(title: 'Bidding Details',icon: Icons.directions_bus,warna: Colors.red,),
+//MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
+MyMenu4(title: 'Notifications',icon: Icons.message,warna: Colors.brown,),
+MyMenu5(title: 'Profile',icon: Icons.library_books,warna: Colors.pink,),
 
 
     ],
@@ -92,7 +95,7 @@ class MyMenu1 extends StatelessWidget {
      margin: EdgeInsets.all(8.0),   
      child: InkWell(
 onTap: (){
-  Navigator.of(context).pushNamed('/login');
+ // Navigator.of(context).pushNamed('/login');
 },
 splashColor:Colors.green[100],
 child: Center(
@@ -102,11 +105,20 @@ mainAxisSize:MainAxisSize.min ,
 
   children: <Widget>[
 
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
+RawMaterialButton(
+  onPressed: () {
+    Navigator.of(context).pushNamed('/login');
+  },
+  elevation: 2.0,
+  fillColor: warna,
+  child: Icon(
+    icon,
+    size: 35.0,
+    color: Colors.white,
   ),
+  padding: EdgeInsets.all(15.0),
+  shape: CircleBorder(),
+),
 Text(title, style:new TextStyle(fontSize:17.0))
 
   ],
@@ -320,49 +332,49 @@ Text(title, style:new TextStyle(fontSize:17.0))
 //6th one
 
 
-class MyMenu6 extends StatelessWidget {
-  MyMenu6({this.title,this.icon,this.warna});
+// class MyMenu6 extends StatelessWidget {
+//   MyMenu6({this.title,this.icon,this.warna});
 
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
+//   final String title;
+//   final IconData icon;
+//   final MaterialColor warna;
 
 
-  @override
-  Widget build(BuildContext context) {
-    return   Card(
-     margin: EdgeInsets.all(8.0),   
-     child: InkWell(
-onTap: (){
-  Navigator.of(context).pushNamed('/profile');
-},
-splashColor:Colors.green[100],
-child: Center(
-child:Column(
+//   @override
+//   Widget build(BuildContext context) {
+//     return   Card(
+//      margin: EdgeInsets.all(8.0),   
+//      child: InkWell(
+// onTap: (){
+//   Navigator.of(context).pushNamed('/profile');
+// },
+// splashColor:Colors.green[100],
+// child: Center(
+// child:Column(
 
-mainAxisSize:MainAxisSize.min ,
+// mainAxisSize:MainAxisSize.min ,
 
-  children: <Widget>[
+//   children: <Widget>[
 
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
-  ),
-Text(title, style:new TextStyle(fontSize:17.0))
+// Icon(
+//   icon,
+//   size:70.0 ,
+//   color: warna,
+//   ),
+// Text(title, style:new TextStyle(fontSize:17.0))
 
-  ],
-),
+//   ],
+// ),
 
-),
-     ),
+// ),
+//      ),
 
      
-      );
+//       );
 
     
 
 
-  }
-}
+//   }
+// }
 

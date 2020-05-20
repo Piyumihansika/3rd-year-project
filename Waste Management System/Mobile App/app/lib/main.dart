@@ -1,4 +1,3 @@
-import 'package:app/CommonPages/ForgotPsw.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
@@ -12,6 +11,8 @@ import 'package:app/GiveToUs/SpecialSecond.dart';
 import 'package:app/GiveToUs/test.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+
+import 'CommonPages/ForgotPsw.dart';
 
 
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
 
       //'/second':(context)=>A(),
       '/login':(context)=>Login(),
-      '/register':(context)=>Signup(),
+      '/register':(context)=>SignUp(),
       '/forgot':(context)=>Forgot(),
      
 
