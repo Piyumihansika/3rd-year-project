@@ -6,6 +6,7 @@ import 'package:app/GiveToUs/History.dart';
 import 'package:app/GiveToUs/Orders.dart';
 import 'package:app/GiveToUs/Profile.dart';
 import 'package:app/GiveToUs/Scheduled.dart';
+import 'package:app/GiveToUs/Sellitem.dart';
 import 'package:app/GiveToUs/SpecialPick.dart';
 import 'package:app/GiveToUs/SpecialSecond.dart';
 import 'package:app/GiveToUs/test.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
      '/special':(context)=>SpecialPick(),
       '/scheduled':(context)=>Scheduled(),
         '/addGarbageList':(context)=>AddList(),
+        '/sell':(context)=>SellItem(),
         '/test':(context)=>Test(),
 
       

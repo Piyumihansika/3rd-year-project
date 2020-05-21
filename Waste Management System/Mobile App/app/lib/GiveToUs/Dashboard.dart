@@ -60,11 +60,11 @@ MyMenu1(title: 'Home',icon: Icons.home,warna: Colors.green,),
 // MyMenu2(title: 'Scheduled Pickup',icon: Icons.access_alarm,warna: Colors.yellow,),
 // MyMenu3(title: 'Special Pickup',icon: Icons.directions_bus,warna: Colors.red,),
 // MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
-MyMenu2(title: 'Sell Item',icon: Icons.access_alarm,warna: Colors.yellow,),
-MyMenu3(title: 'Bidding Details',icon: Icons.directions_bus,warna: Colors.red,),
+MyMenu2(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,),
+MyMenu3(title: 'Bidding Details',icon: Icons.people,warna: Colors.blue,),
 //MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
-MyMenu4(title: 'Notifications',icon: Icons.message,warna: Colors.brown,),
-MyMenu5(title: 'Profile',icon: Icons.library_books,warna: Colors.pink,),
+MyMenu4(title: 'Notifications',icon: Icons.add_alert,warna: Colors.red,),
+MyMenu5(title: 'Profile',icon: Icons.tag_faces,warna: Colors.pink,),
 
 
     ],
@@ -153,7 +153,7 @@ class MyMenu2 extends StatelessWidget {
      margin: EdgeInsets.all(8.0),   
      child: InkWell(
 onTap: (){
-  Navigator.of(context).pushNamed('/scheduled');
+  // Navigator.of(context).pushNamed('/scheduled');
 },
 splashColor:Colors.green[100] ,
 child: Center(
@@ -162,12 +162,20 @@ child:Column(
 mainAxisSize:MainAxisSize.min ,
 
   children: <Widget>[
-
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
+RawMaterialButton(
+  onPressed: () {
+    Navigator.of(context).pushNamed('/sell');
+  },
+  elevation: 2.0,
+  fillColor: warna,
+  child: Icon(
+    icon,
+    size: 35.0,
+    color: Colors.white,
   ),
+  padding: EdgeInsets.all(15.0),
+  shape: CircleBorder(),
+),
 Text(title, style:new TextStyle(fontSize:17.0))
 
   ],
@@ -200,7 +208,7 @@ class MyMenu3 extends StatelessWidget {
      margin: EdgeInsets.all(8.0),   
      child: InkWell(
 onTap: (){
- Navigator.of(context).pushNamed('/special');
+//  Navigator.of(context).pushNamed('/special');
 },
 splashColor:Colors.green[100] ,
 child: Center(
@@ -209,12 +217,20 @@ child:Column(
 mainAxisSize:MainAxisSize.min ,
 
   children: <Widget>[
-
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
+RawMaterialButton(
+  onPressed: () {
+    Navigator.of(context).pushNamed('/special');
+  },
+  elevation: 2.0,
+  fillColor: warna,
+  child: Icon(
+    icon,
+    size: 35.0,
+    color: Colors.white,
   ),
+  padding: EdgeInsets.all(15.0),
+  shape: CircleBorder(),
+),
 Text(title, style:new TextStyle(fontSize:17.0))
 
   ],
@@ -248,7 +264,7 @@ class MyMenu4 extends StatelessWidget {
      margin: EdgeInsets.all(8.0),   
      child: InkWell(
 onTap: (){
-  Navigator.of(context).pushNamed('/order');
+  // Navigator.of(context).pushNamed('/order');
 },
 splashColor:Colors.green[100] ,
 child: Center(
@@ -257,12 +273,20 @@ child:Column(
 mainAxisSize:MainAxisSize.min ,
 
   children: <Widget>[
-
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
+RawMaterialButton(
+  onPressed: () {
+   Navigator.of(context).pushNamed('/order');
+  },
+  elevation: 2.0,
+  fillColor: warna,
+  child: Icon(
+    icon,
+    size: 35.0,
+    color: Colors.white,
   ),
+  padding: EdgeInsets.all(15.0),
+  shape: CircleBorder(),
+),
 Text(title, style:new TextStyle(fontSize:17.0))
 
   ],
@@ -297,7 +321,7 @@ class MyMenu5 extends StatelessWidget {
      child: InkWell(
 onTap: (){
   // Navigator.of(context).pushNamed('/history');
-  Navigator.of(context).pushNamed('/test');
+  // Navigator.of(context).pushNamed('/test');
 },
 splashColor:Colors.green[100] ,
 child: Center(
@@ -306,12 +330,21 @@ child:Column(
 mainAxisSize:MainAxisSize.min ,
 
   children: <Widget>[
-
-Icon(
-  icon,
-  size:70.0 ,
-  color: warna,
+RawMaterialButton(
+  onPressed: () {
+    // 
+     Navigator.of(context).pushNamed('/profile');
+  },
+  elevation: 2.0,
+  fillColor: warna,
+  child: Icon(
+    icon,
+    size: 35.0,
+    color: Colors.white,
   ),
+  padding: EdgeInsets.all(15.0),
+  shape: CircleBorder(),
+),
 Text(title, style:new TextStyle(fontSize:17.0))
 
   ],
