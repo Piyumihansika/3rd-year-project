@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+//import 'package:intl/intl.dart';
+
 
 class SignUp extends StatefulWidget {
   @override
@@ -300,6 +303,42 @@ class _SignFormState extends State<SignForm> {
                 obscureText: _obscureText,
               ),
             ),
+
+            //  terms and conditions...
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  FlatButton(
+                    padding: const EdgeInsets.only(right: 120.0),
+
+
+                    textColor: Colors.green,
+                    child: Text('Our terms & conditions'
+                    ),
+
+                    onPressed: () {
+                      //terms and condition page
+                      Navigator.of(context).pushNamed('/terms');
+                    },
+                  ),
+                  FormBuilderCheckbox(
+                    initialValue: false,
+                    label: Text(
+                      "I have read and agree to the terms and conditions",
+                      style: TextStyle(color: Colors.black87),),
+                    validators: [
+                      FormBuilderValidators.requiredTrue(
+                        errorText:
+                        "You must accept terms and conditions to continue",
+                      ),
+                    ],
+                  ),
+
+                ],
+              ),
+            ),
+
 
             new Container(
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),

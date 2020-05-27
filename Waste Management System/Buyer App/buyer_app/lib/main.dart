@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'Buyers/Login.dart';
 import 'Buyers/SignUp.dart';
 import 'Buyers/ForgotPassword.dart';
-import 'Buyers/BuyerHome.dart';
+//import 'Buyers/BuyerHome.dart';
+//import 'Buyers/Terms.dart';
 
 
 void main() => runApp(MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/signup':(context)=>SignUp(),
         '/forgot':(context)=>Forgot(),
         //'/buyerhome':(context)=>BuyerHome(),
+       // '/terms':(context)=>Terms(),
 
 
 

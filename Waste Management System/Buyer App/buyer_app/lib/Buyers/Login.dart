@@ -247,11 +247,11 @@ class _LoginFormState extends State<LoginForm> {
             Container(
                 child: Row(
                   children: <Widget>[
-                    Text('Does not have account ?'),
+                    Text('Don\'t have an account ?'),
                     FlatButton(
                       textColor: Colors.green,
                       child: Text(
-                        'Sign Up',
+                        'Create Acount',
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
