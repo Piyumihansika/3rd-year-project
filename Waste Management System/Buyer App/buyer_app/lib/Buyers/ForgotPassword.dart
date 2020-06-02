@@ -197,6 +197,17 @@ class _ForgotFormState extends State<ForgotForm> {
                           )
                         ],
                       ),
+                      SizedBox(height: 15.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'FORGOT PASSWORD',
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
+                        ),
+                      ),
                     ],
                   ),
                 ]

@@ -202,7 +202,7 @@ class _BuyerHomeState extends State<Home> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'Hi Welcome',
+                          'HOME',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,

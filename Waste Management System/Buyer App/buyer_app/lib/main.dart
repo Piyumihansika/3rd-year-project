@@ -6,6 +6,9 @@ import 'Buyers/ForgotPassword.dart';
 import 'Buyers/BuyerHome.dart';
 import 'Buyers/ContactUs.dart';
 import 'Buyers/AboutUs.dart';
+import 'Buyers/Profile.dart';
+import 'Buyers/History.dart';
+import 'Buyers/Category.dart';
 //import 'Buyers/Terms.dart';
 
 
@@ -32,6 +35,9 @@ class MyApp extends StatelessWidget {
         '/buyerhome':(context)=>BuyerHome(),
         '/contactus':(context)=>ContactUs(),
         '/aboutus':(context)=>AboutUs(),
+        '/profile':(context)=>Profile(),
+        '/history':(context)=>History(),
+        '/category':(context)=>Category(),
        // '/terms':(context)=>Terms(),
 
 

@@ -180,7 +180,7 @@ class _ContactUsState extends State<Contact> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'Contact Us',
+                          'CONTACT US',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,

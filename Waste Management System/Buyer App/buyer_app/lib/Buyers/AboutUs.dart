@@ -181,7 +181,7 @@ class _AboutUsState extends State<About> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'About Us',
+                          'ABOUT US',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,

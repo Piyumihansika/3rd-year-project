@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
 
-
-class Profile extends StatefulWidget {
+class Category extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<Profile> {
+class _State extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Green wasteland'),
         backgroundColor: Colors.green,),
-      body:ProfilePage(),
+      body:CategoryPage(),
 
       //add drawer to the app
       drawer: Drawer(
@@ -111,12 +110,12 @@ class _State extends State<Profile> {
 
   }
 }
-class ProfilePage extends StatefulWidget {
+class CategoryPage extends StatefulWidget {
   @override
-  _ProfileState createState() => _ProfileState();
+  _CategoryState createState() => _CategoryState();
 }
 
-class _ProfileState extends State<ProfilePage> {
+class _CategoryState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +200,7 @@ class _ProfileState extends State<ProfilePage> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'Profile',
+                          'CATEGORY',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
@@ -243,7 +242,7 @@ class _ProfileState extends State<ProfilePage> {
                   style: TextStyle(fontSize:17, color: Colors.green),
                 )),
 
-// add profile functions ...do this quickly gon gaha mama
+
             Container(
 
                 alignment: Alignment(-0.1,1),

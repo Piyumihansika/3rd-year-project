@@ -206,6 +206,17 @@ class _SignFormState extends State<SignForm> {
                           )
                         ],
                       ),
+                      SizedBox(height: 15.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'SIGN UP',
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
+                        ),
+                      ),
                     ],
                   ),
                 ]
