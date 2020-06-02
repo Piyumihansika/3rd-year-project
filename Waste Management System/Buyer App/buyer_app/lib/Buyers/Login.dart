@@ -61,14 +61,14 @@ class _State extends State<Login> {
               ],
             ),
             ListTile(
-              leading: Icon(Icons.note),
+              leading: Icon(Icons.event_note),
               title: Text('About Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/aboutus');
               },
             ),
             ListTile(
-              leading: Icon(Icons.note),
+              leading: Icon(Icons.contacts),
               title: Text('Contact Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/contactus');

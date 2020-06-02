@@ -1,15 +1,22 @@
-import 'package:email_validator/email_validator.dart';
-import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart' show EmailValidator;
-import 'package:passwordfield/passwordfield.dart';
 
-class Forgot extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+
+
+class AboutUs extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
+class _State extends State<AboutUs> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(title: Text('Green wasteland'),
         backgroundColor: Colors.green,),
-      body:ForgotForm(),
+      body:About(),
+
       //add drawer to the app
       drawer: Drawer(
 
@@ -52,21 +59,20 @@ class Forgot extends StatelessWidget {
                 ),
               ],
             ),
-
             ListTile(
               leading: Icon(Icons.event_note),
               title: Text('About Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/aboutus');
               },
-            ), //ListTitle
+            ),
             ListTile(
               leading: Icon(Icons.contacts),
               title: Text('Contact Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/contactus');
               },
-            ), //ListTitle
+            ),
             ListTile(
               leading: Icon(Icons.account_circle),
               title: Text('Login'),
@@ -78,57 +84,31 @@ class Forgot extends StatelessWidget {
         ),
       ),
 
+
     );
+
   }
 }
-class ForgotForm extends StatefulWidget {
+class About extends StatefulWidget {
   @override
-  _ForgotFormState createState() => _ForgotFormState();
+  _AboutUsState createState() => _AboutUsState();
 }
 
-class _ForgotFormState extends State<ForgotForm> {
+class _AboutUsState extends State<About> {
 
-  //
-  createAlertDialog(BuildContext context){
-    return showDialog(context: context,builder: (context){
-      return AlertDialog(
-        title: Text('Check Your Email '),
 
-        actions: <Widget>[
-          MaterialButton(
-            child: Text('OK'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/login');
-            },
-          )
-        ],
-      );
-    });
-  }
 
-//email validater
-  bool validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    return (!regex.hasMatch(value)) ? false : true;
-  }
-
-  //
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
+    return Material(
+
+
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: <Widget>[
 
-     // add design
             Stack(
                 children: <Widget>[
                   Container(
@@ -197,87 +177,49 @@ class _ForgotFormState extends State<ForgotForm> {
                           )
                         ],
                       ),
+                      SizedBox(height: 15.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'About Us',
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
+                        ),
+                      ),
+                      SizedBox(height: 25.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0,right: 15.0),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(25),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                prefixIcon: Icon(
+                                  Icons.search,
+                                  color: Colors.green,
+                                  size: 30.0,
+                                ),
+                                contentPadding:
+                                EdgeInsets.only(left: 20,top: 15,bottom: 10),
+                                hintText: 'Search',hintStyle: TextStyle(
+                                color: Colors.grey
+                            )
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ]
             ),
-
-            //
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              child: new Text(
-                'Forgot Your Password ?',
-
-                style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.green),
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.person,color: Colors.black,),
-                //hintText: 'Type Your Email',
-                labelText: 'Type Your Email',
-                labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
-                //: true,
-
-              ),
-              controller: usernameController,
-
-
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter an Email ';
-                }  else{
-                  assert(EmailValidator.validate(value));
-                  return 'Please enter a valid Email ';
-                }
-                //return null;
-              },
-
-
-
-
-            ),
-
-
-            Container(
-
-                padding: const EdgeInsets.only(top: 40.0),
-                child: Row(
-                  children: <Widget>[
-                    new RaisedButton(
-                      child: const Text('BACK'),
-                      color: Colors.yellow,
-                      textColor: Colors.black,
-
-                      onPressed: (){
-                        Navigator.of(context).pushNamed('/login');
-                      },
-                    ),
-
-                    new RaisedButton(
-                      child: const Text('Submit'),
-                      color: Colors.green,
-                      textColor: Colors.white,
-
-                      onPressed: () {
-
-                        if (_formKey.currentState.validate()) {
-                          print(usernameController.text);
-                          createAlertDialog(context);
-                        }
-                      },
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                )
-
-            )
           ],
+
         ),
       ),
-
     );
+
   }
 }

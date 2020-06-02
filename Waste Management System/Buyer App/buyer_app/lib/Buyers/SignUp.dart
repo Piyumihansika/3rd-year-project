@@ -14,7 +14,77 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Green wasteland'),
+        backgroundColor: Colors.green,),
       body: SignForm(),
+      //add drawer to the app
+      drawer: Drawer(
+
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Buyer App',style: TextStyle(fontSize: 20,color: Colors.white),),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+            ),
+
+            //add logo
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 14.0),
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 14.0),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      height: 45.0,
+                      width: 50.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                              color: Colors.white,
+                              style: BorderStyle.solid,
+                              width: 2.0
+                          ),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/logo.jpg'),
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+
+            ListTile(
+              leading: Icon(Icons.event_note),
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/aboutus');
+              },
+            ), //ListTitle
+            ListTile(
+              leading: Icon(Icons.contacts),
+              title: Text('Contact Us'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/contactus');
+              },
+            ), //ListTitle
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Login'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/login');
+              },
+            ), //ListTitle
+          ],
+        ),
+      ),
+
     );
   }
 }
