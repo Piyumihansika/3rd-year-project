@@ -74,6 +74,13 @@ class _State extends State<Login> {
                 Navigator.of(context).pushNamed('/contactus');
               },
             ),
+            ListTile(
+              leading: Icon(Icons.contacts),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/buyerhome');
+              },
+            ),
           ],
         ),
       ),
