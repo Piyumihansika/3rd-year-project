@@ -353,27 +353,27 @@ TextFormField(
 
             ),
           
-          Container(
-            padding: EdgeInsets.all(10),
-            child: 
-TextFormField(  
-   scrollPadding: EdgeInsets.all(10),
-            decoration: const InputDecoration(  
-              icon: const Icon(Icons.person,color: Colors.green),  
-              hintText: 'Enter your address',  
-              labelText: 'Address',  
-              labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
+//           Container(
+//             padding: EdgeInsets.all(10),
+//             child: 
+// TextFormField(  
+//    scrollPadding: EdgeInsets.all(10),
+//             decoration: const InputDecoration(  
+//               icon: const Icon(Icons.person,color: Colors.green),  
+//               hintText: 'Enter your address',  
+//               labelText: 'Address',  
+//               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
               
-            ),  
-            controller: addressController,
-            validator: (value) {  
-              if (value.isEmpty) {  
-                return 'Please enter some text';  
-              }  
-              return null;  
-            },  
-          ), 
-          ),
+//             ),  
+//             controller: addressController,
+//             validator: (value) {  
+//               if (value.isEmpty) {  
+//                 return 'Please enter some text';  
+//               }  
+//               return null;  
+//             },  
+//           ), 
+//           ),
            
            Container(
              padding: EdgeInsets.all(10),
@@ -399,27 +399,28 @@ TextFormField(
            ),
 
           
-          Container(
-            padding: EdgeInsets.all(10),
-child: 
-TextFormField(  
-            decoration: const InputDecoration(  
-              icon: const Icon(Icons.person,color: Colors.green),  
-              hintText: 'Enter a near by center',  
-              labelText: 'Service Center',  
-              labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
+//           Container(
+//             padding: EdgeInsets.all(10),
+// child: 
+// TextFormField(  
+//             decoration: const InputDecoration(  
+//               icon: const Icon(Icons.person,color: Colors.green),  
+//               hintText: 'Enter a near by center',  
+//               labelText: 'Service Center',  
+//               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
               
-            ),  
-            controller: nearLocationController,
-            validator: (value) {  
-              if (value.isEmpty) {  
-                return 'Please select a service center';  
-              }  
-              return null;  
-            },  
-          ), 
-          ),
+//             ),  
+//             controller: nearLocationController,
+//             validator: (value) {  
+//               if (value.isEmpty) {  
+//                 return 'Please select a service center';  
+//               }  
+//               return null;  
+//             },  
+//           ), 
+//           ),
           
+//password field
 
           Container(
             padding: EdgeInsets.all(10),
@@ -446,7 +447,7 @@ TextFormField(
           new Container(  
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
               child: new RaisedButton(  
-                child: const Text('Submit'), 
+                child: const Text('Next'), 
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
@@ -456,10 +457,12 @@ TextFormField(
                      print(firstnameController.text);
                      print(lastnameController.text);
                      print(usernameController.text);
-                     print(addressController.text);
+                    //  print(addressController.text);
                      print(phoneController.text);
-                     print(nearLocationController.text);
-                     print(passwordController.text);
+                    //  print(nearLocationController.text);
+                    print(passwordController.text);
+
+                     Navigator.of(context).pushNamed('/choosetype');
                   }  
                 },  
               )
