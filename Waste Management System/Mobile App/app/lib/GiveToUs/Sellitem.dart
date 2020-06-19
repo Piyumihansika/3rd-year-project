@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class SellItem extends StatefulWidget {
@@ -47,7 +48,7 @@ class Item{
 
 
 class _SellFormState extends State<SellForm> {
-
+String itemname;
 
   // 
   List<Item> _items = Item.getItems();
@@ -76,6 +77,7 @@ List<DropdownMenuItem<Item>> buildDropdownMenuItems(List itemcategory) {
 onChangeDropdownItem(Item selectedItem) {
   setState(() {
     _selectedItem = selectedItem;
+
   });
 }
  
@@ -89,12 +91,16 @@ onChangeDropdownItem(Item selectedItem) {
     // 
 
   TextEditingController firstnameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,  
- child: Column(  
-        crossAxisAlignment: CrossAxisAlignment.start,  
+//  child: Column(  
+//         crossAxisAlignment: CrossAxisAlignment.start, 
+ 
+      child: SingleChildScrollView(child: Column(
+mainAxisAlignment: MainAxisAlignment.center, 
         
         children: <Widget>[
 
@@ -108,15 +114,20 @@ Container(
               SizedBox(
                 height: 20.0,
               ),
-              DropdownButton(
+            DropdownButton(
                 value: _selectedItem,
                 items: _dropdownMenuItems,
                 onChanged: onChangeDropdownItem,
                 
+                
+                //itemname= _selectedItem.name;
               ),
               SizedBox(
                 height: 20.0,
               ),
+    
+   
+  // itemname;
 
               Text('Selected: ${_selectedItem.name}'),
             ],
@@ -125,8 +136,30 @@ Container(
 ),
 
 
-
-
+Container(
+  child: Padding(
+    padding: const EdgeInsets.all(15.0),
+    child: TextField(
+      minLines: 10,
+      maxLines: 15,
+      autocorrect: false,
+      controller: descriptionController,
+      decoration: InputDecoration(
+        hintText: 'Write your status here',
+        filled: true,
+        fillColor: Color(0xFFDBEDFF),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+      ),
+    ),
+  ),
+),
 
 
 Container(
@@ -140,13 +173,17 @@ alignment: Alignment(-0.1,1),
                 
                 onPressed: () {  
                  
-                  if (_formKey.currentState.validate()) {  
-                    //print(value.text);
-                    
+
+                  print(descriptionController.text);
+                  print(itemname);
                     Navigator.of(context).pushNamed('/dashboard1');
-                    
+                  // if (_formKey.currentState.validate()) {  
+                 
+                  //   print(descriptionController.text);
+                  //   Navigator.of(context).pushNamed('/dashboard1');
+                
                    
-                  }  
+                  // }  
                 },  
               )
 
@@ -164,7 +201,7 @@ alignment: Alignment(-0.1,1),
         ],
  ),
 
-
+      )
     );
   }
 }

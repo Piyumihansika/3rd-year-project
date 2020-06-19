@@ -1,3 +1,4 @@
+import 'package:app/CommonPages/Address/Addmanually.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
@@ -13,6 +14,8 @@ import 'package:app/GiveToUs/test.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'CommonPages/Address/ChooseRegLocaType.dart';
+import 'CommonPages/Address/RegisterLocation.dart';
 import 'CommonPages/ForgotPsw.dart';
 
 
@@ -56,6 +59,10 @@ class MyApp extends StatelessWidget {
         '/addGarbageList':(context)=>AddList(),
         '/sell':(context)=>SellItem(),
         '/test':(context)=>Test(),
+//register pages
+'/choosetype':(context)=>ChooseLocaType(),
+'/addmanualy':(context)=>Add(),
+'/reg3':(context)=>Reglocation(),
 
       
 //employee 
