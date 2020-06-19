@@ -9,6 +9,9 @@ import 'Buyers/AboutUs.dart';
 import 'Buyers/Profile.dart';
 import 'Buyers/History.dart';
 import 'Buyers/Category.dart';
+import 'Location/GetLocation.dart';
+import 'Location/Manually.dart';
+import 'Location/Tracking.dart';
 //import 'Buyers/Terms.dart';
 
 
@@ -38,6 +41,9 @@ class MyApp extends StatelessWidget {
         '/profile':(context)=>Profile(),
         '/history':(context)=>History(),
         '/category':(context)=>Category(),
+        '/getlocation':(context)=>GetLocation(),
+        '/manually':(context)=>Manually(),
+        '/tracking':(context)=>Tracking(),
        // '/terms':(context)=>Terms(),
 
 

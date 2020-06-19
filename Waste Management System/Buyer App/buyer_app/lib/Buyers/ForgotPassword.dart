@@ -7,76 +7,9 @@ class Forgot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Green wasteland'),
+      appBar: AppBar(title: Text('ForgotPassword Page'),
         backgroundColor: Colors.green,),
       body:ForgotForm(),
-      //add drawer to the app
-      drawer: Drawer(
-
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Buyer App',style: TextStyle(fontSize: 20,color: Colors.white),),
-              decoration: BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
-
-            //add logo
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 14.0),
-                Row(
-                  children: <Widget>[
-                    SizedBox(width: 14.0),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      height: 45.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                              color: Colors.white,
-                              style: BorderStyle.solid,
-                              width: 2.0
-                          ),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/logo.jpg'),
-                          )
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-
-            ListTile(
-              leading: Icon(Icons.event_note),
-              title: Text('About Us'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/aboutus');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text('Contact Us'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/contactus');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Login'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/login');
-              },
-            ), //ListTitle
-          ],
-        ),
-      ),
 
     );
   }
@@ -128,7 +61,7 @@ class _ForgotFormState extends State<ForgotForm> {
 
           children: <Widget>[
 
-     // add design
+            // add design
             Stack(
                 children: <Widget>[
                   Container(
@@ -208,6 +141,18 @@ class _ForgotFormState extends State<ForgotForm> {
                               color: Colors.black87),
                         ),
                       ),
+
+                      SizedBox(height: 45.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'Forgot Your Password ?',
+                          style: TextStyle(
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
                     ],
                   ),
                 ]
@@ -216,13 +161,8 @@ class _ForgotFormState extends State<ForgotForm> {
             //
             Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              child: new Text(
-                'Forgot Your Password ?',
-
-                style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.green),
-              ),
             ),
+
             TextFormField(
               decoration: const InputDecoration(
                 icon: const Icon(Icons.person,color: Colors.black,),
