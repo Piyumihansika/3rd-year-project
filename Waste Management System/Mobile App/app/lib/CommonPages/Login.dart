@@ -1,7 +1,7 @@
+import 'package:app/Models/loginModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-
-//import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   @override
@@ -16,107 +16,7 @@ class _State extends State<Login> {
   Widget build(BuildContext context) {
     return  Scaffold(
     body:LoginForm(),
-//       body: Padding(
-//           padding: EdgeInsets.all(10),
-//           child: ListView(
-//             children: <Widget>[
-              
-//               Container(
-//                   alignment: Alignment.center,
-//                   padding: EdgeInsets.all(10),
-//                   // child: Text(
-//                   //   'Logo',
-//                   //   style: TextStyle(
-//                   //       color: Colors.blue,
-//                   //       fontWeight: FontWeight.w500,
-//                   //       fontSize: 30),
-//                   // )
-//                   child: Image(
-//                     image: AssetImage('assets/images/logo.jpg'),
-//                     //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'),
-//                   )
-//                   ),
-//               Container(
-//                   alignment: Alignment.center,
-//                   padding: EdgeInsets.all(10),
-//                   child: Text(
-//                     'Login',
-//                     style: TextStyle(fontSize: 28, color: Colors.green),
-//                   )),
-//               Container(
-//                 padding: EdgeInsets.all(10),
-//                 child: TextField(
-//                   controller: nameController,
-//                   decoration: InputDecoration(
-//                     enabledBorder: const OutlineInputBorder(
 
-//                         //borderRadius: BorderRadius.circular(2),
-//                         borderSide: BorderSide(width: 2, color: Colors.green)),
-//                     labelText: 'User Name',
-//                   ),
-//                 ),
-//               ),
-
-
-//               // Container(
-//               //   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-//               //   child: PasswordField(
-//               //     controller: passwordController,
-//               //     color: Colors.green,
-//               //     hasFloatingPlaceholder: true,
-//               //     //pattern: r'.*[@$#.*].*',
-//               //     border: OutlineInputBorder(
-//               //         borderRadius: BorderRadius.circular(2),
-//               //         borderSide: BorderSide(width: 2, color: Colors.green)),
-//               //   ),
-//               // ),
-//               FlatButton(
-//                 onPressed: () {
-//                   //forgot password screen
-
-//                    Navigator.of(context).pushNamed('/forgot');
-//                 },
-//                 textColor: Colors.green,
-//                 child: Text('Forgot Password'),
-//               ),
-//               Container(
-//                   height: 50,
-//                   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-//                   child: RaisedButton(
-//                     textColor: Colors.white,
-//                     color: Colors.green,
-//                     child: Text('Login'),
-//                     onPressed: () {
-//                       print(nameController.text);
-//                       print(passwordController.text);
-
-//                       Navigator.of(context).pushNamed('/dashboard1');
-//                     },
-//                   )
-//                   ),
-//               Container(
-//                   child: Row(
-//                 children: <Widget>[
-//                   Text('Does not have accountb ?'),
-//                   FlatButton(
-//                     textColor: Colors.green,
-//                     child: Text(
-//                       'Sign in',
-//                       style: TextStyle(fontSize: 20),
-//                     ),
-//                     onPressed: () {
-//                       Navigator.of(context).pushNamed('/register');
-//                     },
-//                   )
-//                 ],
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//               ))
-//             ],
-// //
-
-//             //
-//           )
-//           ),
 
       //
       floatingActionButton: SpeedDial(
@@ -154,6 +54,35 @@ class _State extends State<Login> {
     
   }
 }
+
+
+// Http request code
+
+Future<LoginModel> createUser(String username,String password) async{
+
+final String apiUrl = "Enter  your url here";
+
+// this is for take response
+
+final response = await http.post(apiUrl,body:{
+"username":username,
+"password":password,
+
+});
+if(response.statusCode == 201){
+  final String responseString = response.body;
+  return  loginModelFromJson(responseString);
+
+}else{
+  return null;
+}
+
+
+}
+
+
+
+
 class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -161,9 +90,16 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
 
+
    final _formKey = GlobalKey<FormState>();  
-  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+LoginModel user1;
+String username;
+String password;
+  
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -184,18 +120,12 @@ child: Column(
               //    width: 80,
               // height: 80,
              image: AssetImage('assets/images/logo.jpg'),
-//                     //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'),
+
   ),
                  ),
                   Container(
                   alignment: Alignment.center,
-                  //padding: EdgeInsets.all(10),
-                 //padding: const EdgeInsets.only(left: 30.0, top: 5.0),
-//                  Align(
-//   heightFactor: .30,
-//   widthFactor: .30,
-//   child: child,
-// ),
+           
                   child: Text(
                     'WELCOME',
                     style: TextStyle(fontSize:17, color: Colors.green),
@@ -207,10 +137,13 @@ child: Column(
               labelText: 'User Name',  
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
              
-              //: true,
+            
               
             ),  
-            controller: nameController,
+            onChanged: (text){
+              username= text;
+            },
+            controller: usernameController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter user name';  
@@ -226,9 +159,12 @@ child: Column(
               labelText: 'Password',  
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
              
-              //: true,
+             
               
             ),  
+            onChanged: (text){
+              password= text;
+            },
             controller: passwordController,
             validator: (value) {  
               if (value.isEmpty) {  
@@ -243,16 +179,24 @@ child: Column(
           Container(
             
 alignment: Alignment(-0.1,1),
-//padding: const EdgeInsets.only(left: 100.0, top: 40.0),  
+  
               child: new RaisedButton(  
                 child: const Text('LOG IN'), 
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
-                onPressed: () {  
+                onPressed: () async{  
                  
                   if (_formKey.currentState.validate()) {  
-                     print(nameController.text);
+
+                     //send request
+                    final LoginModel user =await createUser( username,password);
+                    setState(() {
+                      user1 =user;
+                    });
+                     print(usernameController.text);
+                     print(passwordController.text);
+
                     Navigator.of(context).pushNamed('/dashboard1');
                    
                   }  
@@ -262,8 +206,7 @@ alignment: Alignment(-0.1,1),
           ),
  FlatButton(
    padding: const EdgeInsets.only(left: 100.0, top:5.0),  
-   
-   //alignment: Alignment(-0.1,1),
+  
                 onPressed: () {
                   //forgot password screen
 

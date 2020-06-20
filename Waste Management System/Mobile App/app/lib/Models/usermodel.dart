@@ -43,13 +43,13 @@ city: json["city"],
 );
 Map<String, dynamic>toJson() =>{
   "firstname" :firstname,
-  "lastname" :firstname,
-  "username" :firstname,
-  "phone" :firstname,
-  "password" :firstname,
-  "address1" :firstname,
-  "address2" :firstname,
-  "city" :firstname,
+  "lastname" :lastname,
+  "username" :username,
+  "phone" :phone,
+  "password" :password,
+  "address1" :address1,
+  "address2" :address2,
+  "city" :city,
 
 
 };
