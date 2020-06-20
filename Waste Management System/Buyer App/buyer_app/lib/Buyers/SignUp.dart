@@ -14,76 +14,9 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Green wasteland'),
+      appBar: AppBar(title: Text('SignUp Page'),
         backgroundColor: Colors.green,),
       body: SignForm(),
-      //add drawer to the app
-      drawer: Drawer(
-
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Buyer App',style: TextStyle(fontSize: 20,color: Colors.white),),
-              decoration: BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
-
-            //add logo
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 14.0),
-                Row(
-                  children: <Widget>[
-                    SizedBox(width: 14.0),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      height: 45.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                              color: Colors.white,
-                              style: BorderStyle.solid,
-                              width: 2.0
-                          ),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/logo.jpg'),
-                          )
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-
-            ListTile(
-              leading: Icon(Icons.event_note),
-              title: Text('About Us'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/aboutus');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text('Contact Us'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/contactus');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Login'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/login');
-              },
-            ), //ListTitle
-          ],
-        ),
-      ),
 
     );
   }
@@ -105,13 +38,12 @@ class _SignFormState extends State<SignForm> {
 
   final TextEditingController _confirmPass = TextEditingController();
 
-//  TextEditingController firstnameController = TextEditingController();
-//  TextEditingController lastnameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -124,20 +56,7 @@ class _SignFormState extends State<SignForm> {
 
           children: <Widget>[
 
-//          Container(
-//            alignment: Alignment.center,
-//            //padding: EdgeInsets.all(10),
-//
-//            child: Image(
-//              alignment: Alignment(0.5, 0.5),
-//              image: AssetImage('assets/images/logo.jpg'),
-//
-//            )
-//            ,
-//
-//
-//          ),
-            //
+            // my design using positioned
             Stack(
                 children: <Widget>[
                   Container(
@@ -217,24 +136,26 @@ class _SignFormState extends State<SignForm> {
                               color: Colors.black87),
                         ),
                       ),
+
+                      SizedBox(height: 45.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          'Sign Up for your GreenWasteland Account',
+                          style: TextStyle(
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
                     ],
                   ),
                 ]
             ),
             //
             Container(
-                alignment: Alignment.center,
-
-                child: Text(
-                  'Sign Up for your GreenWasteland Account',
-                  style: TextStyle(fontSize:17, color: Colors.green,fontWeight: FontWeight.bold),
-                )),
-
-
-
-
-
-
+              alignment: Alignment.center,
+            ),
 
             Container(
               padding: EdgeInsets.all(10),
@@ -250,7 +171,7 @@ class _SignFormState extends State<SignForm> {
                 controller: usernameController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter some text';
+                    return 'Please enter your name';
                   }
                   return null;
                 },
@@ -273,7 +194,7 @@ class _SignFormState extends State<SignForm> {
                 controller: addressController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter some text';
+                    return 'Please enter your address';
                   }
                   return null;
                 },
@@ -295,7 +216,7 @@ class _SignFormState extends State<SignForm> {
                 controller: phoneController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter a valid phone number';
+                    return 'Please enter a your phone number';
                   }
                   return null;
                 },
@@ -324,19 +245,18 @@ class _SignFormState extends State<SignForm> {
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter an Email ';
-                  }  else{
-                    assert(EmailValidator.validate(value));
+                  }
+                  else {
+                    bool temp = (EmailValidator.validate(value));
+                    if(temp){
+                      return null;
+                    }
                     return 'Please enter a valid Email ';
                   }
-                  //return null;
+
                 },
-
-
-
-
               ),
             ),
-
 
             Container(
               padding: EdgeInsets.all(10),
@@ -385,66 +305,20 @@ class _SignFormState extends State<SignForm> {
               ),
             ),
 
-            //  terms and conditions...
-            Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  FlatButton(
-                    padding: const EdgeInsets.only(right: 120.0),
-
-
-                    textColor: Colors.green,
-                    child: Text('Our terms & conditions'
-                    ),
-
-                    onPressed: () {
-                      //terms and condition page
-                      Navigator.of(context).pushNamed('/terms');
-                    },
-                  ),
-                  FormBuilderCheckbox(
-                    initialValue: false,
-                    label: Text(
-                      "I have read and agree to the terms and conditions",
-                      style: TextStyle(color: Colors.black87),),
-                    validators: [
-                      FormBuilderValidators.requiredTrue(
-                        errorText:
-                        "You must accept terms and conditions to continue",
-                      ),
-                    ],
-                  ),
-
-                ],
-              ),
-            ),
-
 
             new Container(
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('BACK'),
-                      color: Colors.yellow,
-                      textColor: Colors.black,
-
-                      onPressed: (){
-                        Navigator.of(context).pushNamed('/login');
-                      },
-                    ),
-
-                    RaisedButton(
-                      child: const Text('SIGN UP'),
+                      child: const Text('Next'),
                       color: Colors.green,
                       textColor: Colors.white,
 
                       onPressed: () {
 
                         if (_formKey.currentState.validate()) {
-//                    print(firstnameController.text);
-//                    print(lastnameController.text);
+
                           print(usernameController.text);
                           print(addressController.text);
                           print(phoneController.text);
@@ -452,12 +326,11 @@ class _SignFormState extends State<SignForm> {
                           print(passwordController.text);
                           print( _confirmPass.text);
 
-                          Navigator.of(context).pushNamed('/login');
+                          Navigator.of(context).pushNamed('/getlocation');
 
 //                        Scaffold
 //                            .of(context)
 //                            .showSnackBar(SnackBar(content: Text('Sending Data'),backgroundColor: Colors.green,));
-
                         }
                       },
                     ),
@@ -465,7 +338,6 @@ class _SignFormState extends State<SignForm> {
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 )
-
             ),
           ],
         ),
