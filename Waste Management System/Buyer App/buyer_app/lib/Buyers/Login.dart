@@ -204,7 +204,7 @@ class _LoginFormState extends State<LoginForm> {
                           )
                         ],
                       ),
-   //add 'hi welcome' text
+                      //add 'hi welcome' text
                       SizedBox(height: 15.0),
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
@@ -216,7 +216,7 @@ class _LoginFormState extends State<LoginForm> {
                               color: Colors.black87),
                         ),
                       ),
-   // add search bar
+                      // add search bar
                       SizedBox(height: 25.0),
                       Padding(
                         padding: EdgeInsets.only(left: 15.0,right: 15.0),
@@ -283,6 +283,7 @@ class _LoginFormState extends State<LoginForm> {
               children: <Widget>[
                 new TextFormField(
                   decoration: const InputDecoration(
+
                     icon: const Icon(Icons.lock,color: Colors.black,),
                     hintText: 'Enter password',
                     labelText: 'Password',
@@ -300,10 +301,11 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   obscureText: _obscureText,
                 ),
+
                 new FlatButton(
                     onPressed: _toggle,
                     padding: const EdgeInsets.only(right: 10.0, top: 0.0, bottom: 0.0, left: 270.0),
-                    child: new Text(_obscureText ? "Show" : "Hide"))
+                    child: new Icon(_obscureText ? Icons.visibility_off : Icons.visibility))
               ],
             ),
 
@@ -400,3 +402,5 @@ class _LoginFormState extends State<LoginForm> {
 //
 
 }
+
+
