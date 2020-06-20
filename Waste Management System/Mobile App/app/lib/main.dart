@@ -1,4 +1,5 @@
 import 'package:app/CommonPages/Address/Addmanually.dart';
+//import 'package:app/CommonPages/Address/checkpassdata.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
 '/addmanualy':(context)=>Add(),
 '/reg3':(context)=>Reglocation(),
 
-      
+    // '/check':(context)=>Check(), 
 //employee 
 
   '/logemp':(context)=>Loginemp(),

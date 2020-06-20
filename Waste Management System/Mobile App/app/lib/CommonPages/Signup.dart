@@ -1,3 +1,4 @@
+import 'package:app/CommonPages/Address/ChooseRegLocaType.dart';
 import 'package:flutter/material.dart';
 // import 'package:passwordfield/passwordfield.dart';
  
@@ -244,14 +245,20 @@ class _SignFormState extends State<SignForm> {
   
   //controller names
 
-  TextEditingController firstnameController = TextEditingController();
-  TextEditingController lastnameController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController nearLocationController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  // TextEditingController firstnameController = TextEditingController();
+  // TextEditingController lastnameController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
+  // TextEditingController addressController = TextEditingController();
+  // TextEditingController phoneController = TextEditingController();
+  // TextEditingController nearLocationController = TextEditingController();
+  // TextEditingController passwordController = TextEditingController();
 
+
+String firstname;
+String lastname;
+String username;
+String phone;
+String password;
   @override
   Widget build(BuildContext context) {
     return Form(  
@@ -297,7 +304,10 @@ TextFormField(
                 
               
             ),  
-            controller: firstnameController,
+            onChanged: (text){
+              firstname= text;
+            },
+           // controller: firstnameController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -320,7 +330,10 @@ child:
               labelText: 'Last Name', 
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green), 
             ),  
-            controller: lastnameController,
+            onChanged: (text){
+              lastname= text;
+            },
+            //controller: lastnameController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -342,7 +355,10 @@ TextFormField(
             labelText: 'User Name',  
             labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
             ),  
-            controller: usernameController,
+            onChanged: (text){
+             username= text;
+            },
+           // controller: usernameController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -386,8 +402,11 @@ TextFormField(
               labelText: 'Phone Number', 
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green), 
               
-            ),  
-            controller: phoneController,
+            ), 
+            onChanged: (text){
+              phone= text;
+            }, 
+            //controller: phoneController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter a valid phone number';  
@@ -433,8 +452,11 @@ TextFormField(
               labelText: 'Password',  
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
               
-            ),  
-            controller: passwordController,
+            ), 
+            onChanged: (text){
+              password= text;
+            }, 
+            //controller: passwordController,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter a strong password';  
@@ -454,15 +476,28 @@ TextFormField(
                 onPressed: () {  
                  
                   if (_formKey.currentState.validate()) {  
-                     print(firstnameController.text);
-                     print(lastnameController.text);
-                     print(usernameController.text);
-                    //  print(addressController.text);
-                     print(phoneController.text);
-                    //  print(nearLocationController.text);
-                    print(passwordController.text);
+                    //  print(firstnameController.text);
+                    //  print(lastnameController.text);
+                    //  print(usernameController.text);
+                    // //  print(addressController.text);
+                    //  print(phoneController.text);
+                    // //  print(nearLocationController.text);
+                    // print(passwordController.text);
 
-                     Navigator.of(context).pushNamed('/choosetype');
+                    // Navigator.of(context).pushNamed('/choosetype');
+Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>ChooseLocaType(
+                        firstname:firstname ,
+                        lastname:lastname,
+                        username:username,
+                        phone:phone,
+                        password:password
+                        
+                        ),
+                      
+                      ));
+
+                    // 
                   }  
                 },  
               )

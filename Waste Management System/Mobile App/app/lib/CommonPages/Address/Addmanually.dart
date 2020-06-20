@@ -1,17 +1,38 @@
+import 'package:app/CommonPages/Address/checkpassdata.dart';
+import 'package:app/Models/usermodel.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Add extends StatefulWidget {
+final String firstname;
+final String lastname;
+final String username;
+final String phone;
+final String password;
+
+Add({this.firstname,this.lastname,this.username,this.phone,this.password});
   @override
-  _AddState createState() => _AddState();
+  _AddState createState() => _AddState(firstname, lastname,username,phone, password );
 }
 
 class _AddState extends State<Add> {
+  String firstname;
+String lastname;
+String username;
+String phone;
+String password;
+
+_AddState(this.firstname,this.lastname,this.username,this.phone,this.password);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
      
 
        appBar: AppBar(
+        //  title: Text(
+        //    phone + firstname,
+        //    ),
       ),
      
      body:Address() ,
@@ -20,18 +41,71 @@ class _AddState extends State<Add> {
 }
 
 class Address extends StatefulWidget {
+  final String firstname;
+final String lastname;
+final String username;
+final String phone;
+final String password;
+Address({this.firstname,this.lastname,this.username,this.phone,this.password});
+
   @override
-  _AddressState createState() => _AddressState();
+  _AddressState createState() => _AddressState(firstname, lastname,username,phone, password);
 }
 
+// Http request code
+
+Future<UserModel> createUser(String firstname,String lastname,String username,String phone,String password,String address1,String address2,String city) async{
+
+final String apiUrl = "Enter  your url here";
+
+// this is for take response
+
+final response = await http.post(apiUrl,body:{
+
+"firstname":firstname,
+"lastname":lastname,
+"username":username,
+"phone":phone,
+"password":password,
+"address1":address1,
+"address2":address2,
+"city":city
+});
+if(response.statusCode == 201){
+  final String responseString = response.body;
+  return userModelFromJson(responseString);
+}else{
+  return null;
+}
+
+
+}
+
+
+
+// 
+
 class _AddressState extends State<Address> {
+
+String firstname;
+String lastname;
+String username;
+String phone;
+String password;
+
+UserModel user1;
+
+_AddressState(this.firstname,this.lastname,this.username,this.phone,this.password);
     final _formKey = GlobalKey<FormState>(); 
 
   TextEditingController address1Controller = TextEditingController();
   TextEditingController address2Controller = TextEditingController();
-  TextEditingController city = TextEditingController();
+ // TextEditingController city = TextEditingController();
   
-  
+  String address1;
+  String address2;
+  String city;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -68,7 +142,10 @@ Container(
                 
               
             ),  
-            controller: address1Controller,
+            onChanged: (text){
+              address1= text;
+            },
+           // controller: address1Controller,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -93,8 +170,11 @@ Container(
               
                 
               
-            ),  
-            controller: address2Controller,
+            ), 
+            onChanged: (text){
+              address2= text;
+            }, 
+            //controller: address2Controller,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -121,7 +201,10 @@ Container(
                 
               
             ),  
-            controller: city,
+            onChanged: (text){
+              city= text;
+            },
+            //controller: city,
             validator: (value) {  
               if (value.isEmpty) {  
                 return 'Please enter some text';  
@@ -138,15 +221,21 @@ Container(
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
-                onPressed: () {  
+                onPressed: () async{  
                  
                   if (_formKey.currentState.validate()) {  
-                     print(address1Controller.text);
-                     print(address2Controller.text);
-                     print(city.text);
-                     
+                    
+                    //send request
+                    final UserModel user =await createUser(firstname, lastname, username, phone, password, address1, address2, city);
+                    setState(() {
+                      user1 = 
+                      user;
+                    });
 
-                     Navigator.of(context).pushNamed('/addmanualy');
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>Check(address1: address1 ,address2: address2,city:city),
+                      
+                      ));
                   }  
                 },  
               )

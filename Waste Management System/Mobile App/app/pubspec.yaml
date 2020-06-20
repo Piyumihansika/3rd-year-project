@@ -29,6 +29,7 @@ dependencies:
   flutter_speed_dial: ^1.2.5
   passwordfield: ^0.0.5
   email_validator: '^1.0.0'
+  http: ^0.12.1
 
 dev_dependencies:
   flutter_test:
