@@ -9,6 +9,33 @@ const verifyToken = require('./verifyToken');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
+//buyer login,customer login,admin login
+
+//BUYER LOGIN
+router.post('/buyerLogin', async(req, res) => {
+    try{
+        const buyer = await Buyer.findOne({ email: req.body.email })
+       
+        if(!buyer){
+            return res.status(404).send("The email doesn't exist")
+        }
+        const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+        if(!validPassword){
+            return res.status(401).send({ auth: false, token: null});
+        }
+        const token = jwt.sign({ id: buyer._id }, config.secret, {
+            expiresIn: '24h'
+        });
+        if(token){
+            res.status(200).json({ auth: true, id: buyer._id, token});
+        }
+       
+    }catch(e){
+        console.log(e);
+        res.status(500).send("There was a problem signin");
+
+    }
+});
 
 //EMAIL LOGIN
 router.post('/emailLogin', async(req, res) => {
