@@ -5,11 +5,12 @@ const customerSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    username: String,
-    address: String,
     contactNumber: String,
-    serviceCenter: String,
-    password: String
+    password: String,
+    address1: String,
+    address2: String,
+    city: String,
+    district: String
 });
 
 customerSchema.methods.encryptPassword = async(password) => {

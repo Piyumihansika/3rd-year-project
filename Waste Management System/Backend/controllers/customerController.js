@@ -12,17 +12,18 @@ const config = require('../config');
 router.post('/customerAdd', async(req, res) => {
     try{
     
-        const {firstName,lastName,email,username,address,contactNumber,serviceCenter,password} = req.body;
+        const {firstName,lastName,email,contactNumber,password,address1,address2,city,district} = req.body;
 
         const customer = new Customer({
             firstName,
             lastName,
             email,
-            username,
-            address,
             contactNumber,
-            serviceCenter,
-            password
+            password,
+            address1,
+            address2,
+            city,
+            district
         });
         customer.password = await customer.encryptPassword(password);
 
