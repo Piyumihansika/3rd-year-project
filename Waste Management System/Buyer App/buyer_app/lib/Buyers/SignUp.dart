@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:passwordfield/passwordfield.dart';
+//import 'package:passwordfield/passwordfield.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+//import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:buyerapp/Location/GetLocation.dart';
 //import 'package:intl/intl.dart';
 
 
@@ -36,13 +37,20 @@ class _SignFormState extends State<SignForm> {
 
   //controller names
 
-  final TextEditingController _confirmPass = TextEditingController();
+//  final TextEditingController _confirmPass = TextEditingController();
+//
+//  TextEditingController usernameController = TextEditingController();
+//  TextEditingController addressController = TextEditingController();
+//  TextEditingController phoneController = TextEditingController();
+//  TextEditingController emailController = TextEditingController();
+//  TextEditingController passwordController = TextEditingController();
 
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  String username;
+  String address;
+  String phone;
+  String password;
+  String confirmpass;
+  String email;
 
 
   @override
@@ -168,7 +176,11 @@ class _SignFormState extends State<SignForm> {
                   labelText: 'User Name',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                 ),
-                controller: usernameController,
+
+                onChanged: (text){
+                  username= text;
+                },
+                //controller: usernameController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter your name';
@@ -191,7 +203,10 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                controller: addressController,
+                onChanged: (text){
+                  address= text;
+                },
+                // controller: addressController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter your address';
@@ -213,7 +228,10 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                controller: phoneController,
+                onChanged: (text){
+                  phone= text;
+                },
+                //controller: phoneController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a your phone number';
@@ -239,7 +257,10 @@ class _SignFormState extends State<SignForm> {
                   //: true,
 
                 ),
-                controller: emailController,
+                onChanged: (text){
+                  email= text;
+                },
+                //controller: emailController,
 
 
                 validator: (value) {
@@ -270,7 +291,10 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                controller: passwordController,
+                onChanged: (text){
+                  password= text;
+                },
+                //controller: passwordController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a strong password';
@@ -293,11 +317,14 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                controller: _confirmPass,
+                onChanged: (text){
+                  confirmpass= text;
+                },
+                //controller: _confirmPass,
                 validator: (val){
                   if(val.isEmpty)
                     return 'Please enter confirm password';
-                  if(val != passwordController.text)
+                  if(val != password)
                     return 'Password is not match';
                   return null;
                 },
@@ -318,15 +345,28 @@ class _SignFormState extends State<SignForm> {
                       onPressed: () {
 
                         if (_formKey.currentState.validate()) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>GetLocation(
+                                username:username ,
+                                address:address,
+                                phone:phone,
+                                email:email,
+                                password:password,
+                                confirmpass:confirmpass
 
-                          print(usernameController.text);
-                          print(addressController.text);
-                          print(phoneController.text);
-                          print(emailController.text);
-                          print(passwordController.text);
-                          print( _confirmPass.text);
+                            ),
 
-                          Navigator.of(context).pushNamed('/getlocation');
+                          ));
+
+
+//                          print(usernameController.text);
+//                          print(addressController.text);
+//                          print(phoneController.text);
+//                          print(emailController.text);
+//                          print(passwordController.text);
+//                          print( _confirmPass.text);
+//
+//                          Navigator.of(context).pushNamed('/getlocation');
 
 //                        Scaffold
 //                            .of(context)
@@ -345,3 +385,4 @@ class _SignFormState extends State<SignForm> {
     );
   }
 }
+

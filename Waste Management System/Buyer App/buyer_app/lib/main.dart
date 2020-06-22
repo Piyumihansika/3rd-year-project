@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         '/getlocation':(context)=>GetLocation(),
         '/manually':(context)=>Manually(),
         '/tracking':(context)=>Tracking(),
-       // '/terms':(context)=>Terms(),
+        // '/terms':(context)=>Terms(),
 
 
 
@@ -56,6 +56,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
 
 
