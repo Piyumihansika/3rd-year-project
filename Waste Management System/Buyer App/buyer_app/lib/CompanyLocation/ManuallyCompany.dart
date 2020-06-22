@@ -250,7 +250,7 @@ class ManuallyCompanyForm extends StatefulWidget {
                         errorText:
                         "You must accept terms and conditions to continue",
                       ),
-                    ],
+                    ], attribute: null,
                   ),
 
                 ],

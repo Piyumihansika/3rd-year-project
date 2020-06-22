@@ -13,7 +13,7 @@ class MapScreenState extends State<Profile>
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
   }
 

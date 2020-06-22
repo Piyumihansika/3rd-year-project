@@ -250,7 +250,7 @@ class _ManuallyFormState extends State<ManuallyForm> {
                         errorText:
                         "You must accept terms and conditions to continue",
                       ),
-                    ],
+                    ], attribute: null,
                   ),
 
                 ],

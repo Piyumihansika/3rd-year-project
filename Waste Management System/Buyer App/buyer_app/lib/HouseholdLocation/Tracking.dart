@@ -85,7 +85,7 @@ class _TrackFormState extends State<TrackForm> {
                       errorText:
                       "You must accept terms and conditions to continue",
                     ),
-                  ],
+                  ], attribute: null,
                 ),
               ],
             ),
