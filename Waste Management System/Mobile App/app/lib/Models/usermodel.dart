@@ -30,6 +30,7 @@ this.address2,
 this.city,
 this.district,
 
+
 });
 
 factory UserModel.fromJson(Map<String, dynamic>json)=> UserModel(
