@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:email_validator/email_validator.dart';
 //import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:buyerapp/Location/GetLocation.dart';
+import 'package:buyerapp/HouseholdLocation/GetLocation.dart';
 //import 'package:intl/intl.dart';
 
 
-class SignUp extends StatefulWidget {
+class SignUpHousehold extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _SignUpHouseholdState createState() => _SignUpHouseholdState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpHouseholdState extends State<SignUpHousehold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('SignUp Page'),
         backgroundColor: Colors.green,),
-      body: SignForm(),
+      body: SignHouseholdForm(),
 
     );
   }
 }
 
-class SignForm extends StatefulWidget {
+class SignHouseholdForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _SignHouseholdFormState createState() => _SignHouseholdFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignHouseholdFormState extends State<SignHouseholdForm> {
 
   // Initially password is obscure
   bool _obscureText = true;
@@ -45,9 +45,9 @@ class _SignFormState extends State<SignForm> {
 //  TextEditingController emailController = TextEditingController();
 //  TextEditingController passwordController = TextEditingController();
 
-  String username;
-  String address;
-  String phone;
+  String firstname;
+  String lastname;
+  String contactNumber;
   String password;
   String confirmpass;
   String email;
@@ -172,18 +172,18 @@ class _SignFormState extends State<SignForm> {
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person,color: Colors.black),
-                  hintText: 'Enter an user name',
-                  labelText: 'User Name',
+                  hintText: 'Enter first name',
+                  labelText: 'First Name',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                 ),
 
                 onChanged: (text){
-                  username= text;
+                  firstname= text;
                 },
                 //controller: usernameController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter your name';
+                    return 'Please enter your firstname';
                   }
                   return null;
                 },
@@ -198,18 +198,18 @@ class _SignFormState extends State<SignForm> {
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.contacts,color: Colors.black),
-                  hintText: 'Enter your address',
-                  labelText: 'Address',
+                  hintText: 'Enter your lastname',
+                  labelText: 'Last Name',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
                 onChanged: (text){
-                  address= text;
+                  lastname= text;
                 },
                 // controller: addressController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter your address';
+                    return 'Please enter your lastname';
                   }
                   return null;
                 },
@@ -229,7 +229,7 @@ class _SignFormState extends State<SignForm> {
 
                 ),
                 onChanged: (text){
-                  phone= text;
+                  contactNumber= text;
                 },
                 //controller: phoneController,
                 validator: (value) {
@@ -347,9 +347,9 @@ class _SignFormState extends State<SignForm> {
                         if (_formKey.currentState.validate()) {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>GetLocation(
-                                username:username ,
-                                address:address,
-                                phone:phone,
+                                firstname:firstname ,
+                                lastname:lastname,
+                                contactNumber:contactNumber,
                                 email:email,
                                 password:password,
                                 confirmpass:confirmpass

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -16,17 +16,17 @@ class _TrackingState extends State<Tracking> {
         title: Text("Location Track"),
         backgroundColor: Colors.green,
       ),
-      body: SignForm(),
+      body: TrackForm(),
     );
   }
 }
 
-class SignForm extends StatefulWidget {
+class TrackForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _TrackFormState createState() => _TrackFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _TrackFormState extends State<TrackForm> {
   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
   final _formKey = GlobalKey<FormState>();
 
@@ -83,7 +83,7 @@ class _SignFormState extends State<SignForm> {
                   validators: [
                     FormBuilderValidators.requiredTrue(
                       errorText:
-                          "You must accept terms and conditions to continue",
+                      "You must accept terms and conditions to continue",
                     ),
                   ], attribute: null,
                 ),
@@ -147,7 +147,7 @@ class _SignFormState extends State<SignForm> {
 
       setState(() {
         _currentAddress =
-            "${place.locality}, ${place.postalCode}, ${place.country}";
+        "${place.locality}, ${place.postalCode}, ${place.country}";
       });
     } catch (e) {
       print(e);
@@ -174,14 +174,14 @@ class _SignFormState extends State<SignForm> {
 //  }
 //}
 //
-//class SignForm extends StatefulWidget {
+//class TrackForm extends StatefulWidget {
 //  @override
-//  _SignFormState createState() => _SignFormState();
+//  _TrackFormState createState() => _STrackFormState();
 //}
 //
-//class _SignFormState extends State<SignForm> {
+//class _TrackFormState extends State<TrackForm> {
 //
-//  final _formKey = GlobalKey<FormState>();
+//  final _formKey = GlobalKey<TrackForm>();
 //
 //  TextEditingController locationController = TextEditingController();
 //
