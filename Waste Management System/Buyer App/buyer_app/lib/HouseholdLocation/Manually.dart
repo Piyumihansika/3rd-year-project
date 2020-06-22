@@ -5,69 +5,72 @@ import 'package:buyerapp/Models/registermodel.dart';
 
 class Manually extends StatefulWidget {
 
-  final String username;
-  final String address;
-  final String phone;
+  final String firstname;
+  final String lastname;
+  final String contactNumber;
   final String password;
   final String confirmpass;
   final String email;
 
-  Manually({ this.username,this.address,this.phone,this.password,this.confirmpass,this.email});
+  Manually({ this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email});
 
   @override
-  _ManuallyState createState() => _ManuallyState(username,address,phone,password,confirmpass,email);
+  _ManuallyState createState() => _ManuallyState(firstname,lastname,contactNumber,password,confirmpass,email);
 }
 
 class _ManuallyState extends State<Manually> {
 
-  String username;
-  String address;
-  String phone;
+  String firstname;
+  String lastname;
+  String contactNumber;
   String password;
   String confirmpass;
   String email;
 
-  _ManuallyState(this.username,this.address,this.phone,this.password,this.confirmpass,this.email);
+  _ManuallyState(this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Mannual Location'),
         backgroundColor: Colors.green,),
-      body: SignForm(),
+      body: ManuallyForm(),
     );
   }
 }
 
-class SignForm extends StatefulWidget {
+class ManuallyForm extends StatefulWidget {
 
-  final String username;
-  final String address;
-  final String phone;
+  final String firstname;
+  final String lastname;
+  final String contactNumber;
   final String password;
   final String confirmpass;
   final String email;
 
-  SignForm({ this.username,this.address,this.phone,this.password,this.confirmpass,this.email});
+  ManuallyForm({ this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email});
 
   @override
-  _SignFormState createState() => _SignFormState(username,address,phone,password,confirmpass,email);
+  _ManuallyFormState createState() => _ManuallyFormState(firstname,lastname,contactNumber,password,confirmpass,email);
 }
 // Http request code
 
-Future<UserModel> createUser(String username,String address,String phone,String password,String confirmpass,String email,String location) async {
+Future<UserModel> createUser(String firstname,String lastname,String contactNumber,String password,String confirmpass,String email,String address1,String address2,String city,String district) async {
   final String apiUrl = "Enter  your url here";
 
   // this is for take response
   final response = await http.post(apiUrl, body: {
 
-    "username": username,
-    "address": address,
-    "phone": phone,
+    "firstname": firstname,
+    "lastname": lastname,
+    "contactNumber": contactNumber,
     "password": password,
     "confirmpass": confirmpass,
     "email": email,
-    "location": location,
+    "address1": address1,
+    "address2": address2,
+    "city": city,
+    "district": district,
 
   });
   if (response.statusCode == 201) {
@@ -77,22 +80,25 @@ Future<UserModel> createUser(String username,String address,String phone,String 
     return null;
   }
 }
-class _SignFormState extends State<SignForm> {
+class _ManuallyFormState extends State<ManuallyForm> {
 
-  String username;
-  String address;
-  String phone;
+  String firstname;
+  String lastname;
+  String contactNumber;
   String password;
   String confirmpass;
   String email;
 
   UserModel user1;
-  _SignFormState(this.username,this.address,this.phone,this.password,this.confirmpass,this.email);
+  _ManuallyFormState(this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email);
 
   final _formKey = GlobalKey<FormState>();
 
   // TextEditingController locationController = TextEditingController();
-  String location;
+  String address1;
+  String address2;
+  String city;
+  String district;
 
   @override
   Widget build(BuildContext context) {
@@ -123,18 +129,93 @@ class _SignFormState extends State<SignForm> {
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.add_location,color: Colors.black),
-                  hintText: 'Enter your location',
-                  labelText: 'Location',
+                  hintText: 'Enter your address1',
+                  labelText: 'Address1',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
                 onChanged: (text){
-                  location= text;
+                  address1= text;
                 },
                 //controller: locationController,
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Please enter your location';
+                    return 'Please enter your address1';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
+            Container(
+              padding: EdgeInsets.all(10),
+              child:
+              TextFormField(
+                scrollPadding: EdgeInsets.all(10),
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.add_location,color: Colors.black),
+                  hintText: 'Enter your address2',
+                  labelText: 'Address2',
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+
+                ),
+                onChanged: (text){
+                  address2= text;
+                },
+                //controller: locationController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your address2';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
+            Container(
+              padding: EdgeInsets.all(10),
+              child:
+              TextFormField(
+                scrollPadding: EdgeInsets.all(10),
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.location_city,color: Colors.black),
+                  hintText: 'Enter your city',
+                  labelText: 'City',
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+
+                ),
+                onChanged: (text){
+                  city= text;
+                },
+                //controller: locationController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your city';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
+            Container(
+              padding: EdgeInsets.all(10),
+              child:
+              TextFormField(
+                scrollPadding: EdgeInsets.all(10),
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.my_location,color: Colors.black),
+                  hintText: 'Enter your district',
+                  labelText: 'District',
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+
+                ),
+                onChanged: (text){
+                  district= text;
+                },
+                //controller: locationController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter your district';
                   }
                   return null;
                 },
@@ -169,7 +250,7 @@ class _SignFormState extends State<SignForm> {
                         errorText:
                         "You must accept terms and conditions to continue",
                       ),
-                    ], attribute: null,
+                    ],
                   ),
 
                 ],
@@ -200,14 +281,14 @@ class _SignFormState extends State<SignForm> {
                         if (_formKey.currentState.validate()) {
 
                           //send request
-                          final UserModel user =await createUser(username, address, phone, password, confirmpass, email, location);
+                          final UserModel user =await createUser(firstname, lastname, contactNumber, password, confirmpass, email, address1, address2, city, district);
                           setState(() {
                             user1 =
                                 user;
                           });
 
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>Check(location: location ),
+                            builder: (context) =>CheckHousehold(address1: address1 ,address2: address2,city:city,district:district ),
 
                           ));
                         }
@@ -242,22 +323,28 @@ class _SignFormState extends State<SignForm> {
   }
 }
 
-class Check extends StatefulWidget {
+class CheckHousehold extends StatefulWidget {
 
-  final String location;
+  final String address1;
+  final String address2;
+  final String city;
+  final String district;
 
-  Check({this.location});
+  CheckHousehold({this.address1, this.address2, this.city, this.district});
 
   @override
-  _CheckState createState() => _CheckState(location);
+  _CheckHouseholdState createState() => _CheckHouseholdState(address1, address2, city, district);
 }
 
-class _CheckState extends State<Check> {
+class _CheckHouseholdState extends State<CheckHousehold> {
 
-  String location;
+  String address1;
+  String address2;
+  String city;
+  String district;
 
 
-  _CheckState(this.location);
+  _CheckHouseholdState(this.address1, this.address2, this.city, this.district);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -265,7 +352,7 @@ class _CheckState extends State<Check> {
 
       ),
       body: Text(
-        location ,
+        address1 + address2 + city + district ,
       ),
 
 

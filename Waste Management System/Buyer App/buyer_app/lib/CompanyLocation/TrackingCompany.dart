@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class Tracking extends StatefulWidget {
+class TrackingCompany extends StatefulWidget {
   @override
-  _TrackingState createState() => _TrackingState();
+  _TrackingCompanyState createState() => _TrackingCompanyState();
 }
 
-class _TrackingState extends State<Tracking> {
+class _TrackingCompanyState extends State<TrackingCompany> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,17 +16,17 @@ class _TrackingState extends State<Tracking> {
         title: Text("Location Track"),
         backgroundColor: Colors.green,
       ),
-      body: SignForm(),
+      body: TrackCompanyForm(),
     );
   }
 }
 
-class SignForm extends StatefulWidget {
+class TrackCompanyForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _TrackCompanyFormState createState() => _TrackCompanyFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _TrackCompanyFormState extends State<TrackCompanyForm> {
   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
   final _formKey = GlobalKey<FormState>();
 
@@ -85,7 +85,7 @@ class _SignFormState extends State<SignForm> {
                       errorText:
                           "You must accept terms and conditions to continue",
                     ),
-                  ], attribute: null,
+                  ],
                 ),
               ],
             ),
@@ -174,14 +174,14 @@ class _SignFormState extends State<SignForm> {
 //  }
 //}
 //
-//class SignForm extends StatefulWidget {
+//class TrackForm extends StatefulWidget {
 //  @override
-//  _SignFormState createState() => _SignFormState();
+//  _TrackFormState createState() => _STrackFormState();
 //}
 //
-//class _SignFormState extends State<SignForm> {
+//class _TrackFormState extends State<TrackForm> {
 //
-//  final _formKey = GlobalKey<FormState>();
+//  final _formKey = GlobalKey<TrackForm>();
 //
 //  TextEditingController locationController = TextEditingController();
 //

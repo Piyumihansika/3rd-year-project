@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-
-// import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
+import 'package:buyerapp/Models/loginModel.dart';
+//import 'package:passwordfield/passwordfield.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -91,6 +92,29 @@ class _State extends State<Login> {
 
   }
 }
+
+// Http request code
+
+Future<LoginModel> createUser(String email,String password) async{
+
+  final String apiUrl = "Enter  your url here";
+
+// this is for take response
+
+  final response = await http.post(apiUrl,body:{
+    "email":email,
+    "password":password,
+
+  });
+  if(response.statusCode == 201){
+    final String responseString = response.body;
+    return  loginModelFromJson(responseString);
+
+  }else{
+    return null;
+  }
+}
+
 class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -110,6 +134,11 @@ class _LoginFormState extends State<LoginForm> {
   //TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  LoginModel user1;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -258,25 +287,26 @@ class _LoginFormState extends State<LoginForm> {
                 labelText: 'Email',
                 labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
-                //: true,
-
               ),
-              controller: emailController,
 
+              onChanged: (text){
+                email= text;
+              },
+              controller: emailController,
 
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter an Email ';
-                }  else{
-                  assert(EmailValidator.validate(value));
+                }
+                else {
+                  bool temp = (EmailValidator.validate(value));
+                  if(temp){
+                    return null;
+                  }
                   return 'Please enter a valid Email ';
                 }
                 //return null;
               },
-
-
-
-
             ),
 
             Column(
@@ -289,9 +319,12 @@ class _LoginFormState extends State<LoginForm> {
                     labelText: 'Password',
                     labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
-                    //: true,
-
                   ),
+
+                  onChanged: (text){
+                    password= text;
+                  },
+
                   controller: passwordController,
                   validator: (value) {
                     if (value.isEmpty) {
@@ -320,10 +353,18 @@ class _LoginFormState extends State<LoginForm> {
                   color: Colors.green,
                   textColor: Colors.white,
 
-                  onPressed: () {
+                  onPressed: () async{
 
                     if (_formKey.currentState.validate()) {
+
+                      //send request
+                      final LoginModel user =await createUser( email,password);
+                      setState(() {
+                        user1 =user;
+                      });
+
                       print(emailController.text);
+                      print(passwordController.text);
                       Navigator.of(context).pushNamed('/buyerhome');
 
 //                    Scaffold
@@ -362,7 +403,7 @@ class _LoginFormState extends State<LoginForm> {
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/signup');
+                        Navigator.of(context).pushNamed('/usertype');
                       },
                     )
                   ],

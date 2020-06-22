@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'Buyers/Login.dart';
-import 'Buyers/SignUp.dart';
 import 'Buyers/ForgotPassword.dart';
 import 'Buyers/BuyerHome.dart';
 import 'Buyers/ContactUs.dart';
@@ -9,9 +8,18 @@ import 'Buyers/AboutUs.dart';
 import 'Buyers/Profile.dart';
 import 'Buyers/History.dart';
 import 'Buyers/Category.dart';
-import 'Location/GetLocation.dart';
-import 'Location/Manually.dart';
-import 'Location/Tracking.dart';
+import 'Buyers/UserType.dart';
+
+import 'Buyers/SignUpHousehold.dart';
+import 'HouseholdLocation/GetLocation.dart';
+import 'HouseholdLocation/Manually.dart';
+import 'HouseholdLocation/Tracking.dart';
+
+import 'Buyers/SignUpCompany.dart';
+import 'CompanyLocation/GetLocationCompany.dart';
+import 'CompanyLocation/ManuallyCompany.dart';
+import 'CompanyLocation/TrackingCompany.dart';
+
 //import 'Buyers/Terms.dart';
 
 
@@ -33,7 +41,6 @@ class MyApp extends StatelessWidget {
 
 
         '/login':(context)=>Login(),
-        '/signup':(context)=>SignUp(),
         '/forgot':(context)=>Forgot(),
         '/buyerhome':(context)=>BuyerHome(),
         '/contactus':(context)=>ContactUs(),
@@ -41,9 +48,20 @@ class MyApp extends StatelessWidget {
         '/profile':(context)=>Profile(),
         '/history':(context)=>History(),
         '/category':(context)=>Category(),
+        '/usertype':(context)=>UserType(),
+
+        //househld user
         '/getlocation':(context)=>GetLocation(),
         '/manually':(context)=>Manually(),
         '/tracking':(context)=>Tracking(),
+        '/signuphousehold':(context)=>SignUpHousehold(),
+
+
+        //company users
+        '/manuallycompany':(context)=>ManuallyCompany(),
+        '/trackingcompany':(context)=>TrackingCompany(),
+        '/getlocationcompany':(context)=>GetLocationCompany(),
+        '/signupcompany':(context)=>SignUpCompany(),
         // '/terms':(context)=>Terms(),
 
 
