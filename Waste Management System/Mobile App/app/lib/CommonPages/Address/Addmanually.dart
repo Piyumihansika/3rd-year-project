@@ -6,23 +6,23 @@ import 'package:http/http.dart' as http;
 class Add extends StatefulWidget {
 final String firstname;
 final String lastname;
-final String username;
-final String phone;
+final String email;
+final String contactNumber;
 final String password;
 
-Add({this.firstname,this.lastname,this.username,this.phone,this.password});
+Add({this.firstname,this.lastname,this.email,this.contactNumber,this.password});
   @override
-  _AddState createState() => _AddState(firstname, lastname,username,phone, password );
+  _AddState createState() => _AddState(firstname, lastname,email,contactNumber, password );
 }
 
 class _AddState extends State<Add> {
-  String firstname;
+String firstname;
 String lastname;
-String username;
-String phone;
+String email;
+String contactNumber;
 String password;
 
-_AddState(this.firstname,this.lastname,this.username,this.phone,this.password);
+_AddState(this.firstname,this.lastname,this.email,this.contactNumber,this.password);
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +41,20 @@ _AddState(this.firstname,this.lastname,this.username,this.phone,this.password);
 }
 
 class Address extends StatefulWidget {
-  final String firstname;
+final String firstname;
 final String lastname;
-final String username;
-final String phone;
+final String email;
+final String contactNumber;
 final String password;
-Address({this.firstname,this.lastname,this.username,this.phone,this.password});
+Address({this.firstname,this.lastname,this.email,this.contactNumber,this.password});
 
   @override
-  _AddressState createState() => _AddressState(firstname, lastname,username,phone, password);
+  _AddressState createState() => _AddressState(firstname, lastname,email,contactNumber, password);
 }
 
 // Http request code
 
-Future<UserModel> createUser(String firstname,String lastname,String username,String phone,String password,String address1,String address2,String city) async{
+Future<UserModel> createUser(String firstname,String lastname,String email,String contactNumber,String password,String address1,String address2,String city,String district) async{
 
 final String apiUrl = "Enter  your url here";
 
@@ -64,12 +64,13 @@ final response = await http.post(apiUrl,body:{
 
 "firstname":firstname,
 "lastname":lastname,
-"username":username,
-"phone":phone,
+"email":email,
+"contactNumber":contactNumber,
 "password":password,
 "address1":address1,
 "address2":address2,
-"city":city
+"city":city,
+"district":district,
 });
 if(response.statusCode == 201){
   final String responseString = response.body;
@@ -89,13 +90,13 @@ class _AddressState extends State<Address> {
 
 String firstname;
 String lastname;
-String username;
-String phone;
+String email;
+String contactNumber;
 String password;
 
 UserModel user1;
 
-_AddressState(this.firstname,this.lastname,this.username,this.phone,this.password);
+_AddressState(this.firstname,this.lastname,this.email,this.contactNumber,this.password);
     final _formKey = GlobalKey<FormState>(); 
 
   TextEditingController address1Controller = TextEditingController();
@@ -105,6 +106,7 @@ _AddressState(this.firstname,this.lastname,this.username,this.phone,this.passwor
   String address1;
   String address2;
   String city;
+  String district;
 
   @override
   Widget build(BuildContext context) {
@@ -214,6 +216,36 @@ Container(
           ), 
 
        ),
+
+       //for district
+Container(
+           padding: EdgeInsets.all(10),
+           child:
+   TextFormField(  
+             scrollPadding: EdgeInsets.all(10),
+            decoration: const InputDecoration(  
+              //icon: const Icon(Icons.person,color: Colors.green,),  
+              hintText: 'District',  
+              //labelText: 'First Name',  
+              labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
+              
+                
+              
+            ),  
+            onChanged: (text){
+              district= text;
+            },
+            //controller: city,
+            validator: (value) {  
+              if (value.isEmpty) {  
+                return 'Please enter some text';  
+              }  
+              return null;  
+            },  
+          ), 
+
+       ),
+
   new Container(  
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
               child: new RaisedButton(  
@@ -226,14 +258,14 @@ Container(
                   if (_formKey.currentState.validate()) {  
                     
                     //send request
-                    final UserModel user =await createUser(firstname, lastname, username, phone, password, address1, address2, city);
+                    final UserModel user =await createUser(firstname, lastname, email, contactNumber, password, address1, address2, city,district);
                     setState(() {
                       user1 = 
                       user;
                     });
 
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>Check(address1: address1 ,address2: address2,city:city),
+                      builder: (context) =>Check(address1: address1 ,address2: address2,city:city,district:district),
                       
                       ));
                   }  
