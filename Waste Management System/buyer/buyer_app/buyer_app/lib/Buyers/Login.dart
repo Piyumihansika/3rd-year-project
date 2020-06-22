@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
-
-// import 'package:passwordfield/passwordfield.dart';
+import 'package:email_validator/email_validator.dart';
 
 
-class BuyerHome extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<BuyerHome> {
+class _State extends State<Login> {
+
+
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Green wasteland'),
         backgroundColor: Colors.green,),
-      body:Home(),
-
+      body:LoginForm(),
       //add drawer to the app
       drawer: Drawer(
 
@@ -60,47 +59,25 @@ class _State extends State<BuyerHome> {
                 ),
               ],
             ),
-
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: Icon(Icons.event_note),
+              title: Text('About Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/buyerhome');
+                Navigator.of(context).pushNamed('/aboutus');
               },
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
+              leading: Icon(Icons.contacts),
+              title: Text('Contact Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/profile');
+                Navigator.of(context).pushNamed('/contactus');
               },
-            ), //ListTitle
+            ),
             ListTile(
-              leading: Icon(Icons.category),
-              title: Text('Categories'),
+              leading: Icon(Icons.contacts),
+              title: Text('Home'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notifications'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.history),
-              title: Text('Histry'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-            ),//ListTitle
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Logout'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamed('/buyerhome');
               },
             ),
           ],
@@ -108,21 +85,34 @@ class _State extends State<BuyerHome> {
       ),
 
 
+
     );
 
   }
 }
-class Home extends StatefulWidget {
+class LoginForm extends StatefulWidget {
   @override
-  _BuyerHomeState createState() => _BuyerHomeState();
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _BuyerHomeState extends State<Home> {
+class _LoginFormState extends State<LoginForm> {
 
+  // Initially password is obscure
+  bool _obscureText = true;
+  // Toggles the password show status
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+  final _formKey = GlobalKey<FormState>();
+  //TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Material(
-
+    return Form(
+      key: _formKey,
 
       child: SingleChildScrollView(
         child: Column(
@@ -130,6 +120,21 @@ class _BuyerHomeState extends State<Home> {
 
           children: <Widget>[
 
+//          Container(
+//
+//            alignment: Alignment.center,
+//
+//            padding: EdgeInsets.all(10),
+//
+//            child: Image(
+//              alignment: Alignment(0.5, 0.5),
+//              //    width: 80,
+//              // height: 80,
+//              image: AssetImage('assets/images/logo.jpg'),
+//                     //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'),
+//            ),
+//          ),
+            //
             Stack(
                 children: <Widget>[
                   Container(
@@ -198,17 +203,19 @@ class _BuyerHomeState extends State<Home> {
                           )
                         ],
                       ),
+                      //add 'hi welcome' text
                       SizedBox(height: 15.0),
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'HOME',
+                          'Hi Welcome',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
                         ),
                       ),
+                      // add search bar
                       SizedBox(height: 25.0),
                       Padding(
                         padding: EdgeInsets.only(left: 15.0,right: 15.0),
@@ -243,6 +250,64 @@ class _BuyerHomeState extends State<Home> {
                   '',
                   style: TextStyle(fontSize:17, color: Colors.green),
                 )),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: const Icon(Icons.email,color: Colors.black,),
+                hintText: 'Enter Your Email',
+                labelText: 'Email',
+                labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+
+                //: true,
+
+              ),
+              controller: emailController,
+
+
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter an Email ';
+                }  else{
+                  assert(EmailValidator.validate(value));
+                  return 'Please enter a valid Email ';
+                }
+                //return null;
+              },
+
+
+
+
+            ),
+
+            Column(
+              children: <Widget>[
+                new TextFormField(
+                  decoration: const InputDecoration(
+
+                    icon: const Icon(Icons.lock,color: Colors.black,),
+                    hintText: 'Enter password',
+                    labelText: 'Password',
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+
+                    //: true,
+
+                  ),
+                  controller: passwordController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter Password';
+                    }
+                    return null;
+                  },
+                  obscureText: _obscureText,
+                ),
+
+                new FlatButton(
+                    onPressed: _toggle,
+                    padding: const EdgeInsets.only(right: 10.0, top: 0.0, bottom: 0.0, left: 270.0),
+                    child: new Icon(_obscureText ? Icons.visibility_off : Icons.visibility))
+              ],
+            ),
+
 
 
             Container(
@@ -250,20 +315,91 @@ class _BuyerHomeState extends State<Home> {
                 alignment: Alignment(-0.1,1),
 
                 child: new RaisedButton(
-                  child: const Text('Getting start'),
+                  child: const Text('LOG IN'),
                   color: Colors.green,
                   textColor: Colors.white,
 
                   onPressed: () {
 
+                    if (_formKey.currentState.validate()) {
+                      print(emailController.text);
+                      Navigator.of(context).pushNamed('/buyerhome');
+
+//                    Scaffold
+//                        .of(context)
+//                        .showSnackBar(SnackBar(content: Text('Processing Data'),backgroundColor: Colors.green,));
+
+                    }
                   },
                 )
+
             ),
+            FlatButton(
+              padding: const EdgeInsets.only(left: 100.0, top:5.0, right: 100.0),
+
+
+              textColor: Colors.green,
+              child: Text('Forgot Password ?',
+                style: TextStyle(fontSize: 16),),
+
+              onPressed: () {
+                //forgot password screen
+
+                Navigator.of(context).pushNamed('/forgot');
+              },
+            ),
+
+
+            Container(
+                child: Row(
+                  children: <Widget>[
+                    Text('Don\'t have an account ?'),
+                    FlatButton(
+                      textColor: Colors.green,
+                      child: Text(
+                        'Create Acount',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/signup');
+                      },
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ))
+//
+
+
+
+
+
+//
           ],
 
         ),
       ),
+
+
     );
 
+//
+
+
+
+
+
+//
+
+
+    //
+
+
   }
+
+
+
+//
+
 }
+
+

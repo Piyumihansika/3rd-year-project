@@ -1,67 +1,45 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart' show EmailValidator;
-//import 'package:passwordfield/passwordfield.dart';
+import 'package:buyer_app/Location/Manually.dart';
 
-class Forgot extends StatelessWidget {
+class GetLocation extends StatefulWidget {
+
+  final String username;
+  final String address;
+  final String phone;
+  final String password;
+  final String confirmpass;
+  final String email;
+
+  GetLocation({ this.username,this.address,this.phone,this.password,this.confirmpass,this.email});
+
+  @override
+  _GetLocationState createState() => new _GetLocationState(username,address,phone,password,confirmpass,email);
+}
+
+class _GetLocationState extends State<GetLocation> {
+  String username;
+  String address;
+  String phone;
+  String password;
+  String confirmpass;
+  String email;
+
+  _GetLocationState(this.username,this.address,this.phone,this.password,this.confirmpass,this.email);
+
+  List<String> _options = ['Type Location Manually', 'Get Tracked location']; // Option 2
+  String _selectedOption; // Option 2
+
   @override
   Widget build(BuildContext context) {
+    //return MaterialApp(
     return Scaffold(
-      appBar: AppBar(title: Text('ForgotPassword Page'),
+      appBar: AppBar(title: Text('Get Location'),
         backgroundColor: Colors.green,),
-      body:ForgotForm(),
-
-    );
-  }
-}
-class ForgotForm extends StatefulWidget {
-  @override
-  _ForgotFormState createState() => _ForgotFormState();
-}
-
-class _ForgotFormState extends State<ForgotForm> {
-
-  //
-  createAlertDialog(BuildContext context){
-    return showDialog(context: context,builder: (context){
-      return AlertDialog(
-        title: Text('Check Your Email '),
-
-        actions: <Widget>[
-          MaterialButton(
-            child: Text('OK'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/login');
-            },
-          )
-        ],
-      );
-    });
-  }
-
-//email validater
-  bool validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    return (!regex.hasMatch(value)) ? false : true;
-  }
-
-  //
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
           children: <Widget>[
 
-            // add design
+            // my design using positioned
             Stack(
                 children: <Widget>[
                   Container(
@@ -134,7 +112,7 @@ class _ForgotFormState extends State<ForgotForm> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'FORGOT PASSWORD',
+                          'SIGN UP',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
@@ -146,7 +124,7 @@ class _ForgotFormState extends State<ForgotForm> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'Forgot Your Password ?',
+                          'What is your location ?',
                           style: TextStyle(
                               fontSize: 17.0,
                               fontWeight: FontWeight.bold,
@@ -157,78 +135,49 @@ class _ForgotFormState extends State<ForgotForm> {
                   ),
                 ]
             ),
-
             //
             Container(
               alignment: Alignment.center,
             ),
+            DropdownButton(
+              hint: Text('Select your option'), // Not necessary for Option 1
+              value: _selectedOption,
+              onChanged: (newValue) {
+                setState(() {
+                  _selectedOption = newValue;
+                });
+                if( _selectedOption == 'Type Location Manually'){
+                  // Navigator.of(context).pushNamed('/manually');
+                  // onPressed:(){
 
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: const Icon(Icons.person,color: Colors.black,),
-                //hintText: 'Type Your Email',
-                labelText: 'Type Your Email',
-                labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                  //Navigator.of(context).pushNamed('/addmanualy');
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>Manually(
+                        username: username,
+                        address: address,
+                        phone: phone,
+                        password: password,
+                        confirmpass: confirmpass,
+                        email: email
 
-                //: true,
+                    ),
 
-              ),
-              controller: usernameController,
-
-
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter an Email ';
-                }  else{
-                  assert(EmailValidator.validate(value));
-                  return 'Please enter a valid Email ';
+                  ));
+                  //};
+                }else{
+                  Navigator.of(context).pushNamed('/tracking');
                 }
-                //return null;
               },
-
-
-
-
+              items: _options.map((option) {
+                return DropdownMenuItem(
+                  child: new Text(option),
+                  value: option,
+                );
+              }).toList(),
             ),
-
-
-            Container(
-
-                padding: const EdgeInsets.only(top: 40.0),
-                child: Row(
-                  children: <Widget>[
-                    new RaisedButton(
-                      child: const Text('BACK'),
-                      color: Colors.yellow,
-                      textColor: Colors.black,
-
-                      onPressed: (){
-                        Navigator.of(context).pushNamed('/login');
-                      },
-                    ),
-
-                    new RaisedButton(
-                      child: const Text('Submit'),
-                      color: Colors.green,
-                      textColor: Colors.white,
-
-                      onPressed: () {
-
-                        if (_formKey.currentState.validate()) {
-                          print(usernameController.text);
-                          createAlertDialog(context);
-                        }
-                      },
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                )
-
-            )
           ],
         ),
       ),
-
     );
   }
 }

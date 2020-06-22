@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
-
-// import 'package:passwordfield/passwordfield.dart';
 
 
-class BuyerHome extends StatefulWidget {
+class ContactUs extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<BuyerHome> {
+class _State extends State<ContactUs> {
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Green wasteland'),
         backgroundColor: Colors.green,),
-      body:Home(),
+      body:Contact(),
 
       //add drawer to the app
       drawer: Drawer(
@@ -62,47 +59,26 @@ class _State extends State<BuyerHome> {
             ),
 
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: Icon(Icons.event_note),
+              title: Text('About Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/buyerhome');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/profile');
+                Navigator.of(context).pushNamed('/aboutus');
               },
             ), //ListTitle
             ListTile(
-              leading: Icon(Icons.category),
-              title: Text('Categories'),
+              leading: Icon(Icons.contacts),
+              title: Text('Contact Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/contactus');
               },
             ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notifications'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-            ), //ListTitle
-            ListTile(
-              leading: Icon(Icons.history),
-              title: Text('Histry'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-            ),//ListTitle
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Logout'),
+              title: Text('Login'),
               onTap: () {
                 Navigator.of(context).pushNamed('/login');
               },
-            ),
+            ), //ListTitle
           ],
         ),
       ),
@@ -112,12 +88,12 @@ class _State extends State<BuyerHome> {
 
   }
 }
-class Home extends StatefulWidget {
+class Contact extends StatefulWidget {
   @override
-  _BuyerHomeState createState() => _BuyerHomeState();
+  _ContactUsState createState() => _ContactUsState();
 }
 
-class _BuyerHomeState extends State<Home> {
+class _ContactUsState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +178,7 @@ class _BuyerHomeState extends State<Home> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'HOME',
+                          'CONTACT US',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,

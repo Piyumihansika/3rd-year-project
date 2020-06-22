@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
-
-// import 'package:passwordfield/passwordfield.dart';
 
 
-class BuyerHome extends StatefulWidget {
+
+class History extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<BuyerHome> {
+class _State extends State<History> {
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Green wasteland'),
         backgroundColor: Colors.green,),
-      body:Home(),
+      body:HistoryPage(),
 
       //add drawer to the app
       drawer: Drawer(
@@ -72,7 +70,7 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.person),
               title: Text('Profile'),
               onTap: () {
-                Navigator.of(context).pushNamed('/profile');
+                Navigator.of(context).pushNamed('/');
               },
             ), //ListTitle
             ListTile(
@@ -112,12 +110,12 @@ class _State extends State<BuyerHome> {
 
   }
 }
-class Home extends StatefulWidget {
+class HistoryPage extends StatefulWidget {
   @override
-  _BuyerHomeState createState() => _BuyerHomeState();
+  _HistoryState createState() => _HistoryState();
 }
 
-class _BuyerHomeState extends State<Home> {
+class _HistoryState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +200,7 @@ class _BuyerHomeState extends State<Home> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'HOME',
+                          'History',
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
@@ -244,7 +242,7 @@ class _BuyerHomeState extends State<Home> {
                   style: TextStyle(fontSize:17, color: Colors.green),
                 )),
 
-
+// add profile functions ...do this quickly gon gaha mama
             Container(
 
                 alignment: Alignment(-0.1,1),
