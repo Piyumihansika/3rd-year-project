@@ -58,14 +58,14 @@ class _State extends State<Login> {
 
 // Http request code
 
-Future<LoginModel> createUser(String username,String password) async{
+Future<LoginModel> createUser(String email,String password) async{
 
 final String apiUrl = "Enter  your url here";
 
 // this is for take response
 
 final response = await http.post(apiUrl,body:{
-"username":username,
+"email":email,
 "password":password,
 
 });
@@ -92,11 +92,11 @@ class _LoginFormState extends State<LoginForm> {
 
 
    final _formKey = GlobalKey<FormState>();  
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
 LoginModel user1;
-String username;
+String email;
 String password;
   
 
@@ -133,20 +133,20 @@ child: Column(
           TextFormField(  
             decoration: const InputDecoration(  
               icon: const Icon(Icons.person,color: Colors.green,),  
-              hintText: 'Enter your user name',  
-              labelText: 'User Name',  
+              hintText: 'Enter your Email',  
+              labelText: 'Email',  
               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
              
             
               
             ),  
             onChanged: (text){
-              username= text;
+              email= text;
             },
-            controller: usernameController,
+            controller: emailController,
             validator: (value) {  
               if (value.isEmpty) {  
-                return 'Please enter user name';  
+                return 'Please enter an email';  
               }  
               return null;  
             },  
@@ -190,11 +190,11 @@ alignment: Alignment(-0.1,1),
                   if (_formKey.currentState.validate()) {  
 
                      //send request
-                    final LoginModel user =await createUser( username,password);
+                    final LoginModel user =await createUser( email,password);
                     setState(() {
                       user1 =user;
                     });
-                     print(usernameController.text);
+                     print(emailController.text);
                      print(passwordController.text);
 
                     Navigator.of(context).pushNamed('/dashboard1');
