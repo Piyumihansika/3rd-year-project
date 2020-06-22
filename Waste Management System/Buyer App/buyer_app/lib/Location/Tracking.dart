@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -85,7 +85,7 @@ class _SignFormState extends State<SignForm> {
                       errorText:
                           "You must accept terms and conditions to continue",
                     ),
-                  ],
+                  ], attribute: null,
                 ),
               ],
             ),

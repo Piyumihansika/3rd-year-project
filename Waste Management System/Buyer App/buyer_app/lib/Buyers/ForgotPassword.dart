@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart' show EmailValidator;
-import 'package:passwordfield/passwordfield.dart';
+// import 'package:passwordfield/passwordfield.dart';
 
 class Forgot extends StatelessWidget {
   @override
