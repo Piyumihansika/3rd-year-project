@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:buyerapp/HouseholdLocation/Manually.dart';
 
+import 'Tracking.dart';
+
 class GetLocation extends StatefulWidget {
 
   final String firstname;
@@ -167,7 +169,7 @@ class _GetLocationState extends State<GetLocation> {
                 }else{
                   //Navigator.of(context).pushNamed('/tracking');
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>Manually(        //replace by 'Tracking' after finish
+                    builder: (context) =>Tracking(        //replace by 'Tracking' after finish
                         firstname: firstname,
                         lastname: lastname,
                         contactNumber: contactNumber,
