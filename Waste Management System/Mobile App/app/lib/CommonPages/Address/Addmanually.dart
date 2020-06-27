@@ -66,7 +66,7 @@ class Address extends StatefulWidget {
 
 // Http request code
 
-Future<UserModel> createUser(
+  Future<UserModel> createUser(
     String firstname,
     String lastname,
     String email,
@@ -75,7 +75,8 @@ Future<UserModel> createUser(
     String address1,
     String address2,
     String city,
-    String district) async {
+    String district
+    ) async {
   final String apiUrl = "http://192.168.56.1:3000/customer/customerAdd";
 
    final Map<String, dynamic> data = {
