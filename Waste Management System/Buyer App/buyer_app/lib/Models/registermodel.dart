@@ -62,6 +62,58 @@ class UserModel {
   };
 }
 
+// user model tracking
+
+UserModelTrack userModelTrackFromJson(String str)=> UserModelTrack.fromJson(json.decode(str));
+
+String userModelTrackToJson(UserModelTrack data)=> json.encode(data.toJson());
+
+class UserModelTrack {
+
+  String firstname;
+  String lastname;
+  String contactNumber;
+  String password;
+  String confirmpass;
+  String email;
+  String currentAddress;
+
+  UserModelTrack({
+
+    this.firstname,
+    this.lastname,
+    this.contactNumber,
+    this.password,
+    this.confirmpass,
+    this.email,
+    this.currentAddress,
+
+  });
+
+  factory UserModelTrack.fromJson(Map<String, dynamic>json)=> UserModelTrack(
+    firstname: json["firstname"],
+    lastname: json["lastname"],
+    contactNumber: json["contactNumber"],
+    password: json["password"],
+    confirmpass: json["confirmpass"],
+    email: json["email"],
+    currentAddress: json["currentAddress"],
+
+
+  );
+  Map<String, dynamic>toJson() =>{
+    "firstname" :firstname,
+    "lastname" :lastname,
+    "contactNumber" :contactNumber,
+    "password" :password,
+    "confirmpass" :confirmpass,
+    "email" :email,
+    "currentAddress" :currentAddress,
+
+
+  };
+}
+
 // company model
 
 CompanyModel companyModelFromJson(String str)=> CompanyModel.fromJson(json.decode(str));

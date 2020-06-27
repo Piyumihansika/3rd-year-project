@@ -410,17 +410,10 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ))
 //
-
-
-
-
-
-//
           ],
 
         ),
       ),
-
 
     );
 
