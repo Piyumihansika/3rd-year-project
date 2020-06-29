@@ -64,7 +64,7 @@ MyMenu2(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,
 MyMenu3(title: 'Bidding Details',icon: Icons.people,warna: Colors.blue,),
 //MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
 MyMenu4(title: 'Notifications',icon: Icons.add_alert,warna: Colors.red,),
-MyMenu5(title: 'Profile',icon: Icons.tag_faces,warna: Colors.pink,),
+MyMenu5(title: 'Setting',icon: Icons.tag_faces,warna: Colors.pink,),
 
 
     ],
@@ -333,7 +333,7 @@ mainAxisSize:MainAxisSize.min ,
 RawMaterialButton(
   onPressed: () {
     // 
-     Navigator.of(context).pushNamed('/profile');
+     Navigator.of(context).pushNamed('/setting');
   },
   elevation: 2.0,
   fillColor: warna,

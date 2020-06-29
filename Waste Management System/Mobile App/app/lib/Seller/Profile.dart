@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
   
 //void main() => runApp(Profile());  
 String firstname='piyumi';
-String secondname='hansika';
+String lastname='hansi';
+String contactNumber='hdghdhj';
+String password="gkgmkgk";
+String address1="hhhhh";
+String address2="tttt";
+String city="yuyuyu";
+String district="hjjurrr";
   
 class Profile extends StatelessWidget {  
   @override  
@@ -57,7 +63,7 @@ Navigator.of(context).pushNamed('/dashboard1');
     return Form(  
       
       key: _formKey,  
-      child: Column(  
+       child: SingleChildScrollView(child: Column(  
         crossAxisAlignment: CrossAxisAlignment.start,  
         children: <Widget>[  
           TextFormField(  
@@ -79,7 +85,7 @@ Navigator.of(context).pushNamed('/dashboard1');
           ), 
 
           TextFormField(  
-           initialValue: "Hansika",
+           initialValue: lastname,
             decoration: const InputDecoration(  
               icon: const Icon(Icons.person,color: Colors.green,),  
               // hintText: 'Enter your full name', 
@@ -131,6 +137,62 @@ Navigator.of(context).pushNamed('/dashboard1');
               return null;  
             },  
           ),
+
+//address 2
+TextFormField(  
+           initialValue: "No:10,Horana",
+            decoration: const InputDecoration(  
+              //icon: const Icon(Icons.account_balance,color: Colors.green,),  
+              // hintText: 'Enter your full name', 
+              
+              labelText: 'Address',
+              labelStyle:TextStyle(fontWeight: FontWeight.bold,fontSize:20.0,color: Colors.black),  
+            ),  
+            
+            validator: (value) {  
+              if (value.isEmpty) {  
+                return 'Please enter your address';  
+              }  
+              return null;  
+            },  
+          ),
+
+//city
+TextFormField(  
+           initialValue: "No:10,Horana",
+            decoration: const InputDecoration(  
+              //icon: const Icon(Icons.account_balance,color: Colors.green,),  
+              // hintText: 'Enter your full name', 
+              
+              labelText: 'City',
+              labelStyle:TextStyle(fontWeight: FontWeight.bold,fontSize:20.0,color: Colors.black),  
+            ),  
+            
+            validator: (value) {  
+              if (value.isEmpty) {  
+                return 'Please enter your address';  
+              }  
+              return null;  
+            },  
+          ),
+TextFormField(  
+           initialValue: "No:10,Horana",
+            decoration: const InputDecoration(  
+              //icon: const Icon(Icons.account_balance,color: Colors.green,),  
+              // hintText: 'Enter your full name', 
+              
+              labelText: 'District',
+              labelStyle:TextStyle(fontWeight: FontWeight.bold,fontSize:20.0,color: Colors.black),  
+            ),  
+            
+            validator: (value) {  
+              if (value.isEmpty) {  
+                return 'Please enter your address';  
+              }  
+              return null;  
+            },  
+          ),
+
 
  TextFormField(  
            initialValue: "abcdefgh",
@@ -188,7 +250,7 @@ createAlertDialog(context);
                 },  
               )),  
         ],  
-      ),  
+      ), ),  
     );  
   }  
 }  

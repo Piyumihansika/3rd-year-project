@@ -192,10 +192,12 @@ alignment: Alignment(-0.1,1),
                   if (_formKey.currentState.validate()) {  
 
                      //send request
-                    final LoginModel user =await createUser( email,password);
-                    setState(() {
-                      user1 =user;
-                    });
+                     //piyumi's code 
+
+                    // final LoginModel user =await createUser( email,password);
+                    // setState(() {
+                    //   user1 =user;
+                    // });
                      print(emailController.text);
                      print(passwordController.text);
 

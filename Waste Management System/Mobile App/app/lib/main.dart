@@ -3,15 +3,17 @@ import 'package:app/CommonPages/Address/Addmanually.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
-import 'package:app/GiveToUs/Dashboard.dart';
-import 'package:app/GiveToUs/History.dart';
-import 'package:app/GiveToUs/Orders.dart';
-import 'package:app/GiveToUs/Profile.dart';
-import 'package:app/GiveToUs/Scheduled.dart';
-import 'package:app/GiveToUs/Sellitem.dart';
-import 'package:app/GiveToUs/SpecialPick.dart';
-import 'package:app/GiveToUs/SpecialSecond.dart';
-import 'package:app/GiveToUs/test.dart';
+import 'package:app/Seller/Dashboard.dart';
+import 'package:app/Seller/History.dart';
+import 'package:app/Seller/Orders.dart';
+import 'package:app/Seller/Profile.dart';
+import 'package:app/Seller/Profile/EditProfile.dart';
+import 'package:app/Seller/Scheduled.dart';
+import 'package:app/Seller/Sellitem.dart';
+import 'package:app/Seller/SettingPage.dart';
+import 'package:app/Seller/SpecialPick.dart';
+import 'package:app/Seller/SpecialSecond.dart';
+import 'package:app/Seller/test.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -60,6 +62,9 @@ class MyApp extends StatelessWidget {
         '/addGarbageList':(context)=>AddList(),
         '/sell':(context)=>SellItem(),
         '/test':(context)=>Test(),
+        '/setting':(context)=>SettingPage(),
+         '/editProfile':(context)=>EditProfile(),
+
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),
 '/addmanualy':(context)=>Add(),
