@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:passwordfield/passwordfield.dart';
 import 'package:email_validator/email_validator.dart';
-//import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:buyerapp/HouseholdLocation/GetLocation.dart';
-//import 'package:intl/intl.dart';
 
 
 class SignUpHousehold extends StatefulWidget {
@@ -30,28 +27,17 @@ class SignHouseholdForm extends StatefulWidget {
 
 class _SignHouseholdFormState extends State<SignHouseholdForm> {
 
+ TextEditingController firstName = TextEditingController();
+ TextEditingController lastName = TextEditingController();
+ TextEditingController contactNumber = TextEditingController();
+ TextEditingController email = TextEditingController();
+ TextEditingController password = TextEditingController();
+ TextEditingController confirmPassword = TextEditingController();
+
+
   // Initially password is obscure
-  bool _obscureText = true;
-
   final _formKey = GlobalKey<FormState>();
-
-  //controller names
-
-//  final TextEditingController _confirmPass = TextEditingController();
-//
-//  TextEditingController usernameController = TextEditingController();
-//  TextEditingController addressController = TextEditingController();
-//  TextEditingController phoneController = TextEditingController();
-//  TextEditingController emailController = TextEditingController();
-//  TextEditingController passwordController = TextEditingController();
-
-  String firstname;
-  String lastname;
-  String contactNumber;
-  String password;
-  String confirmpass;
-  String email;
-
+   bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +154,9 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
             Container(
               padding: EdgeInsets.all(10),
               child:
+          
               TextFormField(
+                controller: firstName,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person,color: Colors.black),
@@ -177,10 +165,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                 ),
 
-                onChanged: (text){
-                  firstname= text;
-                },
-                //controller: usernameController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter your firstname';
@@ -195,6 +179,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               padding: EdgeInsets.all(10),
               child:
               TextFormField(
+                controller: lastName,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.contacts,color: Colors.black),
@@ -203,10 +188,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                onChanged: (text){
-                  lastname= text;
-                },
-                // controller: addressController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter your lastname';
@@ -220,6 +201,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               padding: EdgeInsets.all(10),
               child:
               TextFormField(
+                controller: contactNumber,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.phone,color: Colors.black),
@@ -228,10 +210,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                onChanged: (text){
-                  contactNumber= text;
-                },
-                //controller: phoneController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a your phone number';
@@ -247,6 +225,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               padding: EdgeInsets.all(10),
               child:
               TextFormField(
+                controller: email,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.email,color: Colors.black,),
@@ -254,15 +233,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelText: 'Email',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
-                  //: true,
-
                 ),
-                onChanged: (text){
-                  email= text;
-                },
-                //controller: emailController,
-
-
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter an Email ';
@@ -283,6 +254,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               padding: EdgeInsets.all(10),
               child:
               TextFormField(
+                controller: password,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.lock,color: Colors.black),
@@ -291,10 +263,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 ),
-                onChanged: (text){
-                  password= text;
-                },
-                //controller: passwordController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a strong password';
@@ -305,32 +273,35 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               ),
             ),
 
-            Container(
-              padding: EdgeInsets.all(10),
-              child:
-              TextFormField(
-                scrollPadding: EdgeInsets.all(10),
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.lock,color: Colors.black),
-                  hintText: 'Confirm your password',
-                  labelText: 'Confirm Password',
-                  labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   child:
+            //   TextFormField(
+            //     controller: confirmPassword,
+            //     scrollPadding: EdgeInsets.all(10),
+            //     decoration: const InputDecoration(
+            //       icon: const Icon(Icons.lock,color: Colors.black),
+            //       hintText: 'Confirm your password',
+            //       labelText: 'Confirm Password',
+            //       labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
-                ),
-                onChanged: (text){
-                  confirmpass= text;
-                },
-                //controller: _confirmPass,
-                validator: (val){
-                  if(val.isEmpty)
-                    return 'Please enter confirm password';
-                  if(val != password)
-                    return 'Password is not match';
-                  return null;
-                },
-                obscureText: _obscureText,
-              ),
-            ),
+            //     ),
+            //     validator: (value){
+            //       if(value.isEmpty){
+            //           return 'Please enter confirm password';
+
+            //       }else{
+            //       if(value == password) {
+            //         return null;
+            //       }else{
+            //           return 'Password is not match';
+            //       }
+
+            //       }
+            //     },
+            //     obscureText: _obscureText,
+            //   ),
+            // ),
 
 
             new Container(
@@ -343,34 +314,18 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                       textColor: Colors.white,
 
                       onPressed: () {
-
                         if (_formKey.currentState.validate()) {
+
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>GetLocation(
-                                firstname:firstname ,
-                                lastname:lastname,
-                                contactNumber:contactNumber,
-                                email:email,
-                                password:password,
-                                confirmpass:confirmpass
-
+                                firstName:firstName.text,
+                                lastName:lastName.text,
+                                contactNumber:contactNumber.text,
+                                email:email.text,
+                                password:password.text
                             ),
 
                           ));
-
-
-//                          print(usernameController.text);
-//                          print(addressController.text);
-//                          print(phoneController.text);
-//                          print(emailController.text);
-//                          print(passwordController.text);
-//                          print( _confirmPass.text);
-//
-//                          Navigator.of(context).pushNamed('/getlocation');
-
-//                        Scaffold
-//                            .of(context)
-//                            .showSnackBar(SnackBar(content: Text('Sending Data'),backgroundColor: Colors.green,));
                         }
                       },
                     ),

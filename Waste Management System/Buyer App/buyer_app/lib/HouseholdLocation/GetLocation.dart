@@ -3,31 +3,38 @@ import 'package:buyerapp/HouseholdLocation/Manually.dart';
 
 class GetLocation extends StatefulWidget {
 
-  final String firstname;
-  final String lastname;
+  final String firstName;
+  final String lastName;
   final String contactNumber;
   final String password;
-  final String confirmpass;
   final String email;
 
-  GetLocation({ this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email});
+  const GetLocation({Key key, this.firstName, this.lastName, this.contactNumber, this.password, this.email}) : super(key: key);
+
+  
 
   @override
-  _GetLocationState createState() => new _GetLocationState(firstname,lastname,contactNumber,password,confirmpass,email);
+  _GetLocationState createState() => _GetLocationState();
 }
 
 class _GetLocationState extends State<GetLocation> {
-  String firstname;
-  String lastname;
-  String contactNumber;
-  String password;
-  String confirmpass;
-  String email;
+  // String firstName;
+  // String lastName;
+  // String contactNumber;
+  // String password;
+  // String email;
 
-  _GetLocationState(this.firstname,this.lastname,this.contactNumber,this.password,this.confirmpass,this.email);
+  // _GetLocationState(this.firstName,this.lastName,this.contactNumber,this.password,this.email);
 
   List<String> _options = ['Type Location Manually', 'Get Tracked location']; // Option 2
   String _selectedOption; // Option 2
+
+
+  @override
+  void initState() {
+    super.initState();
+    print(widget.firstName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +119,7 @@ class _GetLocationState extends State<GetLocation> {
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'SIGN UP',
+                          widget.firstName,
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
@@ -151,34 +158,45 @@ class _GetLocationState extends State<GetLocation> {
                   // onPressed:(){
 
                   //Navigator.of(context).pushNamed('/addmanualy');
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>Manually(
-                        firstname: firstname,
-                        lastname: lastname,
-                        contactNumber: contactNumber,
-                        password: password,
-                        confirmpass: confirmpass,
-                        email: email
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) {
+                  //     var manually = Manually(
+                  //       firstName: widget.firstName,
+                  //       lastName: widget.lastName,
+                  //       contactNumber: widget.contactNumber,
+                  //       password: widget.password,
+                  //       email: widget.email
 
-                    ),
+                  //   );
+                  //     return manually;
+                  //   },
+                   
 
-                  ));
+                  // )
+                  // );
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Manually(
+                    firstName: widget.firstName,
+                    lastName: widget.lastName,
+                    contactNumber: widget.contactNumber,
+                    password: widget.password,
+                    email: widget.email,
+                  )));
                   //};
-                }else{
-                  //Navigator.of(context).pushNamed('/tracking');
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>Manually(        //replace by 'Tracking' after finish
-                        firstname: firstname,
-                        lastname: lastname,
-                        contactNumber: contactNumber,
-                        password: password,
-                        confirmpass: confirmpass,
-                        email: email
+                 }
+                //else{
+                //   //Navigator.of(context).pushNamed('/tracking');
+                //   Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) =>ManuallyForm(        //replace by 'Tracking' after finish
+                //         firstName: firstName,
+                //         lastName: lastName,
+                //         contactNumber: contactNumber,
+                //         password: password,
+                //         email: email
 
-                    ),
+                //     ),
 
-                  ));
-                }
+                //   ));
+                // }
               },
               items: _options.map((option) {
                 return DropdownMenuItem(
