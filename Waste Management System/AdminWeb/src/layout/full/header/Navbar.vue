@@ -20,7 +20,7 @@
       <!---
       Craete new dd
       -->   
-      <vs-button color="danger" href="https://www.wrappixel.com" type="filled">Upgrade to Pro</vs-button>
+      <!-- <vs-button color="danger" href="https://www.wrappixel.com" type="filled">Upgrade to Pro</vs-button> -->
 
      
 
