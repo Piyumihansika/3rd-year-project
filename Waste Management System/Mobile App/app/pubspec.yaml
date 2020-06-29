@@ -30,6 +30,7 @@ dependencies:
   passwordfield: ^0.0.5
   email_validator: '^1.0.0'
   http: ^0.12.1
+  image_picker: ^0.5.4+2
 
 dev_dependencies:
   flutter_test:
