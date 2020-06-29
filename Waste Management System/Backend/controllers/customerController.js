@@ -9,7 +9,7 @@ const config = require('../config');
 
 
 //ADD A CUSTOMER
-router.post('/customerAdd', async(req, res) => {
+router.post('/addCustomer', async(req, res) => {
     try{
     
         const {firstName,lastName,email,contactNumber,password,address1,address2,city,district} = req.body;
@@ -26,18 +26,18 @@ router.post('/customerAdd', async(req, res) => {
             district
         });
         customer.password = await customer.encryptPassword(password);
-
-        const user = await Customer.findOne({ username: req.body.username })
+        console.log("customer api hit")
+        const user = await Customer.findOne({ email: req.body.email })
 
         if(!user){
             await customer.save();
-
+            console.log("customer api hit")
             const token = jwt.sign({ id: customer.id}, config.secret, {
                 expiresIn: "24h"
             });
             res.status(200).json({ auth: true, token})
         }else{
-            res.status(403).send("username already exist")
+            res.status(403).send("email already exist")
         }
        
 

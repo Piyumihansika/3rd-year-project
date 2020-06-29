@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),
-'/addmanualy':(context)=>Add(),
+'/addmanualy':(context)=>Address(),
 '/reg3':(context)=>Reglocation(),
 
     // '/check':(context)=>Check(), 
