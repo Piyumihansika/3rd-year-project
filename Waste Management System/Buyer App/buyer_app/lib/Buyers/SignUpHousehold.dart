@@ -321,12 +321,15 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   confirmpass= text;
                 },
                 //controller: _confirmPass,
-                validator: (val){
-                  if(val.isEmpty)
+                validator: (value){
+                  if(value.isEmpty)
                     return 'Please enter confirm password';
-                  if(val != password)
-                    return 'Password is not match';
-                  return null;
+                  else{
+                    if(value != password)
+                      return 'Password is not match';
+                    else
+                      return null;
+                  }
                 },
                 obscureText: _obscureText,
               ),
