@@ -1,6 +1,7 @@
-
-
+import 'dart:io';
 import 'package:flutter/material.dart';  
+import 'package:image_picker/image_picker.dart';
+
   
 
 String firstname='piyumi';
@@ -36,6 +37,8 @@ class MyCustomForm extends StatefulWidget {
 class MyCustomFormState extends State<MyCustomForm> {  
   
   final _formKey = GlobalKey<FormState>();  
+  
+  
   // dialog box
 
 createAlertDialog(BuildContext context){
@@ -55,7 +58,67 @@ Navigator.of(context).pushNamed('/dashboard1');
   });
 }
   // 
+Future<File> imageFile;
 
+// File imageF;
+// openGallery(BuildContext context)async{
+//   var picture=await ImagePicker.pickImage(source: ImageSource.gallery);
+//   this.setState(() { 
+//     imageF=picture;
+//   });
+//   Navigator.of(context).pop();
+// }
+
+
+  pickImageFromGallery(ImageSource source){
+    setState(() async {
+      imageFile = ImagePicker.pickImage(source: source);
+    });
+//Navigator.of(context).pop();
+  }
+Widget showImage(){
+    return FutureBuilder<File>(
+
+      future: imageFile,
+      builder: (BuildContext context,AsyncSnapshot<File> snapshot){
+        if(snapshot.connectionState==ConnectionState.done && snapshot.data !=null)
+        {
+          return
+           Image.file(
+             
+            snapshot.data,
+            width: 100,
+            height: 150,
+            fit: BoxFit.cover,
+            
+         );
+
+        }else if(snapshot.error != null){
+          return const Text(
+            'Error Picking Image',
+            textAlign: TextAlign.center,
+          );
+        }else{
+          return CircleAvatar(
+                radius: 80,
+                backgroundImage:NetworkImage("https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+          );
+          // return const Text(
+          //   'No Image selected',
+          //   textAlign: TextAlign.center,
+          // );
+        }
+      },
+    );
+  }
+  
+  // Widget decide(){
+  //   if(imageF==null){
+  //     return Text("No image selected");
+  //   }else{
+  //    return  Image.file(imageF,width:400,height:400);
+  //   }
+  // }
   @override  
   Widget build(BuildContext context) {  
     // Build a Form widget using the _formKey created above.  
@@ -65,6 +128,40 @@ Navigator.of(context).pushNamed('/dashboard1');
        child: SingleChildScrollView(child: Column(  
         crossAxisAlignment: CrossAxisAlignment.start,  
         children: <Widget>[  
+         // ********//
+
+Container(
+
+  child: Column(
+    mainAxisAlignment:MainAxisAlignment.center,
+    children:<Widget>[
+// Text("No image "),
+//Image.file(imageF,width:400,height:400),
+      //decide(),
+      Container(
+        
+      ),
+       showImage(),
+    RaisedButton(
+      
+      child:Text("Select Image") ,
+      onPressed: (){
+
+pickImageFromGallery(ImageSource.gallery);
+// openGallery(context);
+      },
+      ),
+      //  decide(),
+     
+    ],
+    
+      
+      
+  ),
+),
+
+// 
+
           TextFormField(  
            initialValue: firstname,
             decoration: const InputDecoration(  
@@ -119,8 +216,34 @@ Navigator.of(context).pushNamed('/dashboard1');
           ),  
 
 
-         
+// ********//
 
+
+// Container(
+
+//   child: Column(
+//     mainAxisAlignment:MainAxisAlignment.center,
+//     children:<Widget>[
+
+//       showImage(),
+//     RaisedButton(
+//       child:Text("Select Image from gallery") ,
+//       onPressed: (){
+
+// pickImageFromGallery(ImageSource.gallery);
+//       },
+//       )
+//     ],
+    
+      
+      
+//   ),
+// ),
+       
+
+
+
+    
          
           new Container(  
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
@@ -132,6 +255,7 @@ Navigator.of(context).pushNamed('/dashboard1');
                   
                   if (_formKey.currentState.validate()) {  
                     //  
+
 
 createAlertDialog(context);
 

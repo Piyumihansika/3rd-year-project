@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       locale: DevicePreview.of(context).locale, // <--- Add the locale
       builder: DevicePreview.appBuilder,
       title: 'Waste Management App',
