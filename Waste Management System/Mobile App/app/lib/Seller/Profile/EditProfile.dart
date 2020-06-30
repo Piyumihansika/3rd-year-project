@@ -17,7 +17,7 @@ class EditProfile extends StatelessWidget {
        appBar: AppBar(
  elevation: 4.0,
  title: Text('Edit Profile',style: TextStyle(color:Colors.black,fontWeight:FontWeight.bold,),),
- backgroundColor: Colors.lightGreen[200],
+ backgroundColor: Colors.green,
  brightness: Brightness.light,
   iconTheme: IconThemeData(color:Colors.black),
 ),
