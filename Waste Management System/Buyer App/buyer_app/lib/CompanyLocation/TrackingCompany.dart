@@ -1,37 +1,68 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+String apiUrl = "";
 
 class TrackingCompany extends StatefulWidget {
+  final String companyName;
+  final String contactpersonName;
+  final String contactpersonNumber;
+  final String password;
+  final String email;
+
+  const TrackingCompany(
+      {Key key,
+      this.companyName,
+      this.contactpersonName,
+      this.contactpersonNumber,
+      this.password,
+      this.email})
+      : super(key: key);
+
   @override
   _TrackingCompanyState createState() => _TrackingCompanyState();
 }
 
 class _TrackingCompanyState extends State<TrackingCompany> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Location Track"),
-        backgroundColor: Colors.green,
-      ),
-      body: TrackCompanyForm(),
-    );
+  TextEditingController address = TextEditingController();
+
+  void register(BuildContext context) async {
+    print(widget.companyName);
+
+    final Map<String, dynamic> data = {
+      "companyName": widget.companyName,
+      "contactpersonName": widget.contactpersonName,
+      "contactpersonNumber": widget.contactpersonNumber,
+      "email": widget.email,
+      "password": widget.password,
+      "address": address.text,
+    };
+    print(widget.companyName);
+    print(address.text);
+    print(
+        "----------------------------------------------OK----------------------------------------------------");
+
+    print(data.toString());
+    var response = await http.post(apiUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      print(response.body);
+    } else {
+      print(response.statusCode);
+      print("error occured");
+    }
   }
-}
 
-class TrackCompanyForm extends StatefulWidget {
-  @override
-  _TrackCompanyFormState createState() => _TrackCompanyFormState();
-}
-
-class _TrackCompanyFormState extends State<TrackCompanyForm> {
   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
   final _formKey = GlobalKey<FormState>();
 
-  Position _currentPosition;
-  String _currentAddress;
+  Position currentPosition;
+  String currentAddress;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -40,26 +71,31 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          if (_currentPosition != null) Text(_currentAddress),
+          if (currentPosition != null) Text(currentAddress),
 
-          Container(
-            alignment: Alignment.center,
-            child: Text('Your Location Here'),
-          ),
+//          Container(
+//            alignment: Alignment.center,
+//            child: Text('Your Location Here'),
+//          ),
 
-          RaisedButton(
-            child: Text(
-              "Get location",
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
-            ),
-            onPressed: () {
-              _getCurrentLocation();
-            },
-          ),
+          
+              
+                RaisedButton(
+                  child: Text(
+                    "Get location",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                  onPressed: () {
+                    _getCurrentLocation();
+                  },
+                ),
+             
+            
+          
           //  terms and conditions...
           Container(
             padding: EdgeInsets.all(10),
@@ -85,7 +121,8 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
                       errorText:
                           "You must accept terms and conditions to continue",
                     ),
-                  ], attribute: null,
+                  ],
+                  attribute: null,
                 ),
               ],
             ),
@@ -107,14 +144,12 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
                     child: const Text('SIGN UP'),
                     color: Colors.green,
                     textColor: Colors.white,
+
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        Navigator.of(context).pushNamed('/buyerhome');
-                      }
-                      //                         Scaffold
-//                            .of(context)
-//                            .showSnackBar(SnackBar(content: Text('Sending Data'),backgroundColor: Colors.green,));
+                      register(context);
+                      //Navigator.of(context).pushNamed('/buyerhome');
                     },
+                   
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +164,7 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
         .then((Position position) {
       setState(() {
-        _currentPosition = position;
+        currentPosition = position;
       });
 
       _getAddressFromLatLng();
@@ -141,13 +176,14 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
   _getAddressFromLatLng() async {
     try {
       List<Placemark> p = await geolocator.placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
+          currentPosition.latitude, currentPosition.longitude);
 
       Placemark place = p[0];
 
       setState(() {
-        _currentAddress =
+        currentAddress =
             "${place.locality}, ${place.postalCode}, ${place.country}";
+        address = currentAddress as TextEditingController;
       });
     } catch (e) {
       print(e);
@@ -155,139 +191,8 @@ class _TrackCompanyFormState extends State<TrackCompanyForm> {
   }
 }
 
-//import 'package:flutter/material.dart';
-//import 'package:flutter_form_builder/flutter_form_builder.dart';
-//
-//class Tracking extends StatefulWidget {
-//  @override
-//  _TrackingState createState() => _TrackingState();
-//}
-//
-//class _TrackingState extends State<Tracking> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(title: Text('Tracked Location'),
-//        backgroundColor: Colors.green,),
-//      body: SignForm(),
-//    );
-//  }
-//}
-//
-//class TrackForm extends StatefulWidget {
-//  @override
-//  _TrackFormState createState() => _STrackFormState();
-//}
-//
-//class _TrackFormState extends State<TrackForm> {
-//
-//  final _formKey = GlobalKey<TrackForm>();
-//
-//  TextEditingController locationController = TextEditingController();
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Form(
-//      key: _formKey,
-//
-//      child: SingleChildScrollView(
-//        child: Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//
-//          children: <Widget>[
-//
-//            Container(
-//              alignment: Alignment.center,
-//              child: Text(''),
-//            ),
-//
-//            Container(
-//              alignment: Alignment.center,
-//            ),
-//
-//            //location track
-//
-//
-//
-//            //  terms and conditions...
-//            Container(
-//              padding: EdgeInsets.all(10),
-//              child: Column(
-//                children: <Widget>[
-//                  FlatButton(
-//                    padding: const EdgeInsets.only(right: 120.0),
-//
-//
-//                    textColor: Colors.green,
-//                    child: Text('Our terms & conditions'
-//                    ),
-//
-//                    onPressed: () {
-//                      //terms and condition page
-//                      Navigator.of(context).pushNamed('/terms');
-//                    },
-//                  ),
-//                  FormBuilderCheckbox(
-//                    initialValue: false,
-//                    label: Text(
-//                      "I have read and agree to the terms and conditions",
-//                      style: TextStyle(color: Colors.black87),),
-//                    validators: [
-//                      FormBuilderValidators.requiredTrue(
-//                        errorText:
-//                        "You must accept terms and conditions to continue",
-//                      ),
-//                    ],
-//                  ),
-//
-//                ],
-//              ),
-//            ),
-//
-//            new Container(
-//                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-//                child: Row(
-//                  children: <Widget>[
-//                    RaisedButton(
-//                      child: const Text('BACK'),
-//                      color: Colors.yellow,
-//                      textColor: Colors.black,
-//
-//                      onPressed: (){
-//                        Navigator.of(context).pushNamed('/login');
-//                      },
-//                    ),
-//
-//                    RaisedButton(
-//                      child: const Text('SIGN UP'),
-//                      color: Colors.green,
-//                      textColor: Colors.white,
-//
-//                      onPressed: () {
-//
-//                        if (_formKey.currentState.validate()) {
-//
-//                          print(locationController.text);
-//
-//
-//                          Navigator.of(context).pushNamed('/buyerhome');
-//
-////                        Scaffold
-////                            .of(context)
-////                            .showSnackBar(SnackBar(content: Text('Sending Data'),backgroundColor: Colors.green,));
-//
-//                        }
-//                      },
-//                    ),
-//
-//                  ],
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                )
-//
-//            ),
-//          ],
-//        ),
-//      ),
-//    );
-//  }
-//}
+
+
+
+
+

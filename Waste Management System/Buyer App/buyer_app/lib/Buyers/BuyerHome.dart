@@ -275,17 +275,19 @@ void alertBox(BuildContext context){
 
     actions: <Widget>[
         FlatButton(
-          child: Text("Continue"),
-          onPressed: (){
-            
-          },
+          child: Text("Cancel",
+          style: TextStyle(color: Colors.red),
+         ),
+          onPressed: (){},
         ),
+
         FlatButton(
-          child: Text("Cancel"),
-          onPressed: (){
-            
-          },
-        )
+          child: Text("Continue",
+          style: TextStyle(color: Colors.green),
+          ),
+          onPressed: (){},
+        ),
+        
     ],
     );
 

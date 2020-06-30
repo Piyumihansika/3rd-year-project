@@ -1,7 +1,8 @@
+import 'package:buyerapp/HouseholdLocation/Tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:buyerapp/HouseholdLocation/Manually.dart';
 
-import 'Tracking.dart';
+//import 'Tracking.dart';
 
 class GetLocation extends StatefulWidget {
 
@@ -156,26 +157,7 @@ class _GetLocationState extends State<GetLocation> {
                   _selectedOption = newValue;
                 });
                 if( _selectedOption == 'Type Location Manually'){
-                  // Navigator.of(context).pushNamed('/manually');
-                  // onPressed:(){
-
-                  //Navigator.of(context).pushNamed('/addmanualy');
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (context) {
-                  //     var manually = Manually(
-                  //       firstName: widget.firstName,
-                  //       lastName: widget.lastName,
-                  //       contactNumber: widget.contactNumber,
-                  //       password: widget.password,
-                  //       email: widget.email
-
-                  //   );
-                  //     return manually;
-                  //   },
-                   
-
-                  // )
-                  // );
+                  
                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Manually(
                     firstName: widget.firstName,
                     lastName: widget.lastName,
@@ -183,22 +165,18 @@ class _GetLocationState extends State<GetLocation> {
                     password: widget.password,
                     email: widget.email,
                   )));
-                  //};
+                  
                  }
-                //else{
-                //   //Navigator.of(context).pushNamed('/tracking');
-                //   Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (context) =>ManuallyForm(        //replace by 'Tracking' after finish
-                //         firstName: firstName,
-                //         lastName: lastName,
-                //         contactNumber: contactNumber,
-                //         password: password,
-                //         email: email
-
-                //     ),
-
-                //   ));
-                // }
+                else{
+                  
+                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Tracking(
+                    firstName: widget.firstName,
+                    lastName: widget.lastName,
+                    contactNumber: widget.contactNumber,
+                    password: widget.password,
+                    email: widget.email,
+                  )));
+                }
               },
               items: _options.map((option) {
                 return DropdownMenuItem(
