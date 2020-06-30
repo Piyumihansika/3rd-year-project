@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:buyerapp/Models/registermodel.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 class Tracking extends StatefulWidget {
 

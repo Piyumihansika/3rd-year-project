@@ -273,42 +273,10 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
               ),
             ),
 
-<<<<<<< HEAD
-            Container(
-              padding: EdgeInsets.all(10),
-              child:
-              TextFormField(
-                scrollPadding: EdgeInsets.all(10),
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.lock,color: Colors.black),
-                  hintText: 'Confirm your password',
-                  labelText: 'Confirm Password',
-                  labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
-                ),
-                onChanged: (text){
-                  confirmpass= text;
-                },
-                //controller: _confirmPass,
-                validator: (value){
-                  if(value.isEmpty)
-                    return 'Please enter confirm password';
-                  else{
-                    if(value != password)
-                      return 'Password is not match';
-                    else
-                      return null;
-                  }
-                },
-                obscureText: _obscureText,
-              ),
-            ),
-=======
             // Container(
             //   padding: EdgeInsets.all(10),
             //   child:
             //   TextFormField(
-            //     controller: confirmPassword,
             //     scrollPadding: EdgeInsets.all(10),
             //     decoration: const InputDecoration(
             //       icon: const Icon(Icons.lock,color: Colors.black),
@@ -317,25 +285,24 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
             //       labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
             //     ),
+            //     onChanged: (text){
+            //       confirmpass= text;
+            //     },
+            //     //controller: _confirmPass,
             //     validator: (value){
-            //       if(value.isEmpty){
-            //           return 'Please enter confirm password';
-
-            //       }else{
-            //       if(value == password) {
-            //         return null;
-            //       }else{
+            //       if(value.isEmpty)
+            //         return 'Please enter confirm password';
+            //       else{
+            //         if(value != password)
             //           return 'Password is not match';
-            //       }
-
+            //         else
+            //           return null;
             //       }
             //     },
             //     obscureText: _obscureText,
             //   ),
             // ),
->>>>>>> 5b3e6a8d8f03a004f3b78650922d4b581151d158
-
-
+        
             new Container(
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Row(
