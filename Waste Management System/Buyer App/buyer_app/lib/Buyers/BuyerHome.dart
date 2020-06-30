@@ -255,7 +255,7 @@ class _BuyerHomeState extends State<Home> {
                   textColor: Colors.white,
 
                   onPressed: () {
-
+                      alertBox(context);
                   },
                 )
             ),
@@ -266,6 +266,34 @@ class _BuyerHomeState extends State<Home> {
     );
 
   }
+}
+
+void alertBox(BuildContext context){
+  var alertDialog = AlertDialog(
+    title: Text("Signup messege"),
+    content: Text("You are registered successfully"),
+
+    actions: <Widget>[
+        FlatButton(
+          child: Text("Continue"),
+          onPressed: (){
+            
+          },
+        ),
+        FlatButton(
+          child: Text("Cancel"),
+          onPressed: (){
+            
+          },
+        )
+    ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return alertDialog;
+      });
 }
 
 

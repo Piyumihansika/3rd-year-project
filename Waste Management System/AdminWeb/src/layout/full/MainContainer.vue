@@ -29,7 +29,7 @@ SideBar
 },
 data:() => ({
 	topbarColor: "#2962ff",
-	logotitle: "Xtreme Vuesax Free",
+	logotitle: "Green Wasteland",
 	sidebarLinks: sidebarLinks,
 }),
 methods: {

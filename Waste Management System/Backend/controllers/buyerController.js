@@ -34,22 +34,27 @@ router.post("/viewBuyer", async(req,res) => {
 })
 
 //ADD A NEW BUYER REQUEST
-router.post('/buyerRequest', async(req, res) => {
+router.post('/addBuyer', async(req, res) => {
+    console.log("api hit 1");
     try{
     
-        const {companyName,contactpersonName,address,email,contactNumber,comment} = req.body;
+        const {firstName,lastName,contactNumber,email,password,address1,address2,city,district} = req.body;
 
-        const newbuyer = new buyerRequest({
-            companyName,
-            contactpersonName,
-            address,
-            email,
+        const buyer = new Buyer({
+            firstName,
+            lastName,
             contactNumber,
-            comment
+            email,
+            password,
+            address1,
+            address2,
+            city,
+            district
         });
-        await newbuyer.save();
+        await buyer.save();
+        console.log("api hit");
 
-        const token = jwt.sign({ id: newbuyer.id}, config.secret, {
+        const token = jwt.sign({ id: buyer.id}, config.secret, {
             expiresIn: "24h"
         });
         res.status(200).json({ auth: true, token})
@@ -60,5 +65,6 @@ router.post('/buyerRequest', async(req, res) => {
 
     }
 });
+
 
 module.exports = router;
