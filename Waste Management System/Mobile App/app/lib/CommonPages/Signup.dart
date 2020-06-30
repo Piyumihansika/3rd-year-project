@@ -117,7 +117,7 @@ class _SignFormState extends State<SignForm> {
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
            
-                // controller: usernameController,
+                // controller: emailController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter some text';
