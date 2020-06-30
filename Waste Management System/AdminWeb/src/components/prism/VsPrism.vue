@@ -1,7 +1,7 @@
 <template>
         <prism :language="codeLanguage">
-          <slot></slot>
-          <!-- hello -->
+          <slot>hello</slot>
+          
         </prism>
 </template>
 

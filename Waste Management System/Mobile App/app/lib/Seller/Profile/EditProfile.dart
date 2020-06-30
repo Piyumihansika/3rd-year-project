@@ -1,6 +1,7 @@
-
-
+import 'dart:io';
 import 'package:flutter/material.dart';  
+import 'package:image_picker/image_picker.dart';
+
   
 
 String firstname='piyumi';
@@ -36,6 +37,8 @@ class MyCustomForm extends StatefulWidget {
 class MyCustomFormState extends State<MyCustomForm> {  
   
   final _formKey = GlobalKey<FormState>();  
+  
+  
   // dialog box
 
 createAlertDialog(BuildContext context){
@@ -54,8 +57,78 @@ Navigator.of(context).pushNamed('/dashboard1');
     );
   });
 }
-  // 
+  //          Profile pic code 
 
+
+File imageFile;
+openGallery(BuildContext context) async{
+  var picture= await ImagePicker.pickImage(source:ImageSource.gallery);
+  setState(() {
+    imageFile=picture;
+  });
+
+Navigator.of(context).pop();
+}
+ openCamera(BuildContext context) async{
+ var pic= await ImagePicker.pickImage(source:ImageSource.camera);
+  setState(() {
+    imageFile=pic;
+  });
+  //this is for closing the alert box
+//Navigator.of(context).pop();
+
+ }
+Future<void> showChoicedialogbox(BuildContext context){
+
+  return showDialog(context: context,builder: (BuildContext context){
+
+    return AlertDialog(
+      title: Text("Select Your Choice"),
+      content:SingleChildScrollView(
+        child:ListBody(children: <Widget>[
+
+GestureDetector
+(
+  child:Text("Gallery"),
+  onTap:(){
+    openGallery(context);
+  } ,
+
+
+),
+
+Padding(padding: EdgeInsets.all(10.5)),
+GestureDetector
+(
+  child:Text("Camera"),
+  onTap:(){
+    openCamera(context);
+  } ,
+
+
+)
+
+        ],)
+      )
+    );
+
+  });
+
+}
+
+
+  
+  Widget decide(){
+    if(imageFile==null){
+     
+      return CircleAvatar(
+                radius: 80,
+                backgroundImage:NetworkImage("https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+          );
+    }else{
+     return  Image.file(imageFile,width:150,height:150);
+    }
+  }
   @override  
   Widget build(BuildContext context) {  
     // Build a Form widget using the _formKey created above.  
@@ -65,6 +138,38 @@ Navigator.of(context).pushNamed('/dashboard1');
        child: SingleChildScrollView(child: Column(  
         crossAxisAlignment: CrossAxisAlignment.start,  
         children: <Widget>[  
+         
+
+Container(
+
+  child: Column(
+    mainAxisAlignment:MainAxisAlignment.center,
+    children:<Widget>[
+
+      decide(),
+      Container(
+        
+      ),
+      
+    RaisedButton(
+      
+      child:Text("Select Image") ,
+      onPressed: (){
+showChoicedialogbox(context);
+
+      },
+      ),
+     
+     
+    ],
+    
+      
+      
+  ),
+),
+
+// 
+
           TextFormField(  
            initialValue: firstname,
             decoration: const InputDecoration(  
@@ -119,9 +224,6 @@ Navigator.of(context).pushNamed('/dashboard1');
           ),  
 
 
-         
-
-         
           new Container(  
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
               child: new RaisedButton(  
@@ -132,6 +234,7 @@ Navigator.of(context).pushNamed('/dashboard1');
                   
                   if (_formKey.currentState.validate()) {  
                     //  
+
 
 createAlertDialog(context);
 

@@ -3,33 +3,25 @@ import 'package:flutter/material.dart';
 
 class ChooseLocaType extends StatefulWidget {
 
-final String firstname;
-final String lastname;
+final String firstName;
+final String lastName;
 final String email;
 final String contactNumber;
 final String password;
 
-ChooseLocaType({ this.firstname,this.lastname,this.email,this.contactNumber,this.password});
+const ChooseLocaType({Key key, this.firstName, this.lastName, this.email, this.contactNumber, this.password}) : super(key: key);
 
   @override
-  _ChooseLocaTypeState createState() => _ChooseLocaTypeState(firstname, lastname,email,contactNumber, password );
+  _ChooseLocaTypeState createState() => _ChooseLocaTypeState();
 }
 
 class _ChooseLocaTypeState extends State<ChooseLocaType> {
-
-String firstname;
-String lastname;
-String email;
-String contactNumber;
-String password;
-
-_ChooseLocaTypeState(this.firstname,this.lastname,this.email,this.contactNumber,this.password);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
-        title: const Text('How Do You Enter Your Address'),
+        title: Text('How Do You Enter Your Address' + widget.firstName),
       ),
      body: new Center(
         child:
@@ -44,12 +36,12 @@ _ChooseLocaTypeState(this.firstname,this.lastname,this.email,this.contactNumber,
 
                      //Navigator.of(context).pushNamed('/addmanualy');
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>Add(
-                        firstname:firstname ,
-                        lastname:lastname,
-                        email:email,
-                        contactNumber:contactNumber,
-                        password:password
+                      builder: (context) =>Address(
+                        firstName:widget.firstName ,
+                        lastName:widget.lastName,
+                        email:widget.email,
+                        contactNumber:widget.contactNumber,
+                        password:widget.password
                         
                       ),
                       

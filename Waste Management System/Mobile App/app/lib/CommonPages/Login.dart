@@ -183,7 +183,7 @@ child: Column(
 alignment: Alignment(-0.1,1),
   
               child: new RaisedButton(  
-                child: const Text('LOG IN'), 
+                child: const Text('LOGIN'), 
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
@@ -228,7 +228,7 @@ alignment: Alignment(-0.1,1),
                   FlatButton(
                     textColor: Colors.green,
                     child: Text(
-                      'SIGN IN',
+                      'SIGN UP',
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
