@@ -6,6 +6,36 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+
+  createAlertDialog(BuildContext context){
+  return showDialog(context: context,builder: (context){
+    return AlertDialog(
+      title: Text('Are You sure you want deactivate your account ? '),
+      
+      actions: <Widget>[
+        
+MaterialButton(
+          child: Text('No'),
+          onPressed: (){
+Navigator.of(context).pushNamed('/setting');
+          },
+        ),
+
+        MaterialButton(
+          child: Text('Yes'),
+          onPressed: (){
+            Navigator.of(context).pushNamed('/deactivate');
+                
+              },
+        ),
+
+      ],
+    );
+  });
+}
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,16 +108,18 @@ Text("Account",style:TextStyle(
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: (){
                 
+ Navigator.of(context).pushNamed('/changepassword');
+                
               },
               
 
             ),
             ListTile(
               leading:Icon(Icons.exit_to_app,color:Colors.green),
-              title: Text("Sign Out"),
+              title: Text("Deactivate Account"),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: (){
-                
+                createAlertDialog(context);
               },),
           ],),
         ),
