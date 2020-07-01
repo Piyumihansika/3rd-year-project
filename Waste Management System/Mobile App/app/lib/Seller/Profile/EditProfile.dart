@@ -57,68 +57,78 @@ Navigator.of(context).pushNamed('/dashboard1');
     );
   });
 }
-  // 
-Future<File> imageFile;
-
-// File imageF;
-// openGallery(BuildContext context)async{
-//   var picture=await ImagePicker.pickImage(source: ImageSource.gallery);
-//   this.setState(() { 
-//     imageF=picture;
-//   });
-//   Navigator.of(context).pop();
-// }
+  //          Profile pic code 
 
 
-  pickImageFromGallery(ImageSource source){
-    setState(() async {
-      imageFile = ImagePicker.pickImage(source: source);
-    });
+File imageFile;
+openGallery(BuildContext context) async{
+  var picture= await ImagePicker.pickImage(source:ImageSource.gallery);
+  setState(() {
+    imageFile=picture;
+  });
+
+Navigator.of(context).pop();
+}
+ openCamera(BuildContext context) async{
+ var pic= await ImagePicker.pickImage(source:ImageSource.camera);
+  setState(() {
+    imageFile=pic;
+  });
+  //this is for closing the alert box
 //Navigator.of(context).pop();
-  }
-Widget showImage(){
-    return FutureBuilder<File>(
 
-      future: imageFile,
-      builder: (BuildContext context,AsyncSnapshot<File> snapshot){
-        if(snapshot.connectionState==ConnectionState.done && snapshot.data !=null)
-        {
-          return
-           Image.file(
-             
-            snapshot.data,
-            width: 100,
-            height: 150,
-            fit: BoxFit.cover,
-            
-         );
+ }
+Future<void> showChoicedialogbox(BuildContext context){
 
-        }else if(snapshot.error != null){
-          return const Text(
-            'Error Picking Image',
-            textAlign: TextAlign.center,
-          );
-        }else{
-          return CircleAvatar(
+  return showDialog(context: context,builder: (BuildContext context){
+
+    return AlertDialog(
+      title: Text("Select Your Choice"),
+      content:SingleChildScrollView(
+        child:ListBody(children: <Widget>[
+
+GestureDetector
+(
+  child:Text("Gallery"),
+  onTap:(){
+    openGallery(context);
+  } ,
+
+
+),
+
+Padding(padding: EdgeInsets.all(10.5)),
+GestureDetector
+(
+  child:Text("Camera"),
+  onTap:(){
+    openCamera(context);
+  } ,
+
+
+)
+
+        ],)
+      )
+    );
+
+  });
+
+}
+
+
+  
+  Widget decide(){
+    if(imageFile==null){
+     
+      return CircleAvatar(
                 radius: 80,
                 backgroundImage:NetworkImage("https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
           );
-          // return const Text(
-          //   'No Image selected',
-          //   textAlign: TextAlign.center,
-          // );
-        }
-      },
-    );
+    }else{
+     return  Image.file(imageFile,width:150,height:150);
+    }
   }
-  
-  // Widget decide(){
-  //   if(imageF==null){
-  //     return Text("No image selected");
-  //   }else{
-  //    return  Image.file(imageF,width:400,height:400);
-  //   }
-  // }
   @override  
   Widget build(BuildContext context) {  
     // Build a Form widget using the _formKey created above.  
@@ -128,30 +138,28 @@ Widget showImage(){
        child: SingleChildScrollView(child: Column(  
         crossAxisAlignment: CrossAxisAlignment.start,  
         children: <Widget>[  
-         // ********//
+         
 
 Container(
 
   child: Column(
     mainAxisAlignment:MainAxisAlignment.center,
     children:<Widget>[
-// Text("No image "),
-//Image.file(imageF,width:400,height:400),
-      //decide(),
+
+      decide(),
       Container(
         
       ),
-       showImage(),
+      
     RaisedButton(
       
       child:Text("Select Image") ,
       onPressed: (){
+showChoicedialogbox(context);
 
-pickImageFromGallery(ImageSource.gallery);
-// openGallery(context);
       },
       ),
-      //  decide(),
+     
      
     ],
     
@@ -216,35 +224,6 @@ pickImageFromGallery(ImageSource.gallery);
           ),  
 
 
-// ********//
-
-
-// Container(
-
-//   child: Column(
-//     mainAxisAlignment:MainAxisAlignment.center,
-//     children:<Widget>[
-
-//       showImage(),
-//     RaisedButton(
-//       child:Text("Select Image from gallery") ,
-//       onPressed: (){
-
-// pickImageFromGallery(ImageSource.gallery);
-//       },
-//       )
-//     ],
-    
-      
-      
-//   ),
-// ),
-       
-
-
-
-    
-         
           new Container(  
               padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
               child: new RaisedButton(  
