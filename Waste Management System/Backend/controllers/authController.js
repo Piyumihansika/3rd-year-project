@@ -12,22 +12,25 @@ const config = require('../config');
 //buyer login,customer login,admin login
 
 //BUYER LOGIN
-router.post('/buyerLogin', async(req, res) => {
+router.post('/customerLogin', async(req, res) => {
     try{
-        const buyer = await Buyer.findOne({ email: req.body.email })
+        const customer = await Customer.findOne({ email: req.body.email })
        
-        if(!buyer){
+        if(!customer){
             return res.status(404).send("The email doesn't exist")
         }
-        const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+        const validPassword = await customer.validatePassword(req.body.password, customer.password);
         if(!validPassword){
             return res.status(401).send({ auth: false, token: null});
         }
-        const token = jwt.sign({ id: buyer._id }, config.secret, {
+        const token = jwt.sign({ id: customer._id }, config.secret, {
             expiresIn: '24h'
+           
         });
         if(token){
-            res.status(200).json({ auth: true, id: buyer._id, token});
+            id=customer._id;
+            res.status(200).json({ auth: true, id: customer._id, token});
+            console.log(id);
         }
        
     }catch(e){
