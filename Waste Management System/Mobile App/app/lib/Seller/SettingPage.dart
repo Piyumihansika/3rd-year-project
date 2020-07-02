@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-final String apiUrl = "http://192.168.8.100:3000/auth/logout";
 
 class SettingPage extends StatefulWidget {
   @override
@@ -9,12 +6,28 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  void logout(BuildContext context) async {
-    var response = await http.get(apiUrl);
-    if (response.statusCode == 200) {
-      Navigator.of(context).pushNamed('/login');
-      print(response.body);
-    }
+  createAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Are You sure you want deactivate your account ? '),
+            actions: <Widget>[
+              MaterialButton(
+                child: Text('No'),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/setting');
+                },
+              ),
+              MaterialButton(
+                child: Text('Yes'),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/deactivate');
+                },
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -88,14 +101,16 @@ class _SettingPageState extends State<SettingPage> {
                       leading: Icon(Icons.lock_outline, color: Colors.green),
                       title: Text("Change Password"),
                       trailing: Icon(Icons.keyboard_arrow_right),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/changepassword');
+                      },
                     ),
                     ListTile(
                       leading: Icon(Icons.exit_to_app, color: Colors.green),
-                      title: Text("Sign Out"),
+                      title: Text("Deactivate Account"),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
-                        logout(context);
+                        createAlertDialog(context);
                       },
                     ),
                   ],

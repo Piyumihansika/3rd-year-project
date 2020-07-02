@@ -7,7 +7,9 @@ import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Orders.dart';
 import 'package:app/Seller/Profile.dart';
+import 'package:app/Seller/Profile/ChangePassword.dart';
 import 'package:app/Seller/Profile/EditProfile.dart';
+import 'package:app/Seller/Profile/deactivate.dart';
 import 'package:app/Seller/Scheduled.dart';
 import 'package:app/Seller/Sellitem.dart';
 import 'package:app/Seller/SettingPage.dart';
@@ -65,6 +67,8 @@ class MyApp extends StatelessWidget {
         '/test':(context)=>Test(),
         '/setting':(context)=>SettingPage(),
          '/editProfile':(context)=>EditProfile(),
+         '/deactivate':(context)=>Deactivate(),
+         '/changepassword':(context)=>Passwordchange(),
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),

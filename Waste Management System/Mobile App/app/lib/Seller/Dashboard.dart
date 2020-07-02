@@ -29,21 +29,66 @@ UserAccountsDrawerHeader(
   ),
 
 ),
-ListTile(
+// ListTile(
 
-  leading:Icon(Icons.person),
-  title: Text('profile'),
-),
-ListTile(
+//   leading:Icon(Icons.person),
+//   title: Text('profile'),
+// ),
+// ListTile(
 
-  leading:Icon(Icons.vpn_key),
-  title: Text('password'),
-),
-ListTile(
+//   leading:Icon(Icons.vpn_key),
+//   title: Text('password'),
+// ),
+// ListTile(
 
-  leading:Icon(Icons.info),
-  title: Text('Tenting'),
-),
+//   leading:Icon(Icons.info),
+//   title: Text('Tenting'),
+// ),
+
+
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/buyerhome');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/profile');
+              },
+            ), //ListTitle
+            ListTile(
+              leading: Icon(Icons.category),
+              title: Text('Categories'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/');
+              },
+            ), //ListTitle
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Notifications'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/');
+              },
+            ), //ListTitle
+            ListTile(
+              leading: Icon(Icons.history),
+              title: Text('Histry'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/');
+              },
+            ),//ListTitle
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Logout'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/login');
+              },
+            ),
+
 
     ],
   ),
@@ -57,9 +102,6 @@ body: Container(
     
 
 MyMenu1(title: 'Home',icon: Icons.home,warna: Colors.green,),
-// MyMenu2(title: 'Scheduled Pickup',icon: Icons.access_alarm,warna: Colors.yellow,),
-// MyMenu3(title: 'Special Pickup',icon: Icons.directions_bus,warna: Colors.red,),
-// MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
 MyMenu2(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,),
 MyMenu3(title: 'Bidding Details',icon: Icons.people,warna: Colors.blue,),
 //MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),

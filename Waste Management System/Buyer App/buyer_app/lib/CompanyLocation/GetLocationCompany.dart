@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:buyerapp/CompanyLocation/ManuallyCompany.dart';
+import 'package:buyerapp/CompanyLocation/TrackingCompany.dart';
 
 class GetLocationCompany extends StatefulWidget {
 
@@ -10,24 +11,22 @@ class GetLocationCompany extends StatefulWidget {
   final String confirmpass;
   final String email;
 
-  GetLocationCompany({ this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.confirmpass,this.email});
+  const GetLocationCompany({ Key key, this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.confirmpass,this.email}) : super(key: key);
 
   @override
-  _GetLocationCompanyState createState() => new _GetLocationCompanyState(companyName,contactpersonName,contactpersonNumber,password,confirmpass,email);
+  _GetLocationCompanyState createState() => new _GetLocationCompanyState();
 }
 
-class _GetLocationCompanyState extends State<GetLocationCompany> {
-   String companyName;
-   String contactpersonName;
-   String contactpersonNumber;
-   String password;
-   String confirmpass;
-   String email;
-
-   _GetLocationCompanyState(this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.confirmpass,this.email);
+ class _GetLocationCompanyState extends State<GetLocationCompany> {
 
   List<String> _options = ['Type Location Manually', 'Get Tracked location']; // Option 2
   String _selectedOption; // Option 2
+
+  @override
+  void initState() {
+    super.initState();
+    print(widget.companyName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,37 +146,25 @@ class _GetLocationCompanyState extends State<GetLocationCompany> {
                     _selectedOption = newValue;
                   });
                   if( _selectedOption == 'Type Location Manually'){
-                   // Navigator.of(context).pushNamed('/manually');
-                   // onPressed:(){
 
-                      //Navigator.of(context).pushNamed('/addmanualy');
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>ManuallyCompany(
-                            companyName: companyName,
-                            contactpersonName: contactpersonName,
-                            contactpersonNumber: contactpersonNumber,
-                            password: password,
-                            confirmpass: confirmpass,
-                            email: email
-
-                        ),
-
-                      ));
-                    //};
+                     
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ManuallyCompany(
+                      companyName: widget.companyName,
+                      contactpersonName: widget.contactpersonName,
+                      contactpersonNumber: widget.contactpersonNumber,
+                      password: widget.password,
+                      email: widget.email,
+                    )));
+                  
                   }else{
-                    //Navigator.of(context).pushNamed('/tracking');
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>ManuallyCompany(         //replace by 'TrackingCompany' after finish
-                          companyName: companyName,
-                          contactpersonName: contactpersonName,
-                          contactpersonNumber: contactpersonNumber,
-                          password: password,
-                          confirmpass: confirmpass,
-                          email: email
-
-                      ),
-
-                    ));
+                   
+                     Navigator.push(context,MaterialPageRoute(builder: (context)=>TrackingCompany(
+                      companyName: widget.companyName,
+                      contactpersonName: widget.contactpersonName,
+                      contactpersonNumber: widget.contactpersonNumber,
+                      password: widget.password,
+                      email: widget.email,
+                    )));
                   }
                 },
                 items: _options.map((option) {
