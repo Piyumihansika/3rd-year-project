@@ -79,7 +79,7 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.category),
               title: Text('Categories'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/category');
               },
             ), //ListTitle
             ListTile(
