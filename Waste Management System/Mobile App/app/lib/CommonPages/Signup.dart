@@ -31,13 +31,7 @@ class _SignFormState extends State<SignForm> {
   TextEditingController email = TextEditingController();
   TextEditingController contactNumber = TextEditingController();
   TextEditingController password = TextEditingController();
-//bool _obscureText = true;
 
-// void _toggle() {
-//     setState(() {
-//       _obscureText = !_obscureText;
-//     });
-//   }
 
   @override
   Widget build(BuildContext context) {

@@ -1,23 +1,33 @@
+import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-//import 'package:email_validator/email_validator.dart';
-//import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
+
+
+
+final String apiUrl = "http://192.168.8.100:3000/Your URL HERE";
+
 
 class Forgot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       //backgroundColor: Colors.green,
       body:ForgotForm(), 
     );
   }
 }
 class ForgotForm extends StatefulWidget {
+
+
   @override
   _ForgotFormState createState() => _ForgotFormState();
 }
 
 class _ForgotFormState extends State<ForgotForm> {
+
+
 
   // 
 createAlertDialog(BuildContext context){
@@ -38,17 +48,43 @@ Navigator.of(context).pushNamed('/login');
 }
 
 //email validater
-bool validateEmail(String value) {
-  Pattern pattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-  RegExp regex = new RegExp(pattern);
-  return (!regex.hasMatch(value)) ? false : true;
-}
+// bool validateEmail(String value) {
+//   Pattern pattern =
+//       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+//   RegExp regex = new RegExp(pattern);
+//   return (!regex.hasMatch(value)) ? false : true;
+// }
 
-  // 
+  
   final _formKey = GlobalKey<FormState>();  
-   TextEditingController firstnameController = TextEditingController();
-     TextEditingController passwordController = TextEditingController();
+
+//Done by piyumi
+
+   TextEditingController email = TextEditingController();
+
+void emailpass(BuildContext context) async {
+
+  final Map<String, dynamic> data = {
+      "email": email.text,
+    
+    };
+    print(email);
+
+     var response = await http.post(apiUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
+    if (response.statusCode == 200) {
+
+      createAlertDialog(context);
+
+      print(response.statusCode);
+      print(response.body);
+    } else {
+      Navigator.of(context).pushNamed('/forgot');
+      print(response.statusCode);
+      print("error occured");
+    }
+}
+    
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -77,10 +113,22 @@ child: Column(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(10),
                child: new Text(
-                 'Forgot Your Password ?',
+                 'Forgot Password ?',
                  
                  style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.green),
                ),
+               
+                 ),
+
+                 Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+               child: new Text(
+                 'We just need your registered email address to send you password reset  ',
+                 
+                 style:TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.green),
+               ),
+               
                  ),
           TextFormField(  
             decoration: const InputDecoration(  
@@ -92,7 +140,7 @@ child: Column(
               //: true,
               
             ),  
-            controller: firstnameController,
+            controller: email,
 
         
             validator: (value) {  
@@ -115,15 +163,16 @@ child: Column(
 
 padding: const EdgeInsets.only(left: 150.0, top: 40.0),  
               child: new RaisedButton(  
-                child: const Text('Submit'), 
+                child: const Text('Reset Password'), 
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
                 onPressed: () {  
                  
                   if (_formKey.currentState.validate()) {  
-                     print(firstnameController.text);
-                    createAlertDialog(context);
+                     
+
+                    emailpass(context);
                   }  
                 },  
               )
