@@ -2,35 +2,9 @@ import 'package:flutter/material.dart';
 
 
   
-// class Test extends StatelessWidget {  
-//   @override  
-//   Widget build(BuildContext context) {  
-//     final appTitle = 'Flutter Form Demo';  
-//     return MaterialApp(  
-//       title: appTitle,  
-//       home: Scaffold(  
-//         appBar: AppBar(  
-//           title: Text('Edit Profile'),  
-//         ),  
-//         body: MyCustomForm(),  
-//       ),  
-//     );  
-//   }  
-// } 
+ 
 
-// class MyCustomForm extends StatefulWidget {
-//   @override
-//   _MyCustomFormState createState() => _MyCustomFormState();
-// }
 
-// class _MyCustomFormState extends State<MyCustomForm> {
-  
-//   FocusNode myFocusNode;
-//    FocusNode myFocusNode1;
-
-//   @override
-//   void initState() {
-//     super.initState();
 
 //     myFocusNode = FocusNode();
 //     myFocusNode1 = FocusNode();
@@ -157,42 +131,6 @@ import 'package:flutter/material.dart';
 
 // class Test extends StatelessWidget {  
 //   @override  
-//   Widget build(BuildContext context) {  
-     
-//     return  
-       
-//       Scaffold(  
-//         appBar: AppBar(  
-//           title: Text('Register'),
-//           backgroundColor: Colors.green,  
-//         ),  
-//         body: MyCustomForm(),  
-        
-//     );  
-//   }  
-// }  
-// // Create a Form widget.  
-// class MyCustomForm extends StatefulWidget {  
-//   @override  
-//   MyCustomFormState createState() {  
-//     return MyCustomFormState();  
-//   }  
-// }  
-
-// class MyCustomFormState extends State<MyCustomForm> {  
-   
-//   final _formKey = GlobalKey<FormState>();  
-  
-//   //controller names
-
-//   TextEditingController firstnameController = TextEditingController();
-//   TextEditingController lastnameController = TextEditingController();
-//   TextEditingController usernameController = TextEditingController();
-//   TextEditingController addressController = TextEditingController();
-//   TextEditingController phoneController = TextEditingController();
-//   TextEditingController nearLocationController = TextEditingController();
-//   TextEditingController passwordController = TextEditingController();
-
 
 
 

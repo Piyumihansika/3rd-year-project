@@ -5,6 +5,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/utils/ResponseData.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
+import 'package:email_validator/email_validator.dart';
 
 final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
 String userId,
@@ -65,6 +66,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -153,8 +155,13 @@ class _LoginFormState extends State<LoginForm> {
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter an email';
+              } else {
+                bool temp = (EmailValidator.validate(value));
+                if (temp) {
+                  return null;
+                }
+                return 'Please enter a valid Email ';
               }
-              return null;
             },
           ),
 
@@ -165,6 +172,10 @@ class _LoginFormState extends State<LoginForm> {
                 Icons.lock,
                 color: Colors.green,
               ),
+              //
+
+              //
+
               hintText: 'Enter password',
               labelText: 'Password',
               labelStyle:
@@ -176,6 +187,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               return null;
             },
+            obscureText: true,
           ),
 
           Container(
@@ -212,6 +224,9 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  //This comments added by piyumi
+                  //Here what about  login(context) Without this navigator code line
+
                   Navigator.of(context).pushNamed('/register');
                 },
               )

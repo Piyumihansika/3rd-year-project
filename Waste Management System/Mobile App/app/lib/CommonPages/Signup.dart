@@ -1,5 +1,6 @@
 import 'package:app/CommonPages/Address/ChooseRegLocaType.dart';
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -22,6 +23,7 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+ 
 
   //controller names
   TextEditingController firstName = TextEditingController();
@@ -29,6 +31,7 @@ class _SignFormState extends State<SignForm> {
   TextEditingController email = TextEditingController();
   TextEditingController contactNumber = TextEditingController();
   TextEditingController password = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +125,13 @@ class _SignFormState extends State<SignForm> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  return null;
+                 else {
+                    bool temp = (EmailValidator.validate(value));
+                    if(temp){
+                      return null;
+                    }
+                    return 'Please enter a valid Email ';
+                  }
                 },
               ),
             ),
@@ -150,26 +159,7 @@ class _SignFormState extends State<SignForm> {
               ),
             ),
 
-//           Container(
-//             padding: EdgeInsets.all(10),
-// child:
-// TextFormField(
-//             decoration: const InputDecoration(
-//               icon: const Icon(Icons.person,color: Colors.green),
-//               hintText: 'Enter a near by center',
-//               labelText: 'Service Center',
-//               labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),
 
-//             ),
-//             controller: nearLocationController,
-//             validator: (value) {
-//               if (value.isEmpty) {
-//                 return 'Please select a service center';
-//               }
-//               return null;
-//             },
-//           ),
-//           ),
 
 //password field
 
@@ -178,24 +168,31 @@ class _SignFormState extends State<SignForm> {
               child: TextFormField(
                 controller: password,
                 scrollPadding: EdgeInsets.all(10),
+                
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person, color: Colors.green),
+                  
                   hintText: 'Enter a password',
                   labelText: 'Password',
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
-                // onChanged: (text) {
-                //   password = text;
-                // },
-                //controller: passwordController,
+                
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value.isEmpty ) {
                     return 'Please enter a strong password';
+                  }else if(value.length<6){
+                    return 'Your password too short';
                   }
                   return null;
                 },
+                obscureText: false,
+
+                
               ),
+
+             
+          
             ),
 
             new Container(

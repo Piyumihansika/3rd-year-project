@@ -52,6 +52,9 @@ class _AddressState extends State<Address> {
     print(data.toString());
     var response = await http.post(apiUrl, body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
+      
+      //This line added by piyumi
+      Navigator.of(context).pushNamed('/login');
       print(response.statusCode);
       print(response.body);
     } else {
