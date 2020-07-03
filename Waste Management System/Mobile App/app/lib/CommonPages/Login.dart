@@ -3,6 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:http/http.dart' as http;
+import 'package:email_validator/email_validator.dart';
+
+
+
+
 
 final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
 
@@ -71,6 +76,10 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+
+
+
+
   final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -98,67 +107,97 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(10),
-            child: Image(
-              alignment: Alignment(0.5, 0.5),
-              //    width: 80,
-              // height: 80,
-              image: AssetImage('assets/images/logo.jpg'),
-            ),
-          ),
-          Container(
-              alignment: Alignment.center,
-              child: Text(
-                'WELCOME',
-                style: TextStyle(fontSize: 17, color: Colors.green),
-              )),
-          TextFormField(
-            controller: email,
-            decoration: const InputDecoration(
-              icon: const Icon(
-                Icons.person,
-                color: Colors.green,
-              ),
-              hintText: 'Enter your Email',
-              labelText: 'Email',
-              labelStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-            ),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter an email';
-              }
-              return null;
-            },
-          ),
 
-          TextFormField(
-            controller: password,
-            decoration: const InputDecoration(
-              icon: const Icon(
-                Icons.lock,
-                color: Colors.green,
+ 
+  @override
+
+
+ 
+
+
+
+  Widget build(BuildContext context) {
+   
+        return Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(10),
+                child: Image(
+                  alignment: Alignment(0.5, 0.5),
+                  //    width: 80,
+                  // height: 80,
+                  image: AssetImage('assets/images/logo.jpg'),
+                ),
               ),
+              Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'WELCOME',
+                    style: TextStyle(fontSize: 17, color: Colors.green),
+                  )),
+              TextFormField(
+                controller: email,
+                decoration: const InputDecoration(
+                  icon: const Icon(
+                    Icons.person,
+                    color: Colors.green,
+                  ),
+                  hintText: 'Enter your Email',
+                  labelText: 'Email',
+                  labelStyle:
+                      TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                ),
+                
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter an email';
+                  }
+                  else {
+                      bool temp = (EmailValidator.validate(value));
+                      if(temp){
+                        return null;
+                      }
+                      return 'Please enter a valid Email ';
+                    }
+                },
+              ),
+    
+              TextFormField(
+                controller: password,
+                
+                 
+                decoration: const InputDecoration(
+                  icon: const Icon(
+                    Icons.lock,
+                    color: Colors.green,
+                  ),
+                    // 
+
+
+
+                    // 
+                 
+               
+           
+          
               hintText: 'Enter password',
               labelText: 'Password',
               labelStyle:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
             ),
+            
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter Password';
               }
               return null;
             },
+            
+            obscureText:true,
           ),
 
           Container(
