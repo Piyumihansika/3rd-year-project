@@ -49,12 +49,17 @@ router.post('/addCustomer', async(req, res) => {
 });
 
 //UPDATE CUSTOMER DETAILS
-router.put("/updateCustomer/:id", async(req, res, next) => {
+router.put("/updateCustomer/:id", (req, res, next) => {
   
-    const customer = await Customer.findByIdAndUpdate({_id: req.params.id}, req.body)
+    const customer =  Customer.findByIdAndUpdate({_id: req.params.id}, req.body)
+    console.log("update api hit")
    if(customer){
-    const newCustomer = await Customer.findOne({_id: req.params.id})
+    const newCustomer =  Customer.findOne({_id: req.params.id})
     res.status(200).json(newCustomer)
+    console.log("update and add")
+
+   }else{
+       res.status(500).send("server error");
    }
     
  });
@@ -62,6 +67,8 @@ router.put("/updateCustomer/:id", async(req, res, next) => {
  
  //DELETE A CUSTOMER
  router.delete("/deleteCustomer/:id", async (req, res) => {
+
+    Customer.findById
  
      Customer.findByIdAndRemove({_id: req.params.id}, req.body)
      res.status(200).send("deleted")
@@ -70,8 +77,9 @@ router.put("/updateCustomer/:id", async(req, res, next) => {
  
 
  //VIEW CUSTOMER DETAILS
- router.post("/viewCustomer", async(req,res) => {
-     const customer = await Customer.findOne({ _id: req.body.id })
+ router.get("/viewCustomer/:id", async(req,res) => {
+     const customer = Customer.findById({_id: req.params.id}, req.body)
+    //  const customer = await Customer.findOne({ _id: req.body.id })
      res.status(200).send(customer)
  })
 

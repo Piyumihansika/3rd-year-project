@@ -277,7 +277,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
             //   padding: EdgeInsets.all(10),
             //   child:
             //   TextFormField(
-            //     controller: confirmPassword,
             //     scrollPadding: EdgeInsets.all(10),
             //     decoration: const InputDecoration(
             //       icon: const Icon(Icons.lock,color: Colors.black),
@@ -286,24 +285,24 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
             //       labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
             //     ),
+            //     onChanged: (text){
+            //       confirmpass= text;
+            //     },
+            //     //controller: _confirmPass,
             //     validator: (value){
-            //       if(value.isEmpty){
-            //           return 'Please enter confirm password';
-
-            //       }else{
-            //       if(value == password) {
-            //         return null;
-            //       }else{
+            //       if(value.isEmpty)
+            //         return 'Please enter confirm password';
+            //       else{
+            //         if(value != password)
             //           return 'Password is not match';
-            //       }
-
+            //         else
+            //           return null;
             //       }
             //     },
             //     obscureText: _obscureText,
             //   ),
             // ),
-
-
+        
             new Container(
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Row(

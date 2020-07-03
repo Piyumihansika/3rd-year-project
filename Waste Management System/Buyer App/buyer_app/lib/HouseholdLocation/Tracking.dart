@@ -62,43 +62,40 @@ class _TrackingState extends State<Tracking> {
 
   Position currentPosition;
   String currentAddress;
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tracking Location'),
-         backgroundColor: Colors.green,),
-       body:Form(
+      appBar: AppBar(
+        title: Text('Tracking Location'),
+        backgroundColor: Colors.green,
+      ),
+      body: Form(
         key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (currentPosition != null) Text(currentAddress),
 
-  //          Container(
-  //            alignment: Alignment.center,
-  //            child: Text('Your Location Here'),
-  //          ),
+            //          Container(
+            //            alignment: Alignment.center,
+            //            child: Text('Your Location Here'),
+            //          ),
 
-            
-                
-                  RaisedButton(
-                    child: Text(
-                      "Get location",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
-                    onPressed: () {
-                      _getCurrentLocation();
-                    },
-                  ),
-              
-              
-            
+            RaisedButton(
+              child: Text(
+                "Get location",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              ),
+              onPressed: () {
+                _getCurrentLocation();
+              },
+            ),
+
             //  terms and conditions...
             Container(
               padding: EdgeInsets.all(10),
@@ -147,12 +144,10 @@ class _TrackingState extends State<Tracking> {
                       child: const Text('SIGN UP'),
                       color: Colors.green,
                       textColor: Colors.white,
-
                       onPressed: () {
                         register(context);
                         //Navigator.of(context).pushNamed('/buyerhome');
                       },
-                    
                     ),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -194,11 +189,6 @@ class _TrackingState extends State<Tracking> {
     }
   }
 }
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_form_builder/flutter_form_builder.dart';

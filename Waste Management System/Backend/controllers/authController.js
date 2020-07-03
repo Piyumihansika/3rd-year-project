@@ -12,22 +12,26 @@ const config = require('../config');
 //buyer login,customer login,admin login
 
 //BUYER LOGIN
-router.post('/buyerLogin', async(req, res) => {
+router.post('/customerLogin', async(req, res) => {
     try{
-        const buyer = await Buyer.findOne({ email: req.body.email })
+        const customer = await Customer.findOne({ email: req.body.email })
        
-        if(!buyer){
+        if(!customer){
             return res.status(404).send("The email doesn't exist")
         }
-        const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+        const validPassword = await customer.validatePassword(req.body.password, customer.password);
         if(!validPassword){
             return res.status(401).send({ auth: false, token: null});
         }
-        const token = jwt.sign({ id: buyer._id }, config.secret, {
+        const token = jwt.sign({ id: customer._id }, config.secret, {
             expiresIn: '24h'
+           
         });
         if(token){
-            res.status(200).json({ auth: true, id: buyer._id, token});
+            id=customer._id;
+            user= customer;
+            res.status(200).json({ auth: true, id: customer._id, token, user: customer});
+            console.log("api hit");
         }
        
     }catch(e){
@@ -53,7 +57,7 @@ router.post('/emailLogin', async(req, res) => {
             expiresIn: '24h'
         });
         if(token){
-            res.status(200).json({ auth: true, id: buyer._id, token});
+            res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
         }
        
     }catch(e){
@@ -84,15 +88,16 @@ router.post('/usernameLogin', async(req, res) => {
             res.status(200).json({ auth: true, token , id: customer._id});
         }
         
-    }catch(e){
+    }catch(e){ 
         console.log(e);
         res.status(500).send("There was a problem signin");
 
     }
 });
 
-router.get('/logout', function(req, res) {
-    res.status(200).send({ auth: false, token: null })
+router.get('/logout/:id', async(req,res) => {
+    res.status(200).send({ auth: false, token: null, id: null })
+    console.log("logout hit")
 });
 
 module.exports = router;
