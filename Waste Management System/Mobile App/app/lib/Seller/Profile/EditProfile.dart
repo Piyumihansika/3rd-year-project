@@ -129,28 +129,27 @@ class MyCustomFormState extends State<MyCustomForm> {
   String newlastName;
   String newcontactNumber;
 
-  void editProfile() {
+  void editProfile(BuildContext context) async {
     // final Map<String, dynamic> data = {
     //   "firstName": newfirstName,
     //   "lastName": newlastName,
     //   "contactNumber": newcontactNumber,
     // };
 
-    http.put(editUrl, body: {
+    var response = await http.put(editUrl, body: {
       "firstName": newfirstName,
       "lastName": newlastName,
       "contactNumber": newcontactNumber
     }, headers: {
       "Accept": "application/json"
-    }).then((response) {
-      if (response.statusCode == 200) {
-        print(
-            "-------------------------------------------update successfully----------------------------");
-        print(newlastName);
-      } else {
-        print(response.statusCode);
-      }
     });
+    if (response.statusCode == 200) {
+      print(
+          "-------------------------------------------update successfully----------------------------");
+      print(newlastName);
+    } else {
+      print(response.statusCode);
+    }
   }
 
   @override
@@ -182,7 +181,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
             TextFormField(
               // controller: TextEditingController(text: ResponseData.firstName),
-              initialValue: ResponseData.firstName,
+              // initialValue: ResponseData.firstName,
 
               decoration: const InputDecoration(
                 icon: const Icon(
@@ -208,7 +207,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             ),
 
             TextFormField(
-              initialValue: ResponseData.lastName,
+              // initialValue: ResponseData.lastName,
               // controller: lastName,
               decoration: const InputDecoration(
                 icon: const Icon(
@@ -235,7 +234,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             ),
 
             TextFormField(
-              initialValue: ResponseData.contactNumber,
+              // initialValue: ResponseData.contactNumber,
               // controller: contactNumber,
               decoration: const InputDecoration(
                 icon: const Icon(
@@ -267,10 +266,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.green,
                   textColor: Colors.white,
                   onPressed: () {
-                    editProfile();
                     if (_formKey.currentState.validate()) {
                       //
-
+                      editProfile(context);
                       createAlertDialog(context);
                     }
                   },

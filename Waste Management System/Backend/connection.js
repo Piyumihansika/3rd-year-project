@@ -4,5 +4,6 @@ mongoose.connect("mongodb+srv://sachini:1234@greenwasteland-fr9bl.mongodb.net/gr
     useNewUrlParser: true,  
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify:true
+    useFindAndModify:false,
+    
 }).then(db => console.log('Connection establish successfully'));
