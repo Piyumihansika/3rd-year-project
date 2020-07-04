@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-final String apiUrl = "http://192.168.8.100:3000/customer/addCustomer";
+final String apiUrl = "http://10.0.2.2:3000/customer/addCustomer";
 
 class Address extends StatefulWidget {
   final String firstName;

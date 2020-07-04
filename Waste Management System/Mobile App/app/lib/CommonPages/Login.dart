@@ -224,8 +224,7 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  //This comments added by piyumi
-                  //Here what about  login(context) Without this navigator code line
+                 
 
                   Navigator.of(context).pushNamed('/register');
                 },
