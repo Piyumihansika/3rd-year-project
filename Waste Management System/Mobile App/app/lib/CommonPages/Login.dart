@@ -3,13 +3,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:http/http.dart' as http;
+import 'package:app/utils/ResponseData.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-
-
-
-
-final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
+final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
+String userId,
+    firstName,
+    lastName,
+    email,
+    contactNumber,
+    address1,
+    address2,
+    city,
+    district;
+var id, value;
 
 class Login extends StatefulWidget {
   @override
@@ -51,154 +59,135 @@ class _State extends State<Login> {
   }
 }
 
-// Http request code
-
-// Future<LoginModel> createUser(String email, String password) async {
-//   final String apiUrl = "Enter  your url here";
-
-// // this is for take response
-
-//   final response = await http.post(apiUrl, body: {
-//     "email": email,
-//     "password": password,
-//   });
-//   if (response.statusCode == 201) {
-//     final String responseString = response.body;
-//     return loginModelFromJson(responseString);
-//   } else {
-//     return null;
-//   }
-// }
-
 class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
-
-
-
-
   final _formKey = GlobalKey<FormState>();
-  
+
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   void login(BuildContext context) async {
     final Map<String, dynamic> data = {
-      "email": email.text,
+      "email": email.text.toLowerCase(),
       "password": password.text,
     };
     print(email);
-    print(
-        "----------------------------------------------Login----------------------------------------------------");
 
     // print(data.toString());
     var response = await http.post(apiUrl,
         body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
-      Navigator.of(context).pushNamed('/dashboard1');
-      print(response.statusCode);
-      print(response.body);
+      value = json.decode(response.body);
+      // print(value);
+      id = (value["id"].toString());
+      var resfirstName = (value["user"]["firstName"].toString());
+      var reslastName = (value["user"]["lastName"].toString());
+      var resemail = (value["user"]["email"].toString());
+      // var rescontactNumber = (value["user"]["contactNumber"].toString());
+      // var resaddress1 = (value["user"]["address1"].toString());
+      // var resaddress2 = (value["user"]["address2"].toString());
+      // var rescity = (va)
+      print(resemail);
+      if (id == null) {
+        // Fluttertoast.showToast(msg: "Invalid login");
+        Navigator.of(context).pushNamed('/login');
+      } else {
+        print(
+            "----------------------------------------------Login----------------------------------------------------");
+        ResponseData.userId = id;
+        ResponseData.firstName = resfirstName;
+        ResponseData.lastName = reslastName;
+        ResponseData.email = resemail;
+        ResponseData.contactNumber =
+            (value["user"]["contactNumber"].toString());
+        ResponseData.address1 = (value["user"]["address1"].toString());
+        ResponseData.address2 = (value["user"]["address2"].toString());
+        ResponseData.city = (value["user"]["city"].toString());
+        ResponseData.district = (value["user"]["district"].toString());
+        Navigator.of(context).pushNamed('/dashboard1');
+      }
     } else {
+      // Fluttertoast.showToast(msg: "Check credentials login failed");
       Navigator.of(context).pushNamed('/login');
       print(response.statusCode);
-      print("error occured");
     }
   }
 
-
- 
   @override
-
-
- 
-
-
-
   Widget build(BuildContext context) {
-   
-        return Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10),
-                child: Image(
-                  alignment: Alignment(0.5, 0.5),
-                  //    width: 80,
-                  // height: 80,
-                  image: AssetImage('assets/images/logo.jpg'),
-                ),
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10),
+            child: Image(
+              alignment: Alignment(0.5, 0.5),
+              //    width: 80,
+              // height: 80,
+              image: AssetImage('assets/images/logo.jpg'),
+            ),
+          ),
+          Container(
+              alignment: Alignment.center,
+              child: Text(
+                "WELCOME",
+                style: TextStyle(fontSize: 17, color: Colors.green),
+              )),
+          TextFormField(
+            controller: email,
+            decoration: const InputDecoration(
+              icon: const Icon(
+                Icons.person,
+                color: Colors.green,
               ),
-              Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'WELCOME',
-                    style: TextStyle(fontSize: 17, color: Colors.green),
-                  )),
-              TextFormField(
-                controller: email,
-                decoration: const InputDecoration(
-                  icon: const Icon(
-                    Icons.person,
-                    color: Colors.green,
-                  ),
-                  hintText: 'Enter your Email',
-                  labelText: 'Email',
-                  labelStyle:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-                ),
-                
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter an email';
-                  }
-                  else {
-                      bool temp = (EmailValidator.validate(value));
-                      if(temp){
-                        return null;
-                      }
-                      return 'Please enter a valid Email ';
-                    }
-                },
+              hintText: 'Enter your Email',
+              labelText: 'Email',
+              labelStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+            ),
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Please enter an email';
+              } else {
+                bool temp = (EmailValidator.validate(value));
+                if (temp) {
+                  return null;
+                }
+                return 'Please enter a valid Email ';
+              }
+            },
+          ),
+
+          TextFormField(
+            controller: password,
+            decoration: const InputDecoration(
+              icon: const Icon(
+                Icons.lock,
+                color: Colors.green,
               ),
-    
-              TextFormField(
-                controller: password,
-                
-                 
-                decoration: const InputDecoration(
-                  icon: const Icon(
-                    Icons.lock,
-                    color: Colors.green,
-                  ),
-                    // 
+              //
 
+              //
 
-
-                    // 
-                 
-               
-           
-          
               hintText: 'Enter password',
               labelText: 'Password',
               labelStyle:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
             ),
-            
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter Password';
               }
               return null;
             },
-            
-            obscureText:true,
+            obscureText: true,
           ),
 
           Container(
@@ -235,9 +224,7 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-
-
-
+                 
 
                   Navigator.of(context).pushNamed('/register');
                 },

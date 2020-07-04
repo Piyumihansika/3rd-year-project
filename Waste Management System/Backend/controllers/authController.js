@@ -29,8 +29,9 @@ router.post('/customerLogin', async(req, res) => {
         });
         if(token){
             id=customer._id;
-            res.status(200).json({ auth: true, id: customer._id, token});
-            console.log(id);
+            user= customer;
+            res.status(200).json({ auth: true, id: customer._id, token, user: customer});
+            console.log("api hit");
         }
        
     }catch(e){
@@ -56,7 +57,7 @@ router.post('/emailLogin', async(req, res) => {
             expiresIn: '24h'
         });
         if(token){
-            res.status(200).json({ auth: true, id: buyer._id, token});
+            res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
         }
        
     }catch(e){
@@ -87,15 +88,16 @@ router.post('/usernameLogin', async(req, res) => {
             res.status(200).json({ auth: true, token , id: customer._id});
         }
         
-    }catch(e){
+    }catch(e){ 
         console.log(e);
         res.status(500).send("There was a problem signin");
 
     }
 });
 
-router.get('/logout', function(req, res) {
-    res.status(200).send({ auth: false, token: null })
+router.get('/logout/:id', async(req,res) => {
+    res.status(200).send({ auth: false, token: null, id: null })
+    console.log("logout hit")
 });
 
 module.exports = router;

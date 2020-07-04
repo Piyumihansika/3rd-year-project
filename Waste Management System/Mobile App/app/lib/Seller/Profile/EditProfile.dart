@@ -1,10 +1,12 @@
+// import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:app/utils/ResponseData.dart';
+import 'package:http/http.dart' as http;
 
-String firstname = 'piyumi';
-String lastname = 'hansi';
-String contactNumber = 'hdghdhj';
+final String editUrl =
+    "https://192.168.8.100:3000/customer/updateCustomer/${ResponseData.userId}";
 
 class EditProfile extends StatelessWidget {
   @override
@@ -120,6 +122,37 @@ class MyCustomFormState extends State<MyCustomForm> {
     }
   }
 
+  // TextEditingController newfirstName = TextEditingController();
+  // TextEditingController newlastName = TextEditingController();
+  // TextEditingController newcontactNumber = TextEditingController();
+  String newfirstName;
+  String newlastName;
+  String newcontactNumber;
+
+  void editProfile() {
+    // final Map<String, dynamic> data = {
+    //   "firstName": newfirstName,
+    //   "lastName": newlastName,
+    //   "contactNumber": newcontactNumber,
+    // };
+
+    http.put(editUrl, body: {
+      "firstName": newfirstName,
+      "lastName": newlastName,
+      "contactNumber": newcontactNumber
+    }, headers: {
+      "Accept": "application/json"
+    }).then((response) {
+      if (response.statusCode == 200) {
+        print(
+            "-------------------------------------------update successfully----------------------------");
+        print(newlastName);
+      } else {
+        print(response.statusCode);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
@@ -148,14 +181,15 @@ class MyCustomFormState extends State<MyCustomForm> {
 //
 
             TextFormField(
-              initialValue: firstname,
+              // controller: TextEditingController(text: ResponseData.firstName),
+              initialValue: ResponseData.firstName,
+
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.account_circle,
                   color: Colors.green,
                 ),
-                // hintText: 'Enter your full name',
-
+                hintText: 'Enter your new name',
                 labelText: 'First Name',
                 labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -168,10 +202,14 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
+              onChanged: (text) {
+                newfirstName = text;
+              },
             ),
 
             TextFormField(
-              initialValue: lastname,
+              initialValue: ResponseData.lastName,
+              // controller: lastName,
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.person,
@@ -191,10 +229,14 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
+              onChanged: (text) {
+                newlastName = text;
+              },
             ),
 
             TextFormField(
-              initialValue: "0771750655",
+              initialValue: ResponseData.contactNumber,
+              // controller: contactNumber,
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.phone,
@@ -213,6 +255,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
+              onChanged: (text) {
+                newcontactNumber = text;
+              },
             ),
 
             new Container(
@@ -222,6 +267,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.green,
                   textColor: Colors.white,
                   onPressed: () {
+                    editProfile();
                     if (_formKey.currentState.validate()) {
                       //
 
