@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // import 'package:buyerapp/Models/registermodel.dart';
 import 'dart:convert';
 
-String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
+String apiUrl = "http://192.168.8.100:3000/buyer/addBuyer";
 
 class Manually extends StatefulWidget {
   final String firstName;
@@ -15,16 +15,20 @@ class Manually extends StatefulWidget {
   final String password;
   final String email;
 
-  const Manually({Key key, this.firstName, this.lastName, this.contactNumber, this.password, this.email}) : super(key: key);
+  const Manually(
+      {Key key,
+      this.firstName,
+      this.lastName,
+      this.contactNumber,
+      this.password,
+      this.email})
+      : super(key: key);
 
-  
   @override
   _ManuallyState createState() => _ManuallyState();
 }
 
 class _ManuallyState extends State<Manually> {
-
-
   TextEditingController address1 = TextEditingController();
   TextEditingController address2 = TextEditingController();
   TextEditingController city = TextEditingController();
@@ -37,7 +41,7 @@ class _ManuallyState extends State<Manually> {
       "firstName": widget.firstName,
       "lastName": widget.lastName,
       "contactNumber": widget.contactNumber,
-      "email":widget.email,
+      "email": widget.email,
       "password": widget.password,
       "address1": address1.text,
       "address2": address2.text,
@@ -46,9 +50,10 @@ class _ManuallyState extends State<Manually> {
     };
     print(widget.firstName);
     print(address1.text);
-    print("----------------------------------------------OK----------------------------------------------------");
+    print(
+        "----------------------------------------------OK----------------------------------------------------");
 
-        print(data.toString());
+    print(data.toString());
     var response = await http.post(apiUrl,
         body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
@@ -232,6 +237,7 @@ class _ManuallyState extends State<Manually> {
                           textColor: Colors.white,
                           onPressed: () {
                             register(context);
+                            Navigator.of(context).pushNamed('/login');
                           }
 
                           // if (_formKey.currentState.validate()) {

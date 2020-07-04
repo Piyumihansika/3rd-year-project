@@ -4,6 +4,7 @@ const router = Router();
 const User = require('../model/userModel');
 const Customer = require('../model/customerModel');
 const Buyer = require('../model/buyerModel')
+const Company = require('../model/companyModel')
 const verifyToken = require('./verifyToken');
 
 const jwt = require('jsonwebtoken');
@@ -42,23 +43,54 @@ router.post('/customerLogin', async(req, res) => {
 });
 
 //EMAIL LOGIN
-router.post('/emailLogin', async(req, res) => {
+router.post('/buyerLogin', async(req, res) => {
     try{
         const buyer = await Buyer.findOne({ email: req.body.email })
-       
-        if(!buyer){
+        const companyBuyer = await Company.findOne({ email: req.body.email })
+
+        if(buyer){
+            console.log("buyer api hit")
+            const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+            console.log(validPassword)
+            if(!validPassword){
+                return res.status(401).send({ auth: false, token: null});
+            }
+            const token = jwt.sign({ id: buyer._id }, config.secret, {
+                expiresIn: '24h'
+            });
+            if(token){
+                res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
+            console.log("buyer api hit 2")
+
+            }
+        }else if(companyBuyer){
+            const validPassword = await companyBuyer.validatePassword(req.body.password, companyBuyer.password);
+            if(!validPassword){
+                return res.status(401).send({ auth: false, token: null});
+            }
+            const token = jwt.sign({ id: companyBuyer._id }, config.secret, {
+                expiresIn: '24h'
+            });
+            if(token){
+                res.status(200).json({ auth: true, id: companyBuyer._id, user: companyBuyer, token});
+            }
+        }else{
             return res.status(404).send("The email doesn't exist")
         }
-        const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
-        if(!validPassword){
-            return res.status(401).send({ auth: false, token: null});
-        }
-        const token = jwt.sign({ id: buyer._id }, config.secret, {
-            expiresIn: '24h'
-        });
-        if(token){
-            res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
-        }
+       
+        // if(!buyer){
+        //     return res.status(404).send("The email doesn't exist")
+        // }
+        // const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+        // if(!validPassword){
+        //     return res.status(401).send({ auth: false, token: null});
+        // }
+        // const token = jwt.sign({ id: buyer._id }, config.secret, {
+        //     expiresIn: '24h'
+        // });
+        // if(token){
+        //     res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
+        // }
        
     }catch(e){
         console.log(e);

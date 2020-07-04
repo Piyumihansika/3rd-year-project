@@ -50,7 +50,7 @@ router.post('/addCustomer', async(req, res) => {
 
 //UPDATE CUSTOMER DETAILS
 router.put("/updateCustomer/:id", async (req, res) => {
-   
+    
     const customer = await Customer.findByIdAndUpdate({_id: req.params.id}, req.body)
     console.log("update api hit")
    if(customer){

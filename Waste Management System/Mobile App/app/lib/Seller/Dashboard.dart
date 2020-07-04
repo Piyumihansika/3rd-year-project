@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 final String logoutUrl =
     "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
 
-final String viewProfileUrl =
-    "http://192.168.8.100:3000/customer/viewCustomer/${ResponseData.userId}";
+// final String viewProfileUrl =
+// "http://192.168.8.100:3000/customer/viewCustomer/${ResponseData.userId}";
 
 String newId = ResponseData.userId;
 // String userFname = ResponseData.firstName;
