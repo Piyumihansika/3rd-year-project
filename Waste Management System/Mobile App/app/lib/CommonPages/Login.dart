@@ -9,7 +9,7 @@ import 'package:email_validator/email_validator.dart';
 
 
 
-final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
+final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
 
 class Login extends StatefulWidget {
   @override
@@ -237,8 +237,6 @@ class _LoginFormState extends State<LoginForm> {
                 onPressed: () {
 
 
-                  //This comments added by piyumi
-                  //Here what about  login(context) Without this navigator code line
 
 
                   Navigator.of(context).pushNamed('/register');

@@ -99,17 +99,12 @@ body: Container(
     crossAxisCount:2,
     children: <Widget>[
 
-    
-
-MyMenu1(title: 'Home',icon: Icons.home,warna: Colors.green,),
 MyMenu2(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,),
-MyMenu3(title: 'Bidding Details',icon: Icons.people,warna: Colors.blue,),
-//MyMenu4(title: 'Orders',icon: Icons.photo,warna: Colors.blue,),
-MyMenu4(title: 'Notifications',icon: Icons.add_alert,warna: Colors.red,),
-MyMenu5(title: 'Setting',icon: Icons.tag_faces,warna: Colors.pink,),
+MyMenu3(title: 'Bidding Details',icon: Icons.people,warna: Colors.green,),
+MyMenu4(title: 'Notifications',icon: Icons.add_alert,warna: Colors.blue,),
+MyMenu5(title: 'Setting',icon: Icons.tag_faces,warna: Colors.red,),
 
-
-    ],
+ ],
     
     )
 ),
@@ -123,60 +118,7 @@ MyMenu5(title: 'Setting',icon: Icons.tag_faces,warna: Colors.pink,),
   }
 }
 
-class MyMenu1 extends StatelessWidget {
-  MyMenu1({this.title,this.icon,this.warna});
 
-  final String title;
-  final IconData icon;
-  final MaterialColor warna;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return   Card(
-     margin: EdgeInsets.all(8.0),   
-     child: InkWell(
-onTap: (){
- // Navigator.of(context).pushNamed('/login');
-},
-splashColor:Colors.green[100],
-child: Center(
-child:Column(
-
-mainAxisSize:MainAxisSize.min ,
-
-  children: <Widget>[
-
-RawMaterialButton(
-  onPressed: () {
-    Navigator.of(context).pushNamed('/login');
-  },
-  elevation: 2.0,
-  fillColor: warna,
-  child: Icon(
-    icon,
-    size: 35.0,
-    color: Colors.white,
-  ),
-  padding: EdgeInsets.all(15.0),
-  shape: CircleBorder(),
-),
-Text(title, style:new TextStyle(fontSize:17.0))
-
-  ],
-),
-
-),
-     ),
-
-     
-      );
-
-    
-
-
-  }
-}
 
 
 //second one
