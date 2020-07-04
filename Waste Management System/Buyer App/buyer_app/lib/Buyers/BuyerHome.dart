@@ -96,12 +96,19 @@ class _State extends State<BuyerHome> {
               onTap: () {
                 Navigator.of(context).pushNamed('/');
               },
+            ),
+             ListTile(
+              leading: Icon(Icons.details),
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/aboutus');
+              },
             ), //ListTitle
             ListTile(
-              leading: Icon(Icons.history),
-              title: Text('Histry'),
+              leading: Icon(Icons.message),
+              title: Text('Contact Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/contactus');
               },
             ),
             ListTile(
