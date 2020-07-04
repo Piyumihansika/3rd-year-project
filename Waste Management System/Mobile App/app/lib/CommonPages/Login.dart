@@ -7,7 +7,7 @@ import 'package:app/utils/ResponseData.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
+final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
 String userId,
     firstName,
     lastName,
@@ -34,19 +34,24 @@ class _State extends State<Login> {
         backgroundColor: Colors.green,
         children: [
           SpeedDialChild(
-            child: Icon(Icons.phone_in_talk),
-            label: "First",
+            child: Icon(Icons.book),
+            label: "User Guide",
             onTap: () {
               Navigator.of(context).pushNamed('/second');
             },
           ),
           SpeedDialChild(
-            child: Icon(Icons.home),
+            child: Icon(Icons.call),
+             label: "Contact Us",
+             
             backgroundColor: Colors.yellow,
+            onTap: () {
+              Navigator.of(context).pushNamed('/second');
+            },
           ),
           SpeedDialChild(
-            child: Icon(Icons.phone_in_talk),
-            label: "Career",
+            child: Icon(Icons.person),
+            label: "About Us",
             onTap: () {
               Navigator.of(context).pushNamed('/logemp');
             },
@@ -97,6 +102,7 @@ class _LoginFormState extends State<LoginForm> {
         Navigator.of(context).pushNamed('/login');
       } else {
         print(
+          
             "----------------------------------------------Login----------------------------------------------------");
         ResponseData.userId = id;
         ResponseData.firstName = resfirstName;
