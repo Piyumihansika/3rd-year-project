@@ -33,39 +33,43 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreen[200],
+     
       appBar: AppBar(
+        leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
+  ), 
         elevation: 4.0,
         title: Text(
-          'Settings',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+          'SETTING',
+      style: TextStyle(color: Colors.black),
+          
         ),
-        backgroundColor: Colors.lightGreen[200],
+        backgroundColor: Colors.green,
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black),
       ),
+      backgroundColor: Colors.green[100],   
       body: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 10.0),
+              
               Text(
                 "Account",
-                style: TextStyle(fontSize: 20.0, color: Colors.black),
+                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
+                
               ),
-              // Card(
-              //   margin: const EdgeInsets.all(8.0),
-              //   child:ListTile(
-              //     title: Text("piyumi"),
-              //    // leading: CircleAvatar(),
-              //   ) ,),
-
+              
+ 
               //1st card
+              
               Card(
+                
+                color: Colors.green[100],
                 elevation: 8.0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
@@ -107,7 +111,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     ListTile(
                       leading: Icon(Icons.exit_to_app, color: Colors.green),
-                      title: Text("Deactivate Account"),
+                      title: Text("Delete My Account"),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
                         createAlertDialog(context);
@@ -118,9 +122,12 @@ class _SettingPageState extends State<SettingPage> {
               ),
 
               const SizedBox(height: 10.0),
+              
               Text(
+                
                 "Notification",
-                style: TextStyle(fontSize: 20.0, color: Colors.black),
+                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
+                
               ),
 
               SwitchListTile(
@@ -128,7 +135,7 @@ class _SettingPageState extends State<SettingPage> {
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: true,
-                title: Text("Received Notification"),
+                title: Text("Receive Notification"),
                 onChanged: (val) {},
               ),
 
@@ -137,7 +144,7 @@ class _SettingPageState extends State<SettingPage> {
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: false,
-                title: Text("Received Offer Notification"),
+                title: Text("Receive Offer Notification"),
                 onChanged: (null),
               )
             ],

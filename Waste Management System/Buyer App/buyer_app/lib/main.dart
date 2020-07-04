@@ -5,9 +5,9 @@ import 'Buyers/ForgotPassword.dart';
 import 'Buyers/BuyerHome.dart';
 import 'Buyers/ContactUs.dart';
 import 'Buyers/AboutUs.dart';
-import 'Buyers/Profile.dart';
+import 'settings/Profile.dart';
 import 'Buyers/History.dart';
-import 'Buyers/Category.dart';
+import 'Categories/Category.dart';
 import 'Buyers/UserType.dart';
 
 import 'Buyers/SignUpHousehold.dart';
@@ -19,6 +19,8 @@ import 'Buyers/SignUpCompany.dart';
 import 'CompanyLocation/GetLocationCompany.dart';
 import 'CompanyLocation/ManuallyCompany.dart';
 import 'CompanyLocation/TrackingCompany.dart';
+
+import 'settings/Settings.dart';
 
 //import 'Buyers/Terms.dart';
 
@@ -63,6 +65,9 @@ class MyApp extends StatelessWidget {
         '/getlocationcompany':(context)=>GetLocationCompany(),
         '/signupcompany':(context)=>SignUpCompany(),
         // '/terms':(context)=>Terms(),
+
+        //settings
+        '/settings':(context)=>Settings(),
 
 
 

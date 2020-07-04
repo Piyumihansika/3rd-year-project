@@ -116,8 +116,9 @@ class MyCustomFormState extends State<MyCustomForm> {
     if (imageFile == null) {
       return CircleAvatar(
         radius: 80,
-        backgroundImage: NetworkImage(
-            "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+    backgroundImage: AssetImage('assets/images/icon.jpg'),
+        // backgroundImage: NetworkImage(
+        //     "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
       );
     } else {
       return Image.file(imageFile, width: 150, height: 150);
@@ -179,6 +180,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

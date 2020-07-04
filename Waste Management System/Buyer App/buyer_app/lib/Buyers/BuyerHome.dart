@@ -5,11 +5,9 @@ import 'package:buyerapp/utils/ResponseData.dart';
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:http/http.dart' as http;
 
+var value, newAuth;
 final String logoutUrl =
     "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
-
-var value;
-String newAuth = ResponseData.auth;
 
 class BuyerHome extends StatefulWidget {
   @override
@@ -46,13 +44,47 @@ class _State extends State<BuyerHome> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            // DrawerHeader(
-            //   child: Text(
-            //     'Buyer App',
-            //     style: TextStyle(fontSize: 20, color: Colors.white),
-            //   ),
-            // ),
             UserAccountsDrawerHeader(
+              // DrawerHeader(
+              // child: Column(
+              //   children: <Widget>[
+              //     //add logo
+              //     Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: <Widget>[
+              //         SizedBox(height: 0.0),
+              //         Row(
+              //           children: <Widget>[
+              //             SizedBox(width: 14.0),
+              //             Container(
+              //               alignment: Alignment.topLeft,
+              //               height: 45.0,
+              //               width: 50.0,
+              //               decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(30),
+              //                   border: Border.all(
+              //                       color: Colors.white,
+              //                       style: BorderStyle.solid,
+              //                       width: 2.0),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/images/logo.jpg'),
+              //                   )),
+              //             )
+              //           ],
+              //         ),
+              //         Row(
+              //           children: <Widget>[
+              //             SizedBox(height: 60.0),
+              //             Text(
+              //               'Buyer App',
+              //               style: TextStyle(fontSize: 20, color: Colors.white),
+              //             ),
+              //           ],
+              //         )
+              //       ],
+              //     ),
+              //   ],
+              // ),
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
@@ -114,7 +146,7 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.category),
               title: Text('Categories'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/category');
               },
             ), //ListTitle
             ListTile(
@@ -127,6 +159,13 @@ class _State extends State<BuyerHome> {
             ListTile(
               leading: Icon(Icons.history),
               title: Text('Histry'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Setting'),
               onTap: () {
                 Navigator.of(context).pushNamed('/');
               },
@@ -161,13 +200,13 @@ class _BuyerHomeState extends State<Home> {
           children: <Widget>[
             Stack(children: <Widget>[
               Container(
-                height: 200.0,
+                height: 150.0,
                 width: double.infinity,
-                color: Colors.green,
+                color: Colors.white,
               ),
               Positioned(
-                bottom: 55.0,
-                right: 100.0,
+                bottom: 1.0,
+                right: 90.0,
                 child: Container(
                   height: 350.0,
                   width: 350.0,
@@ -177,7 +216,7 @@ class _BuyerHomeState extends State<Home> {
                 ),
               ),
               Positioned(
-                bottom: 100.0,
+                bottom: 10.0,
                 right: 130.0,
                 child: Container(
                   height: 290.0,
@@ -229,30 +268,30 @@ class _BuyerHomeState extends State<Home> {
                       style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87),
+                          color: Colors.white),
                     ),
                   ),
-                  SizedBox(height: 25.0),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Material(
-                      elevation: 5.0,
-                      borderRadius: BorderRadius.circular(25),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.green,
-                              size: 30.0,
-                            ),
-                            contentPadding:
-                                EdgeInsets.only(left: 20, top: 15, bottom: 10),
-                            hintText: 'Search',
-                            hintStyle: TextStyle(color: Colors.grey)),
-                      ),
-                    ),
-                  )
+                  //SizedBox(height: 25.0),
+                  // Padding(
+                  //   padding: EdgeInsets.only(left: 15.0, right: 15.0),
+                  //   child: Material(
+                  //     elevation: 5.0,
+                  //     borderRadius: BorderRadius.circular(25),
+                  //     child: TextFormField(
+                  //       decoration: InputDecoration(
+                  //           border: InputBorder.none,
+                  //           prefixIcon: Icon(
+                  //             Icons.search,
+                  //             color: Colors.green,
+                  //             size: 30.0,
+                  //           ),
+                  //           contentPadding:
+                  //               EdgeInsets.only(left: 20, top: 15, bottom: 10),
+                  //           hintText: 'Search',
+                  //           hintStyle: TextStyle(color: Colors.grey)),
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ]),
@@ -264,48 +303,93 @@ class _BuyerHomeState extends State<Home> {
                   style: TextStyle(fontSize: 17, color: Colors.green),
                 )),
 
+            // Container(
+            //     alignment: Alignment(-0.1, 1),
+            //     child: new RaisedButton(
+            //       child: const Text('Getting start'),
+            //       color: Colors.green,
+            //       textColor: Colors.white,
+            //       onPressed: () {
+            //         Navigator.of(context).pushNamed('/category');
+            //       },
+            //     )),
+
             Container(
-                alignment: Alignment(-0.1, 1),
-                child: new RaisedButton(
-                  child: const Text('Getting start'),
-                  color: Colors.green,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    alertBox(context);
-                  },
-                )),
+              alignment: Alignment(-0.1, 1),
+              child: Column(
+                children: <Widget>[
+                  //Padding(padding: EdgeInsets.all(0.5)),
+                  new GestureDetector(
+                      child: Container(
+                        width: 350,
+                        height: 450,
+                        decoration: BoxDecoration(
+                          // color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/home.PNG"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: Container(
+                          // height: 20,
+                          // width: 150,
+                          alignment: Alignment(-0.1, 1),
+                          padding: const EdgeInsets.all(90.0),
+
+                          child: new Padding(
+                            padding: EdgeInsets.fromLTRB(0.0, 50.0, 30.0, 0.0),
+                            child: roundedButton(
+                                "START",
+                                EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
+                                const Color(0xFF167F67),
+                                const Color(0xFFFFFFFF)),
+                          ),
+
+                          // child: Text("GETTING START",
+                          //     style: TextStyle(
+                          //         color: Colors.white,
+                          //         fontSize: 20,
+                          //         backgroundColor: Colors.blue,
+                          //         fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/category');
+                      }),
+                  Padding(padding: EdgeInsets.all(10.5)),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-void alertBox(BuildContext context) {
-  var alertDialog = AlertDialog(
-    title: Text("Signup messege"),
-    content: Text("You are registered successfully"),
-    actions: <Widget>[
-      FlatButton(
-        child: Text(
-          "Cancel",
-          style: TextStyle(color: Colors.red),
-        ),
-        onPressed: () {},
+  //rounded button
+  Widget roundedButton(
+      String buttonLabel, EdgeInsets margin, Color bgColor, Color textColor) {
+    var loginBtn = new Container(
+      margin: margin,
+      padding: EdgeInsets.all(15.0),
+      alignment: FractionalOffset.center,
+      decoration: new BoxDecoration(
+        color: bgColor,
+        borderRadius: new BorderRadius.all(const Radius.circular(100.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: const Color(0xFF696969),
+            offset: Offset(1.0, 6.0),
+            blurRadius: 0.001,
+          ),
+        ],
       ),
-      FlatButton(
-        child: Text(
-          "Continue",
-          style: TextStyle(color: Colors.green),
-        ),
-        onPressed: () {},
+      child: Text(
+        buttonLabel,
+        style: new TextStyle(
+            color: textColor, fontSize: 20.0, fontWeight: FontWeight.bold),
       ),
-    ],
-  );
-
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alertDialog;
-      });
+    );
+    return loginBtn;
+  }
 }
