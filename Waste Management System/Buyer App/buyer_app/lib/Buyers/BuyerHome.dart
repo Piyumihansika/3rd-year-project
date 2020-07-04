@@ -257,19 +257,29 @@ class _BuyerHomeState extends State<Home> {
                           image: DecorationImage(
                             image: AssetImage("assets/images/home.PNG"),
                             fit: BoxFit.cover,
-                            //  colorFilter: new ColorFilter.mode(
-                            //  Colors.black.withAlpha(0xBF), BlendMode.darken),
                           ),
                         ),
                         child: Container(
-                          //alignment: Alignment(-0.1, 1),
-                          padding: const EdgeInsets.all(98.0),
-                          child: Text("GETTING START",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  backgroundColor: Colors.green,
-                                  fontWeight: FontWeight.bold)),
+                          // height: 20,
+                          // width: 150,
+                          alignment: Alignment(-0.1, 1),
+                          padding: const EdgeInsets.all(90.0),
+
+                          child: new Padding(
+                            padding: EdgeInsets.fromLTRB(0.0, 50.0, 30.0, 0.0),
+                            child: roundedButton(
+                                "START",
+                                EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
+                                const Color(0xFF167F67),
+                                const Color(0xFFFFFFFF)),
+                          ),
+
+                          // child: Text("GETTING START",
+                          //     style: TextStyle(
+                          //         color: Colors.white,
+                          //         fontSize: 20,
+                          //         backgroundColor: Colors.blue,
+                          //         fontWeight: FontWeight.bold)),
                         ),
                       ),
                       onTap: () {
@@ -283,5 +293,32 @@ class _BuyerHomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  //rounded button
+  Widget roundedButton(
+      String buttonLabel, EdgeInsets margin, Color bgColor, Color textColor) {
+    var loginBtn = new Container(
+      margin: margin,
+      padding: EdgeInsets.all(15.0),
+      alignment: FractionalOffset.center,
+      decoration: new BoxDecoration(
+        color: bgColor,
+        borderRadius: new BorderRadius.all(const Radius.circular(100.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: const Color(0xFF696969),
+            offset: Offset(1.0, 6.0),
+            blurRadius: 0.001,
+          ),
+        ],
+      ),
+      child: Text(
+        buttonLabel,
+        style: new TextStyle(
+            color: textColor, fontSize: 20.0, fontWeight: FontWeight.bold),
+      ),
+    );
+    return loginBtn;
   }
 }
