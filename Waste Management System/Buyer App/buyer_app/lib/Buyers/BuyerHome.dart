@@ -1,7 +1,13 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 //import 'package:email_validator/email_validator.dart';
-
+import 'package:buyerapp/utils/ResponseData.dart';
 //import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
+
+var value, newAuth;
+final String logoutUrl =
+    "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
 
 class BuyerHome extends StatefulWidget {
   @override
@@ -9,6 +15,20 @@ class BuyerHome extends StatefulWidget {
 }
 
 class _State extends State<BuyerHome> {
+  void logout(BuildContext context) async {
+    var response = await http.get(Uri.encodeFull(logoutUrl),
+        headers: {"Accept": "application/json"});
+    if (response.statusCode == 200) {
+      value = json.decode(response.body);
+      newAuth = (value["auth"].toString());
+      print("---------------------------logout-------------------------------");
+      print(newAuth);
+      print(
+          "-----------------------------------------------------------------");
+      Navigator.of(context).pushNamed('/login');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,49 +44,88 @@ class _State extends State<BuyerHome> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                children: <Widget>[
-                  //add logo
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 0.0),
-                      Row(
-                        children: <Widget>[
-                          SizedBox(width: 14.0),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            height: 45.0,
-                            width: 50.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                    color: Colors.white,
-                                    style: BorderStyle.solid,
-                                    width: 2.0),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/logo.jpg'),
-                                )),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          SizedBox(height: 60.0),
-                          Text(
-                            'Buyer App',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
+            UserAccountsDrawerHeader(
+              // DrawerHeader(
+              // child: Column(
+              //   children: <Widget>[
+              //     //add logo
+              //     Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: <Widget>[
+              //         SizedBox(height: 0.0),
+              //         Row(
+              //           children: <Widget>[
+              //             SizedBox(width: 14.0),
+              //             Container(
+              //               alignment: Alignment.topLeft,
+              //               height: 45.0,
+              //               width: 50.0,
+              //               decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(30),
+              //                   border: Border.all(
+              //                       color: Colors.white,
+              //                       style: BorderStyle.solid,
+              //                       width: 2.0),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/images/logo.jpg'),
+              //                   )),
+              //             )
+              //           ],
+              //         ),
+              //         Row(
+              //           children: <Widget>[
+              //             SizedBox(height: 60.0),
+              //             Text(
+              //               'Buyer App',
+              //               style: TextStyle(fontSize: 20, color: Colors.white),
+              //             ),
+              //           ],
+              //         )
+              //       ],
+              //     ),
+              //   ],
+              // ),
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
+              accountName:
+                  new Text(ResponseData.firstName + " " + ResponseData.lastName,
+                      style: new TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
+                      )),
+              accountEmail: new Text(ResponseData.email),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+              ),
+            ),
+
+            //add logo
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 14.0),
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 14.0),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      height: 45.0,
+                      width: 50.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                              color: Colors.white,
+                              style: BorderStyle.solid,
+                              width: 2.0),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/logo.jpg'),
+                          )),
+                    )
+                  ],
+                ),
+              ],
             ),
 
             ListTile(
@@ -122,6 +181,7 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.account_circle),
               title: Text('Logout'),
               onTap: () {
+                logout(context);
                 Navigator.of(context).pushNamed('/login');
               },
             ),
@@ -171,6 +231,17 @@ class _BuyerHomeState extends State<Home> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
                       color: Colors.blueAccent),
+                ),
+              ),
+              Positioned(
+                bottom: 100.0,
+                right: 150.0,
+                child: Container(
+                  height: 330.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.yellow),
                 ),
               ),
               Column(

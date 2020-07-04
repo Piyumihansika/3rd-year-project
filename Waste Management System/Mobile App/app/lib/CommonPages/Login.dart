@@ -170,7 +170,6 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
           ),
-
           TextFormField(
             controller: password,
             decoration: const InputDecoration(
@@ -195,7 +194,6 @@ class _LoginFormState extends State<LoginForm> {
             },
             obscureText: true,
           ),
-
           Container(
               alignment: Alignment(-0.1, 1),
               child: new RaisedButton(
@@ -218,7 +216,6 @@ class _LoginFormState extends State<LoginForm> {
             textColor: Colors.green,
             child: Text('Forgot Password'),
           ),
-
           Container(
               child: Row(
             children: <Widget>[
@@ -238,20 +235,8 @@ class _LoginFormState extends State<LoginForm> {
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ))
-//
-
-//
         ],
       ),
     );
-
-//
-
-//
-
-    //
   }
-
-  //
-
 }
