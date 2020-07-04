@@ -232,6 +232,7 @@ class _ManuallyState extends State<Manually> {
                           textColor: Colors.white,
                           onPressed: () {
                             register(context);
+                            Navigator.of(context).pushNamed('/buyerhome');
                           }
 
                           // if (_formKey.currentState.validate()) {

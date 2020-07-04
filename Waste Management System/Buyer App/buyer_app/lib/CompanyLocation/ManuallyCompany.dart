@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 // import 'package:buyerapp/Models/registermodel.dart';
 import 'dart:convert';
 
-String apiUrl = " ";
+String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
 
 class ManuallyCompany extends StatefulWidget {
 
@@ -46,7 +46,8 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
     print("----------------------------------------------OK----------------------------------------------------");
 
         print(data.toString());
-    var response = await http.post(apiUrl,
+    var response = await 
+    http.post(apiUrl,
         body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
       print(response.statusCode);
@@ -57,68 +58,6 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
     }
   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Mannual Location'),
-//         backgroundColor: Colors.green,),
-//       body: ManuallyCompanyForm(),
-//     );
-//   }
-// }
-
-// class ManuallyCompanyForm extends StatefulWidget {
-
-//   final String companyName;
-//   final String contactpersonName;
-//   final String contactpersonNumber;
-//   final String password;
-//   final String confirmpass;
-//   final String email;
-
-//   ManuallyCompanyForm({ this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.confirmpass,this.email});
-
-//   @override
-//   _ManuallyCompanyFormState createState() => _ManuallyCompanyFormState(companyName,contactpersonName,contactpersonNumber,password,confirmpass,email);
-// }
-// // Http request code
-
-//   Future<CompanyModel> createUser(String companyName,String contactpersonName,String contactpersonNumber,String password,String confirmpass,String email,String address1,String address2,String city,String district) async {
-//   final String apiUrl = "Enter  your url here";
-
-//   // this is for take response
-//   final response = await http.post(apiUrl, body: {
-
-//     "companyName": companyName,
-//     "contactpersonName": contactpersonName,
-//     "contactpersonNumber": contactpersonNumber,
-//     "password": password,
-//     "confirmpass": confirmpass,
-//     "email": email,
-//     "address1": address1,
-//     "address2": address2,
-//     "city": city,
-//     "district": district,
-
-//   });
-//   if (response.statusCode == 201) {
-//     final String responseString = response.body;
-//     return companyModelFromJson(responseString);
-//   } else {
-//     return null;
-//   }
-// }
-//   class _ManuallyCompanyFormState extends State<ManuallyCompanyForm> {
-
-//     String companyName;
-//     String contactpersonName;
-//     String contactpersonNumber;
-//     String password;
-//     String confirmpass;
-//     String email;
-
-//     CompanyModel user1;
-//     _ManuallyCompanyFormState(this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.confirmpass,this.email);
 
   final _formKey = GlobalKey<FormState>();
 
