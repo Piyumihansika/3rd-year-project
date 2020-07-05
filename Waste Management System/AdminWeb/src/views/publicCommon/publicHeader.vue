@@ -6,10 +6,12 @@
           Green Wasteland
         </vs-navbar-title>
       </div>
-
       <vs-navbar-item index="0">
-        <a href="#">Home</a>
-      </vs-navbar-item>
+       
+           <a href="Starterkit">Home</a>
+    
+       
+      </vs-navbar-item>  
       <vs-navbar-item index="1">
         <a href="#">News</a>
       </vs-navbar-item>
@@ -19,22 +21,12 @@
         <vs-navbar-item index="3">
         <div>
     <vs-navbar collapse v-model="activeItem" class="nabarx">
-      
-
       <vs-navbar-item index="0">
-        <a href="#">Contact US</a>
+        <a href="#">Contact US</a> 
       </vs-navbar-item>
-      <!-- <vs-navbar-item index="1">
-        <a href="#">Admin login</a>
-      </vs-navbar-item> -->
-    <vs-navbar-item index="1">
-        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="gradient" vs-icon="edit">
-    Admin login</router-link>
-    </vs-navbar-item>
-
-     
-      
-      
+      <vs-navbar-item index="1">
+        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="gradient" vs-icon="edit">Admin login</router-link>
+      </vs-navbar-item>
     </vs-navbar>
   </div>
     </vs-navbar-item>
@@ -48,16 +40,15 @@
 
 <script>
 
-import StarterPage from '../StarterPage.vue'
+// import StarterPage from '../StarterPage.vue'
 export default {
-
     data:()=>({
     activeItem: 0
   }),
 
 
   components: {
-            StarterPage
+            // StarterPage
            
            }
 

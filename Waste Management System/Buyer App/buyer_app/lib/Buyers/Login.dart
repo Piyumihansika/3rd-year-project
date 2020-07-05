@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
 
-// final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
-final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
+final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
+// final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
 
 String newAuth = ResponseData.auth;
 
@@ -168,6 +168,7 @@ class _LoginFormState extends State<LoginForm> {
         ResponseData.address2 = (value["user"]["address2"].toString());
         ResponseData.city = (value["user"]["city"].toString());
         ResponseData.district = (value["user"]["district"].toString());
+
         Navigator.of(context).pushNamed('/buyerhome');
         // Navigator.of(context).pushNamed('/dashboard1');
       }
@@ -314,10 +315,6 @@ class _LoginFormState extends State<LoginForm> {
                     labelStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                  // onChanged: (text) {
-                  //   password = text;
-                  // },
-
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter Password';
@@ -345,9 +342,6 @@ class _LoginFormState extends State<LoginForm> {
                     if (_formKey.currentState.validate()) {
                       //send request
                       login(context);
-                      //Navigator.of(context).pushNamed('/buyerhome');
-
-                      // print(email.text);
 
 //                    Scaffold
 //                        .of(context)

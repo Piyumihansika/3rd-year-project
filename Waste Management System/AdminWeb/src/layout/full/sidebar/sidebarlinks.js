@@ -1,10 +1,5 @@
 	export default [
 		{
-			url:"/starterkit",
-			name:"Starterkit",
-			icon:"favorite_border"
-		},
-		{
 			url: "/settings",
 			name: "Settings",
 			icon:"tag_faces"

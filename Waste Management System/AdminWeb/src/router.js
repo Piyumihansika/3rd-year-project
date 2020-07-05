@@ -9,6 +9,12 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
+        // {
+        //     path: '/Starterkit',
+        //     name: 'Starterkit',
+        //     index: 1,
+        //     component: () => import('./views/StarterPage.vue')
+        // },
     {
     // ======================
     // Full Layout
@@ -22,19 +28,10 @@ export default new Router({
 
 
             children: [
-                {
-                    path: '/MainContainer/starterkit',
-                    redirect: '/MainContainer/starterkit'
-                },
-
                 // {
-                //     path:'/',
-                //     name:'Homepage',
-                //     index: 30,
-                //     component: () => import('./views/Homepage.vue')
-        
+                //     path: '/starterkit',
+                //     redirect: '/starterkit'
                 // },
-
                 {
                     path: '/MainContainer/Starterkit',
                     name: 'Starterkit',
@@ -206,7 +203,7 @@ export default new Router({
     // Redirect to  Homepage, if no match found
         {
             path: '*',
-            redirect: '/Homepage'
+            redirect: '/Starterkit'
         }
 
 
