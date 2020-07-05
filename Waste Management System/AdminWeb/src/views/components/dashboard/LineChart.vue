@@ -39,7 +39,7 @@ export default {
         ],
         datasets: [
           {
-            label: "One Plus",
+            label: "Buyers",
             borderColor: "#2962ff",
             pointBackgroundColor: "white",
             borderWidth: 2,
@@ -47,7 +47,7 @@ export default {
             data: [0, 5, 6, 8, 21, 9, 8]
           },
           {
-            label: "Iphone",
+            label: "Sellers",
             borderColor: "#05CBE1",
             pointBackgroundColor: "white",
             borderWidth: 2,

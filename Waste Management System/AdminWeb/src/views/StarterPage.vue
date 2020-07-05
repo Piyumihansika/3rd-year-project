@@ -19,7 +19,7 @@
       <vs-card class="cardx">
         <div slot="header">
           <h4>
-            Sales Income 
+           Commissions 
           </h4>
         </div>
         <div>
@@ -31,31 +31,41 @@
     <vs-col vs-lg="12">
       <vs-card>
         <div slot="header">
-          <h4>Top Selling Products</h4>
+          <h4>Top Rating Buyers</h4>
         </div>
-        <TopProducts/>
+        <TopBuyers/>
+      </vs-card>
+    </vs-col>
+     <vs-col vs-lg="12">
+      <vs-card>
+        <div slot="header">
+          <h4>Top Rating Customers</h4>
+        </div>
+        <TopCustomers/>
       </vs-card>
     </vs-col>
   </vs-row>
-  <Blogs/>
+  <!-- <Blogs/> -->
 </div>  
 </template>
 
 <script>
 import SalesSummary from './components/dashboard/SalesSummary.vue';
 import SalesIncome from './components/dashboard/SalesIncome.vue';
-import TopProducts from './components/dashboard/TopProducts.vue';
+import TopBuyers from './components/dashboard/TopBuyers.vue';
+import TopCustomers from './components/dashboard/TopCustomers.vue';
 import States from './components/dashboard/States.vue';
-import Blogs from './components/dashboard/Blogs.vue';
+// import Blogs from './components/dashboard/Blogs.vue';
 
 export default {
 	name: 'StarterPage',
   components: {
     SalesSummary,
     SalesIncome,
-    TopProducts,
+    TopBuyers,
+    TopCustomers,
     States,
-    Blogs
+    
   }
 }
 </script>

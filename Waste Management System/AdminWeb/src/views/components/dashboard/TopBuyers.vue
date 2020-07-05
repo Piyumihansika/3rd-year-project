@@ -3,13 +3,11 @@
 <table class="table v-middle border">
     <thead>
         <tr class="">
-            <th class="border-top-0">Products</th>
-            <th class="border-top-0">License</th>
-            <th class="border-top-0">Support Agent</th>
-            <th class="border-top-0">Technology</th>
-            <th class="border-top-0">Tickets</th>
-            <th class="border-top-0">Sales</th>
-            <th class="border-top-0">Earnings</th>
+            <th class="border-top-0">Buyer</th>
+            <th class="border-top-0">Winning Item</th>
+            <th class="border-top-0">Max Bid</th>
+            <th class="border-top-0">Customer</th>
+            <th class="border-top-0">Rating</th>
         </tr>
     </thead>
     <tbody>
@@ -28,10 +26,7 @@
                 <label class="label label-danger">Angular</label>
             </td>
             <td>46</td>
-            <td>356</td>
-            <td>
-                <h5 class="m-b-0">$2850.06</h5>
-            </td>
+           
         </tr>
         <tr>
             <td>
@@ -48,10 +43,7 @@
                 <label class="label label-info">Vue Js</label>
             </td>
             <td>46</td>
-            <td>356</td>
-            <td>
-                <h5 class="m-b-0">$2850.06</h5>
-            </td>
+           
         </tr>
         <tr>
             <td>
@@ -68,10 +60,7 @@
                 <label class="label label-success">Bootstrap</label>
             </td>
             <td>46</td>
-            <td>356</td>
-            <td>
-                <h5 class="m-b-0">$2850.06</h5>
-            </td>
+           
         </tr>
         <tr>
             <td>
@@ -88,10 +77,7 @@
                 <label class="label label-purple">React</label>
             </td>
             <td>46</td>
-            <td>356</td>
-            <td>
-                <h5 class="m-b-0">$2850.06</h5>
-            </td>
+         
         </tr>
     </tbody>
 </table>
@@ -99,6 +85,6 @@
 </template>
 <script>
 export default {
-    name: "TopProducts"
+    name: "TopBuyers"
 }
 </script>
