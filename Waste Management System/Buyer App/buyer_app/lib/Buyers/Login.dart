@@ -373,7 +373,7 @@ class _LoginFormState extends State<LoginForm> {
                     if (_formKey.currentState.validate()) {
                       //send request
                       login(context);
-                      Navigator.of(context).pushNamed('/buyerhome');
+                      //Navigator.of(context).pushNamed('/buyerhome');
 
                       // print(email.text);
 

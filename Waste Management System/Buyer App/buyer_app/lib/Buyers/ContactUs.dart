@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-//import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+String apiUrl = "http://10.0.2.2:3000/ADD URL";
 
 class ContactUs extends StatefulWidget {
   @override
@@ -26,11 +29,37 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactUsState extends State<Contact> {
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController messegeController = TextEditingController();
+ 
+  TextEditingController email = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController messege = TextEditingController();
 
+  void contactUs(BuildContext context) async {
+    print(messege.text);
+
+    final Map<String, dynamic> data = {
+      "email": email.text,
+      "name": name.text,
+      "messege": messege.text,
+      
+    };
+    print(messege.text);
+    print(
+        "----------------------------------------------OK----------------------------------------------------");
+
+    print(data.toString());
+    var response = await http.post(apiUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      print(response.body);
+      Navigator.of(context).pushNamed('/buyerhome');
+    } else {
+      print(response.statusCode);
+      print("error occured");
+    }
+  }
+ final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -108,7 +137,7 @@ class _ContactUsState extends State<Contact> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
-                controller: nameController,
+                controller: name,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person, color: Colors.black),
@@ -128,7 +157,7 @@ class _ContactUsState extends State<Contact> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
-                controller: emailController,
+                controller: email,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(
@@ -156,7 +185,7 @@ class _ContactUsState extends State<Contact> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
-                controller: messegeController,
+                controller: messege,
                 scrollPadding: EdgeInsets.all(10),
                 maxLines: 5,
                 decoration: const InputDecoration(
@@ -187,7 +216,8 @@ class _ContactUsState extends State<Contact> {
                       textColor: Colors.white,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          Navigator.of(context).pushNamed('/');
+                           contactUs(context);
+                            successdialog(context);
                         }
                       },
                     ),
@@ -199,4 +229,23 @@ class _ContactUsState extends State<Contact> {
       ),
     );
   }
+
+  successdialog(BuildContext context) {
+   return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Your Messege Send Successfully !',style: TextStyle(color: Colors.green),),
+            actions: <Widget>[
+              MaterialButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/contactus');
+                },
+              )
+            ],
+          );
+        });
+  }
+
 }
