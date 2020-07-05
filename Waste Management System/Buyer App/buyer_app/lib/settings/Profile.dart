@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 final String editUrl =
     //"https://192.168.8.188:3000/buyer/updateBuyer/${ResponseData.userId}";
-     "https://10.0.2.2:3000/buyer/updateBuyer/${ResponseData.userId}";
+    "https://10.0.2.2:3000/buyer/updateBuyer/${ResponseData.userId}";
 
 class Profile extends StatelessWidget {
   @override
@@ -280,7 +280,8 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "madu",
+                                initialValue: ResponseData.firstName,
+                                //initialValue: "${usersData[index]["firstname"]}",
                                 decoration: const InputDecoration(
                                   labelText: 'First Name',
                                   labelStyle: TextStyle(
@@ -312,7 +313,8 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "chathu",
+                                initialValue: ResponseData.lastName,
+                                //initialValue: "${usersData[index]["lastname"]}",
                                 decoration: const InputDecoration(
                                   labelText: 'Last Name',
                                   labelStyle: TextStyle(
@@ -344,7 +346,8 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "chathu@gmail.com",
+                                initialValue: ResponseData.email,
+                                //initialValue: "${usersData[index]["email"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Email',
                                     labelStyle: TextStyle(
@@ -374,7 +377,12 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "jayabima matara dickwella",
+                                initialValue: ResponseData.address1 +
+                                    " , " +
+                                    ResponseData.address2 +
+                                    " , " +
+                                    ResponseData.city,
+                                //initialValue: "${usersData[index]["address1"]} ${usersData[index]["address2"]} ${usersData[index]["city"]} ${usersData[index]["district"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Address',
                                     labelStyle: TextStyle(
@@ -404,7 +412,8 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "0702166263",
+                                initialValue: ResponseData.contactNumber,
+                                //initialValue: "${usersData[index]["contactNumber"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Mobile Number',
                                     labelStyle: TextStyle(

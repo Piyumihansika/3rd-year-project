@@ -4,9 +4,8 @@ import 'package:app/utils/ResponseData.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 final String logoutUrl =
-    "http://10.0.2.2:3000/auth/logout/${ResponseData.userId}";
+    "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
 
 final String viewProfileUrl =
     "http://10.0.2.2:3000/customer/viewCustomer/${ResponseData.userId}";
@@ -17,14 +16,12 @@ String newId = ResponseData.userId;
 // String userEmail = ResponseData.email;
 var value;
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   //LOGOUT FUNCTION
   void logout(BuildContext context) async {
     var response = await http.get(Uri.encodeFull(logoutUrl),
@@ -34,33 +31,28 @@ class _HomePageState extends State<HomePage> {
       ResponseData.userId = (value["id"].toString());
       print(newId);
       Navigator.of(context).pushNamed('/login');
+      print(newId);
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
- appBar: AppBar(
-        title: Text("WELCOME",
-      style: TextStyle(color: Colors.black),),
+      appBar: AppBar(
+        title: Text(
+          "WELCOME",
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.green,
-      
       ),
       backgroundColor: Colors.green[100],
-      
       drawer: new Drawer(
-        
         child: ListView(
-          
           children: <Widget>[
-            
             UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
-        color: Colors.green,
-    ),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
               accountName:
                   new Text(ResponseData.firstName + " " + ResponseData.lastName,
                       style: new TextStyle(
@@ -69,20 +61,19 @@ class _HomePageState extends State<HomePage> {
                       )),
               accountEmail: new Text(ResponseData.email),
               currentAccountPicture: CircleAvatar(
-                 backgroundImage: AssetImage('assets/images/icon.jpg'),
+                backgroundImage: AssetImage('assets/images/icon.jpg'),
                 // backgroundImage: NetworkImage(
                 //     "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
               ),
             ),
 
-
             ListTile(
               leading: Icon(Icons.credit_card),
               title: Text('Price Chart'),
               onTap: () {
-                 Navigator.of(context).pushNamed('/price');
+                Navigator.of(context).pushNamed('/price');
               },
-            ), 
+            ),
             ListTile(
               leading: Icon(Icons.monetization_on),
               title: Text('Sell Item'),
@@ -98,8 +89,6 @@ class _HomePageState extends State<HomePage> {
               },
             ), //ListTitle
 
-
-
             ListTile(
               leading: Icon(Icons.notifications),
               title: Text('Notifications'),
@@ -109,9 +98,7 @@ class _HomePageState extends State<HomePage> {
             ), //ListTitle
             ListTile(
               leading: Icon(Icons.settings),
-              
               title: Text('Setting'),
-              
               onTap: () {
                 Navigator.of(context).pushNamed('/setting');
               },
@@ -120,42 +107,39 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.account_circle),
               title: Text('Logout'),
               onTap: () {
+                print(
+                    "-------------------------logout-----------------------------");
                 logout(context);
               },
             ),
-
-
-    ],
-  ),
-) ,
-
-
-
-body: Container(
-  padding:EdgeInsets.all(5.0) ,
-  child:GridView.count(
-    crossAxisCount:2,
-    children: <Widget>[
-      
-     
-MyMenu1(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,),
-MyMenu2(title: 'Bidding Details',icon: Icons.people,warna: Colors.brown,),
-MyMenu3(title: 'Price Chart',icon: Icons.credit_card,warna: Colors.blue,),
-
- ],
-    
-    )
-
-    
-),
-
-
-
-
+          ],
+        ),
+      ),
+      body: Container(
+          padding: EdgeInsets.all(5.0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            children: <Widget>[
+              MyMenu1(
+                title: 'Sell Item',
+                icon: Icons.local_grocery_store,
+                warna: Colors.yellow,
+              ),
+              MyMenu2(
+                title: 'Bidding Details',
+                icon: Icons.people,
+                warna: Colors.brown,
+              ),
+              MyMenu3(
+                title: 'Price Chart',
+                icon: Icons.credit_card,
+                warna: Colors.blue,
+              ),
+            ],
+          )),
     );
   }
 }
-
 
 class MyMenu1 extends StatelessWidget {
   MyMenu1({this.title, this.icon, this.warna});
@@ -170,9 +154,7 @@ class MyMenu1 extends StatelessWidget {
       color: Colors.yellow[100],
       margin: EdgeInsets.all(5.0),
       child: InkWell(
-        onTap: () {
-          
-        },
+        onTap: () {},
         splashColor: Colors.green[100],
         child: Center(
           child: Column(
@@ -201,7 +183,7 @@ class MyMenu1 extends StatelessWidget {
   }
 }
 
-// 
+//
 
 class MyMenu2 extends StatelessWidget {
   MyMenu2({this.title, this.icon, this.warna});
@@ -213,12 +195,10 @@ class MyMenu2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-       color: Colors.brown[200],
+      color: Colors.brown[200],
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          
-        },
+        onTap: () {},
         splashColor: Colors.green[100],
         child: Center(
           child: Column(
@@ -247,9 +227,7 @@ class MyMenu2 extends StatelessWidget {
   }
 }
 
-
-// 
-
+//
 
 class MyMenu3 extends StatelessWidget {
   MyMenu3({this.title, this.icon, this.warna});
@@ -261,12 +239,10 @@ class MyMenu3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-       color: Colors.blue[100],
+      color: Colors.blue[100],
       margin: EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          
-        },
+        onTap: () {},
         splashColor: Colors.green[100],
         child: Center(
           child: Column(

@@ -29,17 +29,16 @@ class Login extends StatefulWidget {
 }
 
 class _State extends State<Login> {
-  void loadHome(BuildContext context) async {
-    print("-------------------------------auth--------------------------");
-    print(newAuth);
-    print("--------------------------------------------------------------");
-    // ignore: unrelated_type_equality_checks
-    if (newAuth == false) {
-      Navigator.of(context).pushNamed('/login');
-    } else {
-      Navigator.of(context).pushNamed('/buyerhome');
-    }
-  }
+  // void loadHome(BuildContext context) async {
+  //   print("-------------------------------auth--------------------------");
+  //   print(newAuth);
+  //   print("--------------------------------------------------------------");
+  //   if (newAuth == false) {
+  //     Navigator.of(context).pushNamed('/login');
+  //   } else {
+  //     Navigator.of(context).pushNamed('/buyerhome');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -262,33 +261,6 @@ class _LoginFormState extends State<LoginForm> {
                           color: Colors.black87),
                     ),
                   ),
-
-                  //add 'hi welcome' text
-
-                  // add search bar
-                  // SizedBox(height: 25.0),
-                  // Padding(
-                  //   padding: EdgeInsets.only(left: 15.0,right: 15.0),
-                  //   child: Material(
-                  //     elevation: 5.0,
-                  //     borderRadius: BorderRadius.circular(25),
-                  //     child: TextFormField(
-                  //       decoration: InputDecoration(
-                  //           border: InputBorder.none,
-                  //           prefixIcon: Icon(
-                  //             Icons.search,
-                  //             color: Colors.green,
-                  //             size: 30.0,
-                  //           ),
-                  //           contentPadding:
-                  //           EdgeInsets.only(left: 20,top: 15,bottom: 10),
-                  //           hintText: 'Search',hintStyle: TextStyle(
-                  //           color: Colors.grey
-                  //       )
-                  //       ),
-                  //     ),
-                  //   ),
-                  // )
                 ],
               ),
             ]),

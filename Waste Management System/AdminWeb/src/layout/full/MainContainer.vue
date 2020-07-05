@@ -1,14 +1,14 @@
 <template>
 	<div class="main-wrapper">
 		<!---Navigation-->
-		<Navbar :topbarColor="topbarColor" :logo="require('@/assets/images/logo/logo-light-icon.png')" :title="logotitle" />
+		<Navbar :topbarColor="topbarColor" :logo="require('@/assets/images/logo/one.png')" :title="logotitle" />
 		<!---Sidebar-->
 		<SideBar parent=".main-wrapper" :sidebarLinks="sidebarLinks"/>
 		<!---Page Container-->
 		<div class="main-container-fluid">
 		
 		<router-view></router-view>
-		
+
 		
 		</div>	
 	</div>
@@ -29,7 +29,7 @@ SideBar
 },
 data:() => ({
 	topbarColor: "#2962ff",
-	logotitle: "Green Wasteland",
+	logotitle: "     Green Wasteland",
 	sidebarLinks: sidebarLinks,
 }),
 methods: {
