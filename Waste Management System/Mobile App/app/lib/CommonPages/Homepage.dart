@@ -6,7 +6,7 @@ import 'dart:convert';
 
 
 final String logoutUrl =
-    "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
+    "http://10.0.2.2:3000/auth/logout/${ResponseData.userId}";
 
 final String viewProfileUrl =
     "http://192.168.8.100:3000/customer/viewCustomer/${ResponseData.userId}";
@@ -36,6 +36,9 @@ class _HomePageState extends State<HomePage> {
       Navigator.of(context).pushNamed('/login');
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
