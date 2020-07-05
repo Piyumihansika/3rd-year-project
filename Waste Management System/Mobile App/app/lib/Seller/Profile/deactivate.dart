@@ -75,7 +75,7 @@ key: _formKey,
         children: <Widget>[  
           Padding(padding: EdgeInsets.all(20.5)),
 
-Text("When you press deactivate button your account is no longer available",style:TextStyle(
+Text("When you press delete account button your account is no longer available",style:TextStyle(
 
   fontSize:19.0,
   color: Colors.red,

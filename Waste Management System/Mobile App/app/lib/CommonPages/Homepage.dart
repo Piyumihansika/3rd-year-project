@@ -9,7 +9,7 @@ final String logoutUrl =
     "http://10.0.2.2:3000/auth/logout/${ResponseData.userId}";
 
 final String viewProfileUrl =
-    "http://192.168.8.100:3000/customer/viewCustomer/${ResponseData.userId}";
+    "http://10.0.2.2:3000/customer/viewCustomer/${ResponseData.userId}";
 
 String newId = ResponseData.userId;
 // String userFname = ResponseData.firstName;
@@ -69,8 +69,9 @@ class _HomePageState extends State<HomePage> {
                       )),
               accountEmail: new Text(ResponseData.email),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+                 backgroundImage: AssetImage('assets/images/icon.jpg'),
+                // backgroundImage: NetworkImage(
+                //     "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
               ),
             ),
 
