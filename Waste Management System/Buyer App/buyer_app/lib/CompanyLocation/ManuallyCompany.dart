@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 // import 'package:buyerapp/Models/registermodel.dart';
 import 'dart:convert';
 
-String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
+// String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
+String apiUrl = "http://10.0.2.2:3000/buyer/addBuyer";
 
 class ManuallyCompany extends StatefulWidget {
 
