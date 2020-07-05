@@ -25,7 +25,7 @@
         <a href="#">Contact US</a> 
       </vs-navbar-item>
       <vs-navbar-item index="1">
-        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="gradient" vs-icon="edit">Admin login</router-link>
+        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="flat" vs-icon="edit">Admin login</router-link>
       </vs-navbar-item>
     </vs-navbar>
   </div>
