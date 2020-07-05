@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 // import 'package:buyerapp/Models/registermodel.dart';
 import 'dart:convert';
 
-String apiUrl = "http://192.168.8.100:3000/buyer/addBuyer";
+// String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
+String apiUrl = "http://10.0.2.2:3000/buyer/addBuyer";
 
 class Manually extends StatefulWidget {
   final String firstName;
@@ -238,6 +239,7 @@ class _ManuallyState extends State<Manually> {
                           textColor: Colors.white,
                           onPressed: () {
                             register(context);
+                            Navigator.of(context).pushNamed('/login');
                           }
 
                           // if (_formKey.currentState.validate()) {
