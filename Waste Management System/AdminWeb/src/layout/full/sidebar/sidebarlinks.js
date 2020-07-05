@@ -1,6 +1,11 @@
 	export default [
 		{
-			url: "/settings",
+			url: "/MainContainer/Starterkit",
+			name: "Starterkit",
+			icon:"tag_faces"
+		},
+		{
+			url: "/MainContainer/settings",
 			name: "Settings",
 			icon:"tag_faces"
 		},	{

@@ -33,7 +33,7 @@ export default new Router({
                 //     redirect: '/starterkit'
                 // },
                 {
-                    path: '/MainContainer/Starterkit',
+                    path: '/Starterkit',
                     name: 'Starterkit',
                     index: 1,
                     component: () => import('./views/StarterPage.vue')
