@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-
+const Customer = require('../model/customerModel');
 const Employee = require('../model/employeeModel');
 const Admin = require('../model/adminModel');
 //const Buyer = require('../model/buyerModel');
@@ -42,45 +42,6 @@ router.post('/addemployee', async(req, res) => {
 });
 
 
-//ADD A NEW BUYER
-// router.post('/addbuyer', async(req, res) => {
-//     try{
-    
-//         const {companyName,address,email,landNumber,mobileNumber,registrationNumber,password} = req.body;
-
-//         const buyer = new Buyer({
-//             companyName,
-//             address,
-//             email,
-//             landNumber,
-//             mobileNumber,
-//             registrationNumber,
-//             password
-//         });
-//         buyer.password = await buyer.encryptPassword(password);
-
-//         const Email = await Buyer.findOne({ email: req.body.email })
-
-//         if(!Email){
-//             await buyer.save();
-
-//             const token = jwt.sign({ id: buyer.id}, config.secret, {
-//                 expiresIn: "24h"
-//             });
-//             res.status(200).json({ auth: true, token})
-            
-//         }else{
-
-//             res.status(403).send("email already exist")
-          
-//         }
-   
-//     }catch(e){
-//         console.log(e);
-//         res.status(500).send('There was a problem signUp');
-
-//     }
-// });
 
 //add a new admin
 router.post('/addnewadmin', async(req, res) => {
@@ -106,7 +67,7 @@ router.post('/addnewadmin', async(req, res) => {
 
 
        console.log();
-        res.status(200).send('oh yeeeaaaahh 🥳🥳🥳🥳🥳!!!! this is fun ');
+        res.status(200).send('That was a suceess');
 
 
     }catch(e){
@@ -116,6 +77,22 @@ router.post('/addnewadmin', async(req, res) => {
     }
 });
 
+//remove/delete customers(sellers)
+router.delete("/deleteCustomer/:id", async (req, res) => {
 
+    Customer.findById
+ 
+     Customer.findByIdAndRemove({_id: req.params.id}, req.body)
+     res.status(200).send("deleted")
+    
+ });
+
+
+ //VIEW CUSTOMER DETAILS
+ router.get("/viewCustomer/:id", async(req,res) => {
+    const customer = Customer.findById({_id: req.params.id}, req.body)
+   //  const customer = await Customer.findOne({ _id: req.body.id })
+    res.status(200).send(customer)
+})
 
 module.exports = router;
