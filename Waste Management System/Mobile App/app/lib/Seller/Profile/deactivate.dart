@@ -13,6 +13,14 @@ class _DeactivateState extends State<Deactivate> {
   TextEditingController password = TextEditingController();
  
 
+
+
+
+
+
+
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +65,7 @@ Text("When you press deactivate button your account is no longer available",styl
           new Container(
                 padding: const EdgeInsets.only(left: 150.0, top: 40.0),
                 child: new RaisedButton(
-                  child: const Text('DEACTIVATE'),
+                  child: const Text('DELETE ACCOUNT'),
                   color: Colors.green,
                   textColor: Colors.white,
                   onPressed: () {

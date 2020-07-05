@@ -1,5 +1,10 @@
 
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SellItem extends StatefulWidget {
   @override
@@ -11,7 +16,11 @@ class _SellItemState extends State<SellItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(  
-          title: Text('Add Items To Sell'),
+         leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
+  ), 
+          title: Text('Add Items To Bid'),
           backgroundColor: Colors.green,  
         ),  
         body: SellForm(),  
@@ -47,8 +56,13 @@ class Item{
 
 
 
+
+
+
+
 class _SellFormState extends State<SellForm> {
 String itemname;
+String time;
 
   // 
   List<Item> _items = Item.getItems();
@@ -81,17 +95,76 @@ onChangeDropdownItem(Item selectedItem) {
   });
 }
  
+  // ****   //
+
+
+
   // 
+
+
+
+
+
+
+
+
+
+
+
 
   final _formKey = GlobalKey<FormState>();
 // 
+  File image;
+  openGallery(BuildContext context) async {
+    var pictures = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      image = pictures;
+    });
+
+    Navigator.of(context).pop();
+  }
   
-  
+  Future<void> showChoicedialogbox(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+             
+              content: SingleChildScrollView(
+                  child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text("Gallery"),
+                    onTap: () {
+                      openGallery(context);
+                    },
+                  ),
+                  
+                 
+                ],
+              )));
+        });
+  }
+
+  Widget decide() {
+    if (image == null) {
+      return CircleAvatar(
+        radius: 80,
+        backgroundImage: NetworkImage(
+            "https://secureservercdn.net/45.40.144.60/f14.f12.myftpupload.com/wp-content/uploads/2017/07/hazardoushouseholdwaste.png"),
+      );
+    } else {
+      return Image.file(image, width: 150, height: 150);
+    }
+  }
+
   
     // 
 
-  TextEditingController firstnameController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+  TextEditingController catagory = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController price = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -104,37 +177,101 @@ mainAxisAlignment: MainAxisAlignment.center,
         
         children: <Widget>[
 
+ Container(
+   padding: EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  decide(),
+                  Container(),
+                  RaisedButton(
+                    child: Text("Select Image"),
+                    onPressed: () {
+                      showChoicedialogbox(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+
 
 Container(
+  
   child: Column(
+    
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Item Category"),
+              
+              //Text("Item Category"),
               SizedBox(
                 height: 20.0,
               ),
             DropdownButton(
+              
                 value: _selectedItem,
                 items: _dropdownMenuItems,
                 onChanged: onChangeDropdownItem,
-                
-                
-                //itemname= _selectedItem.name;
+              
+
               ),
               SizedBox(
                 height: 20.0,
               ),
     
-   
-  // itemname;
+  //Text('Selected: ${_selectedItem.name}'),
 
-              Text('Selected: ${_selectedItem.name}'),
             ],
           ),
   
 ),
 
+
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: price,
+                scrollPadding: EdgeInsets.all(10),
+                decoration: const InputDecoration(
+                  
+                  hintText: 'Enter a base price',
+                  labelText: 'Base Price',
+                  labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green),
+                ),
+
+                
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some price';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
+Container(
+              padding: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: price,
+                scrollPadding: EdgeInsets.all(10),
+                decoration: const InputDecoration(
+                  
+                  hintText: '1-7 days',
+                  labelText: 'Duration',
+                  labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.green),
+                ),
+
+                
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter duration';
+                  }
+                  return null;
+                },
+              ),
+            ),
 
 Container(
   child: Padding(
@@ -143,11 +280,11 @@ Container(
       minLines: 10,
       maxLines: 15,
       autocorrect: false,
-      controller: descriptionController,
+      controller: description,
       decoration: InputDecoration(
-        hintText: 'Write your status here',
+        hintText: 'Write your discription here',
         filled: true,
-        fillColor: Color(0xFFDBEDFF),
+        fillColor: Colors.green[100],
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           borderSide: BorderSide(color: Colors.grey),
@@ -174,8 +311,8 @@ alignment: Alignment(-0.1,1),
                 onPressed: () {  
                  
 
-                  print(descriptionController.text);
-                  print(itemname);
+                  print(description.text);
+                  print(_selectedItem.name);
                     Navigator.of(context).pushNamed('/dashboard1');
                   // if (_formKey.currentState.validate()) {  
                  

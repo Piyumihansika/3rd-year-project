@@ -1,11 +1,14 @@
 import 'package:app/CommonPages/Address/Addmanually.dart';
+import 'package:app/CommonPages/Homepage.dart';
 //import 'package:app/CommonPages/Address/checkpassdata.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/Employees/Login.dart';
+import 'package:app/Seller/BiddingDetails.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Orders.dart';
+import 'package:app/Seller/PriceChart.dart';
 import 'package:app/Seller/Profile.dart';
 import 'package:app/Seller/Profile/ChangePassword.dart';
 import 'package:app/Seller/Profile/EditProfile.dart';
@@ -18,10 +21,10 @@ import 'package:app/Seller/SpecialSecond.dart';
 import 'package:app/Seller/test.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-
 import 'CommonPages/Address/ChooseRegLocaType.dart';
 import 'CommonPages/Address/RegisterLocation.dart';
 import 'CommonPages/ForgotPsw.dart';
+import 'Seller/Notification.dart';
 
 
 
@@ -53,6 +56,11 @@ class MyApp extends StatelessWidget {
       '/login':(context)=>Login(),
       '/register':(context)=>SignUp(),
       '/forgot':(context)=>Forgot(),
+
+      '/homepage':(context)=>HomePage(),
+      '/dashboard':(context)=>Dashboard(),
+      '/price':(context)=>PriceChart(),
+
      
 
       //customers give their garbage
@@ -69,6 +77,8 @@ class MyApp extends StatelessWidget {
          '/editProfile':(context)=>EditProfile(),
          '/deactivate':(context)=>Deactivate(),
          '/changepassword':(context)=>Passwordchange(),
+         '/notification':(context)=>Notifications(),
+         '/biddingDetails':(context)=>BiddingDetails(),
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),
