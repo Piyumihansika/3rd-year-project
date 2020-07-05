@@ -28,10 +28,10 @@ export default new Router({
 
 
             children: [
-                // {
-                //     path: '/starterkit',
-                //     redirect: '/starterkit'
-                // },
+                {
+                    path: '/starterkit',
+                    redirect: '/'
+                },
                 {
                     path: '/',
                     name: 'Starterkit',
