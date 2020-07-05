@@ -4,8 +4,8 @@
     <vs-sidebar default-index="1" :parent="parent" :hiddenBackground="doNotClose" color="primary" class="sidebarx" spacer v-model="isSidebarActive" :click-not-close="doNotClose" >
         <div class="header-sidebar text-center" slot="header">
             <vs-avatar size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
-            <h4>Steave Jobs<br/>
-              <small>varun@gmail.com</small>
+            <h4>Admin<br/>
+              <small>admin@gmail.com</small>
             </h4>
         </div>
         <template v-for="(sidebarLink, index) in sidebarLinks" >
