@@ -60,7 +60,7 @@ class _ManuallyState extends State<Manually> {
     if (response.statusCode == 200) {
       print(response.statusCode);
       print(response.body);
-      Navigator.of(context).pushNamed('/buyerhome');
+      Navigator.of(context).pushNamed('/login');
     } else {
       print(response.statusCode);
       print("error occured");
@@ -239,7 +239,7 @@ class _ManuallyState extends State<Manually> {
                           textColor: Colors.white,
                           onPressed: () {
                             register(context);
-                            Navigator.of(context).pushNamed('/login');
+                           // Navigator.of(context).pushNamed('/login');
                           }
 
                           // if (_formKey.currentState.validate()) {
