@@ -3,25 +3,40 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+
+
+
+
 export default new Router({
 	routes: [
     {
     // ======================
     // Full Layout
     // ======================
-			path: '',
+			path: '/MainContainer',
             component: () => import('./layout/full/MainContainer.vue'),
+            //component: () => import('./views/Homepage.vue')
             // ======================
             // Theme routes / pages
             // ======================
 
+
             children: [
                 {
-                    path: '/',
+                    path: '/starterkit',
                     redirect: '/starterkit'
                 },
+
+                // {
+                //     path:'/',
+                //     name:'Homepage',
+                //     index: 30,
+                //     component: () => import('./views/Homepage.vue')
+        
+                // },
+
                 {
-                    path: '/starterkit',
+                    path: '/Starterkit',
                     name: 'Starterkit',
                     index: 1,
                     component: () => import('./views/StarterPage.vue')
@@ -143,11 +158,32 @@ export default new Router({
                 }
 
             ]
-		},
-    // Redirect to starterkit page, if no match found
+        },
+        
+
+        {
+            path: '',
+            component: () => import('./views/publicCommon/publicHeader.vue'),
+
+            children: [
+                {
+                        path:'/',
+                        name:'Homepage',
+                        index: 30,
+                        component: () => import('./views/Homepage.vue')
+            
+                     },
+            ]
+
+
+
+        },
+    // Redirect to  Homepage, if no match found
         {
             path: '*',
-            redirect: '/starterkit'
+            redirect: '/Homepage'
         }
+
+
 	]
 })
