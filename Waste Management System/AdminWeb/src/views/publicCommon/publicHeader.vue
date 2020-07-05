@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vs-navbar v-model="activeItem" class="nabarx">
+    <vs-navbar  v-model="activeItem" class="nabarx">
       <div slot="title">
         <vs-navbar-title>
           Green Wasteland
@@ -24,12 +24,15 @@
       <vs-navbar-item index="0">
         <a href="#">Contact US</a>
       </vs-navbar-item>
-      <vs-navbar-item index="1">
+      <!-- <vs-navbar-item index="1">
         <a href="#">Admin login</a>
-      </vs-navbar-item>
-      <vs-navbar-item index="2">
-        <router-link to="../StarterPage.vue">Admin login</router-link>
-      </vs-navbar-item>
+      </vs-navbar-item> -->
+    <vs-navbar-item index="1">
+        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="gradient" vs-icon="edit">
+    Admin login</router-link>
+    </vs-navbar-item>
+
+     
       
       
     </vs-navbar>
