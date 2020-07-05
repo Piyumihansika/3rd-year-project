@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:buyerapp/utils/ResponseData.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -85,7 +86,6 @@ class ProfileDetailState extends State<ProfileDetail>
                     const Color(0xFF167F67),
                     const Color(0xFFFFFFFF)),
               ),
-              
               const SizedBox(height: 15.0),
               new GestureDetector(
                 onTap: () {
@@ -176,7 +176,9 @@ class ProfileDetailState extends State<ProfileDetail>
                   Container(),
                   RaisedButton(
                     color: Colors.green,
-                    child: Text("Change Profile",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                    child: Text("Change Profile",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
                     onPressed: () {
                       imagepickdialog(context);
                     },
@@ -209,7 +211,7 @@ class ProfileDetailState extends State<ProfileDetail>
                                   'Parsonal Information',
                                   style: TextStyle(
                                       fontSize: 18.0,
-                                      color:Colors.red,
+                                      color: Colors.red,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -231,7 +233,7 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "madu",
+                                initialValue: ResponseData.firstName,
                                 //initialValue: "${usersData[index]["firstname"]}",
                                 decoration: const InputDecoration(
                                   labelText: 'First Name',
@@ -261,7 +263,7 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "chathu",
+                                initialValue: ResponseData.lastName,
                                 //initialValue: "${usersData[index]["lastname"]}",
                                 decoration: const InputDecoration(
                                   labelText: 'Last Name',
@@ -291,7 +293,7 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "chathu@gmail.com",
+                                initialValue: ResponseData.email,
                                 //initialValue: "${usersData[index]["email"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Email',
@@ -320,7 +322,11 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "jayabima matara dickwella",
+                                initialValue: ResponseData.address1 +
+                                    " , " +
+                                    ResponseData.address2 +
+                                    " , " +
+                                    ResponseData.city,
                                 //initialValue: "${usersData[index]["address1"]} ${usersData[index]["address2"]} ${usersData[index]["city"]} ${usersData[index]["district"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Address',
@@ -349,7 +355,7 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: "0702166263",
+                                initialValue: ResponseData.contactNumber,
                                 //initialValue: "${usersData[index]["contactNumber"]}",
                                 decoration: const InputDecoration(
                                     labelText: 'Mobile Number',
@@ -493,13 +499,6 @@ class ProfileDetailState extends State<ProfileDetail>
   }
 }
 
-
-
-
-
-
-
-
 // import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 
@@ -515,7 +514,7 @@ class ProfileDetailState extends State<ProfileDetail>
 
 //   @override
 //   void initState() {
-    
+
 //     super.initState();
 //   }
 
@@ -582,9 +581,6 @@ class ProfileDetailState extends State<ProfileDetail>
 //                               Column(
 //                                 crossAxisAlignment: CrossAxisAlignment.start,
 //                                 children: <Widget>[
-
-
-
 
 //                                   SizedBox(height: 25.0),
 //                                   Padding(
@@ -960,4 +956,3 @@ class ProfileDetailState extends State<ProfileDetail>
 //     );
 //   }
 // }
-

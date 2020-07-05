@@ -140,7 +140,32 @@ export default new Router({
                     name: 'Textarea',
                     index: 29,
                     component: () => import('./views/components/vuesax/textarea/textarea.vue')
-                }
+                },{
+                    path: '/settings',
+                    name: 'Settings',
+                    index: 29,
+                    component: () => import('./views/components/dashboard/settings.vue')
+                },{
+                    path: '/notifications',
+                    name: 'Notifications',
+                    index: 30,
+                    component: () => import('./views/components/dashboard/notifications.vue')
+                },{
+                    path: '/customer',
+                    name: 'Customer',
+                    index: 31,
+                    component: () => import('./views/components/dashboard/customer.vue')
+                },{
+                    path: '/buyer',
+                    name: 'Buyer',
+                    index: 32,
+                    component: () => import('./views/components/dashboard/buyer.vue')
+                },{
+                    path: '/reports',
+                    name: 'Reports',
+                    index: 33,
+                    component: () => import('./views/components/dashboard/reports.vue')
+                },
 
             ]
 		},

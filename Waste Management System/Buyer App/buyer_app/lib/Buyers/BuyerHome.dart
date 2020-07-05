@@ -6,6 +6,7 @@ import 'package:buyerapp/utils/ResponseData.dart';
 import 'package:http/http.dart' as http;
 
 var value, newAuth;
+String newId = ResponseData.userId;
 final String logoutUrl =
     "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
 
@@ -20,12 +21,12 @@ class _State extends State<BuyerHome> {
         headers: {"Accept": "application/json"});
     if (response.statusCode == 200) {
       value = json.decode(response.body);
-      newAuth = (value["auth"].toString());
-      print("---------------------------logout-------------------------------");
-      print(newAuth);
-      print(
-          "-----------------------------------------------------------------");
+      ResponseData.userId = (value["id"].toString());
+      print(newId);
       Navigator.of(context).pushNamed('/login');
+      print(newId);
+      print(
+          "-------------------------------logout-----------------------------");
     }
   }
 
@@ -153,21 +154,21 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.notifications),
               title: Text('Notifications'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/buyerhome');
               },
             ), //ListTitle
             ListTile(
               leading: Icon(Icons.history),
               title: Text('Histry'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/buyerhome');
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Setting'),
               onTap: () {
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/buyerhome');
               },
             ), //ListTitle
             ListTile(
@@ -175,7 +176,7 @@ class _State extends State<BuyerHome> {
               title: Text('Logout'),
               onTap: () {
                 logout(context);
-                Navigator.of(context).pushNamed('/login');
+                // Navigator.of(context).pushNamed('/login');
               },
             ),
           ],

@@ -32,7 +32,7 @@ router.post('/customerLogin', async(req, res) => {
             id=customer._id;
             user= customer;
             res.status(200).json({ auth: true, id: customer._id, token, user: customer});
-            console.log("api hit");
+            console.log("customer login api hit");
         }
        
     }catch(e){
@@ -60,7 +60,7 @@ router.post('/buyerLogin', async(req, res) => {
             });
             if(token){
                 res.status(200).json({ auth: true, id: buyer._id, user: buyer, token});
-            console.log("buyer api hit 2")
+            console.log("buyer login api hit 2")
 
             }
         }else if(companyBuyer){
