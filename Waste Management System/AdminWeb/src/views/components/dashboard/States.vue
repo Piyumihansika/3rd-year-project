@@ -9,7 +9,7 @@
         </vs-col>
         <vs-col vs-lg="3" vs-xs="12">
             <vs-card>
-                <h4 class="mb-1">-10%</h4>
+                <h4 class="mb-1">-5%</h4>
                 <span>Monthly Commissions</span>
                 <vs-progress :percent="10" color="danger">primary</vs-progress>
             </vs-card>

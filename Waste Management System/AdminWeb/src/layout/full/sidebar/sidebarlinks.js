@@ -2,12 +2,12 @@
 		{
 			url: "/starterkit",
 			name: "Starterkit",
-			icon:"tag_faces"
+			icon:"home"
 		},
 		{
 			url: "/settings",
 			name: "Settings",
-			icon:"tag_faces"
+			icon:"settings"
 		},	{
 			url: "/notifications",
 			name: "Notifications",
@@ -23,7 +23,7 @@
 		},	{
 			url: "/reports",
 			name: "Reports",
-			icon:"credit_card"
+			icon:"report"
 		},
 
 	// {

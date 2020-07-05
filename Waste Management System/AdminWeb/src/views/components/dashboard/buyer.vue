@@ -41,7 +41,7 @@
                         <label class="label label-danger">buyer01@gmail.com </label>
                     </td>
                     <td>0712232569</td>
-                    <td></td>
+                    <td><vs-button radius color="primary" type="gradient" icon="person_add"></vs-button></td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>
