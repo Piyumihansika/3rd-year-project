@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vs-navbar v-model="activeItem" class="nabarx">
+    <vs-navbar  v-model="activeItem" class="nabarx">
       <div slot="title">
         <vs-navbar-title>
           Green Wasteland
@@ -25,7 +25,7 @@
         <a href="#">Contact US</a> 
       </vs-navbar-item>
       <vs-navbar-item index="1">
-        <router-link to="/Starterkit" tag="vs-navbar-item" type="gradient" vs-icon="edit">Admin login</router-link>
+        <router-link to="/MainContainer/Starterkit" tag="vs-button" type="flat" vs-icon="edit">Admin login</router-link>
       </vs-navbar-item>
     </vs-navbar>
   </div>

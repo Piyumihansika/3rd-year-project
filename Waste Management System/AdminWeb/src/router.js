@@ -19,7 +19,7 @@ export default new Router({
     // ======================
     // Full Layout
     // ======================
-			path: '/MainContainer',
+			path: '/',
             component: () => import('./layout/full/MainContainer.vue'),
             //component: () => import('./views/Homepage.vue')
             // ======================
@@ -33,7 +33,7 @@ export default new Router({
                 //     redirect: '/starterkit'
                 // },
                 {
-                    path: '/Starterkit',
+                    path: '/',
                     name: 'Starterkit',
                     index: 1,
                     component: () => import('./views/StarterPage.vue')
@@ -189,7 +189,7 @@ export default new Router({
 
             children: [
                 {
-                        path:'/',
+                        path:'/Homepage',
                         name:'Homepage',
                         index: 30,
                         component: () => import('./views/Homepage.vue')
