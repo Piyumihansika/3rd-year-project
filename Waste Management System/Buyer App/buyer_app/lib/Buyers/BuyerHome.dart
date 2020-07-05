@@ -8,7 +8,8 @@ import 'package:http/http.dart' as http;
 var value, newAuth;
 String newId = ResponseData.userId;
 final String logoutUrl =
-    "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
+    // "http://192.168.8.188:3000/auth/logout/${ResponseData.userId}";
+    "http://10.0.2.2:3000/auth/logout/${ResponseData.userId}";
 
 class BuyerHome extends StatefulWidget {
   @override
@@ -136,13 +137,13 @@ class _State extends State<BuyerHome> {
                 Navigator.of(context).pushNamed('/buyerhome');
               },
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/profile');
-              },
-            ), //ListTitle
+            // ListTile(
+            //   leading: Icon(Icons.person),
+            //   title: Text('Profile'),
+            //   onTap: () {
+            //     Navigator.of(context).pushNamed('/profile');
+            //   },
+            // ), //ListTitle
             ListTile(
               leading: Icon(Icons.category),
               title: Text('Categories'),
@@ -154,21 +155,28 @@ class _State extends State<BuyerHome> {
               leading: Icon(Icons.notifications),
               title: Text('Notifications'),
               onTap: () {
-                Navigator.of(context).pushNamed('/buyerhome');
+                Navigator.of(context).pushNamed('/notifications');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.details),
+              title: Text('About Us'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/aboutus');
               },
             ), //ListTitle
             ListTile(
-              leading: Icon(Icons.history),
-              title: Text('Histry'),
+              leading: Icon(Icons.message),
+              title: Text('Contact Us'),
               onTap: () {
-                Navigator.of(context).pushNamed('/buyerhome');
+                Navigator.of(context).pushNamed('/contactus');
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Setting'),
               onTap: () {
-                Navigator.of(context).pushNamed('/buyerhome');
+                Navigator.of(context).pushNamed('/settings');
               },
             ), //ListTitle
             ListTile(

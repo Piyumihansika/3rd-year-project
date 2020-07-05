@@ -2,6 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
+import 'package:http/http.dart' as http;
+
+final String editUrl =
+    //"https://192.168.8.188:3000/buyer/updateBuyer/${ResponseData.userId}";
+    "https://10.0.2.2:3000/buyer/updateBuyer/${ResponseData.userId}";
 
 class Profile extends StatelessWidget {
   @override
@@ -55,6 +60,26 @@ class ProfileDetailState extends State<ProfileDetail>
     });
 
     Navigator.of(context).pop();
+  }
+
+  successdialog(BuildContext context) {
+    print("----------------------------------------------------");
+    print("${ResponseData.userId}" + "uid");
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Save Successful !'),
+            actions: <Widget>[
+              MaterialButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
   }
 
   Future<void> imagepickdialog(BuildContext context) {
@@ -160,6 +185,28 @@ class ProfileDetailState extends State<ProfileDetail>
     }
   }
 
+  String newfirstName;
+  String newlastName;
+  String newemail;
+  String newaddress;
+  String newcontactNumber;
+
+  editData() async {
+    await http.put(editUrl, headers: {
+      "Accept": "application/json",
+      'Authorization':
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliNTg2MWVlNTg0ZGJkZGI5MDc1NDc3YTQ1ZDQ3ZDM5NGNiMzU2ZGIxZjBhMjUwZDUyZjk0YmViNGQwOTM3NTI0ZTM0MGNhMzBiYWM5NDAwIn0.eyJhdWQiOiIxIiwianRpIjoiOWI1ODYxZWU1ODRkYmRkYjkwNzU0NzdhNDVkNDdkMzk0Y2IzNTZkYjFmMGEyNTBkNTJmOTRiZWI0ZDA5Mzc1MjRlMzQwY2EzMGJhYzk0MDAiLCJpYXQiOjE1NTg1NTMyMTMsIm5iZiI6MTU1ODU1MzIxMywiZXhwIjoxNTkwMTc1NjEzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.sFIfXVx72efT54J40TVkqh3rwMGW-anTulNMDnVvGh_eO_qz0oKRl56JYCBwPQchc7fTbG5ZkVwaf_oU85rzjq3hrgXaOIzOoaNYsAKTOpPVbPi26bqpMLCWFe26hZO3BmS_kCSSD_-WlYVOlEw5oXQt1_MHV1eBt0tbXFLkgNwvkFr9IOvySINVsDOVoCArvp2Cx-XYthIP-0JuC7yQny5byMKerRGDO8pIjKLnPTTi9YWo36KU1SlzqoK-IJrQFvi5ir-rKk93IFCXwNoRN9QwXATb_4uJJyhpv2WLtXQwpnlPFqQFad8L0I8y9pfyzXnDtl3Aq1G3OlZMHbKcXp4uV8uByuT7UzI_FW6a0ion3Id1P3wy65n-X2OW2rDH6cpoCaz5_yzkpUfeo5WQ0RpG7q_VbWon2rf2NpbV8Jyzg80Woz3eNaQPA8-hdR5qUeeGXXulwfcT_sQln2uBmC3Ke2gbI1cKrBa4gVFpip9055lhgXfKzBvNkhV2dUljawBGacb0p4C1irkz6ygTzMu_31r2KHuzXiKQvbaEmorHGOLdvrwr-L2cqUmM3_jeAMmrV2_Pe4nRJHsvOLOYpB6ELNdeX8_DhD7DWUa6pdeU2PpRsXvwaGLbAkah9z7hCa54HGCzSLJPhN813nTXHuK_biSxIlH5n3ruvHiP6Rw'
+    }, body: {
+      "firstName": "djkfbk",
+      "lastName": "kdjbfh",
+      "email": "wefrg",
+      "address": "adhfbd",
+      "contactNumber": "fdfbkdj"
+    }).then((value) {
+      value.statusCode == 200 ? print("success") : print(value.statusCode);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -249,6 +296,9 @@ class ProfileDetailState extends State<ProfileDetail>
                                   }
                                   return null;
                                 },
+                                onChanged: (text) {
+                                  newfirstName = text;
+                                },
                                 enabled: !_status,
                                 autofocus: !_status,
                               ),
@@ -279,6 +329,9 @@ class ProfileDetailState extends State<ProfileDetail>
                                   }
                                   return null;
                                 },
+                                onChanged: (text) {
+                                  newlastName = text;
+                                },
                                 enabled: !_status,
                                 autofocus: !_status,
                               ),
@@ -302,12 +355,14 @@ class ProfileDetailState extends State<ProfileDetail>
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold),
                                     hintText: "Enter Email"),
-
                                 validator: (value) {
                                   if (value.isEmpty) {
                                     return 'Please enter email';
                                   }
                                   return null;
+                                },
+                                onChanged: (text) {
+                                  newemail = text;
                                 },
                                 enabled: !_status,
                               ),
@@ -335,12 +390,14 @@ class ProfileDetailState extends State<ProfileDetail>
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold),
                                     hintText: "Enter Your Address"),
-
                                 validator: (value) {
                                   if (value.isEmpty) {
                                     return 'Please enter address';
                                   }
                                   return null;
+                                },
+                                onChanged: (text) {
+                                  newaddress = text;
                                 },
                                 enabled: !_status,
                               ),
@@ -369,6 +426,9 @@ class ProfileDetailState extends State<ProfileDetail>
                                     return 'Please enter mobile number';
                                   }
                                   return null;
+                                },
+                                onChanged: (text) {
+                                  newcontactNumber = text;
                                 },
                                 enabled: !_status,
                               ),
@@ -411,7 +471,11 @@ class ProfileDetailState extends State<ProfileDetail>
                 textColor: Colors.white,
                 color: Colors.green,
                 onPressed: () {
+                  print("----------------------------------------------------");
+                  print("${ResponseData.userId}" + "uid");
                   if (_formKey.currentState.validate()) {
+                    editData();
+                    successdialog(context);
                     setState(() {
                       _status = true;
                       FocusScope.of(context).requestFocus(new FocusNode());

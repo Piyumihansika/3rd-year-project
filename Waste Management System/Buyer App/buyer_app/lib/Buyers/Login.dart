@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
 
-final String apiUrl = "http://192.168.8.100:3000/auth/buyerLogin";
+// final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
+final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
 
 String newAuth = ResponseData.auth;
 
@@ -101,13 +102,6 @@ class _State extends State<Login> {
               title: Text('Contact Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/contactus');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text('Home'),
-              onTap: () {
-                // loadHome(context);
               },
             ),
           ],
@@ -256,38 +250,6 @@ class _LoginFormState extends State<LoginForm> {
                     ],
                   ),
                   //add 'hi welcome' text
-                  // SizedBox(height: 15.0),
-                  // Padding(
-                  //   padding: EdgeInsets.only(left: 15.0),
-                  //   child: Text(
-                  //     'Hi Welcome',
-                  //     style: TextStyle(
-                  //         fontSize: 25.0,
-                  //         fontWeight: FontWeight.bold,
-                  //         color: Colors.black87),
-                  //   ),
-                  // ),
-                  // add search bar
-                  // SizedBox(height: 25.0),
-                  // Padding(
-                  //     padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                  //     child: Material(
-                  //         elevation: 5.0,
-                  //         borderRadius: BorderRadius.circular(25),
-                  //         child: TextFormField(
-                  //           decoration: InputDecoration(
-                  //               border: InputBorder.none,
-                  //               prefixIcon: Icon(
-                  //                 Icons.search,
-                  //                 color: Colors.green,
-                  //                 size: 30.0,
-                  //               ),
-                  //               contentPadding: EdgeInsets.only(
-                  //                   left: 20, top: 15, bottom: 10),
-                  //               hintText: 'Search',
-                  //               hintStyle: TextStyle(color: Colors.grey)),
-                  //         ))),
-                  // add 'hi welcome' text
                   SizedBox(height: 15.0),
                   Padding(
                     padding: EdgeInsets.only(left: 15.0),
@@ -383,6 +345,7 @@ class _LoginFormState extends State<LoginForm> {
                     if (_formKey.currentState.validate()) {
                       //send request
                       login(context);
+                      Navigator.of(context).pushNamed('/buyerhome');
 
                       // print(email.text);
 

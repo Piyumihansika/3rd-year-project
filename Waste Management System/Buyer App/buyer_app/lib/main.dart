@@ -21,9 +21,12 @@ import 'CompanyLocation/ManuallyCompany.dart';
 import 'CompanyLocation/TrackingCompany.dart';
 
 import 'settings/Settings.dart';
+import 'settings/Notification.dart';
+import 'settings/ChangePassword.dart';
+import 'settings/DeactivateAccount.dart';
+import 'settings/ChangeLocation.dart';
 
 //import 'Buyers/Terms.dart';
-
 
 void main() => runApp(MyApp());
 
@@ -35,54 +38,41 @@ class MyApp extends StatelessWidget {
       // locale: DevicePreview.of(context).locale, // <--- Add the locale
       //builder: DevicePreview.appBuilder,
       title: 'Waste Management App',
-      home:Login() ,
+      home: Login(),
 
 //routings here
 
-      routes: <String,WidgetBuilder>{
-
-
-        '/login':(context)=>Login(),
-        '/forgot':(context)=>Forgot(),
-        '/buyerhome':(context)=>BuyerHome(),
-        '/contactus':(context)=>ContactUs(),
-        '/aboutus':(context)=>AboutUs(),
-        '/profile':(context)=>Profile(),
-        '/history':(context)=>History(),
-        '/category':(context)=>Category(),
-        '/usertype':(context)=>UserType(),
+      routes: <String, WidgetBuilder>{
+        '/login': (context) => Login(),
+        '/forgot': (context) => Forgot(),
+        '/buyerhome': (context) => BuyerHome(),
+        '/contactus': (context) => ContactUs(),
+        '/aboutus': (context) => AboutUs(),
+        '/profile': (context) => Profile(),
+        '/history': (context) => History(),
+        '/category': (context) => Category(),
+        '/usertype': (context) => UserType(),
 
         //househld user
-        '/getlocation':(context)=>GetLocation(),
-        '/manually':(context)=>Manually(),
-        '/tracking':(context)=>Tracking(),
-        '/signuphousehold':(context)=>SignUpHousehold(),
-
+        '/getlocation': (context) => GetLocation(),
+        '/manually': (context) => Manually(),
+        '/tracking': (context) => Tracking(),
+        '/signuphousehold': (context) => SignUpHousehold(),
 
         //company users
-        '/manuallycompany':(context)=>ManuallyCompany(),
-        '/trackingcompany':(context)=>TrackingCompany(),
-        '/getlocationcompany':(context)=>GetLocationCompany(),
-        '/signupcompany':(context)=>SignUpCompany(),
+        '/manuallycompany': (context) => ManuallyCompany(),
+        '/trackingcompany': (context) => TrackingCompany(),
+        '/getlocationcompany': (context) => GetLocationCompany(),
+        '/signupcompany': (context) => SignUpCompany(),
         // '/terms':(context)=>Terms(),
 
         //settings
-        '/settings':(context)=>Settings(),
-
-
-
-
-
-
+        '/settings': (context) => SettingPage(),
+        '/notifications': (context) => Notifications(),
+        '/changepassword': (context) => PasswordChange(),
+        '/deactivateaccount': (context) => DeactivateAccount(),
+        '/changelocation': (context) => ChangeLocation(),
       },
-
     );
   }
 }
-
-
-
-
-
-
-
