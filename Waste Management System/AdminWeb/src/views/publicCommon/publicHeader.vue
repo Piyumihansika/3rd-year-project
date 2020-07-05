@@ -6,16 +6,19 @@
           Green Wasteland
         </vs-navbar-title>
       </div>
-
       <vs-navbar-item index="0">
-        <a href="#">Home</a>
-      </vs-navbar-item>
+        <router-link to="/starterkit">
+           <a href="Starterkit">Home</a>
+        </router-link>
+       
+      </vs-navbar-item>  
       <vs-navbar-item index="1">
         <a href="#">News</a>
       </vs-navbar-item>
       <vs-navbar-item index="2">
         <a href="#">Admin Login</a>
       </vs-navbar-item>
+     
     </vs-navbar>
   </div>
 </template>
