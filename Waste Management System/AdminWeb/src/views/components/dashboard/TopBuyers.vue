@@ -14,69 +14,69 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="primary" text="Erimary" /></div>
+                    <div class="mr-2"><vs-avatar color="primary" text="Brimary" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Elite Admin</h5>
+                        <h5 class="m-b-0">Buyer 1</h5>
                     </div>
                 </div>
             </td>
             <td>Single Use</td>
-            <td>John Doe</td>
+            <td>25</td>
             <td>
                 <label class="label label-danger">Angular</label>
             </td>
-            <td>46</td>
+            <td>4.5</td>
            
         </tr>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="danger" text="Mrimary" /></div>
+                    <div class="mr-2"><vs-avatar color="danger" text="Brimary" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Monster Admin</h5>
+                        <h5 class="m-b-0">Buyer 2</h5>
                     </div>
                 </div>
             </td>
             <td>Single Use</td>
-            <td>Venessa Fern</td>
+            <td>25</td>
             <td>
                 <label class="label label-info">Vue Js</label>
             </td>
-            <td>46</td>
+            <td>4</td>
            
         </tr>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="warning" text="Primary" /></div>
+                    <div class="mr-2"><vs-avatar color="warning" text="Brimary" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Material Pro Admin</h5>
+                        <h5 class="m-b-0">Buyer 3</h5>
                     </div>
                 </div>
             </td>
             <td>Single Use</td>
-            <td>John Doe</td>
+            <td>25</td>
             <td>
                 <label class="label label-success">Bootstrap</label>
             </td>
-            <td>46</td>
+            <td>3</td>
            
         </tr>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="success" text="Arimary" /></div>
+                    <div class="mr-2"><vs-avatar color="success" text="Brimary" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Ample Admin</h5>
+                        <h5 class="m-b-0">Buyer 4</h5>
                     </div>
                 </div>
             </td>
             <td>Single Use</td>
-            <td>John Doe</td>
+            <td>25</td>
             <td>
                 <label class="label label-purple">React</label>
             </td>
-            <td>46</td>
+            <td>2.5</td>
          
         </tr>
     </tbody>
