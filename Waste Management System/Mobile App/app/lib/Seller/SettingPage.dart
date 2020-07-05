@@ -60,7 +60,7 @@ class _SettingPageState extends State<SettingPage> {
               
               Text(
                 "Account",
-                style: TextStyle(fontSize: 20.0, color: Colors.black),
+                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
                 
               ),
               
@@ -126,7 +126,7 @@ class _SettingPageState extends State<SettingPage> {
               Text(
                 
                 "Notification",
-                style: TextStyle(fontSize: 20.0, color: Colors.black,),
+                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
                 
               ),
 
@@ -135,7 +135,7 @@ class _SettingPageState extends State<SettingPage> {
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: true,
-                title: Text("Received Notification"),
+                title: Text("Receive Notification"),
                 onChanged: (val) {},
               ),
 
@@ -144,7 +144,7 @@ class _SettingPageState extends State<SettingPage> {
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: false,
-                title: Text("Received Offer Notification"),
+                title: Text("Receive Offer Notification"),
                 onChanged: (null),
               )
             ],

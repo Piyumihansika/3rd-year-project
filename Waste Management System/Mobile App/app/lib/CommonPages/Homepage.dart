@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
 
 
             ListTile(
-              leading: Icon(Icons.card_travel),
+              leading: Icon(Icons.credit_card),
               title: Text('Price Chart'),
               onTap: () {
                  Navigator.of(context).pushNamed('/price');
@@ -135,8 +135,8 @@ body: Container(
       
      
 MyMenu1(title: 'Sell Item',icon: Icons.local_grocery_store,warna: Colors.yellow,),
-MyMenu2(title: 'Bidding Details',icon: Icons.people,warna: Colors.green,),
-MyMenu3(title: 'Price Chart',icon: Icons.schedule,warna: Colors.blue,),
+MyMenu2(title: 'Bidding Details',icon: Icons.people,warna: Colors.brown,),
+MyMenu3(title: 'Price Chart',icon: Icons.credit_card,warna: Colors.blue,),
 
  ],
     
@@ -163,7 +163,7 @@ class MyMenu1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      
+      color: Colors.yellow[100],
       margin: EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
@@ -209,6 +209,7 @@ class MyMenu2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+       color: Colors.brown[200],
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
@@ -256,6 +257,7 @@ class MyMenu3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+       color: Colors.blue[100],
       margin: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
