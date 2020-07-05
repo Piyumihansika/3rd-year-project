@@ -27,7 +27,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                        <div class="mr-2"><vs-avatar  src=" @/src/assets/images/user/2.jpg"/>
+                        <div class="mr-2"><vs-avatar  src="@/assets/images/users/3.jpg"/>
                         <!-- <vs-avatar size="large> -->
                         </div>
                             <div class="">
@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="danger" text="Mrimary" /></div>
+                            <div class="mr-2"><vs-avatar color="danger" src = "https://avatars2.githubusercontent.com/u/31676496?s=460&v=4"  text="Mrimary" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Buyer 02</h5>
                             </div>
