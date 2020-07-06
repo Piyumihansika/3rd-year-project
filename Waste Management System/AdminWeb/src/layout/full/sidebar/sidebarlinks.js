@@ -1,7 +1,7 @@
 	export default [
 		{
 			url: "/starterkit",
-			name: "Starterkit",
+			name: "Dashboard",
 			icon:"tag_faces"
 		},
 		{
