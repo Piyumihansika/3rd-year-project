@@ -27,7 +27,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                        <div class="mr-2"><vs-avatar  src="@/assets/images/users/3.jpg"/>
+                        <div class="mr-2"><vs-avatar  text="B1" />
                         <!-- <vs-avatar size="large> -->
                         </div>
                             <div class="">
@@ -41,7 +41,7 @@
                         <label class="label label-danger">buyer01@gmail.com </label>
                     </td>
                     <td>0712232569</td>
-                    <td></td>
+                    <td><vs-button radius color="primary" type="gradient" icon="person_add"></vs-button></td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>
@@ -69,7 +69,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="warning" text="Primary" /></div>
+                            <div class="mr-2"><vs-avatar color="warning" text="B3" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Buyer 03</h5>
                             </div>
@@ -89,7 +89,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="success" text="Arimary" /></div>
+                            <div class="mr-2"><vs-avatar color="success" text="B4" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Buyer 04</h5>
                             </div>
@@ -140,7 +140,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                        <div class="mr-2"><vs-avatar  src=" @/src/assets/images/user/2.jpg"/>
+                        <div class="mr-2"><vs-avatar  text = "C1" />
                         <!-- <vs-avatar size="large> -->
                         </div>
                             <div class="">
@@ -162,7 +162,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="danger" text="Mrimary" /></div>
+                            <div class="mr-2"><vs-avatar color="danger" text="C2" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Company 02 </h5>
                             </div>
@@ -182,7 +182,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="warning" text="Primary" /></div>
+                            <div class="mr-2"><vs-avatar color="warning" text="C3" /></div>
                             <div class="">
                                 <h5 class="m-b-0"> Company 03 </h5>
                             </div>
@@ -202,7 +202,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="success" text="Arimary" /></div>
+                            <div class="mr-2"><vs-avatar color="success" text="C4" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Company 04</h5>
                             </div>

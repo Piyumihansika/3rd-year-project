@@ -29,38 +29,29 @@
       <!---
       Craete new dd
       -->   
+       <!-- <vs-navbar-item  vs-trigger-click left class="cursor-pointer pr-2 pl-2 ml-1 mr-1">
+          <a href="#"><vs-icon icon="notifications"></vs-icon></a>
+          </vs-navbar-item> -->
       <vs-dropdown  vs-trigger-click left class="cursor-pointer pr-2 pl-2 ml-1 mr-1">
-         <a class="text-white-dark" href="#"><vs-icon icon="notifications"></vs-icon></a>
-        <vs-dropdown-menu class="topbar-dd">
-          <vs-dropdown-item>Action</vs-dropdown-item>
-          <vs-dropdown-item>Another Action</vs-dropdown-item>
-          <vs-dropdown-item>Something</vs-dropdown-item>
-          <vs-dropdown-item>Here</vs-dropdown-item>
-        </vs-dropdown-menu>
+         <a class="text-white-dark" href="@/"><vs-icon icon="notifications"></vs-icon></a>
       </vs-dropdown>
       <!---
       Craete new dd
       -->   
       <vs-dropdown  vs-trigger-click left class="cursor-pointer pr-2 pl-2 ml-1 mr-1">
          <a class="text-white-dark" href="#"><vs-icon icon="mode_comment"></vs-icon></a>
-        <vs-dropdown-menu class="topbar-dd">
-          <vs-dropdown-item>Action</vs-dropdown-item>
-          <vs-dropdown-item>Another Action</vs-dropdown-item>
-          <vs-dropdown-item>Something</vs-dropdown-item>
-          <vs-dropdown-item>Here</vs-dropdown-item>
-        </vs-dropdown-menu>
       </vs-dropdown>
       <!---
-      Craete new dd
+      Craete new dd     @/assets/images/users/3.jpg
       -->   
       <vs-dropdown  vs-trigger-click left class="cursor-pointer pr-2 pl-2 ml-1 mr-md-3">
-         <a class="text-white-dark user-image" href="#"><img src="@/assets/images/users/3.jpg" alt="User"/></a>
+         <a class="text-white-dark user-image" href="#"><img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User"/></a>
         <vs-dropdown-menu class="topbar-dd">          
-            <vs-dropdown-item><vs-icon icon="person_outline" class="mr-1"></vs-icon>Profile</vs-dropdown-item>
-            <vs-dropdown-item><vs-icon icon="sentiment_very_satisfied" class="mr-1"></vs-icon> </vs-dropdown-item>
-            <vs-dropdown-item><vs-icon icon="mail_outline" class="mr-1"></vs-icon> Inbox</vs-dropdown-item>
+            <vs-dropdown-item><vs-icon icon="person_outline" class="mr-1"></vs-icon>View Profile</vs-dropdown-item>
+            <vs-dropdown-item><vs-icon icon="sentiment_very_satisfied" class="mr-1"></vs-icon> Edit Profile</vs-dropdown-item>
+            <vs-dropdown-item><vs-icon icon="add" class="mr-1"></vs-icon> Add Account</vs-dropdown-item>
             <hr class="mb-1" />
-            <vs-dropdown-item><vs-icon icon="gps_not_fixed" class="mr-1"></vs-icon> Account Setting</vs-dropdown-item>
+            <vs-dropdown-item><vs-icon icon="logout" class="mr-1"></vs-icon>Log Out </vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
       
@@ -71,6 +62,7 @@
 </template>
 
 <script>
+
 export default {
 	name : 'Navbar',
   props: {

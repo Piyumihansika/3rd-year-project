@@ -7,7 +7,7 @@
 		{
 			url: "/settings",
 			name: "Settings",
-			icon:"tag_faces"
+			icon:"settings"
 		},	{
 			url: "/notifications",
 			name: "Notifications",
@@ -23,7 +23,7 @@
 		},	{
 			url: "/reports",
 			name: "Reports",
-			icon:"credit_card"
+			icon:"report"
 		},
 
 	// {

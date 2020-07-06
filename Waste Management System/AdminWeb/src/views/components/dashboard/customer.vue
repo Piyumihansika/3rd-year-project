@@ -27,7 +27,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                        <div class="mr-2"><vs-avatar  src=" @/src/assets/images/user/2.jpg"/>
+                        <div class="mr-2"><vs-avatar  text = "C1" />
                         <!-- <vs-avatar size="large> -->
                         </div>
                             <div class="">
@@ -41,7 +41,7 @@
                         <label class="label label-danger">customer01@gmail.com </label>
                     </td>
                     <td>0701111111</td>
-                    <td></td>
+                    <td><vs-button radius color="danger" type="gradient" icon="delete"></vs-button></td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>
@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="danger" text="Mrimary" /></div>
+                            <div class="mr-2"><vs-avatar color="danger" text="C2" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Customer 02</h5>
                             </div>
@@ -61,7 +61,10 @@
                         <label class="label label-info">customer02@gmail.com</label>
                     </td>
                     <td>0719988774</td>
-                    <td></td>
+                    <td>
+                        <vs-button radius color="danger" type="gradient" icon="delete"></vs-button>
+                        <!-- <vs-button radius color="primary" type="gradient" icon="person"></vs-button> -->
+                    </td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>
@@ -69,7 +72,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="warning" text="Primary" /></div>
+                            <div class="mr-2"><vs-avatar color="warning" text="C3" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Customer 03</h5>
                             </div>
@@ -81,7 +84,7 @@
                         <label class="label label-success">customer03@gmail.com</label>
                     </td>
                     <td>0762255888</td>
-                    <td></td>
+                    <td><vs-button radius color="danger" type="gradient" icon="delete"></vs-button></td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>
@@ -89,7 +92,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="success" text="Arimary" /></div>
+                            <div class="mr-2"><vs-avatar color="success" text="C4" /></div>
                             <div class="">
                                 <h5 class="m-b-0">Customer 04</h5>
                             </div>
@@ -101,7 +104,7 @@
                         <label class="label label-purple">customer04@gmail.com</label>
                     </td>
                     <td>0761122335</td>
-                    <td></td>
+                    <td><vs-button radius color="danger" type="gradient" icon="delete"></vs-button></td>
                     <td>
                         <h5 class="m-b-0"></h5>
                     </td>

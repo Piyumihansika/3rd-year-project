@@ -14,7 +14,7 @@
             </vs-sidebar-item>
         </template>  
         
-        <!-- <div class="footer-sidebar" slot="footer">
+        <!-- <div class="footer-sidebar" slot="footer">     @/assets/images/users/3.jpg
             <vs-button icon="reply" color="danger" type="flat" href="https://www.wrappixel.com">Upgrade to Pro</vs-button>
         </div> -->
 

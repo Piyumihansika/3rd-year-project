@@ -14,16 +14,16 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="primary" text="Brimary" /></div>
+                    <div class="mr-2"><vs-avatar color="primary" text="Buyer 1" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Buyer 1</h5>
+                        <h5 class="m-b-0">Buyer 01</h5>
                     </div>
                 </div>
             </td>
-            <td>Single Use</td>
+            <td></td>
             <td>25</td>
             <td>
-                <label class="label label-danger">Angular</label>
+                <label class="label label-danger">Customer 04</label>
             </td>
             <td>4.5</td>
            
@@ -31,16 +31,16 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="danger" text="Brimary" /></div>
+                    <div class="mr-2"><vs-avatar color="danger" text="Buyer 2" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Buyer 2</h5>
+                        <h5 class="m-b-0">Buyer 02</h5>
                     </div>
                 </div>
             </td>
-            <td>Single Use</td>
+            <td></td>
             <td>25</td>
             <td>
-                <label class="label label-info">Vue Js</label>
+                <label class="label label-info">Customer 02</label>
             </td>
             <td>4</td>
            
@@ -48,16 +48,16 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="warning" text="Brimary" /></div>
+                    <div class="mr-2"><vs-avatar color="warning" text="Buyer 3" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Buyer 3</h5>
+                        <h5 class="m-b-0">Buyer 03</h5>
                     </div>
                 </div>
             </td>
-            <td>Single Use</td>
-            <td>25</td>
+            <td></td>
+            <td>15</td>
             <td>
-                <label class="label label-success">Bootstrap</label>
+                <label class="label label-success">Customer 01</label>
             </td>
             <td>3</td>
            
@@ -65,16 +65,16 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                    <div class="mr-2"><vs-avatar color="success" text="Brimary" /></div>
+                    <div class="mr-2"><vs-avatar color="success" text="Buyer 4" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Buyer 4</h5>
+                        <h5 class="m-b-0">Buyer 04</h5>
                     </div>
                 </div>
             </td>
-            <td>Single Use</td>
-            <td>25</td>
+            <td></td>
+            <td>10</td>
             <td>
-                <label class="label label-purple">React</label>
+                <label class="label label-purple">Customer 03</label>
             </td>
             <td>2.5</td>
          
