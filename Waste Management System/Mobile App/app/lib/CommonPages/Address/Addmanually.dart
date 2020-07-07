@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-final String apiUrl = "http://10.0.2.2:3000/customer/addCustomer";
+final String apiUrl = "http://192.168.8.100:3000/customer/addCustomer";
 
 class Address extends StatefulWidget {
   final String firstName;
@@ -50,9 +50,9 @@ class _AddressState extends State<Address> {
         "----------------------------------------------OK----------------------------------------------------");
 
     print(data.toString());
-    var response = await http.post(apiUrl, body: data, encoding: Encoding.getByName("application/json"));
+    var response = await http.post(apiUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
-      
       //This line added by piyumi
       Navigator.of(context).pushNamed('/login');
       print(response.statusCode);
@@ -120,7 +120,7 @@ class _AddressState extends State<Address> {
                     labelText: 'Address 2',
                     labelStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.green),
-                  ),               
+                  ),
                   //controller: address2Controller,
                   validator: (value) {
                     if (value.isEmpty) {
@@ -138,7 +138,7 @@ class _AddressState extends State<Address> {
                   scrollPadding: EdgeInsets.all(10),
                   decoration: const InputDecoration(
                     //icon: const Icon(Icons.person,color: Colors.green,),
-                    hintText: 'City',    
+                    hintText: 'City',
                     labelText: 'City',
                     labelStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.green),
@@ -187,7 +187,6 @@ class _AddressState extends State<Address> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         register(context);
-
                       }
                     },
                   )),

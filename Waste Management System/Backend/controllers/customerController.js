@@ -49,14 +49,14 @@ router.post('/addCustomer', async(req, res) => {
 });
 
 //UPDATE CUSTOMER DETAILS
-router.put("/updateCustomer/:id", (req, res, next) => {
-  
-    const customer =  Customer.findByIdAndUpdate({_id: req.params.id}, req.body)
+router.put("/updateCustomer/:id", async (req, res) => {
+    
+    const customer = await Customer.findByIdAndUpdate({_id: req.params.id}, req.body)
     console.log("update api hit")
    if(customer){
-    const newCustomer =  Customer.findOne({_id: req.params.id})
+    const newCustomer =  await Customer.findOne({_id: req.params.id})
     res.status(200).json(newCustomer)
-    console.log("update and add")
+    console.log("success")
 
    }else{
        res.status(500).send("server error");

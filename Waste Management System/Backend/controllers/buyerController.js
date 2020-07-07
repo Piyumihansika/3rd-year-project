@@ -51,14 +51,19 @@ router.post('/addBuyer', async(req, res) => {
             city,
             district
         });
-        await buyer.save();
+        buyer.password = await buyer.encryptPassword(password);
         console.log("api hit");
-
-        const token = jwt.sign({ id: buyer.id}, config.secret, {
-            expiresIn: "24h"
-        });
-        res.status(200).json({ auth: true, token})
-
+        const user = await Buyer.findOne({ email: req.body.email })
+        if(!user){
+            await buyer.save();
+            console.log("buyer api hit")
+            const token = jwt.sign({ id: buyer.id}, config.secret, {
+                expiresIn: "24h"
+            });
+            res.status(200).json({ auth: true, token})
+        }else{
+            res.status(403).send("email already exist")
+        }
     }catch(e){
         console.log(e);
         res.status(500).send('There was a problem signUp');

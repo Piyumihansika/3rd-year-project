@@ -3,21 +3,21 @@
         <vs-col vs-lg="3" vs-xs="12">
             <vs-card>
                 <h4 class="mb-1">+70%</h4>
-                <span>Total Sales</span>
+                <span>Total Commission</span>
                 <vs-progress :percent="70" color="primary">primary</vs-progress>
             </vs-card>
         </vs-col>
         <vs-col vs-lg="3" vs-xs="12">
             <vs-card>
-                <h4 class="mb-1">-10%</h4>
-                <span>Monthly Sales</span>
+                <h4 class="mb-1">-5%</h4>
+                <span>Monthly Commissions</span>
                 <vs-progress :percent="10" color="danger">primary</vs-progress>
             </vs-card>
         </vs-col>
         <vs-col vs-lg="3" vs-xs="12">
             <vs-card>
                 <h4 class="mb-1">50%</h4>
-                <span>Yearly Sales</span>
+                <span>Yearly Commissions</span>
                 <vs-progress :percent="50" color="success">primary</vs-progress>
             </vs-card>
         </vs-col>
