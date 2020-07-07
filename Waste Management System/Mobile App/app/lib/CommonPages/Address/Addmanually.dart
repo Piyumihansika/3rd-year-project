@@ -67,9 +67,11 @@ class _AddressState extends State<Address> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: Text('Enter Your Address'),
             //  title: Text(
             //    phone + firstname,
             //    ),
+            backgroundColor: Colors.green,
             ),
         body: Form(
           key: _formKey,
@@ -77,10 +79,10 @@ class _AddressState extends State<Address> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Text('Enter Your Address'),
-              ),
+              // Container(
+              //   padding: EdgeInsets.all(10),
+              //   child: Text('Enter Your Address'),
+              // ),
 
               Container(
                 padding: EdgeInsets.all(10),

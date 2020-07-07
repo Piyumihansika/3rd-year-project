@@ -1,4 +1,3 @@
-// import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,7 +10,7 @@ final String editUrl =
 class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //final appTitle = 'Edit Profile';
+    
     return Scaffold(
       appBar: AppBar(
         elevation: 4.0,
@@ -39,7 +38,7 @@ class MyCustomForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class, which holds data related to the form.
+
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
 
@@ -79,8 +78,7 @@ class MyCustomFormState extends State<MyCustomForm> {
     setState(() {
       imageFile = pic;
     });
-    //this is for closing the alert box
-//Navigator.of(context).pop();
+   
   }
 
   Future<void> showChoicedialogbox(BuildContext context) {
@@ -123,19 +121,12 @@ class MyCustomFormState extends State<MyCustomForm> {
     }
   }
 
-  // TextEditingController newfirstName = TextEditingController();
-  // TextEditingController newlastName = TextEditingController();
-  // TextEditingController newcontactNumber = TextEditingController();
   String newfirstName;
   String newlastName;
   String newcontactNumber;
 
   void editProfile() {
-    // final Map<String, dynamic> data = {
-    //   "firstName": newfirstName,
-    //   "lastName": newlastName,
-    //   "contactNumber": newcontactNumber,
-    // };
+    
 
     http.put(editUrl, body: {
       "firstName": newfirstName,
@@ -156,7 +147,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
+    
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
@@ -180,10 +171,9 @@ class MyCustomFormState extends State<MyCustomForm> {
               ),
             ),
 
-//
 
             TextFormField(
-              // controller: TextEditingController(text: ResponseData.firstName),
+             
               initialValue: ResponseData.firstName,
 
               decoration: const InputDecoration(
@@ -211,13 +201,13 @@ class MyCustomFormState extends State<MyCustomForm> {
 
             TextFormField(
               initialValue: ResponseData.lastName,
-              // controller: lastName,
+            
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.person,
                   color: Colors.green,
                 ),
-                // hintText: 'Enter your full name',
+                
 
                 labelText: 'Last Name',
                 labelStyle: TextStyle(
@@ -238,13 +228,13 @@ class MyCustomFormState extends State<MyCustomForm> {
 
             TextFormField(
               initialValue: ResponseData.contactNumber,
-              // controller: contactNumber,
+           
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.phone,
                   color: Colors.green,
                 ),
-                // hintText: 'Enter a phone number',
+               
                 labelText: 'Phone',
                 labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,

@@ -21,12 +21,13 @@ class _ChooseLocaTypeState extends State<ChooseLocaType> {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
-        title: Text('How Do You Enter Your Address' + widget.firstName),
+        title: Text('How Do You Enter Address'),
+        backgroundColor: Colors.green,
       ),
      body: new Center(
         child:
 
-            // Below is the code which will help you to achive Buttons Bar as show above
+           
 
             new Row(
           children: [

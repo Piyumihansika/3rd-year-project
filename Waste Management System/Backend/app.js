@@ -10,4 +10,6 @@ app.use('/admin',require('./controllers/adminController'))
 app.use('/customer',require('./controllers/customerController'))
 app.use('/buyer',require('./controllers/buyerController'))
 
+
+
 module.exports = app;
