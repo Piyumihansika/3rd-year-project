@@ -1,9 +1,6 @@
 <template>
   <v-app>
-      
-
-
-
+  
 
   </v-app>
 
@@ -11,15 +8,9 @@
 
 <script>
 
-import publicHeader from './publicCommon/publicHeader.vue'
-
-
 export default {
 components: {
-            publicHeader
-           
-            
-           
+       
            }
 }
 </script>

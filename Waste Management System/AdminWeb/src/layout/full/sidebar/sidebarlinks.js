@@ -1,13 +1,13 @@
 	export default [
 		{
-			url:"/starterkit",
-			name:"Starterkit",
-			icon:"favorite_border"
+			url: "/starterkit",
+			name: "Dashboard",
+			icon:"tag_faces"
 		},
 		{
 			url: "/settings",
 			name: "Settings",
-			icon:"tag_faces"
+			icon:"settings"
 		},	{
 			url: "/notifications",
 			name: "Notifications",
@@ -23,7 +23,7 @@
 		},	{
 			url: "/reports",
 			name: "Reports",
-			icon:"credit_card"
+			icon:"report"
 		},
 
 	// {

@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
 
-// final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
-final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
+final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
+// final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
 
 String newAuth = ResponseData.auth;
 
@@ -229,6 +229,7 @@ class _LoginFormState extends State<LoginForm> {
         ResponseData.address2 = (value["user"]["address2"].toString());
         ResponseData.city = (value["user"]["city"].toString());
         ResponseData.district = (value["user"]["district"].toString());
+
         Navigator.of(context).pushNamed('/buyerhome');
         loginsuccessdialog(context);
       }

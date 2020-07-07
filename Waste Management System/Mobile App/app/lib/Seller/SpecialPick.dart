@@ -7,7 +7,6 @@ class SpecialPick extends StatefulWidget {
 class _SpecialPickState extends State<SpecialPick> {
   
   final _formKey =GlobalKey<FormState>();
- //text field state
 
  String email ='';
  String password='';

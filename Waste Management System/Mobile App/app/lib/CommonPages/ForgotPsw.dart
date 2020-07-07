@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 
 
-final String apiUrl = "http://192.168.8.100:3000/Your URL HERE";
+final String apiUrl = "http://10.0.2.2:3000/Your URL HERE";
 
 
 class Forgot extends StatelessWidget {
@@ -47,13 +47,6 @@ Navigator.of(context).pushNamed('/login');
   });
 }
 
-//email validater
-// bool validateEmail(String value) {
-//   Pattern pattern =
-//       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-//   RegExp regex = new RegExp(pattern);
-//   return (!regex.hasMatch(value)) ? false : true;
-// }
 
   
   final _formKey = GlobalKey<FormState>();  

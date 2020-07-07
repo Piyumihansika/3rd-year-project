@@ -43,7 +43,7 @@ class _SignFormState extends State<SignForm> {
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              //padding: EdgeInsets.all(10),
+              
 
               child: Image(
                 alignment: Alignment(0.5, 0.5),
@@ -184,6 +184,10 @@ class _SignFormState extends State<SignForm> {
                   }else if(value.length<6){
                     return 'Your password too short';
                   }
+                  // else if(value.){
+                  //   return 'Your password too short';
+                  // }
+
                   return null;
                 },
                 obscureText: false,
@@ -195,23 +199,55 @@ class _SignFormState extends State<SignForm> {
           
             ),
 
-            new Container(
-                padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-                child: new RaisedButton(
-                  child: const Text('Next'),
-                  color: Colors.green,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      //  print(firstnameController.text);
-                      //  print(lastnameController.text);
-                      //  print(usernameController.text);
-                      // //  print(addressController.text);
-                      //  print(phoneController.text);
-                      // //  print(nearLocationController.text);
-                      // print(passwordController.text);
+            // new Container(
+            //     padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+            //     child: new RaisedButton(
+            //       child: const Text('Next'),
+            //       color: Colors.green,
+            //       textColor: Colors.white,
+            //       onPressed: () {
+                    // if (_formKey.currentState.validate()) {
+                     
+                     
+                    //   Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => ChooseLocaType(
+                    //         firstName: firstName.text,
+                    //         lastName: lastName.text,
+                    //         email: email.text,
+                    //         contactNumber: contactNumber.text,
+                    //         password: password.text),
+                    //   ));
 
-                      // Navigator.of(context).pushNamed('/choosetype');
+                    //   //
+                    // }
+                //   },
+                // )),
+
+
+//
+ListTile(
+
+ title: Row(
+            children: <Widget>[
+
+
+              Expanded(child: RaisedButton(onPressed: () {
+
+Navigator.of(context).pushNamed('/login');
+            
+              },
+              
+              child: Text("Back"),color: Colors.green,textColor: Colors.white,)),
+              
+              
+              
+              Expanded(child: RaisedButton(onPressed: ()
+              
+               {
+
+if (_formKey.currentState.validate()) {
+                     
+                     
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ChooseLocaType(
                             firstName: firstName.text,
@@ -223,11 +259,16 @@ class _SignFormState extends State<SignForm> {
 
                       //
                     }
-                  },
-                )),
+              },
+              
+              child: Text("Next"),color: Colors.green,textColor: Colors.white,)),
+            ],
+          ),
+
+)
 
 
-
+//
 
 
 

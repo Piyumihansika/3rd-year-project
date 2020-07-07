@@ -29,7 +29,7 @@ SideBar
 },
 data:() => ({
 	topbarColor: "#2962ff",
-	logotitle: "     Green Wasteland",
+	logotitle: "Green Wasteland",
 	sidebarLinks: sidebarLinks,
 }),
 methods: {

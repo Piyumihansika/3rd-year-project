@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/utils/ResponseData.dart';
 
-//void main() => runApp(Profile());
-// String firstname='piyumi';
-// String lastname='hansi';
-// String contactNumber='hdghdhj';
-// String password="gkgmkgk";
-// String address1="hhhhh";
-// String address2="tttt";
-// String city="yuyuyu";
-// String district="hjjurrr";
+
 
 class Profile extends StatelessWidget {
   @override
@@ -76,7 +68,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   Icons.account_circle,
                   color: Colors.green,
                 ),
-                // hintText: 'Enter your full name',
+                
 
                 labelText: 'First Name',
                 labelStyle: TextStyle(
@@ -164,9 +156,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             TextFormField(
               initialValue: ResponseData.address2,
               decoration: const InputDecoration(
-                //icon: const Icon(Icons.account_balance,color: Colors.green,),
-                // hintText: 'Enter your full name',
-
+               
                 labelText: 'Address',
                 labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -241,19 +231,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               },
             ),
 
-            // TextFormField(
-            //   decoration: const InputDecoration(
-            //   icon: const Icon(Icons.calendar_today),
-            //   hintText: 'Enter your date of birth',
-            //   labelText: 'Dob',
-            //   ),
-            //   validator: (value) {
-            //     if (value.isEmpty) {
-            //       return 'Please enter valid date';
-            //     }
-            //     return null;
-            //   },
-            //  ),
+            
             new Container(
                 padding: const EdgeInsets.only(left: 150.0, top: 40.0),
                 child: new RaisedButton(
