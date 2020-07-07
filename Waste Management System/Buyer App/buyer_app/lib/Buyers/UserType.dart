@@ -42,44 +42,30 @@ class _UserTypeState extends State<Type> {
                   Container(
                     height: 200.0,
                     width: double.infinity,
-                    color: Colors.green,
+                    color: Colors.white,
                   ),
                   Positioned(
-                    bottom: 55.0,
-                    right: 100.0,
-                    child: Container(
-                      height: 350.0,
-                      width: 350.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.yellowAccent
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 100.0,
-                    right: 130.0,
-                    child: Container(
-                      height: 290.0,
-                      width: 300.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.blueAccent
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 100.0,
-                    right: 150.0,
-                    child: Container(
-                      height: 330.0,
-                      width: 300.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.yellow
-                      ),
-                    ),
-                  ),
+                bottom: 1.0,
+                right: 90.0,
+                child: Container(
+                  height: 350.0,
+                  width: 350.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.yellowAccent),
+                ),
+              ),
+              Positioned(
+                bottom: 10.0,
+                right: 130.0,
+                child: Container(
+                  height: 290.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.green[100]),
+                ),
+              ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -125,7 +111,7 @@ class _UserTypeState extends State<Type> {
                           style: TextStyle(
                               fontSize: 17.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ),
                     ],
@@ -133,41 +119,46 @@ class _UserTypeState extends State<Type> {
                 ]
             ),
             //
-            Container(
-                alignment: Alignment.center,
-                child: Text(
-                  '',
-                  style: TextStyle(fontSize:17, color: Colors.green),
-                )),
+            
 
-
+          SizedBox(height: 60.0),
             Container(
 
                 alignment: Alignment(-0.1,1),
 
-                child: new RaisedButton(
-                  child: const Text('Household User'),
-                  color: Colors.green,
-                  textColor: Colors.white,
+                child: Padding(
+                   padding: EdgeInsets.only(left: 15.0,right: 15.0),
+                  child: new RaisedButton(
+                    child: const Text('Household User',style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                    padding:
+                    const EdgeInsets.only(left: 110.0, top: 10.0,bottom: 10.0, right: 110.0),
 
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/signuphousehold');
-                  },
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/signuphousehold');
+                    },
+                  ),
                 )
             ),
 
+            SizedBox(height: 20.0),
             Container(
 
                 alignment: Alignment(-0.1,1),
 
-                child: new RaisedButton(
-                  child: const Text('Company User'),
-                  color: Colors.green,
-                  textColor: Colors.white,
-
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/signupcompany');
-                  },
+                child: Padding(
+                  padding: EdgeInsets.only(left: 15.0,right: 15.0),
+                  child: new RaisedButton(
+                    child: const Text('Company User',style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
+                    color: Colors.green,
+                    textColor: Colors.white,
+padding:
+                    const EdgeInsets.only(left: 110.0, top: 10.0,bottom: 10.0, right: 120.0),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/signupcompany');
+                    },
+                  ),
                 )
             ),
           ],

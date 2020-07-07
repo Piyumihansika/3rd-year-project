@@ -53,11 +53,11 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
               Container(
                 height: 200.0,
                 width: double.infinity,
-                color: Colors.green,
+                color: Colors.white,
               ),
               Positioned(
-                bottom: 55.0,
-                right: 100.0,
+                bottom: 40.0,
+                right: 80.0,
                 child: Container(
                   height: 350.0,
                   width: 350.0,
@@ -67,25 +67,14 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
                 ),
               ),
               Positioned(
-                bottom: 100.0,
-                right: 130.0,
+                bottom: 50.0,
+                right: 140.0,
                 child: Container(
                   height: 290.0,
                   width: 300.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.blueAccent),
-                ),
-              ),
-              Positioned(
-                bottom: 100.0,
-                right: 150.0,
-                child: Container(
-                  height: 330.0,
-                  width: 300.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellow),
+                      color: Colors.green[100]),
                 ),
               ),
               Column(
@@ -130,7 +119,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
                       style: TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                   ),
                 ],
@@ -278,7 +267,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Next'),
+                      child: const Text('Next',style: TextStyle(fontSize: 18),),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {

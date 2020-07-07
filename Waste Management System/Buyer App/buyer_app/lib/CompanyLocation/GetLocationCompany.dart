@@ -44,44 +44,30 @@ class GetLocationCompany extends StatefulWidget {
                     Container(
                       height: 200.0,
                       width: double.infinity,
-                      color: Colors.green,
+                      color: Colors.white,
                     ),
                     Positioned(
-                      bottom: 55.0,
-                      right: 100.0,
-                      child: Container(
-                        height: 350.0,
-                        width: 350.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(320),
-                            color: Colors.yellowAccent
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 100.0,
-                      right: 130.0,
-                      child: Container(
-                        height: 290.0,
-                        width: 300.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(320),
-                            color: Colors.blueAccent
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 100.0,
-                      right: 150.0,
-                      child: Container(
-                        height: 330.0,
-                        width: 300.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(320),
-                            color: Colors.yellow
-                        ),
-                      ),
-                    ),
+                bottom: 40.0,
+                right: 80.0,
+                child: Container(
+                  height: 350.0,
+                  width: 350.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.yellowAccent),
+                ),
+              ),
+              Positioned(
+                bottom: 50.0,
+                right: 140.0,
+                child: Container(
+                  height: 290.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.green[100]),
+                ),
+              ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -123,12 +109,12 @@ class GetLocationCompany extends StatefulWidget {
                         Padding(
                           padding: EdgeInsets.only(left: 15.0),
                           child: Text(
-                            'What is your location ?',
-                            style: TextStyle(
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
+                      'What is your location ?',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
                         ),
                       ],
                     ),
@@ -139,7 +125,7 @@ class GetLocationCompany extends StatefulWidget {
                 alignment: Alignment.center,
               ),
               DropdownButton(
-                hint: Text('Select your option'), // Not necessary for Option 1
+                hint: Text('Select your option',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),), // Not necessary for Option 1
                 value: _selectedOption,
                 onChanged: (newValue) {
                   setState(() {
@@ -169,7 +155,7 @@ class GetLocationCompany extends StatefulWidget {
                 },
                 items: _options.map((option) {
                   return DropdownMenuItem(
-                    child: new Text(option),
+                    child: new Text(option,style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
                     value: option,
                   );
                 }).toList(),

@@ -35,6 +35,30 @@ class _ManuallyState extends State<Manually> {
   TextEditingController city = TextEditingController();
   TextEditingController district = TextEditingController();
 
+//success dialog box
+  registersuccessdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Congradulations!",
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              "You are registered successfully. Please Login!",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        });
+  }
+
   void register(BuildContext context) async {
     print(widget.firstName);
 
@@ -61,8 +85,10 @@ class _ManuallyState extends State<Manually> {
       print(response.statusCode);
       print(response.body);
       Navigator.of(context).pushNamed('/login');
+      registersuccessdialog(context);
     } else {
       print(response.statusCode);
+
       print("error occured");
     }
   }
@@ -195,9 +221,12 @@ class _ManuallyState extends State<Manually> {
                 child: Column(
                   children: <Widget>[
                     FlatButton(
-                      padding: const EdgeInsets.only(right: 120.0),
+                      padding: const EdgeInsets.only(right: 10.0),
                       textColor: Colors.green,
-                      child: Text('Our terms & conditions'),
+                      child: Text(
+                        'Our terms & conditions',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       onPressed: () {
                         //terms and condition page
                         Navigator.of(context).pushNamed('/terms');
@@ -207,7 +236,10 @@ class _ManuallyState extends State<Manually> {
                       initialValue: false,
                       label: Text(
                         "I have read and agree to the terms and conditions",
-                        style: TextStyle(color: Colors.black87),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
                       ),
                       validators: [
                         FormBuilderValidators.requiredTrue(
@@ -234,12 +266,13 @@ class _ManuallyState extends State<Manually> {
                         },
                       ),
                       RaisedButton(
-                          child: const Text('SIGN UP'),
+                          child: const Text('Sign up',style: TextStyle(fontSize: 18),),
                           color: Colors.green,
                           textColor: Colors.white,
                           onPressed: () {
-                            register(context);
-                           // Navigator.of(context).pushNamed('/login');
+                            if (_formKey.currentState.validate()) {
+                              register(context);
+                            }
                           }
 
                           // if (_formKey.currentState.validate()) {

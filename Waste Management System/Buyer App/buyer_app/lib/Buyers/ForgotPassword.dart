@@ -67,44 +67,31 @@ class _ForgotFormState extends State<ForgotForm> {
                   Container(
                     height: 200.0,
                     width: double.infinity,
-                    color: Colors.green,
+                    color: Colors.white,
                   ),
                   Positioned(
-                    bottom: 55.0,
-                    right: 100.0,
-                    child: Container(
-                      height: 350.0,
-                      width: 350.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.yellowAccent
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 100.0,
-                    right: 130.0,
-                    child: Container(
-                      height: 290.0,
-                      width: 300.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.blueAccent
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 100.0,
-                    right: 150.0,
-                    child: Container(
-                      height: 330.0,
-                      width: 300.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.yellow
-                      ),
-                    ),
-                  ),
+                bottom: 40.0,
+                right: 80.0,
+                child: Container(
+                  height: 350.0,
+                  width: 350.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.yellowAccent),
+                ),
+              ),
+              Positioned(
+                bottom: 50.0,
+                right: 130.0,
+                child: Container(
+                  height: 290.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(320),
+                      color: Colors.green[100]),
+                ),
+              ),
+             
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -150,7 +137,7 @@ class _ForgotFormState extends State<ForgotForm> {
                           style: TextStyle(
                               fontSize: 17.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ),
                     ],
@@ -159,6 +146,7 @@ class _ForgotFormState extends State<ForgotForm> {
             ),
 
             //
+            SizedBox(height: 45.0),
             Container(
               alignment: Alignment.center,
             ),
@@ -198,7 +186,7 @@ class _ForgotFormState extends State<ForgotForm> {
                 child: Row(
                   children: <Widget>[
                     new RaisedButton(
-                      child: const Text('BACK'),
+                      child: const Text('Back',style: TextStyle(fontSize: 18),),
                       color: Colors.yellow,
                       textColor: Colors.black,
 
@@ -208,7 +196,7 @@ class _ForgotFormState extends State<ForgotForm> {
                     ),
 
                     new RaisedButton(
-                      child: const Text('Submit'),
+                      child: const Text('Submit',style: TextStyle(fontSize: 18),),
                       color: Colors.green,
                       textColor: Colors.white,
 

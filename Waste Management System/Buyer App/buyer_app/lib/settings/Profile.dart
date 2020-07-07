@@ -69,10 +69,10 @@ class ProfileDetailState extends State<ProfileDetail>
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Save Successful !'),
+            title: Text('Save Successful !',style: TextStyle(color: Colors.green,fontSize: 20),),
             actions: <Widget>[
               MaterialButton(
-                child: Text('OK'),
+                child: Text('OK',style: TextStyle(color: Colors.green,fontSize: 20),),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -467,14 +467,14 @@ class ProfileDetailState extends State<ProfileDetail>
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Save"),
+                child: new Text("Save",style: TextStyle(fontSize: 18),),
                 textColor: Colors.white,
                 color: Colors.green,
                 onPressed: () {
                   print("----------------------------------------------------");
                   print("${ResponseData.userId}" + "uid");
                   if (_formKey.currentState.validate()) {
-                    editData();
+                    //editData();
                     successdialog(context);
                     setState(() {
                       _status = true;
@@ -493,7 +493,7 @@ class ProfileDetailState extends State<ProfileDetail>
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Cancel"),
+                child: new Text("Cancel",style: TextStyle(fontSize: 18),),
                 textColor: Colors.white,
                 color: Colors.red,
                 onPressed: () {

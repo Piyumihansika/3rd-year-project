@@ -93,7 +93,7 @@ class _ContactUsState extends State<Contact> {
                   width: 300.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.blueAccent),
+                      color: Colors.green[50]),
                 ),
               ),
               Column(
@@ -211,7 +211,7 @@ class _ContactUsState extends State<Contact> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Submit'),
+                      child: const Text('Submit',style: TextStyle(fontSize: 20),),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {

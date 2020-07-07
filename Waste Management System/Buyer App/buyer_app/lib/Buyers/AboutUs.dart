@@ -46,7 +46,7 @@ class _AboutUsState extends State<About> {
                   width: 350.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellowAccent),
+                      color: Colors.yellow[50]),
                 ),
               ),
               Positioned(
@@ -57,7 +57,7 @@ class _AboutUsState extends State<About> {
                   width: 300.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.blueAccent),
+                      color: Colors.green[50]),
                 ),
               ),
               Column(

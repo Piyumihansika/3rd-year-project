@@ -60,11 +60,11 @@ class _GetLocationState extends State<GetLocation> {
               Container(
                 height: 200.0,
                 width: double.infinity,
-                color: Colors.green,
+                color: Colors.white,
               ),
               Positioned(
-                bottom: 55.0,
-                right: 100.0,
+                bottom: 40.0,
+                right: 80.0,
                 child: Container(
                   height: 350.0,
                   width: 350.0,
@@ -74,25 +74,14 @@ class _GetLocationState extends State<GetLocation> {
                 ),
               ),
               Positioned(
-                bottom: 100.0,
-                right: 130.0,
+                bottom: 50.0,
+                right: 140.0,
                 child: Container(
                   height: 290.0,
                   width: 300.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.blueAccent),
-                ),
-              ),
-              Positioned(
-                bottom: 100.0,
-                right: 150.0,
-                child: Container(
-                  height: 330.0,
-                  width: 300.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellow),
+                      color: Colors.green[100]),
                 ),
               ),
               Column(
@@ -135,9 +124,9 @@ class _GetLocationState extends State<GetLocation> {
                     child: Text(
                       'What is your location ?',
                       style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: 20.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.red),
                     ),
                   ),
                 ],
@@ -148,7 +137,7 @@ class _GetLocationState extends State<GetLocation> {
               alignment: Alignment.center,
             ),
             DropdownButton(
-              hint: Text('Select your option'), // Not necessary for Option 1
+              hint: Text('Select your option',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),), // Not necessary for Option 1
               value: _selectedOption,
               onChanged: (newValue) {
                 setState(() {
@@ -180,7 +169,7 @@ class _GetLocationState extends State<GetLocation> {
               },
               items: _options.map((option) {
                 return DropdownMenuItem(
-                  child: new Text(option),
+                  child: new Text(option,style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
                   value: option,
                 );
               }).toList(),

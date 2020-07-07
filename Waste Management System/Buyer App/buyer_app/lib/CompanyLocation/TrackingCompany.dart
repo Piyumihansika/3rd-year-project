@@ -62,13 +62,14 @@ class _TrackingCompanyState extends State<TrackingCompany> {
 
   Position currentPosition;
   String currentAddress;
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tracking Location'),
-         backgroundColor: Colors.green,),
+      appBar: AppBar(
+        title: Text('Tracking Location'),
+        backgroundColor: Colors.green,
+      ),
       body: Form(
         key: _formKey,
         child: Column(
@@ -76,38 +77,37 @@ class _TrackingCompanyState extends State<TrackingCompany> {
           children: <Widget>[
             if (currentPosition != null) Text(currentAddress),
 
-  //          Container(
-  //            alignment: Alignment.center,
-  //            child: Text('Your Location Here'),
-  //          ),
+            //          Container(
+            //            alignment: Alignment.center,
+            //            child: Text('Your Location Here'),
+            //          ),
 
-            
-                
-                  RaisedButton(
-                    child: Text(
-                      "Get location",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
-                    onPressed: () {
-                      _getCurrentLocation();
-                    },
-                  ),
-              
-              
-            
+            RaisedButton(
+              child: Text(
+                "Get location",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              ),
+              onPressed: () {
+                _getCurrentLocation();
+              },
+            ),
+
             //  terms and conditions...
             Container(
               padding: EdgeInsets.all(10),
               child: Column(
                 children: <Widget>[
                   FlatButton(
-                    padding: const EdgeInsets.only(right: 120.0),
+                    padding: const EdgeInsets.only(right: 10.0),
                     textColor: Colors.green,
-                    child: Text('Our terms & conditions'),
+                    child: Text(
+                      'Our terms & conditions',
+                      style: TextStyle(fontSize: 18),
+                    ),
                     onPressed: () {
                       //terms and condition page
                       Navigator.of(context).pushNamed('/terms');
@@ -117,7 +117,7 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                     initialValue: false,
                     label: Text(
                       "I have read and agree to the terms and conditions",
-                      style: TextStyle(color: Colors.black87),
+                      style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
                     validators: [
                       FormBuilderValidators.requiredTrue(
@@ -136,7 +136,7 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('BACK'),
+                      child: const Text('Back',style: TextStyle(fontSize: 18),),
                       color: Colors.yellow,
                       textColor: Colors.black,
                       onPressed: () {
@@ -144,15 +144,14 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                       },
                     ),
                     RaisedButton(
-                      child: const Text('SIGN UP'),
+                      child: const Text('Sign up',style: TextStyle(fontSize: 18),),
                       color: Colors.green,
                       textColor: Colors.white,
-
                       onPressed: () {
-                        register(context);
-                        //Navigator.of(context).pushNamed('/buyerhome');
+                        if (_formKey.currentState.validate()) {
+                          register(context);
+                        }
                       },
-                    
                     ),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -194,9 +193,3 @@ class _TrackingCompanyState extends State<TrackingCompany> {
     }
   }
 }
-
-
-
-
-
-

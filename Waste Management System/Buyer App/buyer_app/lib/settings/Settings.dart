@@ -14,13 +14,13 @@ class _SettingPageState extends State<SettingPage> {
             title: Text('Are You sure you want deactivate your account ? '),
             actions: <Widget>[
               MaterialButton(
-                child: Text('No'),
+                child: Text('No',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/settings');
                 },
               ),
               MaterialButton(
-                child: Text('Yes'),
+                child: Text('Yes',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 18),),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/deactivateaccount');
                 },
@@ -68,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
                 width: 300.0,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(320),
-                    color: Colors.blueAccent),
+                    color: Colors.green[100]),
               ),
             ),
             Column(
@@ -102,7 +102,7 @@ class _SettingPageState extends State<SettingPage> {
                     style: TextStyle(
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        color: Colors.black),
                   ),
                 ),
               ],

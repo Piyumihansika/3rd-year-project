@@ -102,9 +102,9 @@ class _TrackingState extends State<Tracking> {
               child: Column(
                 children: <Widget>[
                   FlatButton(
-                    padding: const EdgeInsets.only(right: 120.0),
+                    padding: const EdgeInsets.only(right: 10.0),
                     textColor: Colors.green,
-                    child: Text('Our terms & conditions'),
+                    child: Text('Our terms & conditions',style: TextStyle(fontSize: 18),),
                     onPressed: () {
                       //terms and condition page
                       Navigator.of(context).pushNamed('/terms');
@@ -114,7 +114,7 @@ class _TrackingState extends State<Tracking> {
                     initialValue: false,
                     label: Text(
                       "I have read and agree to the terms and conditions",
-                      style: TextStyle(color: Colors.black87),
+                      style: TextStyle(color: Colors.black,fontSize: 18),
                     ),
                     validators: [
                       FormBuilderValidators.requiredTrue(
@@ -133,7 +133,7 @@ class _TrackingState extends State<Tracking> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('BACK'),
+                      child: const Text('Back',style: TextStyle(fontSize: 18),),
                       color: Colors.yellow,
                       textColor: Colors.black,
                       onPressed: () {
@@ -141,12 +141,13 @@ class _TrackingState extends State<Tracking> {
                       },
                     ),
                     RaisedButton(
-                      child: const Text('SIGN UP'),
+                      child: const Text('Sign up',style: TextStyle(fontSize: 18),),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {
+                        if (_formKey.currentState.validate()) {
                         register(context);
-                        //Navigator.of(context).pushNamed('/buyerhome');
+                        }
                       },
                     ),
                   ],

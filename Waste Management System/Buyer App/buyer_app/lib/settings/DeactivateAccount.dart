@@ -43,7 +43,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Delete Account'),
+        title: Text('Delete Account',style: TextStyle(fontSize: 18),),
         backgroundColor: Colors.green,
       ),
       body: Form(
@@ -77,7 +77,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                     width: 300.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(320),
-                        color: Colors.blueAccent),
+                        color: Colors.green[100]),
                   ),
                 ),
                 Column(
@@ -111,37 +111,43 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ),
                   ],
                 ),
               ]),
-              Padding(padding: EdgeInsets.all(20.5)),
-              Text(
-                  "When you press delete account button your account is no longer available",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  )),
+              Padding(padding: EdgeInsets.all(30.5)),
+              Padding(
+                 padding: const EdgeInsets.only(left:10.0),
+                child: Text(
+                    "When you press delete account button your account is no longer available",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
               Padding(padding: EdgeInsets.all(15.0)),
-              TextFormField(
-                controller: password,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                    color: Colors.black,
+              Padding(
+                 padding: const EdgeInsets.only(left:10.0),
+                child: TextFormField(
+                  controller: password,
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                      color: Colors.black,
+                    ),
                   ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
               ),
               new Container(
                   padding: const EdgeInsets.only(left: 150.0, top: 40.0),

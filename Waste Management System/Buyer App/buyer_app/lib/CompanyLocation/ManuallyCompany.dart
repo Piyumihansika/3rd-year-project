@@ -28,6 +28,30 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
   TextEditingController city = TextEditingController();
   TextEditingController district = TextEditingController();
 
+  //success dialog box
+  registersuccessdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Congradulations!",
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              "You are registered successfully. Please Login!",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        });
+  }
+
   void register(BuildContext context) async {
     print(widget.companyName);
 
@@ -53,6 +77,8 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
     if (response.statusCode == 200) {
       print(response.statusCode);
       print(response.body);
+       Navigator.of(context).pushNamed('/login');
+       registersuccessdialog(context);
     } else {
       print(response.statusCode);
       print("error occured");
@@ -181,11 +207,11 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                 child: Column(
                   children: <Widget>[
                     FlatButton(
-                      padding: const EdgeInsets.only(right: 120.0),
+                      padding: const EdgeInsets.only(right: 10.0),
 
 
                       textColor: Colors.green,
-                      child: Text('Our terms & conditions'
+                      child: Text('Our terms & conditions',style: TextStyle(fontSize: 18),
                       ),
 
                       onPressed: () {
@@ -197,7 +223,7 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       initialValue: false,
                       label: Text(
                         "I have read and agree to the terms and conditions",
-                        style: TextStyle(color: Colors.black87),),
+                        style: TextStyle(color: Colors.black,fontSize: 18),),
                       validators: [
                         FormBuilderValidators.requiredTrue(
                           errorText:
@@ -225,13 +251,14 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       ),
 
                       RaisedButton(
-                        child: const Text('SIGN UP'),
+                        child: const Text('Sign up',style: TextStyle(fontSize: 18),),
                         color: Colors.green,
                         textColor: Colors.white,
 
                          onPressed: () {
+                           if (_formKey.currentState.validate()) {
                             register(context);
-                         //   Navigator.of(context).pushNamed('/buyerhome');
+                           }
                           }
                       ),
 

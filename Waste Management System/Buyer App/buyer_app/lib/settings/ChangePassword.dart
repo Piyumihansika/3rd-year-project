@@ -79,7 +79,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                       width: 300.0,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(320),
-                          color: Colors.blueAccent),
+                          color: Colors.green[100]),
                     ),
                   ),
                   Column(
@@ -113,7 +113,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                           style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ),
                     ],
@@ -121,7 +121,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ]),
                 Padding(padding: EdgeInsets.all(20.5)),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: TextFormField(
                     controller: oldpassword,
                     decoration: const InputDecoration(
@@ -141,7 +141,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: TextFormField(
                     controller: newpassword,
                     decoration: const InputDecoration(
@@ -161,7 +161,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: TextFormField(
                     controller: confirmpassword,
                     decoration: const InputDecoration(
@@ -204,6 +204,7 @@ class _PasswordChangeState extends State<PasswordChange> {
 
                           updatePassword(context);
                           Navigator.of(context).pushNamed('/settings');
+                          resetpasswordsuccessdialog(context);
                         }
                       },
                     )),
@@ -211,5 +212,28 @@ class _PasswordChangeState extends State<PasswordChange> {
             ),
           ),
         ));
+  }
+
+  resetpasswordsuccessdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Success",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              "Password change successfully",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        });
   }
 }

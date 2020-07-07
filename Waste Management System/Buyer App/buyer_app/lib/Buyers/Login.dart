@@ -116,6 +116,66 @@ class LoginForm extends StatefulWidget {
   _LoginFormState createState() => _LoginFormState();
 }
 
+//unregister error alerts
+unregistererrordialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Error",
+            style: TextStyle(
+                fontSize: 18, color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            "Invalid Login",
+            style: TextStyle(
+                fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+        );
+      });
+}
+
+//invalid username or password error
+invaliderrordialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Error",
+            style: TextStyle(
+                fontSize: 18, color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            "Invalid Email or Password!Login Failed",
+            style: TextStyle(
+                fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+        );
+      });
+}
+
+//login successful messege
+loginsuccessdialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Success",
+            style: TextStyle(
+                fontSize: 16, color: Colors.green, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            "Congradulatios! You are Login successfully",
+            style: TextStyle(
+                fontSize: 16, color: Colors.green, fontWeight: FontWeight.bold),
+          ),
+        );
+      });
+}
+
 class _LoginFormState extends State<LoginForm> {
   // Initially password is obscure
   bool _obscureText = true;
@@ -155,6 +215,7 @@ class _LoginFormState extends State<LoginForm> {
       if (id == null) {
         // Fluttertoast.showToast(msg: "Invalid login");
         Navigator.of(context).pushNamed('/login');
+        unregistererrordialog(context);
       } else {
         print(
             "----------------------------------------------Login----------------------------------------------------");
@@ -169,11 +230,12 @@ class _LoginFormState extends State<LoginForm> {
         ResponseData.city = (value["user"]["city"].toString());
         ResponseData.district = (value["user"]["district"].toString());
         Navigator.of(context).pushNamed('/buyerhome');
-        // Navigator.of(context).pushNamed('/dashboard1');
+        loginsuccessdialog(context);
       }
     } else {
       // Fluttertoast.showToast(msg: "Check credentials login failed");
       Navigator.of(context).pushNamed('/login');
+      invaliderrordialog(context);
       print(response.statusCode);
     }
   }
@@ -189,12 +251,12 @@ class _LoginFormState extends State<LoginForm> {
             //
             Stack(children: <Widget>[
               Container(
-                height: 200.0,
+                height: 150.0,
                 width: double.infinity,
-                color: Colors.green,
+                //color: Colors.white,
               ),
               Positioned(
-                bottom: 55.0,
+                bottom: 10.0,
                 right: 100.0,
                 child: Container(
                   height: 350.0,
@@ -205,25 +267,14 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               Positioned(
-                bottom: 100.0,
-                right: 130.0,
+                bottom: 20.0,
+                right: 150.0,
                 child: Container(
                   height: 290.0,
                   width: 300.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(320),
-                      color: Colors.blueAccent),
-                ),
-              ),
-              Positioned(
-                bottom: 100.0,
-                right: 150.0,
-                child: Container(
-                  height: 330.0,
-                  width: 300.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellow),
+                      color: Colors.green[100]),
                 ),
               ),
               Column(
@@ -237,6 +288,7 @@ class _LoginFormState extends State<LoginForm> {
                         alignment: Alignment.topLeft,
                         height: 45.0,
                         width: 50.0,
+                        
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
@@ -265,66 +317,98 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ]),
             //
+            // Container(
+            //     alignment: Alignment.center,
+            //     child: Text(
+            //       '',
+            //       style: TextStyle(fontSize: 17, color: Colors.green),
+            //     )),
             Container(
-                alignment: Alignment.center,
-                child: Text(
-                  '',
-                  style: TextStyle(fontSize: 17, color: Colors.green),
-                )),
-            TextFormField(
-              controller: email,
-              decoration: const InputDecoration(
-                icon: const Icon(
-                  Icons.email,
-                  color: Colors.black,
-                ),
-                hintText: 'Enter Your Email',
-                labelText: 'Email',
-                labelStyle:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              alignment: Alignment(-0.1, 1),
+              child: Column(
+                children: <Widget>[
+                  new GestureDetector(
+                    child: Container(
+                      width: 140,
+                      height: 140,
+                      child: Icon(
+                          Icons.account_circle,
+                          color: Colors.green,
+                          size: 100.0,
+                        ),
+                      // decoration: BoxDecoration(
+                      //   // color: Colors.white,
+                      //   image: DecorationImage(
+                      //     image: AssetImage("assets/images/logo.jpg"),
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
+                    ),
+                  ),
+                  // Padding(padding: EdgeInsets.only(left:10.5)),
+                ],
               ),
-              // onChanged: (text) {
-              //   email = text;
-              // },
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter an Email ';
-                } else {
-                  bool temp = (EmailValidator.validate(value));
-                  if (temp) {
-                    return null;
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              child: TextFormField(
+                controller: email,
+                decoration: const InputDecoration(
+                  icon: const Icon(
+                    Icons.email,
+                    color: Colors.black,
+                  ),
+                  hintText: 'Enter Your Email',
+                  labelText: 'Email',
+                  labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                // onChanged: (text) {
+                //   email = text;
+                // },
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter an Email ';
+                  } else {
+                    bool temp = (EmailValidator.validate(value));
+                    if (temp) {
+                      return null;
+                    }
+                    return 'Please enter a valid Email ';
                   }
-                  return 'Please enter a valid Email ';
-                }
-                //return null;
-              },
+                  //return null;
+                },
+              ),
             ),
 
             Column(
               children: <Widget>[
-                new TextFormField(
-                  controller: password,
-                  decoration: const InputDecoration(
-                    icon: const Icon(
-                      Icons.lock,
-                      color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: new TextFormField(
+                    controller: password,
+                    decoration: const InputDecoration(
+                      icon: const Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),
+                      hintText: 'Enter password',
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black),
                     ),
-                    hintText: 'Enter password',
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                  // onChanged: (text) {
-                  //   password = text;
-                  // },
+                    // onChanged: (text) {
+                    //   password = text;
+                    // },
 
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter Password';
-                    }
-                    return null;
-                  },
-                  obscureText: _obscureText,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter Password';
+                      }
+                      return null;
+                    },
+                    obscureText: _obscureText,
+                  ),
                 ),
                 new FlatButton(
                     onPressed: _toggle,
@@ -338,14 +422,19 @@ class _LoginFormState extends State<LoginForm> {
             Container(
                 alignment: Alignment(-0.1, 1),
                 child: new RaisedButton(
-                  child: const Text('LOGIN'),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
                   color: Colors.green,
+                  padding: const EdgeInsets.only(
+                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                   textColor: Colors.white,
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
                       //send request
                       login(context);
-                      //Navigator.of(context).pushNamed('/buyerhome');
 
                       // print(email.text);
 
@@ -358,11 +447,11 @@ class _LoginFormState extends State<LoginForm> {
                 )),
             FlatButton(
               padding:
-                  const EdgeInsets.only(left: 100.0, top: 5.0, right: 100.0),
+                  const EdgeInsets.only(left: 130.0, top: 5.0, right: 130.0),
               textColor: Colors.green,
               child: Text(
                 'Forgot Password ?',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 18),
               ),
               onPressed: () {
                 //forgot password screen
@@ -374,7 +463,10 @@ class _LoginFormState extends State<LoginForm> {
             Container(
                 child: Row(
               children: <Widget>[
-                Text('Don\'t have an account ?'),
+                Text(
+                  'Don\'t have an account ?',
+                  style: TextStyle(fontSize: 17, color: Colors.black),
+                ),
                 FlatButton(
                   textColor: Colors.green,
                   child: Text(
