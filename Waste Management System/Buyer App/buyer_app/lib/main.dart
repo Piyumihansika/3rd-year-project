@@ -1,3 +1,4 @@
+import 'package:buyerapp/Categories/Aluminum.dart';
 import 'package:flutter/material.dart';
 
 import 'Buyers/Login.dart';
@@ -25,6 +26,7 @@ import 'settings/Notification.dart';
 import 'settings/ChangePassword.dart';
 import 'settings/DeactivateAccount.dart';
 import 'settings/ChangeLocation.dart';
+import 'Categories/Aluminum.dart';
 
 //import 'Buyers/Terms.dart';
 
@@ -72,6 +74,7 @@ class MyApp extends StatelessWidget {
         '/changepassword': (context) => PasswordChange(),
         '/deactivateaccount': (context) => DeactivateAccount(),
         '/changelocation': (context) => ChangeLocation(),
+        '/aluminium': (context) => Aluminium(),
       },
     );
   }
