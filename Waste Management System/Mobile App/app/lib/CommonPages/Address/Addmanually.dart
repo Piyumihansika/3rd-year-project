@@ -170,8 +170,18 @@ class _AddressState extends State<Address> {
                   // },
                   //controller: city,
                   validator: (value) {
+                    List<String> myList = ['Ampara', 'Anuradhapura', 'Badulla','Batticaloa','Colombo','Galle',
+                    'Gampaha','Hambantota','Jaffna','Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala',
+                    'Mannar','Matale','Matara','Monaragala',
+                  'Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Ratnapura','Trincomalee','Vavuniya'
+                    ];
                     if (value.isEmpty) {
                       return 'Please enter some text';
+                    }
+                    else if(
+                      !(myList.contains(value) )
+                    ){
+                         return 'Your district is wrong.';
                     }
                     return null;
                   },
