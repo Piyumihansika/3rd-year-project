@@ -154,6 +154,9 @@ class _SignFormState extends State<SignForm> {
                   if (value.isEmpty) {
                     return 'Please enter a valid phone number';
                   }
+                  else if(value.length<10){
+                    return 'Your phone number is incorrect';
+                  }
                   return null;
                 },
               ),
