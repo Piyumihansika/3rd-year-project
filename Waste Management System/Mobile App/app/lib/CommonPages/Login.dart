@@ -185,11 +185,24 @@ class _LoginFormState extends State<LoginForm> {
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
             ),
             validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter Password';
-              }
-              return null;
-            },
+        //           Pattern pattern =
+        // r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+        //  RegExp regex = new RegExp(pattern);
+                  if (value.isEmpty ) {
+                    return 'Please enter a strong password';
+                  }else if(value.length<6){
+                    return 'Must be more than 6 charactors';
+                  }
+                  // else if(!regex.hasMatch(value)){
+
+                  //   return 'At least a upper, lower, symbol & number';
+                  // }
+                  // else if(value.){
+                  //   return 'Your password too short';
+                  // }
+
+                  return null;
+                },
             obscureText: true,
           ),
           Container(

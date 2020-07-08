@@ -93,10 +93,21 @@ Text("When you press delete account button your account is no longer available",
               labelStyle:TextStyle(fontWeight: FontWeight.bold,fontSize:22.0,color: Colors.black,),
             ),  
             
-            validator: (value) {  
+            validator: (value) { 
+               Pattern pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+         RegExp regex = new RegExp(pattern);
+
               if (value.isEmpty) {  
                 return 'Please enter your password';  
               }  
+              else if(value.length<6){
+                    return 'Must be more than 6 charactors';
+                  }
+                  else if(!regex.hasMatch(value)){
+
+                    return 'At least a upper, lower, symbol & number';
+                  }
               return null;  
             },  
           ), 

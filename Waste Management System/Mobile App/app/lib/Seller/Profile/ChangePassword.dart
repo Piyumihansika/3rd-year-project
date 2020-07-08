@@ -83,6 +83,9 @@ Padding(padding: EdgeInsets.all(20.5)),
               if (value.isEmpty) {  
                 return 'Please enter your old password';  
               }  
+              else if(value.length<6){
+                    return 'Must be more than 6 charactors';
+                  }
               return null;  
             },  
           ), 
@@ -97,9 +100,19 @@ Padding(padding: EdgeInsets.all(20.5)),
             ),  
             
             validator: (value) {  
+               Pattern pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+         RegExp regex = new RegExp(pattern);
               if (value.isEmpty) {  
                 return 'Please enter your new  password';  
               }  
+              else if(value.length<6){
+                    return 'Must be more than 6 charactors';
+                  }
+                  else if(!regex.hasMatch(value)){
+
+                    return 'At least a upper, lower, symbol & number';
+                  }
               return null;  
             },  
           ), 
@@ -117,6 +130,9 @@ Padding(padding: EdgeInsets.all(20.5)),
               if (value.isEmpty) {  
                 return 'Please re-enter your password';  
               }  
+              else if(value.length<6){
+                    return 'Must be more than 6 charactors';
+                  }
               if(value != newpassword.text){
 
                 return 'Your Password is not same to new one';
