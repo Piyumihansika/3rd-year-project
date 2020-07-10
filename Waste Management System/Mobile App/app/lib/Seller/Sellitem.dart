@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dropdownfield/dropdownfield.dart';
 
 class SellItem extends StatefulWidget {
   @override
@@ -201,10 +202,13 @@ Container(
     
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
+            
             children: <Widget>[
               
-              //Text("Item Category"),
-              SizedBox(
+
+// 
+
+SizedBox(
                 height: 20.0,
               ),
             DropdownButton(
@@ -215,11 +219,18 @@ Container(
               
 
               ),
-              SizedBox(
-                height: 20.0,
-              ),
+              // SizedBox(
+              //   height: 20.0,
+              // ),
     
   //Text('Selected: ${_selectedItem.name}'),
+
+
+// 
+
+              
+              //Text("Item Category"),
+              
 
             ],
           ),
@@ -249,29 +260,51 @@ Container(
                 },
               ),
             ),
-
 Container(
-              padding: EdgeInsets.all(10),
-              child: TextFormField(
-                controller: price,
-                scrollPadding: EdgeInsets.all(10),
-                decoration: const InputDecoration(
-                  
-                  hintText: '1-7 days',
-                  labelText: 'Duration',
-                  labelStyle: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.green),
-                ),
+  
+child: Column(
+mainAxisAlignment:MainAxisAlignment.center,
+crossAxisAlignment:CrossAxisAlignment.stretch,
+children: <Widget>[
+Text("DropDown & Text field"),
 
-                
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter duration';
-                  }
-                  return null;
-                },
-              ),
-            ),
+SizedBox(height:20.0,),
+DropDownField(
+controller: durationSelected,
+hintText: "Select any duration",
+
+enabled: true,
+itemsVisibleInDropdown: 5,
+items: duration,
+onValueChanged: (value){
+
+setState(() {
+  selectDuration=value;
+});
+
+//
+
+
+
+},
+//
+
+// 
+
+//
+
+
+),
+
+// SizedBox(height:20.0),
+// Text(selectDuration)
+//
+],
+
+),
+
+
+),
 
 Container(
   child: Padding(
@@ -311,16 +344,16 @@ alignment: Alignment(-0.1,1),
                 onPressed: () {  
                  
 
-                  print(description.text);
-                  print(_selectedItem.name);
-                    Navigator.of(context).pushNamed('/dashboard1');
-                  // if (_formKey.currentState.validate()) {  
+                  // print(description.text);
+                  // print(_selectedItem.name);
+                 // print(selectDuration);
+                    //Navigator.of(context).pushNamed('/dashboard1');
+                  if (_formKey.currentState.validate()) {  
                  
-                  //   print(descriptionController.text);
-                  //   Navigator.of(context).pushNamed('/dashboard1');
+                print(selectDuration);
                 
                    
-                  // }  
+                  }  
                 },  
               )
 
@@ -339,6 +372,26 @@ alignment: Alignment(-0.1,1),
  ),
 
       )
+    
+    
     );
   }
 }
+
+
+//
+
+String selectDuration = "";
+final durationSelected=TextEditingController();
+
+List<String> duration =[
+"1 Day",
+"2 Days",
+"3 Days",
+"4 Days",
+"5 Days",
+"6 Days",
+"7 Days",
+
+
+];
