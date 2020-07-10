@@ -41,7 +41,8 @@ router.post('/addCustomer', async(req, res) => {
         }
        
 
-    }catch(e){
+    }
+    catch(e){
         console.log(e);
         res.status(500).send('There was a problem signUp');
 
