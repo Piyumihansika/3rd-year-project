@@ -169,7 +169,7 @@ class _CategoryState extends State<CategoryPage> {
                             
                           )),
                       onTap: () {
-                        
+                        Navigator.of(context).pushNamed('/aluminium');
                       }),
                   new Container(
                     child: Text('Aluminum',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
