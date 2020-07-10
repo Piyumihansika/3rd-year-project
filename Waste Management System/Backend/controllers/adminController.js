@@ -9,37 +9,37 @@ const verifyToken = require('./verifyToken');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-router.post('/addemployee', async(req, res) => {
-    try{
-        const {firstName,lastName,email,eusername,address,contactNumber,epassword,nicNo,driverlicenseNo} = req.body;
+// router.post('/addemployee', async(req, res) => {
+//     try{
+//         const {firstName,lastName,email,eusername,address,contactNumber,epassword,nicNo,driverlicenseNo} = req.body;
 
-        const employee = new Employee({
-            firstName,
-            lastName,
-            email,
-            eusername,
-            address,
-            contactNumber,
-            epassword,
-            nicNo,
-            driverlicenseNo
-        });
-        employee.epassword = await employee.encryptPassword(epassword);
+//         const employee = new Employee({
+//             firstName,
+//             lastName,
+//             email,
+//             eusername,
+//             address,
+//             contactNumber,
+//             epassword,
+//             nicNo,
+//             driverlicenseNo
+//         });
+//         employee.epassword = await employee.encryptPassword(epassword);
         
 
-        await employee.save();
+//         await employee.save();
 
-        // const token = jwt.sign({ id: user.id}, config.secret, {
-        //     expiresIn: "24h"
-        // });
-       // res.status(200).json({ auth: true, token})
+//         // const token = jwt.sign({ id: user.id}, config.secret, {
+//         //     expiresIn: "24h"
+//         // });
+//        // res.status(200).json({ auth: true, token})
 
-    }catch(e){
-        console.log(e);
-        res.status(500).send('something went wrong ');
+//     }catch(e){
+//         console.log(e);
+//         res.status(500).send('something went wrong ');
 
-    }
-});
+//     }
+// });
 
 
 
@@ -88,11 +88,31 @@ router.delete("/deleteCustomer/:id", async (req, res) => {
  });
 
 
+//REMOVE/DELETE BUYER
+ router.delete("/deleteBuyer/:id", async (req, res) => {
+    Buyer.findById
+    Buyer.findByIdAndRemove({_id: req.params.id}, req.body)
+    res.status(200).send("deleted")
+   });
+
+
+
  //VIEW CUSTOMER DETAILS
  router.get("/viewCustomer/:id", async(req,res) => {
     const customer = Customer.findById({_id: req.params.id}, req.body)
    //  const customer = await Customer.findOne({ _id: req.body.id })
     res.status(200).send(customer)
+});
+
+
+//VIEW BUYER DETAILS
+router.get("/viewbUYER/:id", async(req,res) => {
+    const buyer =buyer.findById({_id: req.params.id}, req.body)
+    res.status(200).send(buyer)
 })
+
+
+
+
 
 module.exports = router;

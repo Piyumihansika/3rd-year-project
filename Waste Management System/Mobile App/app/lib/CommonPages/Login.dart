@@ -7,7 +7,7 @@ import 'package:app/utils/ResponseData.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-final String apiUrl = "http://192.168.8.100:3000/auth/customerLogin";
+final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
 String userId,
     firstName,
     lastName,

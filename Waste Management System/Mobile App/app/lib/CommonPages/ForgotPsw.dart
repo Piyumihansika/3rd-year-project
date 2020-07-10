@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 
 
-final String apiUrl = "http://10.0.2.2:3000/Your URL HERE";
+final String apiUrl = "http://10.0.2.2:3000/forgot/sendEmail";
 
 
 class Forgot extends StatelessWidget {

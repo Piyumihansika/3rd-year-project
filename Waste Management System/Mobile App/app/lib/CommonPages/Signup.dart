@@ -39,6 +39,7 @@ class _SignFormState extends State<SignForm> {
       key: _formKey,
       child: SingleChildScrollView(
         child: Column(
+          
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
