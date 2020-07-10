@@ -178,9 +178,20 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return 'Please enter a your phone number';
+                //   }
+                //   return null;
+                // },
+
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter a your phone number';
+                  String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                  RegExp regExp = new RegExp(pattern);
+                  if (value.length == 0) {
+                    return 'Please enter mobile number';
+                  } else if (!regExp.hasMatch(value)) {
+                    return 'Please enter valid mobile number';
                   }
                   return null;
                 },
@@ -273,7 +284,10 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Next',style: TextStyle(fontSize: 18),),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {
