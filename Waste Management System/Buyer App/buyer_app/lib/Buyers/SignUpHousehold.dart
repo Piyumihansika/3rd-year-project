@@ -224,6 +224,12 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                     return 'Please enter a valid Email ';
                   }
                 },
+                // validator: (value) {
+                //   Pattern pattern =
+                //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                //   RegExp regex = new RegExp(pattern);
+                //   return (!regex.hasMatch(value)) ? "check your email" : null;
+                // }
               ),
             ),
 
@@ -254,7 +260,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                     return 'Please enter password';
                   } else {
                     if (!regex.hasMatch(value))
-                      return 'please enter Strong password';
+                      return 'Enter Strong password (include lower,upper,number, & symbol)';
                     else
                       return null;
                   }

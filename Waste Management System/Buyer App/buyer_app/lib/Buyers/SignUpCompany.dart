@@ -256,7 +256,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
                     return 'Please enter password';
                   } else {
                     if (!regex.hasMatch(value))
-                      return 'please enter Strong password';
+                      return 'Enter Strong password (include lower,upper,number, & symbol)';
                     else
                       return null;
                   }
