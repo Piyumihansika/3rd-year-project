@@ -1,3 +1,6 @@
+const {Router} = require('express');
+const router = Router();
+
 var nodemailer = require('nodemailer');
 var email='piyumihansi02@gmail.com'
 
@@ -41,3 +44,5 @@ transporter.sendMail(mailOption,function(error,info){
 
 
 });
+
+module.exports = router;
