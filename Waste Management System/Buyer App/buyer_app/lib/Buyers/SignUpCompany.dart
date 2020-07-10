@@ -241,11 +241,25 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return 'Please enter a strong password';
+                //   }
+                //   return null;
+                // },
                 validator: (value) {
+                  Pattern pattern =
+                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+                  RegExp regex = new RegExp(pattern);
+                  print(value);
                   if (value.isEmpty) {
-                    return 'Please enter a strong password';
+                    return 'Please enter password';
+                  } else {
+                    if (!regex.hasMatch(value))
+                      return 'please enter Strong password';
+                    else
+                      return null;
                   }
-                  return null;
                 },
                 obscureText: _obscureText,
               ),
