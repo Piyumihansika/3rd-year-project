@@ -14,7 +14,7 @@ import 'package:app/Seller/Profile/ChangePassword.dart';
 import 'package:app/Seller/Profile/EditProfile.dart';
 import 'package:app/Seller/Profile/deactivate.dart';
 import 'package:app/Seller/Scheduled.dart';
-import 'package:app/Seller/Sellitem.dart';
+import 'package:app/Seller/Sell_Items/Sell_ItemPage2.dart';
 import 'package:app/Seller/SettingPage.dart';
 import 'package:app/Seller/SpecialPick.dart';
 import 'package:app/Seller/SpecialSecond.dart';
@@ -25,6 +25,7 @@ import 'CommonPages/Address/ChooseRegLocaType.dart';
 import 'CommonPages/Address/RegisterLocation.dart';
 import 'CommonPages/ForgotPsw.dart';
 import 'Seller/Notification.dart';
+import 'Seller/Sell_Items/Sellitempage1.dart';
 
 
 
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
       '/scheduled':(context)=>Scheduled(),
         '/addGarbageList':(context)=>AddList(),
         '/sell':(context)=>SellItem(),
+         '/sell2':(context)=>SellItemPage2(),
         '/test':(context)=>Test(),
         '/setting':(context)=>SettingPage(),
          '/editProfile':(context)=>EditProfile(),
