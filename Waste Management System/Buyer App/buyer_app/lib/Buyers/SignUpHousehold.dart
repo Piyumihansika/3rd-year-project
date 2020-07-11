@@ -178,9 +178,20 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return 'Please enter a your phone number';
+                //   }
+                //   return null;
+                // },
+
                 validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter a your phone number';
+                  String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                  RegExp regExp = new RegExp(pattern);
+                  if (value.length == 0) {
+                    return 'Please enter mobile number';
+                  } else if (!regExp.hasMatch(value)) {
+                    return 'Please enter valid mobile number';
                   }
                   return null;
                 },
@@ -213,6 +224,12 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                     return 'Please enter a valid Email ';
                   }
                 },
+                // validator: (value) {
+                //   Pattern pattern =
+                //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                //   RegExp regex = new RegExp(pattern);
+                //   return (!regex.hasMatch(value)) ? "check your email" : null;
+                // }
               ),
             ),
 
@@ -228,11 +245,25 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return 'Please enter a strong password';
+                //   }
+                //   return null;
+                // },
                 validator: (value) {
+                  Pattern pattern =
+                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+                  RegExp regex = new RegExp(pattern);
+                  print(value);
                   if (value.isEmpty) {
-                    return 'Please enter a strong password';
+                    return 'Please enter password';
+                  } else {
+                    if (!regex.hasMatch(value))
+                      return 'Enter Strong password (include lower,upper,number, & symbol)';
+                    else
+                      return null;
                   }
-                  return null;
                 },
                 obscureText: _obscureText,
               ),
@@ -273,7 +304,10 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Next',style: TextStyle(fontSize: 18),),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {

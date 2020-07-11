@@ -10,5 +10,7 @@ app.use('/admin',require('./controllers/adminController'))
 app.use('/customer',require('./controllers/customerController'))
 app.use('/buyer',require('./controllers/buyerController'))
 app.use('/forgot',require('./controllers/forgotEmailBodyController'))
+app.use('/imageC',require('./controllers/image'))
+app.use('/category',require('./controllers/categoryController'))
 
 module.exports = app;

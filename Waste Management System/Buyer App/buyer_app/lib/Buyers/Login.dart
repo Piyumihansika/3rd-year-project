@@ -104,6 +104,13 @@ class _State extends State<Login> {
                 Navigator.of(context).pushNamed('/contactus');
               },
             ),
+            ListTile(
+              leading: Icon(Icons.event_note),
+              title: Text('Search'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/search');
+              },
+            ),
           ],
         ),
       ),
