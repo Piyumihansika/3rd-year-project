@@ -13,6 +13,4 @@ app.use('/forgot',require('./controllers/forgotEmailBodyController'))
 app.use('/imageC',require('./controllers/image'))
 app.use('/category',require('./controllers/categoryController'))
 
-
-
 module.exports = app;

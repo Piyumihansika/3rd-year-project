@@ -4,6 +4,7 @@ import 'package:app/CommonPages/Homepage.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/CommonPages/UploadFile.dart';
+
 import 'package:app/Employees/Login.dart';
 import 'package:app/Seller/BiddingDetails.dart';
 import 'package:app/Seller/Dashboard.dart';
@@ -92,7 +93,7 @@ class MyApp extends StatelessWidget {
 //employee 
 
   '/logemp':(context)=>Loginemp(),
-    '/upload':(context)=>Upload(),
+    '/upload':(context)=>UploadImageDemo(),
 
       },
 

@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
 router.post('/sendEmail',async(req, res) =>{
 
@@ -54,7 +54,6 @@ router.post('/sendEmail',async(req, res) =>{
 
     }
 })
-
 
 
 module.exports = router;
