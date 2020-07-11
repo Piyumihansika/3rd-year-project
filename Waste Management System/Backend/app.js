@@ -11,6 +11,4 @@ app.use('/customer',require('./controllers/customerController'))
 app.use('/buyer',require('./controllers/buyerController'))
 app.use('/forgot',require('./controllers/forgotEmailBodyController'))
 
-
-
 module.exports = app;
