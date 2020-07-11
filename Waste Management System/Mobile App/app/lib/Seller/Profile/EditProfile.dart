@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:app/utils/ResponseData.dart';
 import 'package:http/http.dart' as http;
+// import 'package:path/path.dart';
+// import 'package:dio/dio.dart';
+
 
 final String editUrl =
     "https://192.168.8.100:3000/customer/updateCustomer/${ResponseData.userId}";
@@ -127,30 +130,34 @@ class MyCustomFormState extends State<MyCustomForm> {
   String newlastName;
   String newcontactNumber;
 
-  // void editProfile(BuildContext context) async {
-  //   // final Map<String, dynamic> data = {
-  //   //   "firstName": newfirstName,
-  //   //   "lastName": newlastName,
-  //   //   "contactNumber": newcontactNumber,
-  //   // };
+ //upload image to the server
+// void uploadFile(filePath) async {
 
-  //   var response = await http.put(editUrl, body: {
-  //     "firstName": "jkdg",
-  //     "lastName": "fdbkjf",
-  //     "contactNumber": "fbdlh"
-  //   }, headers: {
-  //     "Accept": "application/json"
-  //   });
-  //   if (response.statusCode == 200) {
-  //     print(
-  //         "-------------------------------------------update successfully----------------------------");
-  //     print(newlastName);
-  //   } else {
-  //     print(response.statusCode);
-  //   }
-  // }
-//
+//   //Get the file name
+//   String fileName =basename(filePath.path);
+//   print("File base name :$fileName");
 
+//   try{
+// FormData formData =new FormData.from({
+//   "name":"profilePic",
+//   "file":new UploadFileInfo(filePath,fileName)
+// });
+
+// http.Response response =
+// await Dio().post("url", data:formData);
+// print("File uploaded succecfully");
+
+// showSnakBarMsg(response.data['message']);
+//   }
+//   catch(e){
+//     print("exception caught :$e");
+
+//   }
+// }
+
+
+
+//  
   editData() async {
     await http.put(editUrl, headers: {
       "Accept": "application/json",

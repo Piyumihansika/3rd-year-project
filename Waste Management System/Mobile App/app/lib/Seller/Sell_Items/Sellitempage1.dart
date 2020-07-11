@@ -1,15 +1,10 @@
-
-
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dropdownfield/dropdownfield.dart';
 
 
-
-
+String selectedSalutation;
 String selectDuration = "";
 String selectCategory="";
 
@@ -171,13 +166,15 @@ hintText: "Select item category",
 enabled: true,
 itemsVisibleInDropdown:2,
 items: category,
+
 onValueChanged: (value){
 
 setState(() {
  selectCategory=value;
 });
+
+
 },
-//
 
 ),
 
@@ -199,29 +196,50 @@ mainAxisAlignment:MainAxisAlignment.center,
 crossAxisAlignment:CrossAxisAlignment.stretch,
 children: <Widget>[
 Text("Duration"),
-
 SizedBox(height:20.0,),
 DropDownField(
+  
 controller: durationSelected,
 hintText: "Select any duration",
-
 enabled: true,
 itemsVisibleInDropdown:2,
 items: duration,
+
 onValueChanged: (value){
 
 setState(() {
   selectDuration=value;
 });
-
 },
+
 ),
 ],
 
 ),
 ),
 
+//
+SizedBox(height:20.0,),
+ DropdownButtonFormField<String>(
+              value: selectedSalutation,
+              
+              hint: Text(
+                'Salutation',
+              ),
+              onChanged: (salutation) =>
+                  setState(() => selectedSalutation = salutation),
 
+              validator: (value) => value == null ? 'field required' : null,
+              items:
+                  ['MR.', 'MS.'].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+
+//
          
 Padding(padding: const EdgeInsets.all(7.0)),
 Container(
@@ -233,20 +251,18 @@ alignment: Alignment(-0.1,1),
                 color: Colors.green, 
                 textColor: Colors.white, 
                 
-                onPressed: () {  
+                onPressed: ()  {  
                  
-
-                  // print(description.text);
-                  // print(_selectedItem.name);
-                 // print(selectDuration);
-                    //Navigator.of(context).pushNamed('/dashboard1');
-                  if (_formKey.currentState.validate()) {  
-                 
+                  if (selectCategory!=null && selectDuration !=null ) {  
+                print(selectCategory);
                 print(selectDuration);
 
-                Navigator.of(context).pushNamed('/sell2');
+                Navigator.of(context).pushNamed('/upload');
                    
                   }  
+                  // else{
+                  //   return 'Please enter all the fields';
+                  // }
                 },  
               )
 
