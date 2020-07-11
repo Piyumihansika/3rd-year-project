@@ -26,7 +26,7 @@ import 'settings/Notification.dart';
 import 'settings/ChangePassword.dart';
 import 'settings/DeactivateAccount.dart';
 import 'settings/ChangeLocation.dart';
-import 'settings/Search.dart';
+import 'Categories/Copper.dart';
 import 'Categories/Aluminum.dart';
 
 //import 'Buyers/Terms.dart';
@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
         '/deactivateaccount': (context) => DeactivateAccount(),
         '/changelocation': (context) => ChangeLocation(),
         '/aluminium': (context) => Aluminium(),
-        '/search': (context) => Search(),
+        '/copper': (context) => Copper(),
       },
     );
   }
