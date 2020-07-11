@@ -1,9 +1,8 @@
 const {Router} = require('express');
 const router = Router();
 const Customer = require('../model/customerModel');
-const Employee = require('../model/employeeModel');
 const Admin = require('../model/adminModel');
-//const Buyer = require('../model/buyerModel');
+const Buyer = require('../model/buyerModel');
 const verifyToken = require('./verifyToken');
 
 const jwt = require('jsonwebtoken');
@@ -109,10 +108,31 @@ router.delete("/deleteCustomer/:id", async (req, res) => {
 router.get("/viewbUYER/:id", async(req,res) => {
     const buyer =buyer.findById({_id: req.params.id}, req.body)
     res.status(200).send(buyer)
-})
+});
+
+
+//update admin details
+router.put("/updateAdmin/:id", async(req, res) => {
+    const admin = await Admin.findByIdAndUpdate({_id: req.params.id}, req.body)
+    if(admin){
+    const newAdmin = await Admin.findOne({_id: req.params.id})
+    res.status(200).json(newAdmin)
+    }
+   });
+  
+  
+ 
 
 
 
 
 
+//DELETE ADMIN   
+router.delete("/deleteAdmin/:id", async (req, res) => {
+    Admin.findById
+    Admin.findByIdAndRemove({_id: req.params.id}, req.body)
+    res.status(200).send("deleted")
+   });
+
+   
 module.exports = router;
