@@ -37,6 +37,10 @@ class Aluminium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: AppBar(
+        title: Text('search'),
+        backgroundColor: Colors.green,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -51,6 +55,7 @@ class Aluminium extends StatelessWidget {
           ),
         ),
       ),
+      
     );
   }
 }

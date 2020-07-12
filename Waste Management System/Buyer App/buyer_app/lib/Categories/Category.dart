@@ -223,7 +223,7 @@ class _CategoryState extends State<CategoryPage> {
                             
                           )),
                       onTap: () {
-                        
+                        Navigator.of(context).pushNamed('/copper');
                       }),
                       new Container(
                     child: Text('Copper',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
