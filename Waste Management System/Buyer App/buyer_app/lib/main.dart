@@ -29,6 +29,8 @@ import 'settings/ChangeLocation.dart';
 import 'Categories/Copper.dart';
 import 'Categories/Aluminum.dart';
 
+import 'bidding/Bid.dart';
+
 //import 'Buyers/Terms.dart';
 
 void main() => runApp(MyApp());
@@ -77,6 +79,7 @@ class MyApp extends StatelessWidget {
         '/changelocation': (context) => ChangeLocation(),
         '/aluminium': (context) => Aluminium(),
         '/copper': (context) => Copper(),
+        '/bid': (context) => Bid(),
       },
     );
   }

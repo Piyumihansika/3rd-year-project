@@ -106,9 +106,9 @@ class _State extends State<Login> {
             ),
             ListTile(
               leading: Icon(Icons.event_note),
-              title: Text('Search'),
+              title: Text('Bid'),
               onTap: () {
-                Navigator.of(context).pushNamed('/search');
+                Navigator.of(context).pushNamed('/bid');
               },
             ),
           ],
