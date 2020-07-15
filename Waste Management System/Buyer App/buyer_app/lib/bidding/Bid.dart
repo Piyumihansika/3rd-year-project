@@ -101,7 +101,7 @@ class _PlaceBidState extends State<PlaceBid> {
                           child: new Text(
                             'Description' +
                                 ' : ' +
-                                'hsgggggggggggg gggggggggg llllllllll llllllllllllllll',
+                                'hsgggggggggggg gggggggggg ',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
