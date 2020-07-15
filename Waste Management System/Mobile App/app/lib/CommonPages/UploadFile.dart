@@ -63,6 +63,7 @@
 //   }
 // }
 
+// import 'package:app/Seller/Sell_Items/Sellitempage1.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -70,9 +71,22 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
 class UploadImageDemo extends StatefulWidget {
-  UploadImageDemo() : super();
+  final String selectCategory;
+  final String selectDuration;
+  final String price;
+  final String description;
+
+  // UploadImageDemo() : super();
 
   final String title = "Upload Image Demo";
+
+  const UploadImageDemo(
+      {Key key,
+      this.selectCategory,
+      this.selectDuration,
+      this.price,
+      this.description})
+      : super(key: key);
 
   @override
   UploadImageDemoState createState() => UploadImageDemoState();
@@ -80,7 +94,7 @@ class UploadImageDemo extends StatefulWidget {
 
 class UploadImageDemoState extends State<UploadImageDemo> {
   //
-  static final String uploadEndPoint = "http://10.0.2.2:3000/";
+  static final String uploadEndPoint = "http://10.0.2.2:3000/item/addItem";
 
   Future<File> file;
   String status = '';
@@ -103,7 +117,7 @@ class UploadImageDemoState extends State<UploadImageDemo> {
 
   startUpload() {
     setStatus('Uploading Image...');
-    if (null == tmpFile) {
+    if (tmpFile == null) {
       setStatus(errMessage);
       return;
     }
@@ -115,8 +129,12 @@ class UploadImageDemoState extends State<UploadImageDemo> {
     http.post(uploadEndPoint, body: {
       "image": base64Image,
       "name": fileName,
+      "category": widget.selectCategory,
+      "description": widget.description,
+      "price": widget.price,
+      "duration": widget.selectDuration
     }).then((result) {
-      setStatus(result.statusCode == 200 ? result.body : errMessage);
+      setStatus(result.statusCode == 201 ? "successfully added" : errMessage);
     }).catchError((error) {
       setStatus(error);
     });

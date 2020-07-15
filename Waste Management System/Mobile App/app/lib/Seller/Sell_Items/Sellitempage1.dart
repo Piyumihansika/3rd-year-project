@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:app/CommonPages/UploadFile.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:dropdownfield/dropdownfield.dart';
@@ -138,13 +139,6 @@ class _SellFormState extends State<SellForm> {
 //             ),
 
 //category select
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Text("Category"),
 
 //category select
 // Container(
@@ -214,9 +208,6 @@ class _SellFormState extends State<SellForm> {
 // ),
 
 //
-                  ],
-                ),
-              ),
 
               Padding(padding: const EdgeInsets.all(10.0)),
               Container(
@@ -257,17 +248,6 @@ class _SellFormState extends State<SellForm> {
                         ),
                       ])),
 
-              Padding(padding: const EdgeInsets.all(10.0)),
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Text("Duration"),
-                    SizedBox(
-                      height: 20.0,
-                    ),
 // DropDownField(
 
 // controller: durationSelected,
@@ -284,10 +264,6 @@ class _SellFormState extends State<SellForm> {
 // },
 
 // ),
-                  ],
-                ),
-              ),
-
 //
 
               Padding(padding: const EdgeInsets.all(10.0)),
@@ -390,26 +366,6 @@ class _SellFormState extends State<SellForm> {
                 ),
               ),
 
-              Padding(padding: const EdgeInsets.all(5.0)),
-              Container(
-                  padding: const EdgeInsets.all(10.0),
-                  alignment: Alignment(-0.1, 1),
-                  child: new RaisedButton(
-                    child: const Text('Next'),
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        print(selectCategory);
-                        print(selectDuration);
-                        print(description);
-                        print(price);
-
-                        Navigator.of(context).pushNamed('/upload');
-                      }
-                    },
-                  )),
-
               Padding(padding: const EdgeInsets.all(7.0)),
               Container(
                   padding: const EdgeInsets.all(20.0),
@@ -424,7 +380,13 @@ class _SellFormState extends State<SellForm> {
                         print(selectCategory);
                         print(selectDuration);
 
-                        Navigator.of(context).pushNamed('/upload');
+                        // Navigator.of(context).pushNamed('/upload');
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => UploadImageDemo(
+                                selectCategory: selectCategory,
+                                selectDuration: selectDuration,
+                                price: price.text,
+                                description: description.text)));
                       }
                       // else{
                       //   return 'Please enter all the fields';
