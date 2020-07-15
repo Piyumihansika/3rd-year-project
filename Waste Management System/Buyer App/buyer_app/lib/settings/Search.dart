@@ -1,133 +1,122 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
 
-
+//void main() => runApp(App());
 
 class Search extends StatefulWidget {
-  @override
-  _SearchState createState() => new _SearchState();
+  @override 
+  _AppState createState() => _AppState(); 
 }
 
-class _SearchState extends State<Search> {
-  TextEditingController controller = new TextEditingController();
+class _AppState extends State<Search> {
 
-  // Get json result and convert it to model. Then add
-  Future<Null> getUserDetails() async {
-    final response = await http.get(url);
-    final responseJson = json.decode(response.body);
+  String _locationMessage = ""; 
+
+  void _getCurrentLocation() async {
+
+    final position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position);
 
     setState(() {
-      for (Map user in responseJson) {
-        _userDetails.add(UserDetails.fromJson(user));
-      }
+      _locationMessage = "${position.latitude}, ${position.longitude}";
     });
+
   }
 
-  @override
-  void initState() {
-    super.initState();
 
-    getUserDetails();
-  }
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Search'),
-        elevation: 0.0,
-        backgroundColor: Colors.green,
-      ),
-      body: new Column(
-        children: <Widget>[
-          new Container(
-            color: Theme.of(context).buttonColor,
-            child: new Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: new Card(
-                child: new ListTile(
-                  leading: new Icon(Icons.search),
-                  title: new TextField(
-                    controller: controller,
-                    decoration: new InputDecoration(
-                        hintText: 'Search', border: InputBorder.none),
-                    onChanged: onSearchTextChanged,
-                  ),
-                  trailing: new IconButton(icon: new Icon(Icons.cancel), onPressed: () {
-                    controller.clear();
-                    onSearchTextChanged('');
-                  },),
-                ),
-              ),
-            ),
-          ),
-          new Expanded(
-            child: _searchResult.length != 0 || controller.text.isNotEmpty
-                ? new ListView.builder(
-              itemCount: _searchResult.length,
-              itemBuilder: (context, i) {
-                return new Card(
-                  child: new ListTile(
-                    leading: new CircleAvatar(backgroundImage: new NetworkImage(_searchResult[i].profileUrl,),),
-                    title: new Text(_searchResult[i].firstName + ' ' + _searchResult[i].lastName),
-                  ),
-                  margin: const EdgeInsets.all(0.0),
-                );
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: Scaffold(
+       appBar: AppBar(
+          title: Text("Location Services")
+        ),
+        body: Align(
+            child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            Text(_locationMessage), 
+            FlatButton(
+              onPressed: () {
+                  _getCurrentLocation();
               },
+              color: Colors.green,
+              child: Text("Find Location")
             )
-                : new ListView.builder(
-              itemCount: _userDetails.length,
-              itemBuilder: (context, index) {
-                return new Card(
-                  child: new ListTile(
-                    leading: new CircleAvatar(backgroundImage: new NetworkImage(_userDetails[index].profileUrl,),),
-                    title: new Text(_userDetails[index].firstName + ' ' + _userDetails[index].lastName),
-                  ),
-                  margin: const EdgeInsets.all(0.0),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  onSearchTextChanged(String text) async {
-    _searchResult.clear();
-    if (text.isEmpty) {
-      setState(() {});
-      return;
-    }
-
-    _userDetails.forEach((userDetail) {
-      if (userDetail.firstName.contains(text) || userDetail.lastName.contains(text))
-        _searchResult.add(userDetail);
-    });
-
-    setState(() {});
-  }
-}
-
-List<UserDetails> _searchResult = [];
-
-List<UserDetails> _userDetails = [];
-
-final String url = 'https://jsonplaceholder.typicode.com/users';
-class UserDetails {
-  final int id;
-  final String firstName, lastName, profileUrl;
-
-  UserDetails({this.id, this.firstName, this.lastName, this.profileUrl = ''});
-
-  factory UserDetails.fromJson(Map<String, dynamic> json) {
-    return new UserDetails(
-      id: json['id'],
-      firstName: json['name'],
-      lastName: json['username'],
+          ]),
+        )
+      )
     );
   }
 }
+
+// import 'package:flutter/material.dart';
+// //import 'package:flutter/services.dart';
+// import 'package:geolocator/geolocator.dart';
+
+// class Search extends StatefulWidget {
+//   @override
+//   _HomePageState createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<Search> {
+//   final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+//   Position _currentPosition;
+//   String _currentAddress;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Location"),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             if (_currentPosition != null) Text(_currentAddress),
+//             FlatButton(
+//               child: Text("Get location"),
+//               onPressed: () {
+//                 _getCurrentLocation();
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   _getCurrentLocation() {
+//     geolocator
+//         .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+//         .then((Position position) {
+//       setState(() {
+//         _currentPosition = position;
+//       });
+
+//       _getAddressFromLatLng();
+//     }).catchError((e) {
+//       print(e);
+//     });
+//   }
+
+//   _getAddressFromLatLng() async {
+//     try {
+//       List<Placemark> p = await geolocator.placemarkFromCoordinates(
+//           _currentPosition.latitude, _currentPosition.longitude);
+
+//       Placemark place = p[0];
+
+//       setState(() {
+//         _currentAddress =
+//             "${place.locality}, ${place.postalCode}, ${place.country}";
+//       });
+//     } catch (e) {
+//       print(e);
+//     }
+//   }
+// }

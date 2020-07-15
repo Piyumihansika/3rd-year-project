@@ -1,32 +1,34 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:dropdownfield/dropdownfield.dart';
+//import 'package:dropdownfield/dropdownfield.dart';
 
-String selectedSalutation;
-String selectDuration = "";
-String selectCategory = "";
+String selectDuration;
+String selectCategory;
 
-final durationSelected = TextEditingController();
-final categorySelected = TextEditingController();
+// final durationSelected=TextEditingController();
+// final categorySelected=TextEditingController();
 
-List<String> duration = [
-  '1 Day',
-  '2 Days',
-  '3 Days',
-  '4 Days',
-  '5 Days',
-  '6 Days',
-  '7 Days',
-];
+// List<String> duration =[
+// '1 Day',
+// '2 Days',
+// '3 Days',
+// '4 Days',
+// '5 Days',
+// '6 Days',
+// '7 Days',
 
-List<String> category = [
-  'Polythin',
-  'Metal',
-  'Organic',
-  'Plastic',
-  'Silver',
-];
+// ];
+
+// List<String> category =[
+
+// 'Polythin',
+//  'Metal',
+// 'Organic',
+// 'Plastic',
+// 'Silver',
+
+// ];
 
 class SellItem extends StatefulWidget {
   @override
@@ -103,6 +105,10 @@ class _SellFormState extends State<SellForm> {
 
   TextEditingController catagory = TextEditingController();
 
+  TextEditingController description = TextEditingController();
+  TextEditingController price = TextEditingController();
+
+  //bool _validate = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -114,22 +120,22 @@ class _SellFormState extends State<SellForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(30.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    decide(),
-                    Container(),
-                    RaisedButton(
-                      child: Text("Select Image"),
-                      onPressed: () {
-                        showChoicedialogbox(context);
-                      },
-                    ),
-                  ],
-                ),
-              ),
+//  Container(
+//    padding: EdgeInsets.all(30.0),
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   decide(),
+//                   Container(),
+//                   RaisedButton(
+//                     child: Text("Select Image"),
+//                     onPressed: () {
+//                       showChoicedialogbox(context);
+//                     },
+//                   ),
+//                 ],
+//               ),
+//             ),
 
 //category select
               Container(
@@ -140,9 +146,16 @@ class _SellFormState extends State<SellForm> {
                   children: <Widget>[
                     Text("Category"),
 
-                    SizedBox(
-                      height: 20.0,
-                    ),
+//category select
+// Container(
+// padding: const EdgeInsets.all(20.0),
+// child: Column(
+// mainAxisAlignment:MainAxisAlignment.center,
+// crossAxisAlignment:CrossAxisAlignment.stretch,
+// children: <Widget>[
+// Text("Category"),
+
+// SizedBox(height:20.0,),
 // DropDownField(
 // controller: categorySelected,
 // hintText: "Select item category",
@@ -161,12 +174,88 @@ class _SellFormState extends State<SellForm> {
 
 // ),
 
-// SizedBox(height:20.0),
-// Text(selectDuration)
+// // SizedBox(height:20.0),
+// // Text(selectDuration)
+// //
+// ],
+
+// ),
+
+// ),
+
+// Padding(padding: const EdgeInsets.all(10.0)),
+// Container(
+// padding: const EdgeInsets.all(20.0),
+// child: Column(
+// mainAxisAlignment:MainAxisAlignment.center,
+// crossAxisAlignment:CrossAxisAlignment.stretch,
+// children: <Widget>[
+// Text("Duration"),
+// SizedBox(height:20.0,),
+// DropDownField(
+
+// controller: durationSelected,
+// hintText: "Select any duration",
+// enabled: true,
+// itemsVisibleInDropdown:2,
+// items: duration,
+
+// onValueChanged: (value){
+
+// setState(() {
+//   selectDuration=value;
+// });
+// },
+
+// ),
+// ],
+
+// ),
+// ),
+
 //
                   ],
                 ),
               ),
+
+              Padding(padding: const EdgeInsets.all(10.0)),
+              Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Text("Category",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            )),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        DropdownButtonFormField<String>(
+                          value: selectCategory,
+                          hint: Text(
+                            'Select item category',
+                          ),
+                          onChanged: (category) =>
+                              setState(() => selectCategory = category),
+                          validator: (value) =>
+                              value == null ? 'Enter category is must' : null,
+                          items: [
+                            'Polythin',
+                            'Metal',
+                            'Organic',
+                            'Plastic',
+                            'Silver',
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ])),
 
               Padding(padding: const EdgeInsets.all(10.0)),
               Container(
@@ -200,27 +289,126 @@ class _SellFormState extends State<SellForm> {
               ),
 
 //
-              SizedBox(
-                height: 20.0,
-              ),
-              DropdownButtonFormField<String>(
-                value: selectedSalutation,
-                hint: Text(
-                  'Salutation',
+
+              Padding(padding: const EdgeInsets.all(10.0)),
+              Container(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Text("Duration",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        )),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    DropdownButtonFormField<String>(
+                      value: selectDuration,
+                      hint: Text(
+                        'Select any duration',
+                      ),
+                      onChanged: (duration) =>
+                          setState(() => selectDuration = duration),
+                      validator: (value) =>
+                          value == null ? 'Enter duration is must' : null,
+                      items: [
+                        '1 Day',
+                        '2 Days',
+                        '3 Days',
+                        '4 Days',
+                        '5 Days',
+                        '6 Days',
+                        '7 Days'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
-                onChanged: (salutation) =>
-                    setState(() => selectedSalutation = salutation),
-                validator: (value) => value == null ? 'field required' : null,
-                items: ['MR.', 'MS.']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
 
-//
+              Container(
+                padding: EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: price,
+                  scrollPadding: EdgeInsets.all(10),
+                  decoration: const InputDecoration(
+                      hintText: 'Enter a base price',
+                      labelText: 'Base Price',
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      )),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter some price';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    minLines: 5,
+                    maxLines: 10,
+                    autocorrect: false,
+                    controller: description,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter a description about your item';
+                      }
+                      return null;
+                    },
+
+                    decoration: InputDecoration(
+                      hintText: 'Write your discription here',
+                      filled: true,
+                      fillColor: Colors.green[100],
+
+                      //errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                    ),
+
+                    //
+                  ),
+                ),
+              ),
+
+              Padding(padding: const EdgeInsets.all(5.0)),
+              Container(
+                  padding: const EdgeInsets.all(10.0),
+                  alignment: Alignment(-0.1, 1),
+                  child: new RaisedButton(
+                    child: const Text('Next'),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        print(selectCategory);
+                        print(selectDuration);
+                        print(description);
+                        print(price);
+
+                        Navigator.of(context).pushNamed('/upload');
+                      }
+                    },
+                  )),
 
               Padding(padding: const EdgeInsets.all(7.0)),
               Container(
@@ -248,5 +436,3 @@ class _SellFormState extends State<SellForm> {
         ));
   }
 }
-
-//

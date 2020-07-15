@@ -5,7 +5,8 @@ var app = expess();
 const {Router} = require('express');
 const router = Router();
 
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+
+app.use(bodyParser.urlencoded({ extended: true, limit: "1gb" }));
 router.post("/image", function(req, res){
   var name = req.body.name;
   var img = req.body.image;
