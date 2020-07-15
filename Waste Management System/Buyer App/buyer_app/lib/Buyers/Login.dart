@@ -7,8 +7,7 @@ import 'package:http/http.dart' as http;
 //import 'package:passwordfield/passwordfield.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
 
-final String apiUrl = "http://192.168.8.188:3000/auth/buyerLogin";
-// final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
+final String apiUrl = "http://10.0.2.2:3000/auth/buyerLogin";
 
 String newAuth = ResponseData.auth;
 
@@ -296,7 +295,6 @@ class _LoginFormState extends State<LoginForm> {
                         alignment: Alignment.topLeft,
                         height: 45.0,
                         width: 50.0,
-                        
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
@@ -340,10 +338,10 @@ class _LoginFormState extends State<LoginForm> {
                       width: 140,
                       height: 140,
                       child: Icon(
-                          Icons.account_circle,
-                          color: Colors.green,
-                          size: 100.0,
-                        ),
+                        Icons.account_circle,
+                        color: Colors.green,
+                        size: 100.0,
+                      ),
                       // decoration: BoxDecoration(
                       //   // color: Colors.white,
                       //   image: DecorationImage(

@@ -7,7 +7,9 @@ import 'package:app/utils/ResponseData.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
+// final String apiUrl = "http://10.0.2.2:3000/auth/customerLogin";
+final String apiUrl = "${ResponseData.apiUrl}/auth/customerLogin";
+
 String userId,
     firstName,
     lastName,
@@ -185,24 +187,24 @@ class _LoginFormState extends State<LoginForm> {
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
             ),
             validator: (value) {
-        //           Pattern pattern =
-        // r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-        //  RegExp regex = new RegExp(pattern);
-                  if (value.isEmpty ) {
-                    return 'Please enter a strong password';
-                  }else if(value.length<6){
-                    return 'Must be more than 6 charactors';
-                  }
-                  // else if(!regex.hasMatch(value)){
+              //           Pattern pattern =
+              // r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+              //  RegExp regex = new RegExp(pattern);
+              if (value.isEmpty) {
+                return 'Please enter a strong password';
+              } else if (value.length < 6) {
+                return 'Must be more than 6 charactors';
+              }
+              // else if(!regex.hasMatch(value)){
 
-                  //   return 'At least a upper, lower, symbol & number';
-                  // }
-                  // else if(value.){
-                  //   return 'Your password too short';
-                  // }
+              //   return 'At least a upper, lower, symbol & number';
+              // }
+              // else if(value.){
+              //   return 'Your password too short';
+              // }
 
-                  return null;
-                },
+              return null;
+            },
             obscureText: true,
           ),
           Container(

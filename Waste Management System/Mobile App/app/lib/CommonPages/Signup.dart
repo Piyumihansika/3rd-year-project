@@ -23,7 +23,6 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
- 
 
   //controller names
   TextEditingController firstName = TextEditingController();
@@ -32,20 +31,16 @@ class _SignFormState extends State<SignForm> {
   TextEditingController contactNumber = TextEditingController();
   TextEditingController password = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              
-
               child: Image(
                 alignment: Alignment(0.5, 0.5),
                 image: AssetImage('assets/images/logo.jpg'),
@@ -97,7 +92,7 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
-              
+
                 //controller: lastnameController,
                 validator: (value) {
                   if (value.isEmpty) {
@@ -120,15 +115,14 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
-           
+
                 // controller: emailController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter some text';
-                  }
-                 else {
+                  } else {
                     bool temp = (EmailValidator.validate(value));
-                    if(temp){
+                    if (temp) {
                       return null;
                     }
                     return 'Please enter a valid Email ';
@@ -149,21 +143,18 @@ class _SignFormState extends State<SignForm> {
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
-              
+
                 //controller: phoneController,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a valid phone number';
-                  }
-                  else if(value.length<10){
+                  } else if (value.length < 10) {
                     return 'Your phone number is incorrect';
                   }
                   return null;
                 },
               ),
             ),
-
-
 
 //password field
 
@@ -172,27 +163,22 @@ class _SignFormState extends State<SignForm> {
               child: TextFormField(
                 controller: password,
                 scrollPadding: EdgeInsets.all(10),
-                
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person, color: Colors.green),
-                  
                   hintText: 'Enter a password',
                   labelText: 'Password',
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.green),
                 ),
-                
                 validator: (value) {
                   Pattern pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-         RegExp regex = new RegExp(pattern);
-                  if (value.isEmpty ) {
+                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+                  RegExp regex = new RegExp(pattern);
+                  if (value.isEmpty) {
                     return 'Please enter a strong password';
-                  }else if(value.length<6){
+                  } else if (value.length < 6) {
                     return 'Must be more than 6 charactors';
-                  }
-                  else if(!regex.hasMatch(value)){
-
+                  } else if (!regex.hasMatch(value)) {
                     return 'At least a upper, lower, symbol & number';
                   }
                   // else if(value.){
@@ -202,12 +188,7 @@ class _SignFormState extends State<SignForm> {
                   return null;
                 },
                 obscureText: false,
-
-                
               ),
-
-             
-          
             ),
 
             // new Container(
@@ -217,73 +198,60 @@ class _SignFormState extends State<SignForm> {
             //       color: Colors.green,
             //       textColor: Colors.white,
             //       onPressed: () {
-                    // if (_formKey.currentState.validate()) {
-                     
-                     
-                    //   Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => ChooseLocaType(
-                    //         firstName: firstName.text,
-                    //         lastName: lastName.text,
-                    //         email: email.text,
-                    //         contactNumber: contactNumber.text,
-                    //         password: password.text),
-                    //   ));
+            // if (_formKey.currentState.validate()) {
 
-                    //   //
-                    // }
-                //   },
-                // )),
+            //   Navigator.of(context).push(MaterialPageRoute(
+            //     builder: (context) => ChooseLocaType(
+            //         firstName: firstName.text,
+            //         lastName: lastName.text,
+            //         email: email.text,
+            //         contactNumber: contactNumber.text,
+            //         password: password.text),
+            //   ));
 
+            //   //
+            // }
+            //   },
+            // )),
 
 //
-ListTile(
+            ListTile(
+              title: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: RaisedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/login');
+                    },
+                    child: Text("Back"),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                  )),
+                  Expanded(
+                      child: RaisedButton(
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ChooseLocaType(
+                              firstName: firstName.text,
+                              lastName: lastName.text,
+                              email: email.text,
+                              contactNumber: contactNumber.text,
+                              password: password.text),
+                        ));
 
- title: Row(
-            children: <Widget>[
-
-
-              Expanded(child: RaisedButton(onPressed: () {
-
-Navigator.of(context).pushNamed('/login');
-            
-              },
-              
-              child: Text("Back"),color: Colors.green,textColor: Colors.white,)),
-              
-              
-              
-              Expanded(child: RaisedButton(onPressed: ()
-              
-               {
-
-if (_formKey.currentState.validate()) {
-                     
-                     
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ChooseLocaType(
-                            firstName: firstName.text,
-                            lastName: lastName.text,
-                            email: email.text,
-                            contactNumber: contactNumber.text,
-                            password: password.text),
-                      ));
-
-                      //
-                    }
-              },
-              
-              child: Text("Next"),color: Colors.green,textColor: Colors.white,)),
-            ],
-          ),
-
-)
-
+                        //
+                      }
+                    },
+                    child: Text("Next"),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                  )),
+                ],
+              ),
+            )
 
 //
-
-
-
-                
           ],
         ),
       ),

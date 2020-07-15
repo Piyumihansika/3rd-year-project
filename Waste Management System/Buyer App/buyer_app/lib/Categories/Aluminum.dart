@@ -10,8 +10,7 @@ import 'package:flutter/material.dart';
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-      
-      
+
 //     );
 //   }
 // }
@@ -25,14 +24,14 @@ class Post {
 
 class Aluminium extends StatelessWidget {
   Future<List<Post>> search(String search) async {
-  await Future.delayed(Duration(seconds: 2));
-  return List.generate(search.length, (int index) {
-    return Post(
-      "Title : $search $index",
-      "Description :$search $index",
-    );
-  });
-}
+    await Future.delayed(Duration(seconds: 2));
+    return List.generate(search.length, (int index) {
+      return Post(
+        "Title : $search $index",
+        "Description :$search $index",
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

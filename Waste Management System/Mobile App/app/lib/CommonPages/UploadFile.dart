@@ -1,36 +1,39 @@
-
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:app/utils/ResponseData.dart';
+// import 'package:flutter_image_compress/flutter_image_compress.dart';
 
-final String nodeEndPoint = 'http://10.0.2.2:3000/imageC/image';
+// final String nodeEndPoint = 'http://10.0.2.2:3000/imageC/image';
+final String nodeEndPoint = '${ResponseData.apiUrl}/category/addCategory';
+
 File file;
 
- void _choose() async {
+void _choose() async {
   // file = await ImagePicker.pickImage(source: ImageSource.camera);
-file = await ImagePicker.pickImage(source: ImageSource.gallery);
- }
+  file = await ImagePicker.pickImage(source: ImageSource.gallery);
+}
 
- void _upload() {
-   if (file == null) return;
-   String base64Image = base64Encode(file.readAsBytesSync());
-   String fileName = file.path.split("/").last;
+void _upload() {
+  if (file == null) return;
+  String categoryImage = base64Encode(file.readAsBytesSync());
+  // String fileName = file.path.split("/").last;
 
-http.post(nodeEndPoint, body: {
-     "image": base64Image,
-     "name": fileName,
-   }).then((res) {
-     print(res.statusCode);
-   }).catchError((err) {
-     print(err);
-   });
- }
-  // 
-
+  http.post(nodeEndPoint, body: {
+    "categoryImage": categoryImage,
+    "categoryName": "plastic",
+    "unitPrice": "10"
+    // "name": fileName,
+  }).then((res) {
+    print(res.statusCode);
+    print(nodeEndPoint);
+  }).catchError((err) {
+    print(err);
+  });
+}
+//
 
 class Upload extends StatefulWidget {
   @override
@@ -58,9 +61,7 @@ class _UploadState extends State<Upload> {
               )
             ],
           ),
-          file == null
-            ? Text('No Image Selected') 
-            : Image.file(file)
+          file == null ? Text('No Image Selected') : Image.file(file)
         ],
       ),
     );
