@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
+import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String apiUrl = "";
+String apiUrl = "ADD URL HERE";
 
 class TrackingCompany extends StatefulWidget {
   final String companyName;
@@ -27,7 +31,30 @@ class TrackingCompany extends StatefulWidget {
 }
 
 class _TrackingCompanyState extends State<TrackingCompany> {
-  TextEditingController address = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  // ignore: unused_field
+  Position _position;
+  StreamSubscription<Position> _streamSubscription;
+  Address _address;
+
+  @override
+  void initState() {
+    super.initState();
+    var locationOptions =
+        LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
+    _streamSubscription = Geolocator()
+        .getPositionStream(locationOptions)
+        .listen((Position position) {
+      setState(() {
+        print(position);
+        _position = position;
+        final coordinates =
+            new Coordinates(position.latitude, position.longitude);
+        convertCoordinatesToAddress(coordinates)
+            .then((value) => _address = value);
+      });
+    });
+  }
 
   void register(BuildContext context) async {
     print(widget.companyName);
@@ -38,10 +65,10 @@ class _TrackingCompanyState extends State<TrackingCompany> {
       "contactpersonNumber": widget.contactpersonNumber,
       "email": widget.email,
       "password": widget.password,
-      "address": address.text,
+      "_address": _address.addressLine,
     };
     print(widget.companyName);
-    print(address.text);
+    print(_address.addressLine);
     print(
         "----------------------------------------------OK----------------------------------------------------");
 
@@ -57,17 +84,11 @@ class _TrackingCompanyState extends State<TrackingCompany> {
     }
   }
 
-  final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
-  final _formKey = GlobalKey<FormState>();
-
-  Position currentPosition;
-  String currentAddress;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tracking Location'),
+        title: Text('Location Tracking'),
         backgroundColor: Colors.green,
       ),
       body: Form(
@@ -75,27 +96,21 @@ class _TrackingCompanyState extends State<TrackingCompany> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            if (currentPosition != null) Text(currentAddress),
-
-            //          Container(
-            //            alignment: Alignment.center,
-            //            child: Text('Your Location Here'),
-            //          ),
-
-            RaisedButton(
-              child: Text(
-                "Get location",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-              onPressed: () {
-                _getCurrentLocation();
-              },
+            // Text(
+            //     "latitude: ${_position?.latitude ?? '-'}, longitude: ${_position?.longitude ?? '-'}"),
+            SizedBox(
+              height: 40,
             ),
+            Text("Your Location Here",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            SizedBox(
+              height: 20,
+            ),
+            
+            Text("${_address?.addressLine ?? '-'}",style: TextStyle(fontSize: 18,color: Colors.green),),
 
+            SizedBox(
+              height: 20,
+            ),
             //  terms and conditions...
             Container(
               padding: EdgeInsets.all(10),
@@ -103,7 +118,7 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                 children: <Widget>[
                   FlatButton(
                     padding: const EdgeInsets.only(right: 10.0),
-                    textColor: Colors.green,
+                    textColor: Colors.red,
                     child: Text(
                       'Our terms & conditions',
                       style: TextStyle(fontSize: 18),
@@ -136,7 +151,10 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Back',style: TextStyle(fontSize: 18),),
+                      child: const Text(
+                        'Back',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       color: Colors.yellow,
                       textColor: Colors.black,
                       onPressed: () {
@@ -144,7 +162,10 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                       },
                     ),
                     RaisedButton(
-                      child: const Text('Sign up',style: TextStyle(fontSize: 18),),
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {
@@ -162,34 +183,25 @@ class _TrackingCompanyState extends State<TrackingCompany> {
     );
   }
 
-  _getCurrentLocation() {
-    geolocator
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
-        .then((Position position) {
-      setState(() {
-        currentPosition = position;
-      });
-
-      _getAddressFromLatLng();
-    }).catchError((e) {
-      print(e);
-    });
+  @override
+  void dispose() {
+    super.dispose();
+    _streamSubscription.cancel();
   }
 
-  _getAddressFromLatLng() async {
-    try {
-      List<Placemark> p = await geolocator.placemarkFromCoordinates(
-          currentPosition.latitude, currentPosition.longitude);
-
-      Placemark place = p[0];
-
-      setState(() {
-        currentAddress =
-            "${place.locality}, ${place.postalCode}, ${place.country}";
-        address = currentAddress as TextEditingController;
-      });
-    } catch (e) {
-      print(e);
-    }
+  Future<Address> convertCoordinatesToAddress(Coordinates coordinates) async {
+    var addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    return addresses.first;
   }
 }
+
+
+
+
+
+
+
+
+
+
