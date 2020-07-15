@@ -1,4 +1,3 @@
-
 // import 'dart:io';
 // import 'package:flutter/material.dart';
 // import 'dart:convert';
@@ -12,7 +11,6 @@
 //   // file = await ImagePicker.pickImage(source: ImageSource.camera);
 // file = await ImagePicker.pickImage(source: ImageSource.gallery);
 //  }
- 
 
 //  void _upload() {
 //    if (file == null) return;
@@ -28,8 +26,7 @@
 //      print(err);
 //    });
 //  }
-//   // 
-
+//   //
 
 // class Upload extends StatefulWidget {
 //   @override
@@ -58,7 +55,7 @@
 //             ],
 //           ),
 //           file == null
-//             ? Text('No Image Selected') 
+//             ? Text('No Image Selected')
 //             : Image.file(file)
 //         ],
 //       ),
@@ -71,39 +68,39 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
- 
+
 class UploadImageDemo extends StatefulWidget {
   UploadImageDemo() : super();
- 
+
   final String title = "Upload Image Demo";
- 
+
   @override
   UploadImageDemoState createState() => UploadImageDemoState();
 }
- 
+
 class UploadImageDemoState extends State<UploadImageDemo> {
   //
-  static final String uploadEndPoint ="http://10.0.2.2:3000/";
-      
+  static final String uploadEndPoint = "http://10.0.2.2:3000/";
+
   Future<File> file;
   String status = '';
   String base64Image;
   File tmpFile;
   String errMessage = 'Error Uploading Image';
- 
+
   chooseImage() {
     setState(() {
       file = ImagePicker.pickImage(source: ImageSource.gallery);
     });
     setStatus('');
   }
- 
+
   setStatus(String message) {
     setState(() {
       status = message;
     });
   }
- 
+
   startUpload() {
     setStatus('Uploading Image...');
     if (null == tmpFile) {
@@ -113,7 +110,7 @@ class UploadImageDemoState extends State<UploadImageDemo> {
     String fileName = tmpFile.path.split('/').last;
     upload(fileName);
   }
- 
+
   upload(String fileName) {
     http.post(uploadEndPoint, body: {
       "image": base64Image,
@@ -124,7 +121,7 @@ class UploadImageDemoState extends State<UploadImageDemo> {
       setStatus(error);
     });
   }
- 
+
   Widget showImage() {
     return FutureBuilder<File>(
       future: file,
@@ -153,7 +150,7 @@ class UploadImageDemoState extends State<UploadImageDemo> {
       },
     );
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

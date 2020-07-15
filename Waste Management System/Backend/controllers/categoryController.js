@@ -1,7 +1,12 @@
 const { Router } = require('express');
-const { route } = require('./authController');
 const router = Router();
+const express = require('express');
+const app = express();
+// const { route } = require('./authController');
+var bodyParser = require('body-parser');
 const multer = require('multer');
+app.use(bodyParser.json({limit:'50mb'})); 
+app.use(bodyParser.urlencoded({extended:true, limit:'50mb'}));
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -12,29 +17,34 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage,
+    limits: {
+        fileSize: '50mb'
+    }
+});
 
 const Category = require('../model/categoryModel')
 
-router.post("/addCategory", upload.single('categoryImage'),(req, res, next) => {
-    // console.log(req.file);
+
+router.post("/addCategory",  upload.single('categoryImage'),(req, res, next) => {
+   
+   
     try {
+        console.log("image get");
         const category = new Category({
             categoryName: req.body.categoryName,
             unitPrice: req.body.unitPrice,
             categoryImage: req.file.path
 
         });
+        
         category.save();
+        console.log("image api hit")
         res.status(201).json({ 'category': category });
     }catch(err){
         res.status(500).json({ error : err });
     }
 
 })
-
-
-
-
 
 module.exports = router;

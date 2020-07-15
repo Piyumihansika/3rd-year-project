@@ -24,6 +24,10 @@
 			url: "/reports",
 			name: "Reports",
 			icon:"report"
+		},	{
+			url: "/login",
+			name: "Login",
+			icon:"person_outline"
 		},
 
 	// {

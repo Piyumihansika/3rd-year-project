@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:app/utils/ResponseData.dart';
 
-final String apiUrl = "http://10.0.2.2:3000/customer/addCustomer";
+final String apiUrl = "${ResponseData.apiUrl}/customer/addCustomer";
+// final String apiUrl = "http://10.0.2.2:3000/customer/addCustomer";
 
 class Address extends StatefulWidget {
   final String firstName;
@@ -68,11 +70,11 @@ class _AddressState extends State<Address> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Enter Your Address'),
-            //  title: Text(
-            //    phone + firstname,
-            //    ),
-            backgroundColor: Colors.green,
-            ),
+          //  title: Text(
+          //    phone + firstname,
+          //    ),
+          backgroundColor: Colors.green,
+        ),
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -170,18 +172,37 @@ class _AddressState extends State<Address> {
                   // },
                   //controller: city,
                   validator: (value) {
-                    List<String> myList = ['Ampara', 'Anuradhapura', 'Badulla','Batticaloa','Colombo','Galle',
-                    'Gampaha','Hambantota','Jaffna','Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala',
-                    'Mannar','Matale','Matara','Monaragala',
-                  'Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Ratnapura','Trincomalee','Vavuniya'
+                    List<String> myList = [
+                      'Ampara',
+                      'Anuradhapura',
+                      'Badulla',
+                      'Batticaloa',
+                      'Colombo',
+                      'Galle',
+                      'Gampaha',
+                      'Hambantota',
+                      'Jaffna',
+                      'Kalutara',
+                      'Kandy',
+                      'Kegalle',
+                      'Kilinochchi',
+                      'Kurunegala',
+                      'Mannar',
+                      'Matale',
+                      'Matara',
+                      'Monaragala',
+                      'Mullaitivu',
+                      'Nuwara Eliya',
+                      'Polonnaruwa',
+                      'Puttalam',
+                      'Ratnapura',
+                      'Trincomalee',
+                      'Vavuniya'
                     ];
                     if (value.isEmpty) {
                       return 'Please enter some text';
-                    }
-                    else if(
-                      !(myList.contains(value) )
-                    ){
-                         return 'Your district is wrong.';
+                    } else if (!(myList.contains(value))) {
+                      return 'Your district is wrong.';
                     }
                     return null;
                   },

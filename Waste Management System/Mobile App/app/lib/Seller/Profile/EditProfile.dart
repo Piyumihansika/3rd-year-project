@@ -6,14 +6,12 @@ import 'package:http/http.dart' as http;
 // import 'package:path/path.dart';
 // import 'package:dio/dio.dart';
 
-
 final String editUrl =
-    "https://192.168.8.100:3000/customer/updateCustomer/${ResponseData.userId}";
+    "${ResponseData.apiUrl}/customer/updateCustomer/${ResponseData.userId}";
 
 class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         elevation: 4.0,
@@ -40,7 +38,6 @@ class MyCustomForm extends StatefulWidget {
     return MyCustomFormState();
   }
 }
-
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
@@ -83,7 +80,6 @@ class MyCustomFormState extends State<MyCustomForm> {
     setState(() {
       imageFile = pic;
     });
-   
   }
 
   Future<void> showChoicedialogbox(BuildContext context) {
@@ -117,7 +113,7 @@ class MyCustomFormState extends State<MyCustomForm> {
     if (imageFile == null) {
       return CircleAvatar(
         radius: 80,
-    backgroundImage: AssetImage('assets/images/icon.jpg'),
+        backgroundImage: AssetImage('assets/images/icon.jpg'),
         // backgroundImage: NetworkImage(
         //     "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
       );
@@ -130,7 +126,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   String newlastName;
   String newcontactNumber;
 
- //upload image to the server
+  //upload image to the server
 // void uploadFile(filePath) async {
 
 //   //Get the file name
@@ -155,9 +151,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 //   }
 // }
 
-
-
-//  
+//
   editData() async {
     await http.put(editUrl, headers: {
       "Accept": "application/json",
@@ -174,7 +168,6 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
@@ -197,8 +190,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ],
               ),
             ),
-
-
             TextFormField(
               // controller: TextEditingController(text: ResponseData.firstName),
               // initialValue: ResponseData.firstName,
@@ -225,7 +216,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                 newfirstName = text;
               },
             ),
-
             TextFormField(
               // initialValue: ResponseData.lastName,
               // controller: lastName,
@@ -234,8 +224,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                   Icons.person,
                   color: Colors.green,
                 ),
-                
-
                 labelText: 'Last Name',
                 labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -252,7 +240,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                 newlastName = text;
               },
             ),
-
             TextFormField(
               // initialValue: ResponseData.contactNumber,
               // controller: contactNumber,
@@ -261,7 +248,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                   Icons.phone,
                   color: Colors.green,
                 ),
-               
                 labelText: 'Phone',
                 labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -278,7 +264,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                 newcontactNumber = text;
               },
             ),
-
             new Container(
                 padding: const EdgeInsets.only(left: 150.0, top: 40.0),
                 child: new RaisedButton(

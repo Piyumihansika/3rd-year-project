@@ -177,6 +177,11 @@ export default new Router({
                     name: 'Reports',
                     index: 34,
                     component: () => import('./views/components/dashboard/reports.vue')
+                },{
+                    path: '/login',
+                    name: 'Login',
+                    index: 35,
+                    component: () => import('./views/components/dashboard/login.vue')
                 },
 
             ]
