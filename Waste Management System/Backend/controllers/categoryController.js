@@ -30,7 +30,7 @@ router.post("/addCategory",  upload.single('categoryImage'),(req, res, next) => 
    
    
     try {
-        console.log("image get");
+        console.log(req.file);
         const category = new Category({
             categoryName: req.body.categoryName,
             unitPrice: req.body.unitPrice,
