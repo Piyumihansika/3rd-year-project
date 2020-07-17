@@ -1,4 +1,5 @@
 import 'dart:async';
+//import 'dart:html';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -34,7 +35,13 @@ final String url = 'Enter url here/item';
 
 class ItemDetails {
   final int id;
-  final String category, itemName, currentBid, description, itemImageUrl;
+  final String category,
+      itemName,
+      currentBid,
+      description,
+      itemImageUrl,
+      duration;
+  final DateTime startDate;
 
   ItemDetails(
       {this.id,
@@ -42,6 +49,8 @@ class ItemDetails {
       this.itemName,
       this.currentBid,
       this.description,
+      this.startDate,
+      this.duration,
       this.itemImageUrl = ''});
 
   factory ItemDetails.fromJson(Map<String, dynamic> json) {
@@ -51,6 +60,8 @@ class ItemDetails {
       itemName: json['itemName'],
       currentBid: json['currentBid'],
       description: json['description'],
+      startDate: json['startDate'],
+      duration: json['duration'],
     );
   }
 }
@@ -85,10 +96,12 @@ class _CopperState extends State<Copper> {
       return;
     }
 
+// view details
     _itemDetails.forEach((itemDetail) {
       if (itemDetail.itemName.contains(text) ||
           itemDetail.currentBid.contains(text) ||
           itemDetail.description.contains(text) ||
+          itemDetail.duration.contains(text) ||
           itemDetail.category.contains(text)) _searchResult.add(itemDetail);
     });
 
@@ -131,6 +144,7 @@ class _CopperState extends State<Copper> {
                 ),
               ),
             ),
+
             //search
             new Expanded(
               child: _searchResult.length != 0 || controller.text.isNotEmpty
@@ -148,9 +162,23 @@ class _CopperState extends State<Copper> {
                                 ),
                               ),
                             ),
+                            SizedBox(height: 20.0),
                             Container(
                               child: Text(_searchResult[i].itemName),
                             ),
+                            SizedBox(height: 10.0),
+                            Container(
+                              child: new Text(
+                                'Valid Duration' +
+                                    ':' +
+                                    _searchResult[i].duration,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
                             Container(
                               child: new Text(
                                 'Current Bid' +
@@ -162,6 +190,7 @@ class _CopperState extends State<Copper> {
                                     color: Colors.black),
                               ),
                             ),
+                            SizedBox(height: 10.0),
                             Container(
                               child: new Text(
                                 'Description' +
@@ -173,6 +202,7 @@ class _CopperState extends State<Copper> {
                                     color: Colors.black),
                               ),
                             ),
+                            SizedBox(height: 10.0),
                             Container(
                               child: new RaisedButton(
                                   color: Colors.green,
@@ -183,7 +213,9 @@ class _CopperState extends State<Copper> {
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
-                                  onPressed: () {}),
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed('/bid');
+                                  }),
                             ),
                           ],
                         )
@@ -212,9 +244,9 @@ class _CopperState extends State<Copper> {
                   : new ListView.builder(
                       itemCount: _itemDetails.length,
                       itemBuilder: (context, index) {
-                        if (_itemDetails[index].itemName == 'copper') {
+                        if (_itemDetails[index].category == 'copper') {
                           return Container(
-                            width: 200,
+                            width: 700,
                             child: new Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -224,7 +256,7 @@ class _CopperState extends State<Copper> {
                               child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
-                                    //SizedBox(height: 10.0),
+                                    SizedBox(height: 10.0),
                                     Container(
                                       child: new CircleAvatar(
                                         backgroundImage: new NetworkImage(
@@ -233,11 +265,23 @@ class _CopperState extends State<Copper> {
                                       ),
                                     ),
 
-                                    //SizedBox(height: 20.0),
+                                    SizedBox(height: 20.0),
                                     Container(
                                       child: Text(_itemDetails[index].itemName),
                                     ),
-
+                                    SizedBox(height: 10.0),
+                                    Container(
+                                      child: new Text(
+                                        'Valid Duration' +
+                                            ':' +
+                                            _itemDetails[index].duration,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10.0),
                                     Container(
                                       child: new Text(
                                         'Current Bid' +
@@ -249,6 +293,7 @@ class _CopperState extends State<Copper> {
                                             color: Colors.black),
                                       ),
                                     ),
+                                    SizedBox(height: 10.0),
                                     Container(
                                       child: new Text(
                                         'Description' +
@@ -260,6 +305,7 @@ class _CopperState extends State<Copper> {
                                             color: Colors.black),
                                       ),
                                     ),
+                                    SizedBox(height: 10.0),
                                     Container(
                                       child: new RaisedButton(
                                           color: Colors.green,
@@ -270,7 +316,9 @@ class _CopperState extends State<Copper> {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
-                                          onPressed: () {}),
+                                          onPressed: () {
+                                            Navigator.of(context).pushNamed('/bid');
+                                          }),
                                     ),
 
                                     // new ListTile(
@@ -298,6 +346,18 @@ class _CopperState extends State<Copper> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import 'dart:async';
 // import 'package:flutter/material.dart';

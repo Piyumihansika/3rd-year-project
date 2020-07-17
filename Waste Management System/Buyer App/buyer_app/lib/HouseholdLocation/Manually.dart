@@ -275,31 +275,8 @@ class _ManuallyState extends State<Manually> {
                             }
                           }
 
-                          // if (_formKey.currentState.validate()) {
+                          
 
-                          //   send request
-
-                          //   Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (context) =>CheckHousehold(address1: address1 ,address2: address2,city:city,district:district ),
-
-                          //   ));
-                          // }
-
-//                      onPressed: () {
-//
-//                        if (_formKey.currentState.validate()) {
-//
-//                          print(locationController.text);
-//
-//
-//                          Navigator.of(context).pushNamed('/buyerhome');
-//
-////                        Scaffold
-////                            .of(context)
-////                            .showSnackBar(SnackBar(content: Text('Sending Data'),backgroundColor: Colors.green,));
-//
-//                        }
-//                      },
                           ),
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,

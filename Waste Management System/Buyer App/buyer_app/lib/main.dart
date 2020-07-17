@@ -6,6 +6,7 @@ import 'Buyers/ForgotPassword.dart';
 import 'Buyers/BuyerHome.dart';
 import 'Buyers/ContactUs.dart';
 import 'Buyers/AboutUs.dart';
+import 'Categories/Glass.dart';
 import 'settings/Profile.dart';
 import 'Buyers/History.dart';
 import 'Categories/Category.dart';
@@ -26,7 +27,7 @@ import 'settings/Notification.dart';
 import 'settings/ChangePassword.dart';
 import 'settings/DeactivateAccount.dart';
 import 'settings/ChangeLocation.dart';
-//import 'settings/Search.dart';
+import 'settings/Search.dart';
 import 'Categories/Copper.dart';
 import 'Categories/Aluminum.dart';
 
@@ -78,10 +79,13 @@ class MyApp extends StatelessWidget {
         '/changepassword': (context) => PasswordChange(),
         '/deactivateaccount': (context) => DeactivateAccount(),
         '/changelocation': (context) => ChangeLocation(),
+
+        //categories
         '/aluminium': (context) => Aluminium(),
         '/copper': (context) => Copper(),
+        '/glass': (context) => Glass(),
         '/bid': (context) => Bid(),
-        //'/search': (context) => Search(),
+        '/search': (context) => Search(),
       },
     );
   }
