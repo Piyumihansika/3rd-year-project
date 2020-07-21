@@ -56,6 +56,30 @@ class _TrackingState extends State<Tracking> {
     });
   }
 
+  //success dialog box
+  registersuccessdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Congradulations!",
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+            content: Text(
+              "You are registered successfully. Please Login!",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+          );
+        });
+  }
+
   void register(BuildContext context) async {
     print(widget.firstName);
 
@@ -78,6 +102,8 @@ class _TrackingState extends State<Tracking> {
     if (response.statusCode == 200) {
       print(response.statusCode);
       print(response.body);
+      Navigator.of(context).pushNamed('/login');
+      registersuccessdialog(context);
     } else {
       print(response.statusCode);
       print("error occured");
@@ -101,12 +127,18 @@ class _TrackingState extends State<Tracking> {
             SizedBox(
               height: 40,
             ),
-            Text("Your Location Here",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Text(
+              "Your Location Here",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             SizedBox(
               height: 20,
             ),
-            
-            Text("${_address?.addressLine ?? '-'}",style: TextStyle(fontSize: 18,color: Colors.green),),
+
+            Text(
+              "${_address?.addressLine ?? '-'}",
+              style: TextStyle(fontSize: 18, color: Colors.green),
+            ),
 
             SizedBox(
               height: 20,
@@ -195,4 +227,3 @@ class _TrackingState extends State<Tracking> {
     return addresses.first;
   }
 }
-

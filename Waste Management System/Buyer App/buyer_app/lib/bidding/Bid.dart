@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Bid extends StatefulWidget {
-  Bid({Key key}) : super(key: key);
+  final String itemName;
+  final String currentBid;
+  final String description;
+  final String itemImageUrl;
+  final String duration;
+
+  Bid(
+      {Key key,
+      this.itemName,
+      this.currentBid,
+      this.description,
+      this.itemImageUrl,
+      this.duration})
+      : super(key: key);
 
   @override
   _BidState createState() => _BidState();
@@ -21,8 +34,6 @@ class _BidState extends State<Bid> {
 }
 
 class PlaceBid extends StatefulWidget {
-  PlaceBid({Key key}) : super(key: key);
-
   @override
   _PlaceBidState createState() => _PlaceBidState();
 }
