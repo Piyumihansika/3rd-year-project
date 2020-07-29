@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart' show EmailValidator;
-//import 'package:passwordfield/passwordfield.dart';
+import 'package:http/http.dart' as http;
+
+final String apiUrl = "http://10.0.2.2:3000/forgot/sendEmail";
 
 class Forgot extends StatelessWidget {
   @override
@@ -39,19 +41,42 @@ class _ForgotFormState extends State<ForgotForm> {
     });
   }
 
-//email validater
-  bool validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    return (!regex.hasMatch(value)) ? false : true;
-  }
+// //email validater
+//   bool validateEmail(String value) {
+//     Pattern pattern =
+//         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+//     RegExp regex = new RegExp(pattern);
+//     return (!regex.hasMatch(value)) ? false : true;
+//   }
 
   //
   final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  @override
+  TextEditingController email = TextEditingController();
+
+  void emailpass(BuildContext context) async {
+
+  final Map<String, dynamic> data = {
+      "email": email.text,
+    
+    };
+    print(email);
+
+     var response = await http.post(apiUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
+    if (response.statusCode == 200) {
+
+      createAlertDialog(context);
+
+      print(response.statusCode);
+      print(response.body);
+    } else {
+      Navigator.of(context).pushNamed('/forgot');
+      print(response.statusCode);
+      print("error occured");
+    }
+}
+    
+@override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -155,24 +180,24 @@ class _ForgotFormState extends State<ForgotForm> {
               decoration: const InputDecoration(
                 icon: const Icon(Icons.person,color: Colors.black,),
                 //hintText: 'Type Your Email',
-                labelText: 'Type Your Email',
+                labelText: 'Type Your Registered Email',
                 labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
 
                 //: true,
 
               ),
-              controller: usernameController,
+             controller: email,
 
-
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter an Email ';
-                }  else{
-                  assert(EmailValidator.validate(value));
-                  return 'Please enter a valid Email ';
-                }
-                //return null;
-              },
+        
+            validator: (value) {  
+              if (value.isEmpty) {  
+                return 'Please enter an Email ';  
+              }  else{
+                 assert(EmailValidator.validate(value));
+                 return 'Please enter a valid Email '; 
+              }
+              //return null;  
+            },  
 
 
 
@@ -203,8 +228,7 @@ class _ForgotFormState extends State<ForgotForm> {
                       onPressed: () {
 
                         if (_formKey.currentState.validate()) {
-                          print(usernameController.text);
-                          createAlertDialog(context);
+                           emailpass(context);
                         }
                       },
                     ),
@@ -220,3 +244,19 @@ class _ForgotFormState extends State<ForgotForm> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
