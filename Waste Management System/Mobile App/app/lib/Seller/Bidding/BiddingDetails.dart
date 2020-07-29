@@ -34,7 +34,9 @@ class _BiddingDetailsState extends State<BiddingDetails> {
  crossAxisAlignment: CrossAxisAlignment.start,
  children: <Widget>[
 
-for (var i = 0; i < 10; i++){
+// for (var i = 0; i < 10; i++){
+
+//   }
   
 Card(
     child: Column(
@@ -52,7 +54,7 @@ Card(
     ),
   ),
 
-}
+
 
   
 
