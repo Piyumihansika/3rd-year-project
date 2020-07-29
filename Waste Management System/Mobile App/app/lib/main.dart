@@ -6,7 +6,7 @@ import 'package:app/CommonPages/Signup.dart';
 import 'package:app/CommonPages/UploadFile.dart';
 
 import 'package:app/Employees/Login.dart';
-import 'package:app/Seller/BiddingDetails.dart';
+import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Orders.dart';
@@ -16,7 +16,7 @@ import 'package:app/Seller/Profile/ChangePassword.dart';
 import 'package:app/Seller/Profile/EditProfile.dart';
 import 'package:app/Seller/Profile/deactivate.dart';
 import 'package:app/Seller/Scheduled.dart';
-import 'package:app/Seller/Sell_Items/Sell_ItemPage2.dart';
+//import 'package:app/Seller/Sell_Items/Sell_ItemPage2.dart';
 import 'package:app/Seller/SettingPage.dart';
 import 'package:app/Seller/SpecialPick.dart';
 import 'package:app/Seller/SpecialSecond.dart';
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
       '/scheduled':(context)=>Scheduled(),
         '/addGarbageList':(context)=>AddList(),
         '/sell':(context)=>SellItem(),
-         '/sell2':(context)=>SellItemPage2(),
+         //'/sell2':(context)=>SellItemPage2(),
         '/test':(context)=>Test(),
         '/setting':(context)=>SettingPage(),
          '/editProfile':(context)=>EditProfile(),
