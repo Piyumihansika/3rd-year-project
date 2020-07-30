@@ -64,6 +64,7 @@
 // }
 
 // import 'package:app/Seller/Sell_Items/Sellitempage1.dart';
+import 'package:app/utils/ResponseData.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -132,7 +133,8 @@ class UploadImageDemoState extends State<UploadImageDemo> {
       "category": widget.selectCategory,
       "description": widget.description,
       "price": widget.price,
-      "duration": widget.selectDuration
+      "duration": widget.selectDuration,
+      "customerId": ResponseData.userId,
     }).then((result) {
       setStatus(result.statusCode == 201 ? "successfully added" : errMessage);
     }).catchError((error) {

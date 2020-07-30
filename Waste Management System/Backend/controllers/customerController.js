@@ -58,7 +58,6 @@ router.put("/updateCustomer/:id", async (req, res) => {
     const newCustomer =  await Customer.findOne({_id: req.params.id})
     res.status(200).json(newCustomer)
     console.log("success")
-
    }else{
        res.status(500).send("server error");
    }
@@ -69,20 +68,56 @@ router.put("/updateCustomer/:id", async (req, res) => {
  //DELETE A CUSTOMER
  router.delete("/deleteCustomer/:id", async (req, res) => {
 
-    Customer.findById
- 
-     Customer.findByIdAndRemove({_id: req.params.id}, req.body)
-     res.status(200).send("deleted")
+    
+    const deleteOne = await Customer.findByIdAndRemove({_id: req.params.id},req.body)
+    console.log(deleteOne)
+    if(deleteOne){
+        // const user = await Customer.findById({_id: req.params.id})
+        res.status(200).json({ "status" : "delete" });
+        // console.log(user)
+        console.log("---------------------delete user------------------------------------")
+    }else{
+        const user = await Customer.findById({_id: req.params.id})
+        res.status(403).json({ "user" : user })
+        console.log(user)
+        console.log("------------------------------not delete---------------------------")
+    }
+   
     
  });
  
 
  //VIEW CUSTOMER DETAILS
  router.get("/viewCustomer/:id", async(req,res) => {
-     const customer = Customer.findById({_id: req.params.id}, req.body)
-    //  const customer = await Customer.findOne({ _id: req.body.id })
+     const customer = await Customer.findById({_id: req.params.id}, req.body)
+    //  const customer = await Customer.findOne({ _id: req.body.id }
      res.status(200).send(customer)
+     console.log(customer.password)
  })
 
+ router.post("/getPassword", async(req,res) => {
+   
+    try {
+    const customer = await Customer.findOne({ _id: req.body.id })
+   const validPassword = await customer.validatePassword(req.body.password, customer.password);
+   if(!validPassword){
+        
+        res.status(401).json({ "status" : "not match" });
+        console.log("------------------------------invalid---------------------------")
+    
+    }else{
+
+        res.status(200).json({ "status" : "matched" })
+        console.log("------------------------------matched----------------------------")
+        
+    }
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+  
+})
 
 module.exports = router;

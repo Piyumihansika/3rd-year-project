@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 final String logoutUrl =
-    "http://192.168.8.100:3000/auth/logout/${ResponseData.userId}";
+    "${ResponseData.apiUrl}/auth/logout/${ResponseData.userId}";
 
 final String viewProfileUrl =
-    "http://10.0.2.2:3000/customer/viewCustomer/${ResponseData.userId}";
+    "${ResponseData.apiUrl}/customer/viewCustomer/${ResponseData.userId}";
 
 String newId = ResponseData.userId;
 // String userFname = ResponseData.firstName;
@@ -29,8 +29,8 @@ class _HomePageState extends State<HomePage> {
     if (response.statusCode == 200) {
       value = json.decode(response.body);
       ResponseData.userId = (value["id"].toString());
-      print(newId);
       Navigator.of(context).pushNamed('/login');
+      print("-------------------------logout-----------------------------");
       print(newId);
     }
   }
@@ -107,8 +107,6 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.account_circle),
               title: Text('Logout'),
               onTap: () {
-                print(
-                    "-------------------------logout-----------------------------");
                 logout(context);
               },
             ),

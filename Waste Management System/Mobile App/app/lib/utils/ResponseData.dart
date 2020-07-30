@@ -10,4 +10,5 @@ class ResponseData {
   static String city = "";
   static String district = "";
   static String password = "";
+  static String userStatus = "";
 }

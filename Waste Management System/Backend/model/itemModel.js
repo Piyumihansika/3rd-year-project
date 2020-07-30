@@ -5,7 +5,9 @@ const itemSchema = new Schema({
   duration: String,
   description: String,
   price: Number,
-  itemImage: String
+  itemImage: String,
+  customerId: String,
+  state: String
   
 });
 
