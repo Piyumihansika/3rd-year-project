@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 
 
-String count = '3';
+int  number = 8;
 String name ='Polythin bag';
 String date ='14.5.2020';
+
 
 
 class BiddingDetails extends StatefulWidget {
@@ -12,6 +14,11 @@ class BiddingDetails extends StatefulWidget {
 }
 
 class _BiddingDetailsState extends State<BiddingDetails> {
+
+ 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +39,15 @@ class _BiddingDetailsState extends State<BiddingDetails> {
 
  child: Column(
  crossAxisAlignment: CrossAxisAlignment.start,
- children: <Widget>[
+children: <Widget>[
 
-// for (var i = 0; i < 10; i++){
+// 
 
-//   }
-  
+
+for (int i = 0; i < 2; i++) 
 Card(
-    child: Column(
+      
+child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const ListTile(
@@ -49,14 +57,25 @@ Card(
           trailing: Icon(Icons.keyboard_arrow_right),
 
 
+
         ),
       ],
     ),
-  ),
+),
+    
 
+Container(
+              alignment: Alignment(-0.1, 1),
+              child: new RaisedButton(
+                child: const Text('LOGIN'),
+                color: Colors.green,
+                textColor: Colors.white,
+                onPressed: () async {
+                 print(number.toInt());
+                 //print(n);
+                },
+              )),
 
-
-  
 
 
 
@@ -64,21 +83,10 @@ Card(
 
  ),
 
- ),
-
-
-
-
-
-
-
-
-
-
-
-
+ )
 
 
     );
   }
 }
+
