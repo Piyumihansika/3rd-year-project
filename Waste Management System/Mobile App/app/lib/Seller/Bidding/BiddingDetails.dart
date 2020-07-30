@@ -30,8 +30,8 @@ class _BiddingDetailsState extends State<BiddingDetails> {
     icon: Icon(Icons.arrow_back, color: Colors.black),
     onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
   ), 
-        title: Text("BIDDING",
-      style: TextStyle(color: Colors.black),),
+        title: Text("Items",
+      style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.green[100],  
@@ -59,7 +59,7 @@ child: Column(
           subtitle: Text('date'),
           trailing: Icon(Icons.keyboard_arrow_right),
          onTap: (){
-             Navigator.of(context).pushNamed('/editProfile');
+             Navigator.of(context).pushNamed('/chart');
          },
 
 

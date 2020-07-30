@@ -7,6 +7,7 @@ import 'package:app/CommonPages/UploadFile.dart';
 
 import 'package:app/Employees/Login.dart';
 import 'package:app/Seller/Bidding/BiddingDetails.dart';
+import 'package:app/Seller/Bidding/Chart.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Orders.dart';
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
          '/changepassword':(context)=>Passwordchange(),
          '/notification':(context)=>Notifications(),
          '/biddingDetails':(context)=>BiddingDetails(),
+         '/chart':(context)=>Chart(),
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),
