@@ -2,14 +2,17 @@
 import 'package:flutter/material.dart';
 
 
-int  number = 8;
+
 String name ='Polythin bag';
 String date ='14.5.2020';
 
 
 
 class BiddingDetails extends StatefulWidget {
+  
+
   @override
+  
   _BiddingDetailsState createState() => _BiddingDetailsState();
 }
 
@@ -50,11 +53,14 @@ Card(
 child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        const ListTile(
+         ListTile(
           leading: Icon(Icons.shopping_cart, size: 50),
           title: Text("Polythin"),
           subtitle: Text('date'),
           trailing: Icon(Icons.keyboard_arrow_right),
+         onTap: (){
+             Navigator.of(context).pushNamed('/editProfile');
+         },
 
 
 
@@ -71,7 +77,7 @@ Container(
                 color: Colors.green,
                 textColor: Colors.white,
                 onPressed: () async {
-                 print(number.toInt());
+                 //print(_score);
                  //print(n);
                 },
               )),
