@@ -1,3 +1,5 @@
+// import 'dart:convert';
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -45,8 +47,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   // dialog box
 
   createAlertDialog(BuildContext context) {
-    print("----------------------------------------------------");
-    print("${ResponseData.userId}" + "uid");
+    print("-----------------------alert box open-----------------------------");
+
     return showDialog(
         context: context,
         builder: (context) {
@@ -56,7 +58,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               MaterialButton(
                 child: Text('OK'),
                 onPressed: () {
-                  // Navigator.of(context).pushNamed('/');
+                  Navigator.of(context).pushNamed('/editProfile');
                 },
               )
             ],
@@ -153,17 +155,28 @@ class MyCustomFormState extends State<MyCustomForm> {
 
 //
   editData() async {
-    await http.put(editUrl, headers: {
+    var response = await http.put(editUrl, headers: {
       "Accept": "application/json",
       'Authorization':
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliNTg2MWVlNTg0ZGJkZGI5MDc1NDc3YTQ1ZDQ3ZDM5NGNiMzU2ZGIxZjBhMjUwZDUyZjk0YmViNGQwOTM3NTI0ZTM0MGNhMzBiYWM5NDAwIn0.eyJhdWQiOiIxIiwianRpIjoiOWI1ODYxZWU1ODRkYmRkYjkwNzU0NzdhNDVkNDdkMzk0Y2IzNTZkYjFmMGEyNTBkNTJmOTRiZWI0ZDA5Mzc1MjRlMzQwY2EzMGJhYzk0MDAiLCJpYXQiOjE1NTg1NTMyMTMsIm5iZiI6MTU1ODU1MzIxMywiZXhwIjoxNTkwMTc1NjEzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.sFIfXVx72efT54J40TVkqh3rwMGW-anTulNMDnVvGh_eO_qz0oKRl56JYCBwPQchc7fTbG5ZkVwaf_oU85rzjq3hrgXaOIzOoaNYsAKTOpPVbPi26bqpMLCWFe26hZO3BmS_kCSSD_-WlYVOlEw5oXQt1_MHV1eBt0tbXFLkgNwvkFr9IOvySINVsDOVoCArvp2Cx-XYthIP-0JuC7yQny5byMKerRGDO8pIjKLnPTTi9YWo36KU1SlzqoK-IJrQFvi5ir-rKk93IFCXwNoRN9QwXATb_4uJJyhpv2WLtXQwpnlPFqQFad8L0I8y9pfyzXnDtl3Aq1G3OlZMHbKcXp4uV8uByuT7UzI_FW6a0ion3Id1P3wy65n-X2OW2rDH6cpoCaz5_yzkpUfeo5WQ0RpG7q_VbWon2rf2NpbV8Jyzg80Woz3eNaQPA8-hdR5qUeeGXXulwfcT_sQln2uBmC3Ke2gbI1cKrBa4gVFpip9055lhgXfKzBvNkhV2dUljawBGacb0p4C1irkz6ygTzMu_31r2KHuzXiKQvbaEmorHGOLdvrwr-L2cqUmM3_jeAMmrV2_Pe4nRJHsvOLOYpB6ELNdeX8_DhD7DWUa6pdeU2PpRsXvwaGLbAkah9z7hCa54HGCzSLJPhN813nTXHuK_biSxIlH5n3ruvHiP6Rw'
     }, body: {
-      "firstName": "djkfbk",
-      "lastName": "kdjbfh",
-      "contactNumber": "fdfbkdj"
-    }).then((value) {
-      value.statusCode == 200 ? print("success") : print(value.statusCode);
+      "firstName": newfirstName,
+      "lastName": newlastName,
+      "contactNumber": newcontactNumber
     });
+    if (response.statusCode == 200) {
+      var value = json.decode(response.body);
+      // print(value);
+      ResponseData.firstName = value['firstName'];
+      ResponseData.lastName = value['lastName'];
+      // print(ResponseData.firstName);
+      print(
+          "----------------------------------update--------------------------------------");
+    } else {
+      print(response.statusCode);
+      print(
+          "--------------------------------error---------------------------------------");
+    }
   }
 
   @override
@@ -271,12 +284,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.green,
                   textColor: Colors.white,
                   onPressed: () {
-                    print(
-                        "----------------------------------------------------");
-                    print("${ResponseData.userId}" + "uid");
                     if (_formKey.currentState.validate()) {
                       //
                       editData();
+                      print(
+                          "------------------------hit to update box----------------------------");
                       createAlertDialog(context);
                     }
                   },
