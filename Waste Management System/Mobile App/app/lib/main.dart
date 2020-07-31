@@ -8,6 +8,7 @@ import 'package:app/CommonPages/UploadFile.dart';
 import 'package:app/Employees/Login.dart';
 import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/Seller/Bidding/Chart.dart';
+import 'package:app/Seller/Bidding/NoBidds.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Orders.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
          '/notification':(context)=>Notifications(),
          '/biddingDetails':(context)=>BiddingDetails(),
          '/chart':(context)=>Chart(),
+           '/nobids':(context)=>Nobids(),
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),

@@ -59,7 +59,15 @@ child: Column(
           subtitle: Text('date'),
           trailing: Icon(Icons.keyboard_arrow_right),
          onTap: (){
-             Navigator.of(context).pushNamed('/chart');
+
+           if(5 == null){
+        Navigator.of(context).pushNamed('/chart');
+
+           }
+           else{
+             Navigator.of(context).pushNamed('/nobids');
+           }
+             
          },
 
 

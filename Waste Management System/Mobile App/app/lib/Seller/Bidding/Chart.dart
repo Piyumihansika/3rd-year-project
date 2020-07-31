@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_sparkline/flutter_sparkline.dart';
-//import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 
@@ -26,6 +24,7 @@ leading: IconButton(
         backgroundColor: Colors.green,
       ),
 
+
 body: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child:Center(
@@ -37,7 +36,7 @@ body: SingleChildScrollView(
 
                     fontSize:20,
                     fontWeight:FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.red,
 ),),
 SizedBox(height: 15.0,),
 Text("Bidding Cancel ",
@@ -45,20 +44,21 @@ style: TextStyle(
 
                     fontSize:20,
                     fontWeight:FontWeight.bold,
-                    color: Colors.red,
+                    color: Colors.black,
 ),
 ),
 
-Text("12 july 2020 at 8.30 P.M",
+Text("12 July 2020 at 8.30 P.M",
 style: TextStyle(
+
 
                     fontSize:20,
                     fontWeight:FontWeight.bold,
-                    color: Colors.red,
+                    color: Colors.black,
 ),
 ),
 
-SizedBox(height: 15.0,),
+SizedBox(height: 20.0,),
 Container(
   
   height: 250.0,

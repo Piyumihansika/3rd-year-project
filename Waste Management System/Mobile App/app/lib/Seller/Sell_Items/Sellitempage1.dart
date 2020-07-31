@@ -1,11 +1,15 @@
-import 'dart:io';
+//import 'dart:io';
 import 'package:app/CommonPages/UploadFile.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:instant/instant.dart';
+//import 'package:image_picker/image_picker.dart';
+
 
 
 String selectDuration;
 String selectCategory;
+
+//String newDate;
 
 class SellItem extends StatefulWidget {
   @override
@@ -36,55 +40,50 @@ class SellForm extends StatefulWidget {
 
 class _SellFormState extends State<SellForm> {
   final _formKey = GlobalKey<FormState>();
-//
-  File image;
-  openGallery(BuildContext context) async {
-    var pictures = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      image = pictures;
-    });
-
-    Navigator.of(context).pop();
-  }
-
-  Future<void> showChoicedialogbox(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-              content: SingleChildScrollView(
-                  child: ListBody(
-            children: <Widget>[
-              GestureDetector(
-                child: Text("Gallery"),
-                onTap: () {
-                  openGallery(context);
-                },
-              ),
-            ],
-          )));
-        });
-  }
-
-  Widget decide() {
-    if (image == null) {
-      return CircleAvatar(
-        radius: 80,
-        backgroundImage: NetworkImage(
-            "https://secureservercdn.net/45.40.144.60/f14.f12.myftpupload.com/wp-content/uploads/2017/07/hazardoushouseholdwaste.png"),
-      );
-    } else {
-      return Image.file(image, width: 150, height: 150);
-    }
-  }
-
-  //
-
-  TextEditingController catagory = TextEditingController();
+ TextEditingController catagory = TextEditingController();
 
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
+  TextEditingController date=TextEditingController();
+  TextEditingController lastdate=TextEditingController();
 
+  // 
+  //TextEditingController newDate1 =TextEditingController();
+
+
+
+  //this is for take current data 
+
+String startDate = '';
+String finishDate ='';
+
+ getCurrentDate(){
+
+    //  DateTime cetTime = dateTimeToOffset(offset: 1.0, datetime: DateTime.now()); 
+    //  finalDate=formatDate(date: cetTime, format: 'DDMMYYYY');
+
+var date = new DateTime.now().toString();
+var dateParse = DateTime.parse(date);
+ var formattedDate = "${dateParse.day}-${dateParse.month}-${dateParse.year}";
+  
+  // var date1 = new DateTime(2018, 1, 13);
+  // var newDate = new DateTime(date1.year-1, date1.month, date1.day+2);
+var array = selectDuration.split(' ');
+var duration=int.parse(array[0]);
+var date1 = new DateTime(dateParse.year, dateParse.month, dateParse.day);
+var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
+
+ setState(() {
+ startDate = formattedDate.toString() ;
+ finishDate = editDate.toString();
+ });
+ }
+
+
+  
+ 
+
+ 
   //bool _validate = false;
   @override
   Widget build(BuildContext context) {
@@ -136,24 +135,6 @@ class _SellFormState extends State<SellForm> {
                           }).toList(),
                         ),
                       ])),
-
-// DropDownField(
-
-// controller: durationSelected,
-// hintText: "Select any duration",
-// enabled: true,
-// itemsVisibleInDropdown:2,
-// items: duration,
-
-// onValueChanged: (value){
-
-// setState(() {
-//   selectDuration=value;
-// });
-// },
-
-// ),
-//
 
               Padding(padding: const EdgeInsets.all(10.0)),
               Container(
@@ -265,9 +246,13 @@ class _SellFormState extends State<SellForm> {
                     color: Colors.green,
                     textColor: Colors.white,
                     onPressed: () {
-                      if (selectCategory != null && selectDuration != null) {
-                        print(selectCategory);
-                        print(selectDuration);
+                      // if (selectCategory != null && selectDuration != null) {
+                      //   print(selectCategory);
+                      //   print(selectDuration);
+                        getCurrentDate();
+                        print(startDate);
+                        print(finishDate);
+
                        if (_formKey.currentState.validate()){
 
                         
@@ -276,12 +261,16 @@ class _SellFormState extends State<SellForm> {
                                 selectCategory: selectCategory,
                                 selectDuration: selectDuration,
                                 price: price.text,
-                                description: description.text)));
+                                description: description.text,
+                                startDate:startDate,
+                                finishDate:finishDate,
+
+                                )));
+                               
                       }
-                    }
-                      // else{
-                      //   return 'Please enter all the fields';
-                      // }
+                    //}
+
+                      
                     },
                   )),
             ],

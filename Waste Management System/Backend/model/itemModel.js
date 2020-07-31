@@ -5,6 +5,8 @@ const itemSchema = new Schema({
   duration: String,
   description: String,
   price: Number,
+  startDate:String,
+  finishDate:String,
   itemImage: String,
   customerId: String,
   state: String
