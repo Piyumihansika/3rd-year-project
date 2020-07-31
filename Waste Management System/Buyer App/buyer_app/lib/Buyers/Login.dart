@@ -110,6 +110,22 @@ class _State extends State<Login> {
                 Navigator.of(context).pushNamed('/notifications');
               },
             ),
+
+            ListTile(
+              leading: Icon(Icons.event_note),
+              title: Text('hometemp'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/buyerhome');
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.event_note),
+              title: Text('bid'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/bid');
+              },
+            ),
           ],
         ),
       ),

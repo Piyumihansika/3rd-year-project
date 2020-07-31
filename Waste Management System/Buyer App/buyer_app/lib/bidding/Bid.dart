@@ -5,6 +5,7 @@ class Bid extends StatefulWidget {
   final String currentBid;
   final String description;
   final String itemImageUrl;
+  final String startDate;
   final String duration;
 
   Bid(
@@ -13,6 +14,7 @@ class Bid extends StatefulWidget {
       this.currentBid,
       this.description,
       this.itemImageUrl,
+      this.startDate,
       this.duration})
       : super(key: key);
 
@@ -50,13 +52,16 @@ class _PlaceBidState extends State<PlaceBid> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+             SizedBox(
+                        height: 10,
+                      ),
             Container(
-              height: 600,
+              height: 675,
               child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  //color: Colors.green[50],
+                  color: Colors.brown[50],
                   elevation: 10,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -65,54 +70,51 @@ class _PlaceBidState extends State<PlaceBid> {
                         height: 30,
                       ),
                       Container(
-                        alignment: Alignment.topLeft,
-                        height: 140.0,
-                        width: 140.0,
-                        decoration: BoxDecoration(
-                          // color: Colors.white,
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/logo.jpg"),
-                            fit: BoxFit.cover,
-                          ),
+                        child: Text(
+                          'Item name' + ' : ' + 'Aluminum cup',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       Container(
-                        child: Text(
-                          'Item name',
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Container(
-                          child: new Text(
-                            'Current Bid' + ':' + 'rs.12',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                        alignment: Alignment.topLeft,
+                        height: 140.0,
+                        width: 140.0,
+                        decoration: BoxDecoration(
+                          // color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/aluminum.png"),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
+                      // SizedBox(
+                      //   height: 20,
+                      // ),
+                      // Container(
+                      //   child: new CircleAvatar(
+                      //     backgroundImage: new NetworkImage(
+                      //      'itemImageUrl',
+                      //     ),
+                      //   ),
+                      // ),
+                      
                       SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Container(
+                          //color: Colors.lightBlue,
                           child: new Text(
                             'Description' +
                                 ' : ' +
-                                'hsgggggggggggg gggggggggg ',
+                                'This is aliminum cup.it is 10kg',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -120,6 +122,73 @@ class _PlaceBidState extends State<PlaceBid> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Container(
+                          //color: Colors.lightBlue,
+                          child: new Text(
+                            'Base Price' + ' : ' + 'Rs.500',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Container(
+                          color: Colors.yellowAccent,
+                          child: new Text(
+                            'Current Bid' + ':' + 'Rs.1000',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Container(
+                          //color: Colors.yellowAccent,
+                          child: new Text(
+                            'Duration' + ':' + '7 Days',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                        child: Container(
+                          //color: Colors.yellowAccent,
+                          child: new Text(
+                            'End Date' + ':' + '2020.07.30  8.00 pm',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red),
+                          ),
+                        ),
+                      ),
+
                       SizedBox(
                         height: 20,
                       ),
@@ -130,12 +199,13 @@ class _PlaceBidState extends State<PlaceBid> {
                             controller: bid,
                             scrollPadding: EdgeInsets.all(10),
                             decoration: const InputDecoration(
-                              icon:
-                                  const Icon(Icons.person, color: Colors.black),
+                              icon: const Icon(Icons.credit_card,
+                                  color: Colors.black),
                               hintText: 'Please enter more than current bid',
                               labelText: 'Enter your Max bid',
                               labelStyle: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 18,
                                   color: Colors.black),
                             ),
                             validator: (value) {
@@ -165,7 +235,11 @@ class _PlaceBidState extends State<PlaceBid> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            onPressed: () {}),
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                Navigator.of(context).pushNamed('');
+                              }
+                            }),
                       ),
                     ],
                   )),
