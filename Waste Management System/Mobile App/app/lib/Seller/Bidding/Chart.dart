@@ -148,30 +148,7 @@ new Sparkline(
  child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-    // Row(
-    //     children: [
-    //       Expanded(
-    //         flex: 7,
-    //         child: Container(
-    //           color: Colors.green,
-    //         ),
-    //       ),
-    //       Expanded(
-    //         flex: 3,
-    //         child: Container(
-    //           color: Colors.yellow,
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-            const ListTile(
-              
-              //leading: Icon(Icons.album),
-              title: Text('Maximum Woter'),
-              
-              subtitle: Text('Kaluthara District'),
-              
-            ),
+    
             Text("jjjjjjjjj"),
             Text("Ffffffff"),
             
