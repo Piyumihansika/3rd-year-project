@@ -29,6 +29,7 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
         description: req.body.description,
         price: req.body.price,
         duration: req.body.duration,
+        date:req.body.date,
         itemImage: path
 
       });

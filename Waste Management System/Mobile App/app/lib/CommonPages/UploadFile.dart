@@ -1,6 +1,7 @@
 
 
 // import 'package:app/Seller/Sell_Items/Sellitempage1.dart';
+import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/utils/ResponseData.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -13,17 +14,20 @@ class UploadImageDemo extends StatefulWidget {
   final String selectDuration;
   final String price;
   final String description;
+  final String date;
 
   
 
-  final String title = "Upload Item Image";
+  //final String title = "Upload Item Image";
 
   const UploadImageDemo(
       {Key key,
       this.selectCategory,
       this.selectDuration,
       this.price,
-      this.description})
+      this.description,
+      this.date,
+      })
       : super(key: key);
 
   @override
@@ -71,9 +75,10 @@ class UploadImageDemoState extends State<UploadImageDemo> {
       "description": widget.description,
       "price": widget.price,
       "duration": widget.selectDuration,
+      "date":widget.date,
       "customerId": ResponseData.userId,
     }).then((result) {
-      setStatus(result.statusCode == 201 ? "successfully added" : errMessage);
+      setStatus(result.statusCode == 201 ? "successfully added" + date : errMessage);
     }).catchError((error) {
       setStatus(error);
     });
