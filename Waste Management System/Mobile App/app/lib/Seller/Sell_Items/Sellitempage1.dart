@@ -1,12 +1,15 @@
 //import 'dart:io';
 import 'package:app/CommonPages/UploadFile.dart';
 import 'package:flutter/material.dart';
+//import 'package:instant/instant.dart';
 //import 'package:image_picker/image_picker.dart';
 
 
 
 String selectDuration;
 String selectCategory;
+
+//String newDate;
 
 class SellItem extends StatefulWidget {
   @override
@@ -42,17 +45,37 @@ class _SellFormState extends State<SellForm> {
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
   TextEditingController date=TextEditingController();
+  TextEditingController lastdate=TextEditingController();
+
+  // 
+  //TextEditingController newDate1 =TextEditingController();
+
 
 
   //this is for take current data 
 
-String finalDate = '';
+String startDate = '';
+String finishDate ='';
+
  getCurrentDate(){
- var date = new DateTime.now().toString();
- var dateParse = DateTime.parse(date);
+
+    //  DateTime cetTime = dateTimeToOffset(offset: 1.0, datetime: DateTime.now()); 
+    //  finalDate=formatDate(date: cetTime, format: 'DDMMYYYY');
+
+var date = new DateTime.now().toString();
+var dateParse = DateTime.parse(date);
  var formattedDate = "${dateParse.day}-${dateParse.month}-${dateParse.year}";
+  
+  // var date1 = new DateTime(2018, 1, 13);
+  // var newDate = new DateTime(date1.year-1, date1.month, date1.day+2);
+var array = selectDuration.split(' ');
+var duration=int.parse(array[0]);
+var date1 = new DateTime(dateParse.year, dateParse.month, dateParse.day);
+var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
+
  setState(() {
- finalDate = formattedDate.toString() ;
+ startDate = formattedDate.toString() ;
+ finishDate = editDate.toString();
  });
  }
 
@@ -227,7 +250,8 @@ String finalDate = '';
                       //   print(selectCategory);
                       //   print(selectDuration);
                         getCurrentDate();
-                        print(finalDate);
+                        print(startDate);
+                        print(finishDate);
 
                        if (_formKey.currentState.validate()){
 
@@ -238,7 +262,8 @@ String finalDate = '';
                                 selectDuration: selectDuration,
                                 price: price.text,
                                 description: description.text,
-                                date:finalDate,
+                                startDate:startDate,
+                                finishDate:finishDate,
 
                                 )));
                                
