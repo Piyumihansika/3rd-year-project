@@ -154,6 +154,7 @@ class _AluminiumState extends State<Aluminium> {
                         return new Card(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
+                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
                                 child: new CircleAvatar(
