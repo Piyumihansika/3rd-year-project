@@ -3,35 +3,35 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:buyerapp/utils/ResponseData.dart';
 
-String item = "Polythin";
+String item = "Aluminium";
 
-class Polythene extends StatefulWidget {
+class Aluminium extends StatefulWidget {
   @override
-  _PolytheneState createState() => _PolytheneState();
+  _AluminiumState createState() => _AluminiumState();
 }
 
-class _PolytheneState extends State<Polythene> {
+class _AluminiumState extends State<Aluminium> {
   List<dynamic> data;
   final String viewitemUrl = "${ResponseData.apiUrl}/item/viewItem/$item";
   TextEditingController controller = new TextEditingController();
-
   @override
   void initState() {
     super.initState();
-    this.getPolytheneItems(context);
+    this.getItemDetails(context);
+    this._showList();
   }
 
-  void getPolytheneItems(BuildContext context) async {
+  void getItemDetails(BuildContext context) async {
     var response = await http.get(Uri.encodeFull(viewitemUrl),
         headers: {"Accept": "application/json"});
+    // var responseJson = json.decode(response.body);
 
     if (this.mounted) {
       setState(() {
         Map<String, dynamic> responseJson = json.decode(response.body);
-        print(responseJson);
         data = responseJson["item"];
-
-        // for (Map item in responseJson) {
+        print(data);
+        // for (Map item in responseJson["item"]) {
         //   _itemDetails.add(ItemDetails.fromJson(item));
         // }
       });
@@ -41,12 +41,11 @@ class _PolytheneState extends State<Polythene> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Polythene Items'),
-        backgroundColor: Colors.green,
-      ),
-      body: searchBox(),
-    );
+        appBar: AppBar(
+          title: Text("Aluminium Items"),
+          backgroundColor: Colors.green,
+        ),
+        body: searchBox());
   }
 
   Widget searchBox() {
@@ -77,11 +76,11 @@ class _PolytheneState extends State<Polythene> {
           ),
         ),
       ),
-      body: _allPolytheneList(),
+      body: _showList(),
     );
   }
 
-  Widget _allPolytheneList() {
+  Widget _showList() {
     return data != null && data.length != null && data.length > 0
         ? ListView.builder(
             itemCount: data.length == null ? 0 : data.length,

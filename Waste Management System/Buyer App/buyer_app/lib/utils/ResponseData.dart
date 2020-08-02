@@ -27,4 +27,5 @@ class ResponseData {
   //ITEM DETAILS
   static String itemId = "";
   static String imagePath = "";
+  static String item = "";
 }

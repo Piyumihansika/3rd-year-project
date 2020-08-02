@@ -1,4 +1,4 @@
-import 'package:buyerapp/Categories/Aluminum.dart';
+// import 'package:buyerapp/Categories/Aluminum_test.dart';
 import 'package:flutter/material.dart';
 
 import 'Buyers/Login.dart';
@@ -31,7 +31,8 @@ import 'settings/ChangeLocation.dart';
 import 'settings/Search.dart';
 
 import 'Categories/Copper.dart';
-import 'Categories/Aluminum.dart';
+// import 'Categories/Aluminum_test.dart';
+import 'Categories/Aluminium.dart';
 import 'Categories/Polythene.dart';
 
 import 'bidding/Bid.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
         '/changelocation': (context) => ChangeLocation(),
 
         //categories
+
         '/aluminium': (context) => Aluminium(),
         '/copper': (context) => Copper(),
         '/glass': (context) => Glass(),

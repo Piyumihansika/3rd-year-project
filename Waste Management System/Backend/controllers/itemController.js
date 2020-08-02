@@ -4,7 +4,8 @@ var fs = require("fs");
 var app = expess();
 const { Router } = require('express');
 const router = Router();
-const Item = require('../model/itemModel')
+const Item = require('../model/itemModel');
+const { Mongoose } = require("mongoose");
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "1gb" }));
 
@@ -35,7 +36,7 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
         startDate:req.body.startDate,
         finishDate:req.body.finishDate,
         itemImage: path,
-        
+        customerId:req.body.id,
 
       });
       item.save();
@@ -50,9 +51,10 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
 
 
 // VIEW ITEMS
-router.get('/viewItem', async (req,res) => {
-  const item = await Item.find();
+router.get('/viewItem/:item', async (req,res) => {
+  const item = await Item.find({category: req.params.item});
   res.json({"item" : item})
+  // console.log(item);
 })
 
 module.exports = router;
