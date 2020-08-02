@@ -48,4 +48,9 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
 
 });
 
+//pass all items details
+
+
+
+
 module.exports = router;
