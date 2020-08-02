@@ -10,10 +10,13 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "1gb" }));
 
 router.post("/addItem", function (req, res) {
 
+
+ 
 var name = req.body.name;
 var img = req.body.image;
 var realFile = Buffer.from(img, "base64")
 var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
+
 
   // console.log(upload.storage);
 
@@ -29,7 +32,10 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
         description: req.body.description,
         price: req.body.price,
         duration: req.body.duration,
-        itemImage: path
+        startDate:req.body.startDate,
+        finishDate:req.body.finishDate,
+        itemImage: path,
+        
 
       });
       item.save();
