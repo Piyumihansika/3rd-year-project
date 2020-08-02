@@ -142,10 +142,14 @@ class _CategoryState extends State<CategoryPage> {
                             // child: Text("clickMe") // button text
                           )),
                       onTap: () {
-                        //print("you clicked my");
+                        Navigator.of(context).pushNamed('/polythene');
                       }),
                   new Container(
-                    child: Text('Plastic',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                    child: Text('Plastic',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
@@ -166,24 +170,27 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/aluminum.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
                       onTap: () {
                         Navigator.of(context).pushNamed('/aluminium');
                       }),
                   new Container(
-                    child: Text('Aluminum',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                    child: Text('Aluminum',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
             ),
 
-        //brash
+            //brash
             Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -193,13 +200,14 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/brash.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Brash',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Brash',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
@@ -210,7 +218,7 @@ class _CategoryState extends State<CategoryPage> {
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -220,24 +228,27 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/copper.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
                       onTap: () {
                         Navigator.of(context).pushNamed('/copper');
                       }),
-                      new Container(
-                    child: Text('Copper',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                  new Container(
+                    child: Text('Copper',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
-            //glash
+            //glass
             Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -247,13 +258,14 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/glass.jpg"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Glass',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Glass',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
@@ -264,7 +276,7 @@ class _CategoryState extends State<CategoryPage> {
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -272,15 +284,17 @@ class _CategoryState extends State<CategoryPage> {
                           decoration: BoxDecoration(
                             color: Colors.black,
                             image: DecorationImage(
-                                image: AssetImage("assets/images/other metals.png"),
+                                image: AssetImage(
+                                    "assets/images/other metals.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Other Metals',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Other Metals',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
@@ -291,7 +305,7 @@ class _CategoryState extends State<CategoryPage> {
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -299,26 +313,28 @@ class _CategoryState extends State<CategoryPage> {
                           decoration: BoxDecoration(
                             color: Colors.black,
                             image: DecorationImage(
-                                image: AssetImage("assets/images/paper and cardboard.jpg"),
+                                image: AssetImage(
+                                    "assets/images/paper and cardboard.jpg"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Paper & Cardboard',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Paper & Cardboard',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //rune,lands and concrete
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -326,26 +342,28 @@ class _CategoryState extends State<CategoryPage> {
                           decoration: BoxDecoration(
                             color: Colors.black,
                             image: DecorationImage(
-                                image: AssetImage("assets/images/rune lands and concrete.jpg"),
+                                image: AssetImage(
+                                    "assets/images/rune lands and concrete.jpg"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Rune, Lands & Concrete',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Rune, Lands & Concrete',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //scrap
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -355,24 +373,25 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/scrap.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Scrap',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Scrap',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //specials
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -382,24 +401,25 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/specials.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Specials',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Specials',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //stainless
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -407,26 +427,28 @@ class _CategoryState extends State<CategoryPage> {
                           decoration: BoxDecoration(
                             color: Colors.black,
                             image: DecorationImage(
-                                image: AssetImage("assets/images/stainless.png"),
+                                image:
+                                    AssetImage("assets/images/stainless.png"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Stainless',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Stainless',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //trash
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -436,24 +458,25 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/trash.jpg"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                      new Container(
-                    child: Text('Trash',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Trash',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   )
                 ],
               ),
             ),
 
             //wood
-             Container(
+            Container(
               alignment: Alignment(-0.1, 1),
               child: Column(
                 children: <Widget>[
-                   Padding(padding: EdgeInsets.all(10.5)),
+                  Padding(padding: EdgeInsets.all(10.5)),
                   new GestureDetector(
                       child: Container(
                           width: 300,
@@ -463,14 +486,14 @@ class _CategoryState extends State<CategoryPage> {
                             image: DecorationImage(
                                 image: AssetImage("assets/images/wood.jpg"),
                                 fit: BoxFit.cover),
-                            
                           )),
-                      onTap: () {
-                        
-                      }),
-                       
-                      new Container(
-                    child: Text('Wood',style:TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold)),
+                      onTap: () {}),
+                  new Container(
+                    child: Text('Wood',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   ),
                   Padding(padding: EdgeInsets.all(10.5)),
                 ],

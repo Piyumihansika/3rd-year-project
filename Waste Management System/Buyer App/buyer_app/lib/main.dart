@@ -8,6 +8,7 @@ import 'Buyers/ContactUs.dart';
 import 'Buyers/AboutUs.dart';
 import 'Categories/Glass.dart';
 import 'settings/Profile.dart';
+import 'settings/companyProfile.dart';
 import 'Buyers/History.dart';
 import 'Categories/Category.dart';
 import 'Buyers/UserType.dart';
@@ -28,8 +29,10 @@ import 'settings/ChangePassword.dart';
 import 'settings/DeactivateAccount.dart';
 import 'settings/ChangeLocation.dart';
 import 'settings/Search.dart';
+
 import 'Categories/Copper.dart';
 import 'Categories/Aluminum.dart';
+import 'Categories/Polythene.dart';
 
 import 'bidding/Bid.dart';
 
@@ -56,6 +59,7 @@ class MyApp extends StatelessWidget {
         '/contactus': (context) => ContactUs(),
         '/aboutus': (context) => AboutUs(),
         '/profile': (context) => Profile(),
+        '/companyProfile': (context) => CompanyProfile(),
         '/history': (context) => History(),
         '/category': (context) => Category(),
         '/usertype': (context) => UserType(),
@@ -86,6 +90,7 @@ class MyApp extends StatelessWidget {
         '/glass': (context) => Glass(),
         '/bid': (context) => Bid(),
         '/search': (context) => Search(),
+        '/polythene': (context) => Polythene(),
       },
     );
   }

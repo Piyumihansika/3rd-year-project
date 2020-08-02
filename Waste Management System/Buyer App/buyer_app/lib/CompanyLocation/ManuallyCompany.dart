@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:http/http.dart' as http;
-// import 'package:buyerapp/Models/registermodel.dart';
 import 'dart:convert';
+import 'package:buyerapp/utils/ResponseData.dart';
 
-// String apiUrl = "http://192.168.8.188:3000/buyer/addBuyer";
-String apiUrl = "http://10.0.2.2:3000/buyer/addBuyer";
+final String apiUrl = "${ResponseData.apiUrl}/company/addCompany";
 
 class ManuallyCompany extends StatefulWidget {
-
   final String companyName;
   final String contactpersonName;
   final String contactpersonNumber;
   final String password;
   final String email;
 
-  const ManuallyCompany({ Key key, this.companyName,this.contactpersonName,this.contactpersonNumber,this.password,this.email}) : super(key: key);
+  const ManuallyCompany(
+      {Key key,
+      this.companyName,
+      this.contactpersonName,
+      this.contactpersonNumber,
+      this.password,
+      this.email})
+      : super(key: key);
 
   @override
   _ManuallyCompanyState createState() => _ManuallyCompanyState();
 }
 
 class _ManuallyCompanyState extends State<ManuallyCompany> {
-
   TextEditingController address1 = TextEditingController();
   TextEditingController address2 = TextEditingController();
   TextEditingController city = TextEditingController();
@@ -59,7 +63,7 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
       "companyName": widget.companyName,
       "contactpersonName": widget.contactpersonName,
       "contactpersonNumber": widget.contactpersonNumber,
-      "email":widget.email,
+      "email": widget.email,
       "password": widget.password,
       "address1": address1.text,
       "address2": address2.text,
@@ -68,40 +72,38 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
     };
     print(widget.companyName);
     print(address1.text);
-    print("----------------------------------------------OK----------------------------------------------------");
+    print(
+        "----------------------------------------------OK----------------------------------------------------");
 
-        print(data.toString());
-    var response = await 
-    http.post(apiUrl,
+    print(data.toString());
+    var response = await http.post(apiUrl,
         body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
       print(response.statusCode);
       print(response.body);
-       Navigator.of(context).pushNamed('/login');
-       registersuccessdialog(context);
+      Navigator.of(context).pushNamed('/login');
+      registersuccessdialog(context);
     } else {
       print(response.statusCode);
       print("error occured");
     }
   }
 
-
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Mannual Location'),
-         backgroundColor: Colors.green,),
+      appBar: AppBar(
+        title: Text('Mannual Location'),
+        backgroundColor: Colors.green,
+      ),
       body: Form(
         key: _formKey,
-
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: <Widget>[
-
               Container(
                 alignment: Alignment.center,
                 child: Text(''),
@@ -115,17 +117,16 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 
               Container(
                 padding: EdgeInsets.all(10),
-                child:
-                TextFormField(
+                child: TextFormField(
+                  controller: address1,
                   scrollPadding: EdgeInsets.all(10),
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.add_location,color: Colors.black),
+                    icon: const Icon(Icons.add_location, color: Colors.black),
                     hintText: 'Enter your address1',
                     labelText: 'Address1',
-                    labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                 
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your address1';
@@ -137,17 +138,16 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 
               Container(
                 padding: EdgeInsets.all(10),
-                child:
-                TextFormField(
+                child: TextFormField(
+                  controller: address2,
                   scrollPadding: EdgeInsets.all(10),
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.add_location,color: Colors.black),
+                    icon: const Icon(Icons.add_location, color: Colors.black),
                     hintText: 'Enter your address2',
                     labelText: 'Address2',
-                    labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                 
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your address2';
@@ -159,17 +159,16 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 
               Container(
                 padding: EdgeInsets.all(10),
-                child:
-                TextFormField(
+                child: TextFormField(
+                  controller: city,
                   scrollPadding: EdgeInsets.all(10),
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.location_city,color: Colors.black),
+                    icon: const Icon(Icons.location_city, color: Colors.black),
                     hintText: 'Enter your city',
                     labelText: 'City',
-                    labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                  
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your city';
@@ -181,17 +180,16 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 
               Container(
                 padding: EdgeInsets.all(10),
-                child:
-                TextFormField(
+                child: TextFormField(
+                  controller: district,
                   scrollPadding: EdgeInsets.all(10),
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.my_location,color: Colors.black),
+                    icon: const Icon(Icons.my_location, color: Colors.black),
                     hintText: 'Enter your district',
                     labelText: 'District',
-                    labelStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                 
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter your district';
@@ -208,12 +206,11 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                   children: <Widget>[
                     FlatButton(
                       padding: const EdgeInsets.only(right: 10.0),
-
-
                       textColor: Colors.green,
-                      child: Text('Our terms & conditions',style: TextStyle(fontSize: 18),
+                      child: Text(
+                        'Our terms & conditions',
+                        style: TextStyle(fontSize: 18),
                       ),
-
                       onPressed: () {
                         //terms and condition page
                         Navigator.of(context).pushNamed('/terms');
@@ -223,15 +220,16 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       initialValue: false,
                       label: Text(
                         "I have read and agree to the terms and conditions",
-                        style: TextStyle(color: Colors.black,fontSize: 18),),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
+                      ),
                       validators: [
                         FormBuilderValidators.requiredTrue(
                           errorText:
-                          "You must accept terms and conditions to continue",
+                              "You must accept terms and conditions to continue",
                         ),
-                      ], attribute: null,
+                      ],
+                      attribute: null,
                     ),
-
                   ],
                 ),
               ),
@@ -244,29 +242,25 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                         child: const Text('BACK'),
                         color: Colors.yellow,
                         textColor: Colors.black,
-
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.of(context).pushNamed('/login');
                         },
                       ),
-
                       RaisedButton(
-                        child: const Text('Sign up',style: TextStyle(fontSize: 18),),
-                        color: Colors.green,
-                        textColor: Colors.white,
-
-                         onPressed: () {
-                           if (_formKey.currentState.validate()) {
-                            register(context);
-                           }
-                          }
-                      ),
-
+                          child: const Text(
+                            'Sign up',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          color: Colors.green,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              register(context);
+                            }
+                          }),
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,
-                  )
-
-              ),
+                  )),
             ],
           ),
         ),
@@ -295,7 +289,6 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 //   String city;
 //   String district;
 
-
 //   _CheckCompanyState(this.address1, this.address2, this.city, this.district);
 //   @override
 //   Widget build(BuildContext context) {
@@ -306,7 +299,6 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
 //       body: Text(
 //         address1 + address2 + city + district ,
 //       ),
-
 
 //     );
 //   }

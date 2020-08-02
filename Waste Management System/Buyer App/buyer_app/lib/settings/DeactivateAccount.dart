@@ -1,9 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:buyerapp/utils/ResponseData.dart';
 
-final String apiUrl = "http://10.0.2.2:3000/ADD URL";
-//final String apiUrl = "http://192.168.8.188:3000/ADD URL";
+final String housedelUrl =
+    "${ResponseData.apiUrl}/buyer/deleteBuyer/${ResponseData.userId}";
+final String companydelUrl =
+    "${ResponseData.apiUrl}/company/deleteCompany/${ResponseData.userId}";
+final String passwordUrl = "${ResponseData.apiUrl}/buyer/getPassword";
+final String companypwdUrl = "${ResponseData.apiUrl}/company/getPassword";
 
 class DeactivateAccount extends StatefulWidget {
   @override
@@ -18,24 +23,76 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
   TextEditingController password = TextEditingController();
 
   void delete(BuildContext context) async {
+    if (ResponseData.username == "Company") {
+      var response = await http
+          .delete(companydelUrl, headers: {"Accept": "application/json"});
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        print("------------------------------deleted-------------------------");
+        var result = json.decode(response.body);
+        Navigator.of(context).pushNamed('/login');
+        print(result);
+      } else {
+        print(response.statusCode);
+        print("error occured");
+      }
+    } else {
+      var response = await http
+          .delete(housedelUrl, headers: {"Accept": "application/json"});
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        print("------------------------------deleted-------------------------");
+        var result = json.decode(response.body);
+        Navigator.of(context).pushNamed('/login');
+        print(result);
+      } else {
+        print(response.statusCode);
+        print("error occured");
+      }
+    }
+  }
+
+  void getPassword(BuildContext context) async {
     final Map<String, dynamic> data = {
+      "id": ResponseData.userId,
       "password": password.text,
     };
 
-    print(password.text);
-    print(
-        "----------------------------------------------OK----------------------------------------------------");
-
-    print(data.toString());
-    var response = await http.post(apiUrl,
+    var response = await http.post(passwordUrl,
         body: data, encoding: Encoding.getByName("application/json"));
+    print(data);
+
     if (response.statusCode == 200) {
-      Navigator.of(context).pushNamed('/login');
-      print(response.statusCode);
-      print(response.body);
+      var result = json.decode(response.body);
+      ResponseData.userStatus = result['status'];
+      print(ResponseData.userStatus);
+      delete(context);
     } else {
+      Navigator.of(context).pushNamed('/settings');
+      print('hit');
       print(response.statusCode);
-      print("error occured");
+    }
+  }
+
+  void getcompanyPassword(BuildContext context) async {
+    final Map<String, dynamic> data = {
+      "id": ResponseData.userId,
+      "password": password.text,
+    };
+
+    var response = await http.post(companypwdUrl,
+        body: data, encoding: Encoding.getByName("application/json"));
+    print(data);
+
+    if (response.statusCode == 200) {
+      var result = json.decode(response.body);
+      ResponseData.userStatus = result['status'];
+      print(ResponseData.userStatus);
+      delete(context);
+    } else {
+      Navigator.of(context).pushNamed('/settings');
+      print('hit');
+      print(response.statusCode);
     }
   }
 
@@ -43,7 +100,10 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Delete Account',style: TextStyle(fontSize: 18),),
+        title: Text(
+          'Delete Account',
+          style: TextStyle(fontSize: 18),
+        ),
         backgroundColor: Colors.green,
       ),
       body: Form(
@@ -119,7 +179,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
               ]),
               Padding(padding: EdgeInsets.all(30.5)),
               Padding(
-                 padding: const EdgeInsets.only(left:10.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
                     "When you press delete account button your account is no longer available",
                     style: TextStyle(
@@ -130,7 +190,7 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
               ),
               Padding(padding: EdgeInsets.all(15.0)),
               Padding(
-                 padding: const EdgeInsets.only(left:10.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: TextFormField(
                   controller: password,
                   decoration: const InputDecoration(
@@ -157,10 +217,11 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                     textColor: Colors.white,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
-                        print(password.text);
-
-                        delete(context);
-                        Navigator.of(context).pushNamed('/login');
+                        if (ResponseData.username == "Company") {
+                          getcompanyPassword(context);
+                        } else {
+                          getPassword(context);
+                        }
                       }
                     },
                   )),

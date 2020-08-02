@@ -10,9 +10,9 @@ const verifyToken = require('./verifyToken');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-//buyer login,customer login,admin login
+//customer login,customer login,admin login
 
-//BUYER LOGIN
+//CUSTOMER LOGIN
 router.post('/customerLogin', async(req, res) => {
     try{
         const customer = await Customer.findOne({ email: req.body.email })
@@ -41,7 +41,7 @@ router.post('/customerLogin', async(req, res) => {
     }
 });
 
-//EMAIL LOGIN
+//BUYER LOGIN
 router.post('/buyerLogin', async(req, res) => {
     try{
         const buyer = await Buyer.findOne({ email: req.body.email })
@@ -71,7 +71,7 @@ router.post('/buyerLogin', async(req, res) => {
                 expiresIn: '24h'
             });
             if(token){
-                res.status(200).json({ auth: true, id: companyBuyer._id, user: companyBuyer, token});
+                res.status(200).json({ auth: true, id: companyBuyer._id, user: companyBuyer, token, userName:"Company"});
             }
         }else{
             return res.status(404).send("The email doesn't exist")

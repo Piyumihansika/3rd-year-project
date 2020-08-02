@@ -1,42 +1,42 @@
 const {Router} = require('express');
 const router = Router();
 
-const Buyer = require('../model/company');
+const Company = require('../model/companyModel');
 const verifyToken = require('./verifyToken');
 
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-//add household buyer
+//ADD A COMPANY
 router.post('/addCompany', async(req, res) => {
     try{
     
-        const {firstName,lastName,email,contactNumber,password,address1,address2,city,district} = req.body;
+        const {companyName,contactpersonName,contactpersonNumber,email,password,address1,address2,city,district} = req.body;
 
-        const customer = new Customer({
-            firstName,
-            lastName,
+        const company = new Company({
+            companyName,
+            contactpersonName,
+            contactpersonNumber,
             email,
-            contactNumber,
             password,
             address1,
             address2,
             city,
             district
         });
-        customer.password = await customer.encryptPassword(password);
+        company.password = await company.encryptPassword(password);
 
-        const user = await Customer.findOne({ username: req.body.username })
+        const user = await Company.findOne({ email: req.body.email })
 
         if(!user){
-            await customer.save();
-
-            const token = jwt.sign({ id: customer.id}, config.secret, {
+            await company.save();
+            console.log('company api hit')
+            const token = jwt.sign({ id: company.id}, config.secret, {
                 expiresIn: "24h"
             });
             res.status(200).json({ auth: true, token})
         }else{
-            res.status(403).send("username already exist")
+            res.status(403).send("email already exist")
         }
        
 
@@ -46,3 +46,69 @@ router.post('/addCompany', async(req, res) => {
 
     }
 });
+
+//UPDATE COMPANY PROFILE
+router.put("/updateCompany/:id", async (req, res) => {
+    
+    const company = await Company.findByIdAndUpdate({_id: req.params.id}, req.body)
+    console.log("update company api hit")
+   if(company){
+    const newCompany =  await Company.findOne({_id: req.params.id})
+    res.status(200).json(newCompany)
+    console.log("success")
+   }else{
+       res.status(500).send("server error");
+   }
+    
+ });
+
+
+ //VERIFY COMPANY PASSWORD
+ router.post("/getPassword", async(req,res) => {
+   
+    try {
+    const company = await Company.findOne({ _id: req.body.id })
+   const validPassword = await company.validatePassword(req.body.password, company.password);
+   if(!validPassword){
+        
+        res.status(401).json({ "status" : "not match" });
+        console.log("------------------------------invalid---------------------------")
+    
+    }else{
+
+        res.status(200).json({ "status" : "matched" })
+        console.log("------------------------------matched----------------------------")
+        
+    }
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+  
+})
+
+ //DELETE COMPANY PROFILE
+ router.delete("/deleteCompany/:id", async (req, res) => {
+
+    
+    const deleteOne = await Company.findByIdAndRemove({_id: req.params.id},req.body)
+    console.log("company delete api hit")
+    if(deleteOne){
+        // const user = await Company.findById({_id: req.params.id})
+        res.status(200).json({ "status" : "delete" });
+        // console.log(user)
+        console.log("---------------------delete user------------------------------------")
+    }else{
+        const user = await Company.findById({_id: req.params.id})
+        res.status(403).json({ "user" : user })
+        console.log(user)
+        console.log("------------------------------not delete---------------------------")
+    }
+   
+    
+ });
+
+
+module.exports = router;

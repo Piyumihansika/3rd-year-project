@@ -6,14 +6,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
 final String editUrl =
-    "http://10.0.2.2:3000/buyer/updateBuyer/${ResponseData.userId}";
+    "http://10.0.2.2:3000/company/updateCompany/${ResponseData.userId}";
 
-class Profile extends StatelessWidget {
+class CompanyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Page'),
+        title: Text('Company Profile Page'),
         backgroundColor: Colors.green,
       ),
       body: ProfileDetail(),
@@ -191,12 +191,10 @@ class ProfileDetailState extends State<ProfileDetail>
     }
   }
 
-  String newfirstName;
-  String newlastName;
-  String newemail;
   String newaddress;
   String newcontactNumber;
   String newcompanyName;
+  String newcontactpersonName;
 
   editData() async {
     var response = await http.put(editUrl, headers: {
@@ -204,21 +202,20 @@ class ProfileDetailState extends State<ProfileDetail>
       'Authorization':
           'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliNTg2MWVlNTg0ZGJkZGI5MDc1NDc3YTQ1ZDQ3ZDM5NGNiMzU2ZGIxZjBhMjUwZDUyZjk0YmViNGQwOTM3NTI0ZTM0MGNhMzBiYWM5NDAwIn0.eyJhdWQiOiIxIiwianRpIjoiOWI1ODYxZWU1ODRkYmRkYjkwNzU0NzdhNDVkNDdkMzk0Y2IzNTZkYjFmMGEyNTBkNTJmOTRiZWI0ZDA5Mzc1MjRlMzQwY2EzMGJhYzk0MDAiLCJpYXQiOjE1NTg1NTMyMTMsIm5iZiI6MTU1ODU1MzIxMywiZXhwIjoxNTkwMTc1NjEzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.sFIfXVx72efT54J40TVkqh3rwMGW-anTulNMDnVvGh_eO_qz0oKRl56JYCBwPQchc7fTbG5ZkVwaf_oU85rzjq3hrgXaOIzOoaNYsAKTOpPVbPi26bqpMLCWFe26hZO3BmS_kCSSD_-WlYVOlEw5oXQt1_MHV1eBt0tbXFLkgNwvkFr9IOvySINVsDOVoCArvp2Cx-XYthIP-0JuC7yQny5byMKerRGDO8pIjKLnPTTi9YWo36KU1SlzqoK-IJrQFvi5ir-rKk93IFCXwNoRN9QwXATb_4uJJyhpv2WLtXQwpnlPFqQFad8L0I8y9pfyzXnDtl3Aq1G3OlZMHbKcXp4uV8uByuT7UzI_FW6a0ion3Id1P3wy65n-X2OW2rDH6cpoCaz5_yzkpUfeo5WQ0RpG7q_VbWon2rf2NpbV8Jyzg80Woz3eNaQPA8-hdR5qUeeGXXulwfcT_sQln2uBmC3Ke2gbI1cKrBa4gVFpip9055lhgXfKzBvNkhV2dUljawBGacb0p4C1irkz6ygTzMu_31r2KHuzXiKQvbaEmorHGOLdvrwr-L2cqUmM3_jeAMmrV2_Pe4nRJHsvOLOYpB6ELNdeX8_DhD7DWUa6pdeU2PpRsXvwaGLbAkah9z7hCa54HGCzSLJPhN813nTXHuK_biSxIlH5n3ruvHiP6Rw'
     }, body: {
-      "firstName": newfirstName,
-      "lastName": newlastName,
       "address1": newaddress,
-      "contactNumber": newcontactNumber,
+      "contactpersonNumber": newcontactNumber,
       "companyName": newcompanyName,
+      "contactpersonName": newcontactpersonName
     });
     if (response.statusCode == 200) {
       print(
           "-------------------------------------update--------------------------");
       print(response.body);
       var value = json.decode(response.body);
-      ResponseData.firstName = value['firstName'];
-      ResponseData.lastName = value['lastName'];
+      ResponseData.firstName = value['companyName'];
       ResponseData.address1 = value['address1'];
-      ResponseData.contactNumber = value['contactNumber'];
+      ResponseData.contactNumber = value['contactpersonNumber'];
+      ResponseData.contactpersonName = value['contactpersonName'];
       successdialog(context);
     } else {
       print(
@@ -275,7 +272,7 @@ class ProfileDetailState extends State<ProfileDetail>
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 new Text(
-                                  'Personal Information',
+                                  'Company Information',
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.red,
@@ -303,7 +300,7 @@ class ProfileDetailState extends State<ProfileDetail>
                                 initialValue: ResponseData.firstName,
                                 //initialValue: "${usersData[index]["firstname"]}",
                                 decoration: const InputDecoration(
-                                  labelText: 'First Name',
+                                  labelText: 'Company Name',
                                   labelStyle: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18.0,
@@ -317,7 +314,7 @@ class ProfileDetailState extends State<ProfileDetail>
                                   return null;
                                 },
                                 onChanged: (text) {
-                                  newfirstName = text;
+                                  newcompanyName = text;
                                 },
                                 enabled: !_status,
                                 autofocus: !_status,
@@ -333,24 +330,23 @@ class ProfileDetailState extends State<ProfileDetail>
                           children: <Widget>[
                             new Flexible(
                               child: new TextFormField(
-                                initialValue: ResponseData.lastName,
+                                initialValue: ResponseData.contactpersonName,
                                 //initialValue: "${usersData[index]["lastname"]}",
                                 decoration: const InputDecoration(
-                                  labelText: 'Last Name',
+                                  labelText: 'Contact person Name',
                                   labelStyle: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold),
-                                  //hintText: "Enter User Name",
                                 ),
                                 validator: (value) {
                                   if (value.isEmpty) {
-                                    return 'Please enter last name';
+                                    return 'Please enter your name';
                                   }
                                   return null;
                                 },
                                 onChanged: (text) {
-                                  newlastName = text;
+                                  newcontactpersonName = text;
                                 },
                                 enabled: !_status,
                                 autofocus: !_status,
@@ -358,37 +354,6 @@ class ProfileDetailState extends State<ProfileDetail>
                             ),
                           ],
                         )),
-                    // Padding(
-                    //     padding:
-                    //         EdgeInsets.only(left: 25.0, right: 25.0, top: 3.0),
-                    //     child: new Row(
-                    //       mainAxisSize: MainAxisSize.max,
-                    //       children: <Widget>[
-                    //         new Flexible(
-                    //           child: new TextFormField(
-                    //             initialValue: ResponseData.email,
-                    //             //initialValue: "${usersData[index]["email"]}",
-                    //             decoration: const InputDecoration(
-                    //                 labelText: 'Email',
-                    //                 labelStyle: TextStyle(
-                    //                     color: Colors.black,
-                    //                     fontSize: 18.0,
-                    //                     fontWeight: FontWeight.bold),
-                    //                 hintText: "Enter Email"),
-                    //             validator: (value) {
-                    //               if (value.isEmpty) {
-                    //                 return 'Please enter email';
-                    //               }
-                    //               return null;
-                    //             },
-                    //             onChanged: (text) {
-                    //               newemail = text;
-                    //             },
-                    //             enabled: !_status,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     )),
                     Padding(
                         padding:
                             EdgeInsets.only(left: 25.0, right: 25.0, top: 3.0),
@@ -435,7 +400,7 @@ class ProfileDetailState extends State<ProfileDetail>
                                 initialValue: ResponseData.contactNumber,
                                 //initialValue: "${usersData[index]["contactNumber"]}",
                                 decoration: const InputDecoration(
-                                    labelText: 'Mobile Number',
+                                    labelText: 'Contact Person Number',
                                     labelStyle: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18.0,
@@ -527,7 +492,7 @@ class ProfileDetailState extends State<ProfileDetail>
                   setState(() {
                     _status = true;
                     //FocusScope.of(context).requestFocus(new FocusNode());
-                    Navigator.of(context).pushNamed('/profile');
+                    Navigator.of(context).pushNamed('/companyProfile');
                   });
                   // }
                 },
