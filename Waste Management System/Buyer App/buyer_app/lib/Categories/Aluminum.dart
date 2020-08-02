@@ -1,8 +1,11 @@
-import 'dart:async';
+// import 'dart:async';
 //import 'dart:html';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:buyerapp/utils/ResponseData.dart';
+
+final String viewitemUrl = "${ResponseData.apiUrl}/item/viewItem";
 
 class AluminiumDetail extends StatefulWidget {
   @override
@@ -31,12 +34,12 @@ List<ItemDetails> _searchResult = [];
 
 List<ItemDetails> _itemDetails = [];
 
-final String url = 'Enter url here/item';
+// final String url = 'Enter url here/item';
 
 class ItemDetails {
   final int id;
   final String category,
-      itemName,
+      // itemName,
       currentBid,
       description,
       itemImageUrl,
@@ -46,7 +49,7 @@ class ItemDetails {
   ItemDetails(
       {this.id,
       this.category,
-      this.itemName,
+      // this.itemName,
       this.currentBid,
       this.description,
       this.startDate,
@@ -57,10 +60,10 @@ class ItemDetails {
     return new ItemDetails(
       id: json['id'],
       category: json['category'],
-      itemName: json['itemName'],
+      // itemName: json['itemName'],
       currentBid: json['currentBid'],
       description: json['description'],
-      startDate: json['startDate'],
+      // startDate: json['startDate'],
       duration: json['duration'],
     );
   }
@@ -70,15 +73,22 @@ class _AluminiumState extends State<Aluminium> {
   TextEditingController controller = new TextEditingController();
 
   // Get json result and convert it to model. Then add
-  Future<Null> getItemDetails() async {
-    final response = await http.get(url);
-    final responseJson = json.decode(response.body);
+  void getItemDetails() async {
+    var response = await http.get(Uri.encodeFull(viewitemUrl),
+        headers: {"Accept": "application/json"});
+    var responseJson = json.decode(response.body);
+    print(responseJson);
 
-    setState(() {
-      for (Map item in responseJson) {
-        _itemDetails.add(ItemDetails.fromJson(item));
-      }
-    });
+    if (this.mounted) {
+      setState(() {
+        Map<String, dynamic> responseJson = json.decode(response.body);
+        // print(responseJson);
+        // data = responseJson["item"];
+        for (Map item in responseJson["item"]) {
+          _itemDetails.add(ItemDetails.fromJson(item));
+        }
+      });
+    }
   }
 
   @override
@@ -98,11 +108,12 @@ class _AluminiumState extends State<Aluminium> {
 
 // view details
     _itemDetails.forEach((itemDetail) {
-      if (itemDetail.itemName.contains(text) ||
+      if (
+          // itemDetail.itemName.contains(text) ||
           itemDetail.currentBid.contains(text) ||
-          itemDetail.description.contains(text) ||
-          itemDetail.duration.contains(text) ||
-          itemDetail.category.contains(text)) _searchResult.add(itemDetail);
+              itemDetail.description.contains(text) ||
+              itemDetail.duration.contains(text) ||
+              itemDetail.category.contains(text)) _searchResult.add(itemDetail);
     });
 
     setState(() {});
@@ -111,14 +122,14 @@ class _AluminiumState extends State<Aluminium> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SingleChildScrollView(
-        // appBar: new AppBar(
-        //   title: new Text('Search'),
-        //   elevation: 0.0,
-        //   backgroundColor: Colors.green,
-        // ),
+      child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // appbar: new AppBar(
+          //    title: new Text('Search'),
+          // elevation: 0.0,
+          // backgroundColor: Colors.green,
+          // ),
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             new Container(
               color: Colors.green,
@@ -137,7 +148,7 @@ class _AluminiumState extends State<Aluminium> {
                       icon: new Icon(Icons.cancel),
                       onPressed: () {
                         controller.clear();
-                        onSearchTextChanged('');
+                        onSearchTextChanged('hello');
                       },
                     ),
                   ),
@@ -165,7 +176,7 @@ class _AluminiumState extends State<Aluminium> {
                               ),
                               SizedBox(height: 20.0),
                               Container(
-                                child: Text(_searchResult[i].itemName),
+                                child: Text(_searchResult[i].category),
                               ),
                               SizedBox(height: 10.0),
                               Container(
@@ -228,7 +239,7 @@ class _AluminiumState extends State<Aluminium> {
                   : new ListView.builder(
                       itemCount: _itemDetails.length,
                       itemBuilder: (context, index) {
-                        if (_itemDetails[index].category == 'Aluminium') {
+                        if (_itemDetails[index].category == 'Polythin') {
                           return Container(
                             width: 700,
                             child: new Card(
@@ -250,7 +261,7 @@ class _AluminiumState extends State<Aluminium> {
                                     ),
                                     SizedBox(height: 20.0),
                                     Container(
-                                      child: Text(_itemDetails[index].itemName),
+                                      child: Text(_itemDetails[index].category),
                                     ),
                                     SizedBox(height: 10.0),
                                     Container(

@@ -133,6 +133,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                controller: companyName,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.person, color: Colors.black),
@@ -153,6 +154,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                controller: contactpersonName,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.contacts, color: Colors.black),
@@ -173,6 +175,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                controller: contactpersonNumber,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.phone, color: Colors.black),
@@ -203,6 +206,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                controller: email,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(
@@ -233,6 +237,7 @@ class _SignCompanyFormState extends State<SignCompanyForm> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                controller: password,
                 scrollPadding: EdgeInsets.all(10),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.lock, color: Colors.black),

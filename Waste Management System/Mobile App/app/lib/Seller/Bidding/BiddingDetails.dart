@@ -85,8 +85,7 @@ Container(
                 color: Colors.green,
                 textColor: Colors.white,
                 onPressed: () async {
-                 //print(_score);
-                 //print(n);
+                 Navigator.of(context).pushNamed('/push');
                 },
               )),
 
