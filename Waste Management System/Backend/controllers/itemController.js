@@ -49,6 +49,10 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
 
 });
 
+//pass all items details
+
+
+
 
 // VIEW ITEMS
 router.get('/viewItem/:item', async (req,res) => {

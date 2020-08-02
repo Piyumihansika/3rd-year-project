@@ -246,16 +246,13 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                     color: Colors.green,
                     textColor: Colors.white,
                     onPressed: () {
-                      // if (selectCategory != null && selectDuration != null) {
-                      //   print(selectCategory);
-                      //   print(selectDuration);
+                      
+                      
+                       if (_formKey.currentState.validate()){
+
                         getCurrentDate();
                         print(startDate);
                         print(finishDate);
-
-                       if (_formKey.currentState.validate()){
-
-                        
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => UploadImageDemo(
                                 selectCategory: selectCategory,

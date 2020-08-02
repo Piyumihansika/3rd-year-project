@@ -128,32 +128,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   String newlastName;
   String newcontactNumber;
 
-  //upload image to the server
-// void uploadFile(filePath) async {
 
-//   //Get the file name
-//   String fileName =basename(filePath.path);
-//   print("File base name :$fileName");
-
-//   try{
-// FormData formData =new FormData.from({
-//   "name":"profilePic",
-//   "file":new UploadFileInfo(filePath,fileName)
-// });
-
-// http.Response response =
-// await Dio().post("url", data:formData);
-// print("File uploaded succecfully");
-
-// showSnakBarMsg(response.data['message']);
-//   }
-//   catch(e){
-//     print("exception caught :$e");
-
-//   }
-// }
-
-//
   editData() async {
     var response = await http.put(editUrl, headers: {
       "Accept": "application/json",
