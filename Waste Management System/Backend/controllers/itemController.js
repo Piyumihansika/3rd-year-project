@@ -42,4 +42,11 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
 
 });
 
+
+// VIEW ITEMS
+router.get('/viewItem', async (req,res) => {
+  const item = await Item.find();
+  res.json({"item" : item})
+})
+
 module.exports = router;

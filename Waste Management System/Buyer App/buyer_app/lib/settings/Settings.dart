@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:buyerapp/utils/ResponseData.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -14,13 +15,25 @@ class _SettingPageState extends State<SettingPage> {
             title: Text('Are You sure you want deactivate your account ? '),
             actions: <Widget>[
               MaterialButton(
-                child: Text('No',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                child: Text(
+                  'No',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/settings');
                 },
               ),
               MaterialButton(
-                child: Text('Yes',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 18),),
+                child: Text(
+                  'Yes',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/deactivateaccount');
                 },
@@ -118,7 +131,18 @@ class _SettingPageState extends State<SettingPage> {
                   title: Text("Edit Profile"),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
-                    Navigator.of(context).pushNamed('/profile');
+                    if (ResponseData.username.toString() == "Company") {
+                      Navigator.of(context).pushNamed('/companyProfile');
+
+                      print("------------------" +
+                          ResponseData.username +
+                          "------------------------------");
+                    } else {
+                      Navigator.of(context).pushNamed('/profile');
+                      print("------------------" +
+                          ResponseData.username +
+                          "------------------------------");
+                    }
                   },
                 ),
                 Container(
@@ -132,7 +156,7 @@ class _SettingPageState extends State<SettingPage> {
                   title: Text("Change Location"),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
-                     Navigator.of(context).pushNamed('/changelocation');
+                    Navigator.of(context).pushNamed('/changelocation');
                   },
                 ),
                 Container(

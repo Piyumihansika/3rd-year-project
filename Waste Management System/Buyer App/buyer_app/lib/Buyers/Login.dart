@@ -202,45 +202,51 @@ class _LoginFormState extends State<LoginForm> {
       "email": email.text.toLowerCase(),
       "password": password.text,
     };
-    print("---------------------------------------------------------");
-    print(password.text);
     var response = await http.post(apiUrl,
         body: data, encoding: Encoding.getByName("application/json"));
     if (response.statusCode == 200) {
       value = json.decode(response.body);
-      print(value);
       id = (value["id"].toString());
-      var resfirstName = (value["user"]["firstName"].toString());
-      var reslastName = (value["user"]["lastName"].toString());
-      var resemail = (value["user"]["email"].toString());
-      // var rescontactNumber = (value["user"]["contactNumber"].toString());
-      // var resaddress1 = (value["user"]["address1"].toString());
-      // var resaddress2 = (value["user"]["address2"].toString());
-      // var rescity = (va)
-      print(resemail);
+
       if (id == null) {
-        // Fluttertoast.showToast(msg: "Invalid login");
         Navigator.of(context).pushNamed('/login');
         unregistererrordialog(context);
       } else {
         print(
             "----------------------------------------------Login----------------------------------------------------");
-        ResponseData.userId = id;
-        ResponseData.firstName = resfirstName;
-        ResponseData.lastName = reslastName;
-        ResponseData.email = resemail;
-        ResponseData.contactNumber =
-            (value["user"]["contactNumber"].toString());
-        ResponseData.address1 = (value["user"]["address1"].toString());
-        ResponseData.address2 = (value["user"]["address2"].toString());
-        ResponseData.city = (value["user"]["city"].toString());
-        ResponseData.district = (value["user"]["district"].toString());
-
-        Navigator.of(context).pushNamed('/buyerhome');
-        loginsuccessdialog(context);
+        if ((value["userName"].toString() == "Company")) {
+          ResponseData.userId = id;
+          ResponseData.firstName = (value["user"]["companyName"].toString());
+          ResponseData.lastName = "Company";
+          ResponseData.contactpersonName =
+              (value["user"]["contactpersonName".toString()]);
+          ResponseData.email = (value["user"]["email"].toString());
+          ResponseData.contactNumber =
+              (value["user"]["contactpersonNumber"].toString());
+          ResponseData.address1 = (value["user"]["address1"].toString());
+          ResponseData.address2 = (value["user"]["address2"].toString());
+          ResponseData.city = (value["user"]["city"].toString());
+          ResponseData.district = (value["user"]["district"].toString());
+          ResponseData.username = (value["userName"].toString());
+          Navigator.of(context).pushNamed('/buyerhome');
+          loginsuccessdialog(context);
+        } else {
+          ResponseData.userId = id;
+          ResponseData.firstName = (value["user"]["firstName"].toString());
+          ResponseData.lastName = (value["user"]["lastName"].toString());
+          ResponseData.email = (value["user"]["email"].toString());
+          ResponseData.contactNumber =
+              (value["user"]["contactNumber"].toString());
+          ResponseData.address1 = (value["user"]["address1"].toString());
+          ResponseData.address2 = (value["user"]["address2"].toString());
+          ResponseData.city = (value["user"]["city"].toString());
+          ResponseData.district = (value["user"]["district"].toString());
+          ResponseData.username = "Household";
+          Navigator.of(context).pushNamed('/buyerhome');
+          loginsuccessdialog(context);
+        }
       }
     } else {
-      // Fluttertoast.showToast(msg: "Check credentials login failed");
       Navigator.of(context).pushNamed('/login');
       invaliderrordialog(context);
       print(response.statusCode);
@@ -439,15 +445,7 @@ class _LoginFormState extends State<LoginForm> {
                   textColor: Colors.white,
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      //send request
                       login(context);
-
-                      // print(email.text);
-
-//                    Scaffold
-//                        .of(context)
-//                        .showSnackBar(SnackBar(content: Text('Processing Data'),backgroundColor: Colors.green,));
-
                     }
                   },
                 )),

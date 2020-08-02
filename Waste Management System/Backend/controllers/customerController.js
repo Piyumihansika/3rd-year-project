@@ -95,6 +95,8 @@ router.put("/updateCustomer/:id", async (req, res) => {
      console.log(customer.password)
  })
 
+
+ //CONFIRM PASSWORD FOR DELETE A CUSTOMER
  router.post("/getPassword", async(req,res) => {
    
     try {

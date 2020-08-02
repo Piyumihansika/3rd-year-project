@@ -9,23 +9,76 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 //UPDATE BUYER DETAILS
-router.put("/updateBuyer/:id", async(req, res) => {
-  
-   const buyer = await Buyer.findByIdAndUpdate({_id: req.params.id}, req.body)
+router.put("/updateBuyer/:id", async (req, res) => {
+    
+    const buyer = await Buyer.findByIdAndUpdate({_id: req.params.id}, req.body)
+    console.log("update buyer api hit")
    if(buyer){
-    const newBuyer = await Buyer.findOne({_id: req.params.id})
+    const newBuyer =  await Buyer.findOne({_id: req.params.id})
     res.status(200).json(newBuyer)
+    console.log("success")
+   }else{
+       res.status(500).send("server error");
    }
-});
+    
+ });
+// router.put("/updateBuyer/:id", async(req, res) => {
+  
+//    const buyer = await Buyer.findByIdAndUpdate({_id: req.params.id}, req.body)
+//    if(buyer){
+//     const newBuyer = await Buyer.findOne({_id: req.params.id})
+//     res.status(200).json(newBuyer)
+//    }
+// });
 
 
 //DELETE A BUYER
+
 router.delete("/deleteBuyer/:id", async (req, res) => {
 
-    Buyer.findByIdAndRemove({_id: req.params.id}, req.body)
-    res.status(200).send("deleted")
+    
+    const deleteOne = await Buyer.findByIdAndRemove({_id: req.params.id},req.body)
+    console.log("api hit")
+    if(deleteOne){
+        // const user = await Buyer.findById({_id: req.params.id})
+        res.status(200).json({ "status" : "delete" });
+        // console.log(user)
+        console.log("---------------------delete user------------------------------------")
+    }else{
+        const user = await Buyer.findById({_id: req.params.id})
+        res.status(403).json({ "user" : user })
+        console.log(user)
+        console.log("------------------------------not delete---------------------------")
+    }
    
-});
+    
+ });
+
+//CONFIRM PASSWORD FOR DELETE A BUYER
+router.post("/getPassword", async(req,res) => {
+   
+    try {
+    const buyer = await Buyer.findOne({ _id: req.body.id })
+   const validPassword = await buyer.validatePassword(req.body.password, buyer.password);
+   if(!validPassword){
+        
+        res.status(401).json({ "status" : "not match" });
+        console.log("------------------------------invalid---------------------------")
+    
+    }else{
+
+        res.status(200).json({ "status" : "matched" })
+        console.log("------------------------------matched----------------------------")
+        
+    }
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+  
+})
 
 //VIEW BUYER DETAILS
 router.post("/viewBuyer", async(req,res) => {
