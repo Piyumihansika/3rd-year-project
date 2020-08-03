@@ -13,6 +13,7 @@ import 'package:app/Seller/Bidding/Chart.dart';
 import 'package:app/Seller/Bidding/NoBidds.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
+import 'package:app/Seller/Notifications/Pushnotification.dart';
 import 'package:app/Seller/Orders.dart';
 import 'package:app/Seller/PriceChart.dart';
 import 'package:app/Seller/Profile.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
          '/chart':(context)=>Chart(),
            '/nobids':(context)=>Nobids(),
             '/notification':(context)=>Notifications(),
+            '/push':(context)=>Pushnotification(),
 
 
 //register pages

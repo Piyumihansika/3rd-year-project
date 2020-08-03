@@ -15,6 +15,7 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,7 +151,7 @@ void deleteItem(index) {
       color: Colors.red,
       child: Icon(
         Icons.delete,
-        color: Colors.white,
+        color: Colors.red,
       ),
     );
   }
