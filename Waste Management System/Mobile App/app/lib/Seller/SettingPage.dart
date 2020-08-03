@@ -50,6 +50,8 @@ class _SettingPageState extends State<SettingPage> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       backgroundColor: Colors.green[100],   
+
+      
       body: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           
