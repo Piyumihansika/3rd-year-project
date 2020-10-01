@@ -16,12 +16,13 @@
             
             <!-- <vs-select
             label="Figuras" v-model="select1"> -->
-            <vs-select-item :key="index" :value="item.value" :text="item.text" v-for="item,index in options1" />
-            </vs-select>
+            <!-- <vs-select-item :key="index" :value="item.value" :text="item.text" v-for="item,index in options1" />
+            </vs-select> -->
             <vs-button @click="popupActivo3=true" color="primary" type="filled">Log In</vs-button>
             
             </vs-popup>
             </div>
+            
 </template>
 
 <script>
