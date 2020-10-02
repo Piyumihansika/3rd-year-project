@@ -5,13 +5,13 @@
                 <p>
             Enter your email
             </p>
-            <vs-input class="inputx" placeholder="Email" v-model="value1"/>
+            <vs-input class="inputx" placeholder="Email" type = "text" v-model = "value1" />
             <br>
             <p>
             Enter your password
             </p>
 
-            <vs-input class="inputx" placeholder="Password" v-model="value2"/>
+            <vs-input class="inputx" placeholder="Password" v-model = "value2"/>
             <br>
             
             <!-- <vs-select
@@ -26,9 +26,11 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
      data(){
             return {
+            items: [],
             select1:3,
             options1:[
             {text:'IT',value:0},
@@ -40,7 +42,11 @@ export default {
             popupActivo2:false,
             popupActivo3:false
             }
-            }
+            },
+          async mounted (){
+            const responce = await axios.get("api/bucketListItems/");
+            this.items = responce.data;
+          }
     
 }
 </script>
