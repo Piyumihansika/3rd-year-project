@@ -13,5 +13,6 @@ app.use('/company',require('./controllers/companyController'))
 app.use('/forgot',require('./controllers/forgotEmailBodyController'))
 app.use('/item',require('./controllers/itemController'))
 app.use('/category',require('./controllers/categoryController'))
+app.use('/auction',require('./controllers/auctionController'))
 
 module.exports = app;

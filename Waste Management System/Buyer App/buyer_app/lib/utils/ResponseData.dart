@@ -28,4 +28,11 @@ class ResponseData {
   static String itemId = "";
   static String imagePath = "";
   static String item = "";
+  static String itemImage = "";
+  static String category = "";
+  static String description = "";
+  static String basePrice = "";
+  static String duration = "";
+  static String endDate = "";
+  static String customerId = "";
 }

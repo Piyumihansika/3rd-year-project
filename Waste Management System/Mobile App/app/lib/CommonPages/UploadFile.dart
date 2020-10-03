@@ -1,5 +1,3 @@
-
-
 // import 'package:app/Seller/Sell_Items/Sellitempage1.dart';
 //import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/utils/ResponseData.dart';
@@ -17,20 +15,17 @@ class UploadImageDemo extends StatefulWidget {
   final String startDate;
   final String finishDate;
 
-  
-
   //final String title = "Upload Item Image";
 
-  const UploadImageDemo(
-      {Key key,
-      this.selectCategory,
-      this.selectDuration,
-      this.price,
-      this.description,
-      this.startDate,
-      this.finishDate,
-      })
-      : super(key: key);
+  const UploadImageDemo({
+    Key key,
+    this.selectCategory,
+    this.selectDuration,
+    this.price,
+    this.description,
+    this.startDate,
+    this.finishDate,
+  }) : super(key: key);
 
   @override
   UploadImageDemoState createState() => UploadImageDemoState();
@@ -38,7 +33,7 @@ class UploadImageDemo extends StatefulWidget {
 
 class UploadImageDemoState extends State<UploadImageDemo> {
   //
-  static final String uploadEndPoint = "http://10.0.2.2:3000/item/addItem";
+  final String uploadEndPoint = "http://10.0.2.2:3000/item/addItem";
 
   Future<File> file;
   String status = '';
@@ -69,24 +64,30 @@ class UploadImageDemoState extends State<UploadImageDemo> {
     upload(fileName);
   }
 
-  upload(String fileName) {
-    http.post(uploadEndPoint, body: {
+  upload(String fileName) async {
+    var id = ResponseData.userId;
+    final Map<String, dynamic> data = {
       "image": base64Image,
       "name": fileName,
       "category": widget.selectCategory,
       "description": widget.description,
       "price": widget.price,
       "duration": widget.selectDuration,
-      "startDate":widget.startDate,
-      "finishDate":widget.finishDate,
-      "customerId": ResponseData.userId,
-    }).then((result) {
-      setStatus(result.statusCode == 201 ? "successfully added" : errMessage);
-    }).catchError((error) {
-      setStatus(error);
-    });
+      "startDate": widget.startDate,
+      "finishDate": widget.finishDate,
+      "customerId": id,
+    };
+    var response = await http.post(uploadEndPoint,
+        body: data, encoding: Encoding.getByName("application/json"));
+    if (response.statusCode == 200) {
+      print(
+          "-------------------------------add-------------------------------");
+      setStatus("succefully uploaded!");
+      Navigator.of(context).pushNamed('/dashboard1');
+    } else {
+      print(response.statusCode);
+    }
   }
-
 
   Widget showImage() {
     return FutureBuilder<File>(
@@ -123,12 +124,10 @@ class UploadImageDemoState extends State<UploadImageDemo> {
       appBar: AppBar(
         title: Text("Upload Item Image"),
         backgroundColor: Colors.green,
- leading: IconButton(
-    icon: Icon(Icons.arrow_back, color: Colors.black),
-    onPressed: () => Navigator.of(context).pushNamed('/sell'),
-  ), 
-
-
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pushNamed('/sell'),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(30.0),
@@ -165,49 +164,34 @@ class UploadImageDemoState extends State<UploadImageDemo> {
             SizedBox(
               height: 20.0,
             ),
+            Container(
+                alignment: Alignment(-0.1, 1),
+                child: new RaisedButton(
+                  child: const Text(' DONE'),
+                  color: Colors.green,
+                  textColor: Colors.white,
+                  onPressed: () async {
+                    if (base64Image != null) {
+                      startUpload();
 
+                      // login(context);
+                    } else {
+                      setStatus(
+                        'select image to upload',
+                      );
 
-Container(
-alignment: Alignment(-0.1, 1),
-              child: new RaisedButton(
-                child: const Text(' DONE'),
-                color: Colors.green,
-                textColor: Colors.white,
-                onPressed: () async {
-
-                  if (base64Image!= null) {
-           Navigator.of(context).pushNamed('/dashboard1');
-                   // login(context);
-                  }
-                 else {
-                   setStatus('select image to upload',);
-                   
-              print("error no image");
-                   // login(context);
-                  }
-
-
-
-
-                },
-              )
-
-)
-
+                      print("error no image");
+                      // login(context);
+                    }
+                  },
+                ))
           ],
         ),
-        
-
-
       ),
-
 
       // new Container(
 
       // )
-
-
-
     );
   }
 }

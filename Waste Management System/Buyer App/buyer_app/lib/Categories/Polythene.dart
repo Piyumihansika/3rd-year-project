@@ -1,9 +1,11 @@
+// import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:buyerapp/utils/ResponseData.dart';
 
 String item = "Polythin";
+String base64Image;
 
 class Polythene extends StatefulWidget {
   @override
@@ -12,7 +14,12 @@ class Polythene extends StatefulWidget {
 
 class _PolytheneState extends State<Polythene> {
   List<dynamic> data;
+  // File tmpFile;
+
   final String viewitemUrl = "${ResponseData.apiUrl}/item/viewItem/$item";
+  // final String viewImage =
+  //     "${ResponseData.apiUrl}/item/viewImage/${ResponseData.itemImage}";
+
   TextEditingController controller = new TextEditingController();
 
   @override
@@ -25,15 +32,18 @@ class _PolytheneState extends State<Polythene> {
     var response = await http.get(Uri.encodeFull(viewitemUrl),
         headers: {"Accept": "application/json"});
 
+    // var res = await http.get(Uri.encodeFull(viewImage),
+    //     headers: {"Accept": "application/json"});
+
     if (this.mounted) {
       setState(() {
         Map<String, dynamic> responseJson = json.decode(response.body);
+
         print(responseJson);
         data = responseJson["item"];
 
-        // for (Map item in responseJson) {
-        //   _itemDetails.add(ItemDetails.fromJson(item));
-        // }
+        // String resJson = json.decode(res.body);
+        // tmpFile = base64.decode(resJson) as File;
       });
     }
   }
@@ -81,11 +91,14 @@ class _PolytheneState extends State<Polythene> {
     );
   }
 
+  // Widget getImage() {}
+
   Widget _allPolytheneList() {
     return data != null && data.length != null && data.length > 0
         ? ListView.builder(
             itemCount: data.length == null ? 0 : data.length,
             itemBuilder: (BuildContext context, int index) {
+              ResponseData.itemId = data[index]['_id'];
               return Container(
                 width: 700,
                 child: new Card(
@@ -100,9 +113,7 @@ class _PolytheneState extends State<Polythene> {
                       SizedBox(height: 10.0),
                       Container(
                         child: new CircleAvatar(
-                          backgroundImage: new NetworkImage(
-                            data[index]['_id'],
-                          ),
+                          backgroundImage: new NetworkImage("new.png"),
                         ),
                       ),
                       SizedBox(height: 20.0),
@@ -141,7 +152,18 @@ class _PolytheneState extends State<Polythene> {
                                   color: Colors.white),
                             ),
                             onPressed: () {
+                              ResponseData.itemId = data[index]['_id'];
+                              ResponseData.category = data[index]['category'];
+                              ResponseData.description =
+                                  data[index]['description'];
+                              ResponseData.basePrice =
+                                  (data[index]['price']).toString();
+                              ResponseData.duration = data[index]['duration'];
+                              ResponseData.customerId =
+                                  data[index]['customerId'];
+
                               Navigator.of(context).pushNamed('/bid');
+                              print(ResponseData.customerId);
                             }),
                       ),
                     ],
