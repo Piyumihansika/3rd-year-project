@@ -6,6 +6,7 @@ const { Router } = require('express');
 const router = Router();
 const Item = require('../model/itemModel');
 const { Mongoose } = require("mongoose");
+var cors = require('cors')
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "1gb" }));
 
@@ -50,7 +51,6 @@ var path = './uploads/'+ new Date().toISOString().replace(/:/g, '-') + name
 });
 
 //pass all items details
-
 
 
 

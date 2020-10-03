@@ -76,15 +76,70 @@
             <td>
                 <label class="label label-purple">Customer 03</label>
             </td>
-            <td>2.5</td>
+            <td>2.2</td>
          
         </tr>
     </tbody>
 </table>
+                <p> chamindu  udesh
+                {{allItems.category}} 
+                i love u 
+
+                </p>
+
+
+                <v-layout row  :key="allItems" v-for="allItems in allItems" >
+                    <v-flex>
+                        <v-card color="deep-purple accent-1">
+                        {{allItems.category}}
+                        </v-card>
+                    </v-flex>
+                    <v-flex>
+                        <v-card color="deep-purple accent-1">
+                        {{allItems.duration}}
+                        </v-card>
+                    </v-flex>
+                     <v-flex>
+                         <v-card color="deep-purple accent-1">
+                        {{allItems.price}}
+                        </v-card>
+                    </v-flex>
+                     <v-flex>
+                         <v-card color="deep-purple accent-1">
+                        {{allItems.startDate}}
+                        </v-card>
+                    </v-flex>
+                </v-layout>
+                
+                
 </div>
 </template>
 <script>
+import Axios from 'axios'
 export default {
     name: "TopBuyers"
-}
+
+    ,
+    data(){
+        return{
+            allItems:[]
+        }
+    },
+
+    mounted(){
+        //  this.await.axios.get("http://localhost:3000/item")
+        //  .then(function (responce) {
+        //      this.allItems = responce.body.allItems;
+
+        Axios.get("http://localhost:3000/item/viewItem")
+        .then(function(response){
+            // console.log(response);
+            this.allItems = response.body.allItems;
+        })
+
+        // this.allItems = response.data;
+         }
+    }
+
+
 </script>
