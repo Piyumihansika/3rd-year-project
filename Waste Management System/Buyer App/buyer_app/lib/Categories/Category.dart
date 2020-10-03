@@ -142,10 +142,41 @@ class _CategoryState extends State<CategoryPage> {
                             // child: Text("clickMe") // button text
                           )),
                       onTap: () {
-                        Navigator.of(context).pushNamed('/polythene');
+                        Navigator.of(context).pushNamed('/plastic');
                       }),
                   new Container(
                     child: Text('Plastic',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
+
+            //polythene
+            Container(
+              alignment: Alignment(-0.1, 1),
+              child: Column(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(10.5)),
+                  new GestureDetector(
+                      child: Container(
+                          width: 300,
+                          height: 200,
+                          decoration: BoxDecoration(
+                            // color: Colors.white,
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/polythene.jpg"),
+                                fit: BoxFit.cover),
+                            // child: Text("clickMe") // button text
+                          )),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/polythene');
+                      }),
+                  new Container(
+                    child: Text('Polythene',
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,
@@ -201,7 +232,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/brash.png"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/brash');
+                      }),
                   new Container(
                     child: Text('Brash',
                         style: TextStyle(
@@ -259,7 +292,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/glass.jpg"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/glass');
+                      }),
                   new Container(
                     child: Text('Glass',
                         style: TextStyle(
@@ -288,7 +323,9 @@ class _CategoryState extends State<CategoryPage> {
                                     "assets/images/other metals.png"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/othermetals');
+                      }),
                   new Container(
                     child: Text('Other Metals',
                         style: TextStyle(
@@ -317,7 +354,9 @@ class _CategoryState extends State<CategoryPage> {
                                     "assets/images/paper and cardboard.jpg"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/papercardboard');
+                      }),
                   new Container(
                     child: Text('Paper & Cardboard',
                         style: TextStyle(
@@ -346,7 +385,9 @@ class _CategoryState extends State<CategoryPage> {
                                     "assets/images/rune lands and concrete.jpg"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/landconcrete');
+                      }),
                   new Container(
                     child: Text('Rune, Lands & Concrete',
                         style: TextStyle(
@@ -374,7 +415,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/scrap.png"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/scrap');
+                      }),
                   new Container(
                     child: Text('Scrap',
                         style: TextStyle(
@@ -402,7 +445,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/specials.png"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/specials');
+                      }),
                   new Container(
                     child: Text('Specials',
                         style: TextStyle(
@@ -431,7 +476,9 @@ class _CategoryState extends State<CategoryPage> {
                                     AssetImage("assets/images/stainless.png"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/stainless');
+                      }),
                   new Container(
                     child: Text('Stainless',
                         style: TextStyle(
@@ -459,7 +506,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/trash.jpg"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/trash');
+                      }),
                   new Container(
                     child: Text('Trash',
                         style: TextStyle(
@@ -487,7 +536,9 @@ class _CategoryState extends State<CategoryPage> {
                                 image: AssetImage("assets/images/wood.jpg"),
                                 fit: BoxFit.cover),
                           )),
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/wood');
+                      }),
                   new Container(
                     child: Text('Wood',
                         style: TextStyle(

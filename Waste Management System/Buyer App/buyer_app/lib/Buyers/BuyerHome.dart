@@ -113,6 +113,13 @@ class _State extends State<BuyerHome> {
                 Navigator.of(context).pushNamed('/notifications');
               },
             ),
+             ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('History'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/history');
+              },
+            ),
             ListTile(
               leading: Icon(Icons.details),
               title: Text('About Us'),

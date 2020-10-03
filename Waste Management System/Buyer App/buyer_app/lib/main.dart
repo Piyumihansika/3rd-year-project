@@ -1,4 +1,12 @@
 // import 'package:buyerapp/Categories/Aluminum_test.dart';
+import 'package:buyerapp/Categories/OtherMetals.dart';
+import 'package:buyerapp/Categories/PaperCardboard.dart';
+import 'package:buyerapp/Categories/Plastic.dart';
+import 'package:buyerapp/Categories/RuneLandsConcrete.dart';
+import 'package:buyerapp/Categories/Scrap.dart';
+import 'package:buyerapp/Categories/Specials.dart';
+import 'package:buyerapp/Categories/Stainless.dart';
+import 'package:buyerapp/Categories/Wood.dart';
 import 'package:flutter/material.dart';
 
 import 'Buyers/Login.dart';
@@ -6,7 +14,9 @@ import 'Buyers/ForgotPassword.dart';
 import 'Buyers/BuyerHome.dart';
 import 'Buyers/ContactUs.dart';
 import 'Buyers/AboutUs.dart';
+import 'Categories/Brash.dart';
 import 'Categories/Glass.dart';
+import 'Categories/Trash.dart';
 import 'settings/Profile.dart';
 import 'settings/companyProfile.dart';
 import 'Buyers/History.dart';
@@ -88,11 +98,21 @@ class MyApp extends StatelessWidget {
         //categories
 
         '/aluminium': (context) => Aluminium(),
+        '/brash': (context) => Brash(),
         '/copper': (context) => Copper(),
         '/glass': (context) => Glass(),
         '/bid': (context) => Bid(),
         '/search': (context) => Search(),
         '/polythene': (context) => Polythene(),
+        '/plastic': (context) => Plastic(),
+        '/scrap': (context) => Scrap(),
+        '/trash': (context) => Trash(),
+        '/landconcrete': (context) => RuneLandConcrete(),
+        '/othermetals': (context) => OtherMetals(),
+        '/papercardboard': (context) => PaperCardboard(),
+        '/specials': (context) => Specials(),
+        '/stainless': (context) => Stainless(),
+        '/wood': (context) => Wood(),
       },
     );
   }
