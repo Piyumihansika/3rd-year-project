@@ -1,16 +1,30 @@
 <template>
-<div class="table-responsive">    
-<table class="table v-middle border">
-    <thead>
+  <div class="table-responsive">
+    <table class="table v-middle border">
+      <thead>
         <tr class="">
-            <th class="border-top-0">Buyer</th>
-            <th class="border-top-0">Winning Item</th>
-            <th class="border-top-0">Max Bid</th>
-            <th class="border-top-0">Customer</th>
-            <th class="border-top-0">Rating</th>
+          <th class="border-top-0">Buyer</th>
+          <th class="border-top-0">Winning Item</th>
+          <th class="border-top-0">Max Bid</th>
+          <th class="border-top-0">Customer</th>
+          <th class="border-top-0">Rating</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
+        <tr v-for="items in allItems" :key="items._id">
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div>
+              <div class="">
+                <h5 class="m-b-0">{{ items.category }}</h5>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <!-- <tbody>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
@@ -79,67 +93,32 @@
             <td>2.2</td>
          
         </tr>
-    </tbody>
-</table>
-                <p> chamindu  udesh
-                {{allItems.category}} 
-                i love u 
-
-                </p>
-
-
-                <v-layout row  :key="allItems" v-for="allItems in allItems" >
-                    <v-flex>
-                        <v-card color="deep-purple accent-1">
-                        {{allItems.category}}
-                        </v-card>
-                    </v-flex>
-                    <v-flex>
-                        <v-card color="deep-purple accent-1">
-                        {{allItems.duration}}
-                        </v-card>
-                    </v-flex>
-                     <v-flex>
-                         <v-card color="deep-purple accent-1">
-                        {{allItems.price}}
-                        </v-card>
-                    </v-flex>
-                     <v-flex>
-                         <v-card color="deep-purple accent-1">
-                        {{allItems.startDate}}
-                        </v-card>
-                    </v-flex>
-                </v-layout>
-                
-                
-</div>
+    </tbody> -->
+    </table>
+    <p>
+      chamindu udesh
+      {{ allItems[0].category }}
+      i love u
+    </p>
+  </div>
 </template>
 <script>
-import Axios from 'axios'
+import Axios from "axios";
 export default {
-    name: "TopBuyers"
+  name: "TopBuyers",
 
-    ,
-    data(){
-        return{
-            allItems:[]
-        }
-    },
+  data() {
+    return {
+      allItems: {},
+    };
+  },
 
-    mounted(){
-        //  this.await.axios.get("http://localhost:3000/item")
-        //  .then(function (responce) {
-        //      this.allItems = responce.body.allItems;
+  mounted() {
+    Axios.get("http://localhost:3000/item//viewAllItems").then((response) => {
+      this.allItems = response.data;
 
-        Axios.get("http://localhost:3000/item/viewItem")
-        .then(function(response){
-            // console.log(response);
-            this.allItems = response.body.allItems;
-        })
-
-        // this.allItems = response.data;
-         }
-    }
-
-
+      //  console.log(response.data);
+    });
+  },
+};
 </script>

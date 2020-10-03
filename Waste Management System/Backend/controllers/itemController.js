@@ -7,8 +7,10 @@ const { Router } = require('express');
 const router = Router();
 const Item = require('../model/itemModel');
 const { Mongoose } = require("mongoose");
-var cors = require('cors')
+
 const { runInContext } = require("vm");
+
+
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "1gb" }));
 

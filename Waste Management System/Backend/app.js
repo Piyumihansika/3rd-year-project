@@ -1,10 +1,17 @@
 const express = require('express');
 const app = express();
-app.use(cors());
+var cors = require('cors')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('uploads'))
+
+var corsOptions = {
+    origin: 'http://localhost:8080',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+
+app.use(cors(corsOptions));
 
 app.use('/auth',require('./controllers/authController'))
 app.use('/admin',require('./controllers/adminController'))
