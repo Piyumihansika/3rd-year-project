@@ -14,7 +14,7 @@
         <table class="table v-middle border">
             <thead>
                 <tr class="">
-                    <th class="border-top-0">Customer Name</th>
+                    <th class="border-top-0"> Customer Name</th>
                     <th class="border-top-0">Customer Level</th>
                     <th class="border-top-0">Address</th>
                     <th class="border-top-0">Email</th>

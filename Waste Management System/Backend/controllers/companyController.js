@@ -89,6 +89,14 @@ router.put("/updateCompany/:id", async (req, res) => {
   
 })
 
+// View All Companies
+router.get('/viewAllCompanies', async(req,res) => {
+    const allCompanies = await Company.find();
+    res.json(allCompanies)
+    console.log(allCompanies)
+  })
+
+
  //DELETE COMPANY PROFILE
  router.delete("/deleteCompany/:id", async (req, res) => {
 

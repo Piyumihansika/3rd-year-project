@@ -96,7 +96,7 @@ router.put("/updateCustomer/:id", async (req, res) => {
  })
 
 
-// View All Buyers
+// View All Customers
 router.get('/viewAllCustomer', async(req,res) => {
     const allCustomer = await Customer.find();
     res.json(allCustomer)
