@@ -96,6 +96,14 @@ router.put("/updateCustomer/:id", async (req, res) => {
  })
 
 
+// View All Buyers
+router.get('/viewAllCustomer', async(req,res) => {
+    const allCustomer = await Customer.find();
+    res.json(allCustomer)
+  })
+
+
+
  //CONFIRM PASSWORD FOR DELETE A CUSTOMER
  router.post("/getPassword", async(req,res) => {
    

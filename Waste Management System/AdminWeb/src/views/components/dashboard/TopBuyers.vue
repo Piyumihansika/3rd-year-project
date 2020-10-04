@@ -11,14 +11,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="items in allItems" :key="items._id">
+        <tr v-for="buyers in allBuyers" :key="buyers._id">
           <td>
             <div class="d-flex align-items-center">
               <div class="mr-2">
                 <vs-avatar color="primary" text="Buyer 1" />
               </div>
               <div class="">
-                <h5 class="m-b-0">{{ items.category }}</h5>
+                <h5 class="m-b-0">{{ buyers.firstName }}  {{buyers.lastName}}</h5>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <!-- <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div> -->
+              <div class="">
+                <!-- <h5 class="m-b-0">{{ buyers. }}</h5> -->
               </div>
             </div>
           </td>
@@ -95,13 +105,10 @@
         </tr>
     </tbody> -->
     </table>
-    <p>
-      chamindu udesh
-      {{ allItems[0].category }}
-      i love u
-    </p>
+
   </div>
 </template>
+
 <script>
 import Axios from "axios";
 export default {
@@ -110,12 +117,18 @@ export default {
   data() {
     return {
       allItems: {},
+      allBuyers: {},
     };
   },
 
   mounted() {
     Axios.get("http://localhost:3000/item//viewAllItems").then((response) => {
       this.allItems = response.data;
+    
+
+    Axios.get("http://localhost:3000/buyer//viewAllBuyers").then((response) => {
+        this.allBuyers = response.data;
+    })
 
       //  console.log(response.data);
     });

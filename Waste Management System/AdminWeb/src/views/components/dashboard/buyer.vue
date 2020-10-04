@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="mr-2"><vs-avatar color="danger" src = "https://avatars2.githubusercontent.com/u/31676496?s=460&v=4"  text="Mrimary" /></div>
+                            <!-- <div class="mr-2"><vs-avatar color="danger" src = "https://avatars2.githubusercontent.com/u/31676496?s=460&v=4"  text="Mrimary" /></div> -->
                             <div class="">
                                 <h5 class="m-b-0">Buyer 02</h5>
                             </div>
