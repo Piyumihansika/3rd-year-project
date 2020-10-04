@@ -184,13 +184,22 @@ export default new Router({
                     component: () => import('./views/components/dashboard/login.vue')
                 },
 
+                // {
+                //         path:'/hompagex1',
+                //          name:'hompagex1',
+                //          index: 31,
+                //          component: () => import('./views/hompagex1.vue')
+            
+                //       },
+
             ]
         },
         
 
         {
-            path: '',
-            component: () => import('./views/publicCommon/publicHeader.vue'),
+            path: '/Homepage',
+            component: () => import('./views/Homepage.vue'),
+            // component: () => import('./views/publicCommon/publicHeader.vue'),
 
             children: [
                 {
@@ -200,6 +209,13 @@ export default new Router({
                         component: () => import('./views/Homepage.vue')
             
                      },
+                    //  {
+                    //      path:'/',
+                    //      name:'hompagex1',
+                    //      index: 31,
+                    //      component: () => import('./views/hompagex1.vue')
+            
+                    //   },
             ]
 
 
