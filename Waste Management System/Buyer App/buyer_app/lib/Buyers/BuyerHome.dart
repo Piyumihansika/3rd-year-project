@@ -71,21 +71,21 @@ class _State extends State<BuyerHome> {
                 SizedBox(height: 14.0),
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 14.0),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      height: 45.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                              color: Colors.white,
-                              style: BorderStyle.solid,
-                              width: 2.0),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/logo.jpg'),
-                          )),
-                    )
+                    // SizedBox(width: 14.0),
+                    // Container(
+                    //   alignment: Alignment.topLeft,
+                    //   height: 45.0,
+                    //   width: 50.0,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(30),
+                    //       border: Border.all(
+                    //           color: Colors.white,
+                    //           style: BorderStyle.solid,
+                    //           width: 2.0),
+                    //       image: DecorationImage(
+                    //         image: AssetImage('assets/images/logo.jpg'),
+                    //       )),
+                    // )
                   ],
                 ),
               ],
@@ -114,10 +114,24 @@ class _State extends State<BuyerHome> {
               },
             ),
              ListTile(
-              leading: Icon(Icons.notifications),
+              leading: Icon(Icons.history),
               title: Text('History'),
               onTap: () {
                 Navigator.of(context).pushNamed('/history');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Auction Details'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/auctiondetail');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.report),
+              title: Text('Report'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/report');
               },
             ),
             ListTile(

@@ -7,6 +7,7 @@ import 'package:buyerapp/Categories/Scrap.dart';
 import 'package:buyerapp/Categories/Specials.dart';
 import 'package:buyerapp/Categories/Stainless.dart';
 import 'package:buyerapp/Categories/Wood.dart';
+import 'package:buyerapp/bidding/auctionDetails.dart';
 import 'package:flutter/material.dart';
 
 import 'Buyers/Login.dart';
@@ -17,6 +18,7 @@ import 'Buyers/AboutUs.dart';
 import 'Categories/Brash.dart';
 import 'Categories/Glass.dart';
 import 'Categories/Trash.dart';
+import 'bidding/Report.dart';
 import 'settings/Profile.dart';
 import 'settings/companyProfile.dart';
 import 'Buyers/History.dart';
@@ -113,6 +115,8 @@ class MyApp extends StatelessWidget {
         '/specials': (context) => Specials(),
         '/stainless': (context) => Stainless(),
         '/wood': (context) => Wood(),
+        '/auctiondetail': (context) => AuctionDetail(),
+        '/report': (context) => Report(),
       },
     );
   }
