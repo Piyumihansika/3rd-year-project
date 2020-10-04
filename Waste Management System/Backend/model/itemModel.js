@@ -9,10 +9,9 @@ const itemSchema = new Schema({
   finishDate:String,
   itemImage: String,
   customerId: String,
-  state: String
+  state: String,
+  bidCount: Number,
   
 });
-
-
 
 module.exports = model('Item', itemSchema);

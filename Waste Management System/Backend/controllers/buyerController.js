@@ -86,6 +86,16 @@ router.post("/viewBuyer", async(req,res) => {
     res.status(200).send(buyer)
 })
 
+
+    // View All Buyers
+    router.get('/viewAllBuyers', async(req,res) => {
+        const allBuyer = await Buyer.find();
+        res.json(allBuyer)
+    })
+
+
+
+
 //ADD A NEW BUYER REQUEST
 router.post('/addBuyer', async(req, res) => {
     console.log("api hit 1");

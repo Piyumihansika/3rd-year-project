@@ -1,4 +1,10 @@
+// import 'dart:html';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:buyerapp/utils/ResponseData.dart';
+import 'package:http/http.dart' as http;
+
+final String submitBidUrl = "http://10.0.2.2:3000/auction/addBid";
 
 class Bid extends StatefulWidget {
   final String itemName;
@@ -44,6 +50,27 @@ class _PlaceBidState extends State<PlaceBid> {
   TextEditingController bid = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  void submitBid(BuildContext context) async {
+    var date = new DateTime.now().toString();
+    print(date);
+    Map<String, dynamic> data = {
+      'customerId': ResponseData.customerId,
+      'itemId': ResponseData.itemId,
+      'biddingTime': date.toString(),
+      'buyerId': ResponseData.userId,
+      'bidValue': bid.text,
+    };
+
+    var response = await http.post(submitBidUrl,
+        body: data, encoding: Encoding.getByName("Application/json"));
+    if (response.statusCode == 200) {
+      print(
+          "--------------------------------submit Bid-----------------------");
+    } else {
+      print(response.statusCode);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -52,9 +79,9 @@ class _PlaceBidState extends State<PlaceBid> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             SizedBox(
-                        height: 10,
-                      ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 675,
               child: Card(
@@ -71,7 +98,7 @@ class _PlaceBidState extends State<PlaceBid> {
                       ),
                       Container(
                         child: Text(
-                          'Item name' + ' : ' + 'Aluminum cup',
+                          'Item name' + ' : ' + ResponseData.category,
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -103,7 +130,7 @@ class _PlaceBidState extends State<PlaceBid> {
                       //     ),
                       //   ),
                       // ),
-                      
+
                       SizedBox(
                         height: 20,
                       ),
@@ -112,9 +139,7 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           //color: Colors.lightBlue,
                           child: new Text(
-                            'Description' +
-                                ' : ' +
-                                'This is aliminum cup.it is 10kg',
+                            'Description' + ' : ' + ResponseData.description,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -130,7 +155,7 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           //color: Colors.lightBlue,
                           child: new Text(
-                            'Base Price' + ' : ' + 'Rs.500',
+                            'Base Price' + ' : ' + ResponseData.basePrice,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -146,7 +171,7 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           color: Colors.yellowAccent,
                           child: new Text(
-                            'Current Bid' + ':' + 'Rs.1000',
+                            'Current Max Bid' + ':' + 'Rs.1000',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -163,7 +188,7 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           //color: Colors.yellowAccent,
                           child: new Text(
-                            'Duration' + ':' + '7 Days',
+                            'Duration' + ':' + ResponseData.duration,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -180,7 +205,7 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           //color: Colors.yellowAccent,
                           child: new Text(
-                            'End Date' + ':' + '2020.07.30  8.00 pm',
+                            'End Date' + ':' + ResponseData.endDate,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -236,9 +261,11 @@ class _PlaceBidState extends State<PlaceBid> {
                                   color: Colors.white),
                             ),
                             onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                Navigator.of(context).pushNamed('');
-                              }
+                              submitBid(context);
+                              // if (_formKey.currentState.validate()) {
+
+                              // Navigator.of(context).pushNamed('');
+                              // }
                             }),
                       ),
                     ],

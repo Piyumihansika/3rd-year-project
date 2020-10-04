@@ -71,7 +71,7 @@ router.delete("/deleteCustomer/:id", async (req, res) => {
 
 
 //VIEW BUYER DETAILS
-router.get("/viewbUYER/:id", async(req,res) => {
+router.get("/viewbUYER", async(req,res) => {
     const buyer =buyer.findById({_id: req.params.id}, req.body)
     res.status(200).send(buyer)
 });
@@ -85,15 +85,12 @@ router.put("/updateAdmin/:id", async(req, res) => {
     res.status(200).json(newAdmin)
     }
    });
-  
-  
+    
  
 
 
 
-
-
-//DELETE ADMIN   
+   //DELETE ADMIN   
 router.delete("/deleteAdmin/:id", async (req, res) => {
     Admin.findById
     Admin.findByIdAndRemove({_id: req.params.id}, req.body)

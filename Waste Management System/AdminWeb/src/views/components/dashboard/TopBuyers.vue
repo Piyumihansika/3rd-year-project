@@ -1,16 +1,40 @@
 <template>
-<div class="table-responsive">    
-<table class="table v-middle border">
-    <thead>
+  <div class="table-responsive">
+    <table class="table v-middle border">
+      <thead>
         <tr class="">
-            <th class="border-top-0">Buyer</th>
-            <th class="border-top-0">Winning Item</th>
-            <th class="border-top-0">Max Bid</th>
-            <th class="border-top-0">Customer</th>
-            <th class="border-top-0">Rating</th>
+          <th class="border-top-0">Buyer</th>
+          <th class="border-top-0">Winning Item</th>
+          <th class="border-top-0">Max Bid</th>
+          <th class="border-top-0">Customer</th>
+          <th class="border-top-0">Rating</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
+        <tr v-for="buyers in allBuyers" :key="buyers._id">
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div>
+              <div class="">
+                <h5 class="m-b-0">{{ buyers.firstName }}  {{buyers.lastName}}</h5>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <!-- <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div> -->
+              <div class="">
+                <!-- <h5 class="m-b-0">{{ buyers. }}</h5> -->
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <!-- <tbody>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
@@ -76,15 +100,38 @@
             <td>
                 <label class="label label-purple">Customer 03</label>
             </td>
-            <td>2.5</td>
+            <td>2.2</td>
          
         </tr>
-    </tbody>
-</table>
-</div>
+    </tbody> -->
+    </table>
+
+  </div>
 </template>
+
 <script>
+import Axios from "axios";
 export default {
-    name: "TopBuyers"
-}
+  name: "TopBuyers",
+
+  data() {
+    return {
+      allItems: {},
+      allBuyers: {},
+    };
+  },
+
+  mounted() {
+    Axios.get("http://localhost:3000/item//viewAllItems").then((response) => {
+      this.allItems = response.data;
+    
+
+    Axios.get("http://localhost:3000/buyer//viewAllBuyers").then((response) => {
+        this.allBuyers = response.data;
+    })
+
+      //  console.log(response.data);
+    });
+  },
+};
 </script>

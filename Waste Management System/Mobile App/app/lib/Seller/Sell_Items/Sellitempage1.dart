@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 //import 'package:instant/instant.dart';
 //import 'package:image_picker/image_picker.dart';
 
-
-
 String selectDuration;
 String selectCategory;
 
@@ -40,63 +38,51 @@ class SellForm extends StatefulWidget {
 
 class _SellFormState extends State<SellForm> {
   final _formKey = GlobalKey<FormState>();
- TextEditingController catagory = TextEditingController();
+  TextEditingController catagory = TextEditingController();
 
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
-  TextEditingController date=TextEditingController();
-  TextEditingController lastdate=TextEditingController();
+  TextEditingController date = TextEditingController();
+  TextEditingController lastdate = TextEditingController();
 
-  // 
+  //
   //TextEditingController newDate1 =TextEditingController();
 
+  //this is for take current data
 
+  String startDate = '';
+  String finishDate = '';
 
-  //this is for take current data 
-
-String startDate = '';
-String finishDate ='';
-
- getCurrentDate(){
-
-    //  DateTime cetTime = dateTimeToOffset(offset: 1.0, datetime: DateTime.now()); 
+  getCurrentDate() {
+    //  DateTime cetTime = dateTimeToOffset(offset: 1.0, datetime: DateTime.now());
     //  finalDate=formatDate(date: cetTime, format: 'DDMMYYYY');
 
-var date = new DateTime.now().toString();
-var dateParse = DateTime.parse(date);
- var formattedDate = "${dateParse.day}-${dateParse.month}-${dateParse.year}";
-  
-  // var date1 = new DateTime(2018, 1, 13);
-  // var newDate = new DateTime(date1.year-1, date1.month, date1.day+2);
-var array = selectDuration.split(' ');
-var duration=int.parse(array[0]);
-var date1 = new DateTime(dateParse.year, dateParse.month, dateParse.day);
-var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
+    var date = new DateTime.now().toString();
+    var dateParse = DateTime.parse(date);
+    var formattedDate = "${dateParse.day}-${dateParse.month}-${dateParse.year}";
 
- setState(() {
- startDate = formattedDate.toString() ;
- finishDate = editDate.toString();
- });
- }
+    // var date1 = new DateTime(2018, 1, 13);
+    // var newDate = new DateTime(date1.year-1, date1.month, date1.day+2);
+    var array = selectDuration.split(' ');
+    var duration = int.parse(array[0]);
+    var date1 = new DateTime(dateParse.year, dateParse.month, dateParse.day);
+    var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
 
+    setState(() {
+      startDate = formattedDate.toString();
+      finishDate = editDate.toString();
+    });
+  }
 
-  
- 
-
- 
   //bool _validate = false;
   @override
   Widget build(BuildContext context) {
     return Form(
         key: _formKey,
-
-
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
-
               Padding(padding: const EdgeInsets.all(10.0)),
               Container(
                   padding: const EdgeInsets.all(20.0),
@@ -135,7 +121,6 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                           }).toList(),
                         ),
                       ])),
-
               Padding(padding: const EdgeInsets.all(10.0)),
               Container(
                 padding: const EdgeInsets.all(20.0),
@@ -178,7 +163,6 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                   ],
                 ),
               ),
-
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
@@ -199,7 +183,6 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                   },
                 ),
               ),
-
               Container(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -235,7 +218,6 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                   ),
                 ),
               ),
-
               Padding(padding: const EdgeInsets.all(7.0)),
               Container(
                   padding: const EdgeInsets.all(20.0),
@@ -246,28 +228,21 @@ var editDate = new DateTime(date1.year, date1.month, date1.day + duration);
                     color: Colors.green,
                     textColor: Colors.white,
                     onPressed: () {
-                      
-                      
-                       if (_formKey.currentState.validate()){
-
+                      if (_formKey.currentState.validate()) {
                         getCurrentDate();
                         print(startDate);
                         print(finishDate);
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => UploadImageDemo(
-                                selectCategory: selectCategory,
-                                selectDuration: selectDuration,
-                                price: price.text,
-                                description: description.text,
-                                startDate:startDate,
-                                finishDate:finishDate,
-
+                                  selectCategory: selectCategory,
+                                  selectDuration: selectDuration,
+                                  price: price.text,
+                                  description: description.text,
+                                  startDate: startDate,
+                                  finishDate: finishDate,
                                 )));
-                               
                       }
-                    //}
-
-                      
+                      //}
                     },
                   )),
             ],
