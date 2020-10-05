@@ -196,38 +196,33 @@ export default new Router({
         },
         
 
-        // {
-        //     path: '/',
-        //     //component: () => import('./views/Homepage.vue'),
-        //     component: () => import('./views/PublicContainer.vue'),
+        {
+            path: '/PublicContainer',
+            //component: () => import('./views/Homepage.vue'),
+            component: () => import('./views/PublicContainer.vue'),
 
-        //     children: [
-        //         {
-        //                 path:'/Homepage',
-        //                 name:'Homepage',
-        //                 index: 36,
-        //                 component: () => import('./views/Homepage.vue')
+            children: [
+                {
+                        path:'/Homepage',
+                        name:'Homepage',
+                        index: 36,
+                        component: () => import('./views/Homepage.vue')
             
-        //              },
-                    //  {
-                    //     path:'/publicHeader',
-                    //     name:'publicHeader',
-                    //     index: 37,
-                    //     component: () => import('./views/publicCommon/publicHeader.vue')
+                     },
+                     {
+                        path:'/publicHeader',
+                        name:'publicHeader',
+                        index: 37,
+                        component: () => import('./views/publicCommon/publicHeader.vue')
             
-                    //  },
-                    //  {
-                    //      path:'/',
-                    //      name:'hompagex1',
-                    //      index: 31,
-                    //      component: () => import('./views/hompagex1.vue')
-            
-                    //   },
-        //     ]
+                     },
+                    
+
+            ]
 
 
 
-        // },
+        },
     // Redirect to  Homepage, if no match found
         {
             path: '*',

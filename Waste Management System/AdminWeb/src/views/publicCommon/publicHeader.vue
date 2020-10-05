@@ -61,7 +61,7 @@ name:"publicHeader",
 
     links: [
       {title: "Admin Login", route: "/login"},
-      {title: "notification", route: "/new"}
+      {title: "home", route: "/Homepage"}
     ]
 
 

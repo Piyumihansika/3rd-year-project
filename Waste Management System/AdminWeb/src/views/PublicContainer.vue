@@ -2,16 +2,26 @@
   
     <div class="main-wrapper">
 
-        <publicHeader/>
+        <publicHeader :headerlinks="headerlinks"/>
 
+
+    <div class="main-container-fluid">
+		
+		<router-view></router-view>
+
+		
+		</div>	
 
     </div> 
+
+    
 
 </template>
 
 <script>
 
-    import publicHeader from '/publicCommon/publicHeader.vue';
+    import publicHeader from '@/views/publicCommon/publicHeader.vue';
+    import headerlinks from '@/views/publicCommon/headerlinks.js';
 
 export default {
 
@@ -20,6 +30,10 @@ export default {
         publicHeader,
         },
 
+    data:() => ({
+	
+	headerlinks: headerlinks,
+}),
 
 }
 </script>

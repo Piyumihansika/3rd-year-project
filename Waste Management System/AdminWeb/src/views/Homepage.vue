@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <publicHeader/>
+    <!-- <publicHeader/> -->
   <v-container>
 
 
 
 
-<h1>homepage</h1>
+<h1>homepage 😁</h1>
 
 
 
