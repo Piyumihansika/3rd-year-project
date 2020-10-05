@@ -45,40 +45,40 @@ class _ReportState extends State<Report> {
           title: Text("Report"),
           backgroundColor: Colors.green,
         ),
-        body: searchBox());
+        body: _showList());
   }
 
-  Widget searchBox() {
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          child: Container(
-            color: Colors.green,
-            child: new Card(
-              child: new ListTile(
-                leading: new Icon(Icons.search),
-                title: new TextField(
-                  controller: controller,
-                  decoration: new InputDecoration(
-                      hintText: 'Search', border: InputBorder.none),
-                  // onChanged:
-                  // onSearchTextChanged,
-                ),
-                trailing: new IconButton(
-                  icon: new Icon(Icons.cancel),
-                  onPressed: () {
-                    controller.clear();
-                    // onSearchTextChanged('Aluminium');
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      body: _showList(),
-    );
-  }
+  // Widget searchBox() {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       flexibleSpace: Container(
+  //         child: Container(
+  //           color: Colors.green,
+  //           child: new Card(
+  //             child: new ListTile(
+  //               leading: new Icon(Icons.search),
+  //               title: new TextField(
+  //                 controller: controller,
+  //                 decoration: new InputDecoration(
+  //                     hintText: 'Search', border: InputBorder.none),
+  //                 // onChanged:
+  //                 // onSearchTextChanged,
+  //               ),
+  //               trailing: new IconButton(
+  //                 icon: new Icon(Icons.cancel),
+  //                 onPressed: () {
+  //                   controller.clear();
+  //                   // onSearchTextChanged('Aluminium');
+  //                 },
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //     body: _showList(),
+  //   );
+  // }
 
   Widget _showList() {
     return data != null && data.length != null && data.length > 0
@@ -96,14 +96,6 @@ class _ReportState extends State<Report> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      // SizedBox(height: 10.0),
-                      // Container(
-                      //   child: new CircleAvatar(
-                      //     backgroundImage: new NetworkImage(
-                      //       data[index]['_id'],
-                      //     ),
-                      //   ),
-                      // ),
                       SizedBox(height: 20.0),
                       Container(
                         child: Text(data[index]['itemId']),
@@ -161,11 +153,6 @@ class _ReportState extends State<Report> {
   }
 }
 
-
-
-
-
-
 // import 'package:flutter/material.dart';
 // import 'package:horizontal_data_table/horizontal_data_table.dart';
 // import 'dart:convert';
@@ -201,19 +188,19 @@ class _ReportState extends State<Report> {
 //     super.initState();
 //     user.initData(100);
 //     this.getItemDetails(context);
-    
+
 //   }
 
 //   void getItemDetails(BuildContext context) async {
 //     var response = await http.get(Uri.encodeFull(reportUrl),
 //         headers: {"Accept": "application/json"});
-    
+
 //     if (this.mounted) {
 //       setState(() {
 //         Map<String, dynamic> responseJson = json.decode(response.body);
 //         data = responseJson["auction"];
 //         print(data);
-       
+
 //       });
 //     }
 //   }
@@ -284,7 +271,7 @@ class _ReportState extends State<Report> {
 //   Widget _generateRightHandSideColumnRow(BuildContext context, int index) {
 //     return Row(
 //       children: <Widget>[
-        
+
 //         Container(
 //       child: Text(user.userInfo[index].customerId),
 //       width: 200,
@@ -346,4 +333,3 @@ class _ReportState extends State<Report> {
 //   UserInfo(this.name, this.status, this.phone, this.registerDate,
 //       this.terminationDate);
 // }
-

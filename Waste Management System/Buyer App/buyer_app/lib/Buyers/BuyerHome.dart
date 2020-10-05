@@ -121,7 +121,7 @@ class _State extends State<BuyerHome> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.notifications),
+              leading: Icon(Icons.details),
               title: Text('Auction Details'),
               onTap: () {
                 Navigator.of(context).pushNamed('/auctiondetail');
@@ -135,7 +135,7 @@ class _State extends State<BuyerHome> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.details),
+              leading: Icon(Icons.chrome_reader_mode),
               title: Text('About Us'),
               onTap: () {
                 Navigator.of(context).pushNamed('/aboutus');
