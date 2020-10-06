@@ -1,7 +1,8 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import 'package:buyerapp/utils/ResponseData.dart';
 
 //String auctionDetails = " ";
 
@@ -12,7 +13,9 @@ class AuctionDetail extends StatefulWidget {
 
 class _AuctionDetailState extends State<AuctionDetail> {
   List<dynamic> data;
-  final String viewAuctionUrl = "";
+  var itemCount;
+  final String viewAuctionUrl =
+      "${ResponseData.apiUrl}/auction/biddingItems/${ResponseData.userId}";
   TextEditingController controller = new TextEditingController();
   @override
   void initState() {
@@ -24,13 +27,14 @@ class _AuctionDetailState extends State<AuctionDetail> {
   void getItemDetails(BuildContext context) async {
     var response = await http.get(Uri.encodeFull(viewAuctionUrl),
         headers: {"Accept": "application/json"});
-    
+
     if (this.mounted) {
       setState(() {
         Map<String, dynamic> responseJson = json.decode(response.body);
-        data = responseJson["auction"];
-        print(data);
-       
+        data = responseJson["items"];
+
+        itemCount = data.length;
+        print(itemCount);
       });
     }
   }
@@ -57,7 +61,8 @@ class _AuctionDetailState extends State<AuctionDetail> {
                 title: new TextField(
                   controller: controller,
                   decoration: new InputDecoration(
-                      hintText: 'Search', border: InputBorder.none),
+                      hintText: itemCount.toString() + " ITEMS",
+                      border: InputBorder.none),
                   // onChanged:
                   // onSearchTextChanged,
                 ),
@@ -65,7 +70,6 @@ class _AuctionDetailState extends State<AuctionDetail> {
                   icon: new Icon(Icons.cancel),
                   onPressed: () {
                     controller.clear();
-                  
                   },
                 ),
               ),
@@ -93,7 +97,6 @@ class _AuctionDetailState extends State<AuctionDetail> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      
                       SizedBox(height: 10.0),
                       Container(
                         child: new Text(
@@ -137,14 +140,15 @@ class _AuctionDetailState extends State<AuctionDetail> {
                       SizedBox(height: 10.0),
                       Container(
                         child: new Text(
-                          'Bid Price' + ':' + data[index]['bidValue'],
+                          'Bid Price' +
+                              ':' +
+                              data[index]['bidValue'].toString(),
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
                       ),
-                     
                     ],
                   ),
                 ),
@@ -157,4 +161,3 @@ class _AuctionDetailState extends State<AuctionDetail> {
           );
   }
 }
-

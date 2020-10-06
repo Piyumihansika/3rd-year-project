@@ -86,4 +86,21 @@ router.post('/addFinalBid', async(res,req) => {
 
 })
 
+//bidding items for buyer
+router.get("/biddingItems/:id", async(req,res) => {
+    const items = await Auction.find( {buyerId : req.params.id} )
+    res.status(200).json({"items":items})
+    console.log(items)
+})
+
+//bidding items for customer
+router.get("/bidItems/:id", async(req,res) => {
+    const items = await Auction.find({customerId : req.params.id})
+    res.status(200).json({"items":items})
+    console.log(items)
+})
+
+
+
+
 module.exports = router;

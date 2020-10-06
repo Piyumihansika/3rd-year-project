@@ -22,5 +22,6 @@ app.use('/forgot',require('./controllers/forgotEmailBodyController'))
 app.use('/item',require('./controllers/itemController'))
 app.use('/category',require('./controllers/categoryController'))
 app.use('/auction',require('./controllers/auctionController'))
+app.use('/finalBids',require('./controllers/finalBidsController'))
 
 module.exports = app;

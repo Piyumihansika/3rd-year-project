@@ -19,7 +19,7 @@ export default new Router({
     // ======================
     // Full Layout
     // ======================
-			path: '/',
+			path: '/new',
             component: () => import('./layout/full/MainContainer.vue'),
             // component: () => import('./views/Homepage.vue'),
             // ======================
@@ -179,12 +179,7 @@ export default new Router({
                     component: () => import('./views/components/dashboard/reports.vue')
                 },
 
-                {
-                    path: '/login',
-                    name: 'Login',
-                    index: 35,
-                    component: () => import('./views/components/dashboard/login.vue')
-                },
+              
 
                 // {
                 //         path:'/hompagex1',
@@ -199,7 +194,7 @@ export default new Router({
         
 
         {
-            path: '/PublicContainer',
+            path: '/',
             //component: () => import('./views/Homepage.vue'),
             component: () => import('./views/PublicContainer.vue'),
 
@@ -232,6 +227,12 @@ export default new Router({
                         component: () => import('./views/publicCommon/publicHeader.vue')
             
                      },
+                     {
+                        path: '/login',
+                        name: 'Login',
+                        index: 35,
+                        component: () => import('./views/components/dashboard/login.vue')
+                    },
                     
 
             ]

@@ -12,6 +12,10 @@ class _State extends State<Category> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
+        ),
         title: Text('Green wasteland'),
         backgroundColor: Colors.green,
       ),

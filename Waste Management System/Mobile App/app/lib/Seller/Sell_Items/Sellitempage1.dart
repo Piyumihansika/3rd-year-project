@@ -39,7 +39,6 @@ class SellForm extends StatefulWidget {
 class _SellFormState extends State<SellForm> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController catagory = TextEditingController();
-
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
   TextEditingController date = TextEditingController();

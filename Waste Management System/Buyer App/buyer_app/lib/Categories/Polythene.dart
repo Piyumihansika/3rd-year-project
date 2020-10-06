@@ -16,7 +16,7 @@ class Polythene extends StatefulWidget {
 class _PolytheneState extends State<Polythene> {
   List<dynamic> data;
   // File tmpFile;
-
+  var itemCount;
   final String viewitemUrl =
       "${ResponseData.apiUrl}/item/viewItem/${ResponseData.category}";
   // final String viewImage =
@@ -43,6 +43,7 @@ class _PolytheneState extends State<Polythene> {
 
         print(responseJson);
         data = responseJson["item"];
+        itemCount = data.length;
 
         // String resJson = json.decode(res.body);
         // tmpFile = base64.decode(resJson) as File;
@@ -69,22 +70,23 @@ class _PolytheneState extends State<Polythene> {
             color: Colors.green,
             child: new Card(
               child: new ListTile(
-                  // leading: new Icon(Icons.search),
-                  // title: new TextField(
-                  //   controller: controller,
-                  //   decoration: new InputDecoration(
-                  //       hintText: 'Search', border: InputBorder.none),
-                  //   // onChanged:
-                  //   // onSearchTextChanged,
-                  // ),
-                  // trailing: new IconButton(
-                  //   icon: new Icon(Icons.cancel),
-                  //   onPressed: () {
-                  //     controller.clear();
-                  //     // onSearchTextChanged('Aluminium');
-                  //   },
-                  // ),
-                  ),
+                leading: new Icon(Icons.search),
+                title: new TextField(
+                  controller: controller,
+                  decoration: new InputDecoration(
+                      hintText: itemCount.toString() + " ITEM/S",
+                      border: InputBorder.none),
+                  // onChanged:
+                  // onSearchTextChanged,
+                ),
+                trailing: new IconButton(
+                  icon: new Icon(Icons.cancel),
+                  onPressed: () {
+                    controller.clear();
+                    // onSearchTextChanged('Aluminium');
+                  },
+                ),
+              ),
             ),
           ),
         ),
