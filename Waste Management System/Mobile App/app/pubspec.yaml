@@ -1,3 +1,4 @@
+
 name: app
 description: A new Flutter project.
 
@@ -32,7 +33,7 @@ dependencies:
   flutter_speed_dial: ^1.2.5
   passwordfield: ^0.0.5
   email_validator: '^1.0.0'
-  flutter_form_builder: ^3.4.1
+  #flutter_form_builder: ^3.4.1
   http: ^0.12.1
   image_picker: ^0.5.4+2
   dropdownfield: ^1.0.3

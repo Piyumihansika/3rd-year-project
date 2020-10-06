@@ -28,7 +28,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                             <div class="mr-2">
-                                <!-- <vs-avatar color="primary" text= {{customers.id}} /> -->
+                                <vs-avatar color="primary" text= "Buyer" />
                             </div>
                             <div class="">
                                 <h5 class="m-b-0">{{ buyers.firstName }}  {{buyers.lastName}}</h5>
@@ -112,7 +112,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                             <div class="mr-2">
-                                <!-- <vs-avatar color="primary" text= {{customers.id}} /> -->
+                              <vs-avatar color="primary" text= "Buyer" />
                             </div>
                             <div class="">
                                 <h5 class="m-b-0">{{ companies.companyName }}</h5>
