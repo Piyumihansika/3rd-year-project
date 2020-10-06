@@ -2,7 +2,7 @@
   <div class="table-responsive">
     <table class="table v-middle border">
       <thead>
-        <tr class="">
+        <tr>
           <th class="border-top-0">Buyer</th>
           <th class="border-top-0">Winning Item</th>
           <th class="border-top-0">Max Bid</th>
