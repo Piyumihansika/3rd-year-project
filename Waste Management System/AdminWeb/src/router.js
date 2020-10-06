@@ -19,7 +19,7 @@ export default new Router({
     // ======================
     // Full Layout
     // ======================
-			path: '/new',
+			path: '/',
             component: () => import('./layout/full/MainContainer.vue'),
             // component: () => import('./views/Homepage.vue'),
             // ======================
@@ -202,6 +202,20 @@ export default new Router({
                         name:'Homepage',
                         index: 36,
                         component: () => import('./views/Homepage.vue')
+            
+                     },
+                     {
+                        path:'/publicnews',
+                        name:'news',
+                        index: 36,
+                        component: () => import('./views/publicnews.vue')
+            
+                     },
+                     {
+                        path:'aboutus/',
+                        name:'aboutus',
+                        index: 36,
+                        component: () => import('./views/aboutus.vue')
             
                      },
                      {
