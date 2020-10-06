@@ -103,9 +103,6 @@ class _PlaceBidState extends State<PlaceBid> {
     if (response.statusCode == 200) {
       print(
           "--------------------------------submit Bid-----------------------");
-      // Navigator.of(context)
-      //     .push(MaterialPageRoute(builder: (BuildContext context) => Bid()));
-
     } else {
       print(response.statusCode);
     }
