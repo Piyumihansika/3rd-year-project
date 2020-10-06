@@ -1,10 +1,11 @@
 // import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:buyerapp/utils/ResponseData.dart';
 
-String item = "Polythin";
+String item = ResponseData.category;
 String base64Image;
 
 class Polythene extends StatefulWidget {
@@ -16,7 +17,8 @@ class _PolytheneState extends State<Polythene> {
   List<dynamic> data;
   // File tmpFile;
 
-  final String viewitemUrl = "${ResponseData.apiUrl}/item/viewItem/$item";
+  final String viewitemUrl =
+      "${ResponseData.apiUrl}/item/viewItem/${ResponseData.category}";
   // final String viewImage =
   //     "${ResponseData.apiUrl}/item/viewImage/${ResponseData.itemImage}";
 
@@ -52,7 +54,7 @@ class _PolytheneState extends State<Polythene> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Polythene Items'),
+        title: Text(ResponseData.category + ' Items'),
         backgroundColor: Colors.green,
       ),
       body: searchBox(),
@@ -67,22 +69,22 @@ class _PolytheneState extends State<Polythene> {
             color: Colors.green,
             child: new Card(
               child: new ListTile(
-                leading: new Icon(Icons.search),
-                title: new TextField(
-                  controller: controller,
-                  decoration: new InputDecoration(
-                      hintText: 'Search', border: InputBorder.none),
-                  // onChanged:
-                  // onSearchTextChanged,
-                ),
-                trailing: new IconButton(
-                  icon: new Icon(Icons.cancel),
-                  onPressed: () {
-                    controller.clear();
-                    // onSearchTextChanged('Aluminium');
-                  },
-                ),
-              ),
+                  // leading: new Icon(Icons.search),
+                  // title: new TextField(
+                  //   controller: controller,
+                  //   decoration: new InputDecoration(
+                  //       hintText: 'Search', border: InputBorder.none),
+                  //   // onChanged:
+                  //   // onSearchTextChanged,
+                  // ),
+                  // trailing: new IconButton(
+                  //   icon: new Icon(Icons.cancel),
+                  //   onPressed: () {
+                  //     controller.clear();
+                  //     // onSearchTextChanged('Aluminium');
+                  //   },
+                  // ),
+                  ),
             ),
           ),
         ),
@@ -111,11 +113,11 @@ class _PolytheneState extends State<Polythene> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       SizedBox(height: 10.0),
-                      Container(
-                        child: new CircleAvatar(
-                          backgroundImage: new NetworkImage("new.png"),
-                        ),
-                      ),
+                      // Container(
+                      //   child: new CircleAvatar(
+                      //     backgroundImage: new NetworkImage("polythene.jpg"),
+                      //   ),
+                      // ),
                       SizedBox(height: 20.0),
                       Container(
                         child: Text(data[index]['category']),
@@ -163,7 +165,7 @@ class _PolytheneState extends State<Polythene> {
                                   data[index]['customerId'];
 
                               Navigator.of(context).pushNamed('/bid');
-                              print(ResponseData.customerId);
+                              print(ResponseData.itemId);
                             }),
                       ),
                     ],

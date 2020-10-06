@@ -21,7 +21,7 @@ export default new Router({
     // ======================
 			path: '/',
             component: () => import('./layout/full/MainContainer.vue'),
-            //component: () => import('./views/Homepage.vue')
+            // component: () => import('./views/Homepage.vue'),
             // ======================
             // Theme routes / pages
             // ======================
@@ -177,7 +177,9 @@ export default new Router({
                     name: 'Reports',
                     index: 34,
                     component: () => import('./views/components/dashboard/reports.vue')
-                },{
+                },
+
+                {
                     path: '/login',
                     name: 'Login',
                     index: 35,
@@ -197,25 +199,41 @@ export default new Router({
         
 
         {
-            path: '/Homepage',
-            component: () => import('./views/Homepage.vue'),
-            // component: () => import('./views/publicCommon/publicHeader.vue'),
+            path: '/PublicContainer',
+            //component: () => import('./views/Homepage.vue'),
+            component: () => import('./views/PublicContainer.vue'),
 
             children: [
                 {
-                        path:'/Homepage',
+                        path:'/',
                         name:'Homepage',
-                        index: 30,
+                        index: 36,
                         component: () => import('./views/Homepage.vue')
             
                      },
-                    //  {
-                    //      path:'/',
-                    //      name:'hompagex1',
-                    //      index: 31,
-                    //      component: () => import('./views/hompagex1.vue')
+                     {
+                        path:'/publicnews',
+                        name:'news',
+                        index: 36,
+                        component: () => import('./views/publicnews.vue')
             
-                    //   },
+                     },
+                     {
+                        path:'/aboutus',
+                        name:'aboutus',
+                        index: 36,
+                        component: () => import('./views/aboutus.vue')
+            
+                     },
+                     {
+                        path:'/publicHeader',
+                        name:'publicHeader',
+                        index: 37,
+                        component: () => import('./views/publicCommon/publicHeader.vue')
+            
+                     },
+                    
+
             ]
 
 
