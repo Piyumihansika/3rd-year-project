@@ -27,17 +27,7 @@
 
     
       <vs-navbar-item index="3">
-  <div>
-    <vs-navbar collapse v-model="activeItem" class="nabarx">
-      <vs-navbar-item index="0">
-        <a href="#">Contact US</a> 
-      </vs-navbar-item>
-      <!-- <vs-navbar-item index="1" v-for="link in links" :key="link.key" :to="link.url">
-        {{link.name}}
-      </vs-navbar-item> -->
-   
-    </vs-navbar>
-  </div>
+  
     </vs-navbar-item>
 
 
@@ -83,14 +73,14 @@ name:"publicHeader",
   }),
  
 
-  data: () => ({
-    activeItem: 0,
+  // data: () => ({
+  //   activeItem: 0,
 
-    links: [
-      { title: "Admin Login", route: "/login" },
-      { title: "notification", route: "/new" },
-    ],
-  }),
+  //   links: [
+  //     { title: "Admin Login", route: "/login" },
+  //     { title: "notification", route: "/new" },
+  //   ],
+  // }),
 
   components: {
     // StarterPage

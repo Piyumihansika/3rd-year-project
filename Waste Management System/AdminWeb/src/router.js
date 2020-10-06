@@ -33,7 +33,7 @@ export default new Router({
                     redirect: '/'
                 },
                 {
-                    path: '/starterkit',
+                    path: '/',
                     name: 'Starterkit',
                     index: 1,
                     component: () => import('./views/StarterPage.vue')
@@ -179,6 +179,13 @@ export default new Router({
                     component: () => import('./views/components/dashboard/reports.vue')
                 },
 
+                {
+                    path: '/login',
+                    name: 'Login',
+                    index: 35,
+                    component: () => import('./views/components/dashboard/login.vue')
+                },
+
                 // {
                 //         path:'/hompagex1',
                 //          name:'hompagex1',
@@ -212,7 +219,7 @@ export default new Router({
             
                      },
                      {
-                        path:'aboutus/',
+                        path:'/aboutus',
                         name:'aboutus',
                         index: 36,
                         component: () => import('./views/aboutus.vue')

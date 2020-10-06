@@ -19,10 +19,10 @@
 
 <script>
 
-  import publicHeader from './publicCommon/publicHeader.vue'
+  //import publicHeader from './publicCommon/publicHeader.vue'
 export default {
 components: {
-       publicHeader
+       
            }
 }
 </script>
