@@ -21,7 +21,7 @@ export default new Router({
     // ======================
 			path: '/MainContainer',
             component: () => import('./layout/full/MainContainer.vue'),
-            //component: () => import('./views/Homepage.vue')
+            // component: () => import('./views/Homepage.vue'),
             // ======================
             // Theme routes / pages
             // ======================
@@ -33,7 +33,7 @@ export default new Router({
                     redirect: '/'
                 },
                 {
-                    path: '/',
+                    path: '/starterkit',
                     name: 'Starterkit',
                     index: 1,
                     component: () => import('./views/StarterPage.vue')
@@ -177,11 +177,6 @@ export default new Router({
                     name: 'Reports',
                     index: 34,
                     component: () => import('./views/components/dashboard/reports.vue')
-                },{
-                    path: '/login',
-                    name: 'Login',
-                    index: 35,
-                    component: () => import('./views/components/dashboard/login.vue')
                 },
 
                 // {
@@ -203,7 +198,7 @@ export default new Router({
 
             children: [
                 {
-                        path:'/Homepage',
+                        path:'/',
                         name:'Homepage',
                         index: 36,
                         component: () => import('./views/Homepage.vue')

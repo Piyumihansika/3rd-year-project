@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:buyerapp/utils/ResponseData.dart';
 import 'package:http/http.dart' as http;
 
+var id;
+var newid = id;
 final String submitBidUrl = "http://10.0.2.2:3000/auction/addBid";
 
 class Bid extends StatefulWidget {
+  final String itemId;
   final String itemName;
   final String currentBid;
   final String description;
@@ -16,6 +19,7 @@ class Bid extends StatefulWidget {
 
   Bid(
       {Key key,
+      this.itemId,
       this.itemName,
       this.currentBid,
       this.description,
@@ -50,6 +54,39 @@ class _PlaceBidState extends State<PlaceBid> {
   TextEditingController bid = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  void initState() {
+    super.initState();
+    this.getMaxBid(context);
+  }
+
+  void getMaxBid(BuildContext context) async {
+    final String viewMaxBid =
+        "${ResponseData.apiUrl}/auction/maxBid/${ResponseData.itemId}";
+    var response = await http.get(Uri.encodeFull(viewMaxBid),
+        headers: {"Accept": "application/json"});
+
+    if (this.mounted) {
+      setState(() {
+        print(response.statusCode);
+        if (response.statusCode == 200) {
+          //  Map<String, dynamic>ResponseData.currentMaxBid = (response.body).toString();
+          Map<String, dynamic> map = json.decode(response.body);
+          ResponseData.currentMaxBid = (map["bidValue"]).toString();
+          id = ResponseData.itemId;
+          print("---------------------- ID: " +
+              id +
+              "-----------------------------");
+        } else {
+          ResponseData.currentMaxBid = (json.decode(response.body)).toString();
+
+          print('----------------------------' +
+              ResponseData.currentMaxBid +
+              '----------------------------');
+        }
+      });
+    }
+  }
+
   void submitBid(BuildContext context) async {
     var date = new DateTime.now().toString();
     print(date);
@@ -66,6 +103,9 @@ class _PlaceBidState extends State<PlaceBid> {
     if (response.statusCode == 200) {
       print(
           "--------------------------------submit Bid-----------------------");
+      // Navigator.of(context)
+      //     .push(MaterialPageRoute(builder: (BuildContext context) => Bid()));
+
     } else {
       print(response.statusCode);
     }
@@ -171,7 +211,9 @@ class _PlaceBidState extends State<PlaceBid> {
                         child: Container(
                           color: Colors.yellowAccent,
                           child: new Text(
-                            'Current Max Bid' + ':' + 'Rs.1000',
+                            'Current Max Bid' +
+                                ':' +
+                                ResponseData.currentMaxBid,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -262,6 +304,7 @@ class _PlaceBidState extends State<PlaceBid> {
                             ),
                             onPressed: () {
                               submitBid(context);
+                              bid.clear();
                               // if (_formKey.currentState.validate()) {
 
                               // Navigator.of(context).pushNamed('');

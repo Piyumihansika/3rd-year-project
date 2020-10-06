@@ -1,10 +1,8 @@
 <template>
   <div>
-    <vs-navbar  v-model="activeItem" class="nabarx">
+    <vs-navbar v-model="activeItem" class="nabarx">
       <div slot="title">
-        <vs-navbar-title>
-          Green Wasteland
-        </vs-navbar-title>
+        <vs-navbar-title> Green Wasteland </vs-navbar-title>
       </div>
 
       <!-- <vs-navbar-item index="0">
@@ -43,6 +41,18 @@
     </vs-navbar-item>
 
 
+      <vs-navbar-item index="3">
+        <div>
+          <vs-navbar collapse v-model="activeItem" class="nabarx">
+            <vs-navbar-item index="0">
+              <a href="#">Contact US</a>
+            </vs-navbar-item>
+            <!-- <vs-navbar-item index="1" v-for="link in links" :key="link.key" :to="link.url">
+        {{link.name}}
+      </vs-navbar-item> -->
+          </vs-navbar>
+        </div>
+      </vs-navbar-item>
     </vs-navbar>
 
 
@@ -52,7 +62,6 @@
 
 
 <script>
-
 // import StarterPage from '../StarterPage.vue'
 export default {
 name:"publicHeader",
@@ -74,15 +83,20 @@ name:"publicHeader",
   }),
  
 
+  data: () => ({
+    activeItem: 0,
+
+    links: [
+      { title: "Admin Login", route: "/login" },
+      { title: "notification", route: "/new" },
+    ],
+  }),
 
   components: {
-            // StarterPage
-           
-           }
-
-}
+    // StarterPage
+  },
+};
 </script>
 
 <style>
-
 </style>
