@@ -18,11 +18,11 @@
       </vs-navbar-item> -->
 
       <vs-navbar-item v-for="publiclinks in publiclinks" :key="publiclinks.title" @click="$router({path: publiclinks.route})">
-      <vs-button color="success" type="filled" :to="{ path: publiclinks.route }">{{publiclinks.title}}</vs-button>
+      <vs-button color="success"   type="flat" :to="{ path: publiclinks.route }">{{publiclinks.title}}</vs-button>
       </vs-navbar-item>
 
       <vs-navbar-item v-for="links in links" :key="links.title" @click="$router({path: links.route})">
-      <vs-button color="success" type="filled" :to="{ path: links.route }">{{links.title}}</vs-button>
+      <vs-button color="success"   type="flat" :to="{ path: links.route }">{{links.title}}</vs-button>
       </vs-navbar-item>
 
     
