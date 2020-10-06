@@ -52,6 +52,14 @@ router.delete("/deleteCustomer/:id", async (req, res) => {
     
  });
 
+// View All Admins
+router.get('/viewAllAdmin', async(req,res) => {
+    const allAdmin = await Admin.find();
+    res.json(allAdmin)
+  })
+
+
+
 
 //REMOVE/DELETE BUYER
  router.delete("/deleteBuyer/:id", async (req, res) => {
