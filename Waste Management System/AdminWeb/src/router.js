@@ -19,7 +19,7 @@ export default new Router({
     // ======================
     // Full Layout
     // ======================
-			path: '/MainContainer',
+			path: '/',
             component: () => import('./layout/full/MainContainer.vue'),
             // component: () => import('./views/Homepage.vue'),
             // ======================
@@ -192,7 +192,7 @@ export default new Router({
         
 
         {
-            path: '/',
+            path: '/PublicContainer',
             //component: () => import('./views/Homepage.vue'),
             component: () => import('./views/PublicContainer.vue'),
 
