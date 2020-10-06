@@ -57,7 +57,7 @@ class _ChooseLocaTypeState extends State<ChooseLocaType> {
             new RaisedButton(
                 child: Text('Set Using Map'),
                 onPressed: (){
-
+                Navigator.of(context).pushNamed('/track');
 
                 } ,
                 shape: RoundedRectangleBorder(
