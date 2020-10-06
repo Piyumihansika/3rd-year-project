@@ -1,16 +1,28 @@
 <template>
   <v-app>
-  
-<h1>hello</h1>
+    <!-- <publicHeader/> -->
+  <v-container>
+
+
+
+
+<h1>homepage 😁</h1>
+
+
+
+
+
+  </v-container>
   </v-app>
 
 </template>
 
 <script>
 
+  import publicHeader from './publicCommon/publicHeader.vue'
 export default {
 components: {
-       
+       publicHeader
            }
 }
 </script>

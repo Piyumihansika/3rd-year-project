@@ -359,18 +359,18 @@ class _LoginFormState extends State<LoginForm> {
                     child: Container(
                       width: 140,
                       height: 140,
-                      child: Icon(
-                        Icons.account_circle,
-                        color: Colors.green,
-                        size: 100.0,
-                      ),
-                      // decoration: BoxDecoration(
-                      //   // color: Colors.white,
-                      //   image: DecorationImage(
-                      //     image: AssetImage("assets/images/logo.jpg"),
-                      //     fit: BoxFit.cover,
-                      //   ),
+                      // child: Icon(
+                      //   Icons.account_circle,
+                      //   color: Colors.green,
+                      //   size: 100.0,
                       // ),
+                      decoration: BoxDecoration(
+                        // color: Colors.white,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/log.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                   // Padding(padding: EdgeInsets.only(left:10.5)),

@@ -10,13 +10,37 @@
             <th class="border-top-0">Rating</th>
         </tr>
     </thead>
-    <tbody>
+     <tbody>
+        <tr v-for="customers in allCustomers" :key="customers._id">
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div>
+              <div class="">
+                <h5 class="m-b-0">{{ customers.firstName }}  {{customers.lastName}}</h5>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <!-- <div class="mr-2">
+                <vs-avatar color="primary" text="Buyer 1" />
+              </div> -->
+              <div class="">
+                <!-- <h5 class="m-b-0">{{ buyers. }}</h5> -->
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    <!-- <tbody>
         <tr>
             <td>
                 <div class="d-flex align-items-center">
                     <div class="mr-2"><vs-avatar color="primary" text="Crimary 1" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Customer 01</h5>
+                        <h5 class="m-b-0">{{allCustomers[0].firstName}}</h5>
                     </div>
                 </div>
             </td>
@@ -33,7 +57,7 @@
                 <div class="d-flex align-items-center">
                     <div class="mr-2"><vs-avatar color="danger" text="Crimary 2" /></div>
                     <div class="">
-                        <h5 class="m-b-0">Customer 02</h5>
+                        <h5 class="m-b-0"> Customer 02</h5>
                     </div>
                 </div>
             </td>
@@ -79,12 +103,29 @@
             <td>3.5</td>
          
         </tr>
-    </tbody>
+    </tbody> -->
 </table>
 </div>
 </template>
+
 <script>
+import Axios from "axios";
 export default {
-    name: "TopCustomers"
-}
+  name: "TopCustomers",
+
+  data() {
+    return {
+      allCustomers: {},
+    };
+  },
+
+  mounted() {
+    Axios.get("http://localhost:3000/customer//viewAllCustomer").then((response) => {
+      this.allCustomers = response.data;
+
+
+      //  console.log(response.data);
+    });
+  },
+};
 </script>
