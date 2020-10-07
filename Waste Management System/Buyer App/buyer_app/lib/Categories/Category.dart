@@ -34,12 +34,15 @@ class _CategoryState extends State<CategoryPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              decoration: new BoxDecoration(
-                  image: new DecorationImage(
-                      image: new AssetImage('assets/images/category.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(
-                          Colors.black.withAlpha(0xBF), BlendMode.darken))),
+
+
+              
+              // decoration: new BoxDecoration(
+              //     image: new DecorationImage(
+              //         image: new AssetImage('assets/images/category.jpg'),
+              //         fit: BoxFit.cover,
+              //         colorFilter: new ColorFilter.mode(
+              //             Colors.black.withAlpha(0xBF), BlendMode.darken))),
               child: Stack(children: <Widget>[
                 // Container(
                 //   height: 200.0,
@@ -82,26 +85,26 @@ class _CategoryState extends State<CategoryPage> {
                       ),
                     ),
                     SizedBox(height: 45.0),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(30),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Colors.green,
-                                size: 30.0,
-                              ),
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 15, bottom: 15),
-                              hintText: 'Search',
-                              hintStyle: TextStyle(color: Colors.grey)),
-                        ),
-                      ),
-                    )
+                    // Padding(
+                    //   padding: EdgeInsets.only(left: 15.0, right: 15.0),
+                    //   child: Material(
+                    //     elevation: 5.0,
+                    //     borderRadius: BorderRadius.circular(30),
+                    //     child: TextFormField(
+                    //       decoration: InputDecoration(
+                    //           border: InputBorder.none,
+                    //           prefixIcon: Icon(
+                    //             Icons.search,
+                    //             color: Colors.green,
+                    //             size: 30.0,
+                    //           ),
+                    //           contentPadding: EdgeInsets.only(
+                    //               left: 20, top: 15, bottom: 15),
+                    //           hintText: 'Search',
+                    //           hintStyle: TextStyle(color: Colors.grey)),
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ]),
