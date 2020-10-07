@@ -6,6 +6,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+
   createAlertDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -49,7 +50,7 @@ class _SettingPageState extends State<SettingPage> {
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      backgroundColor: Colors.green[200],   
+      backgroundColor: Colors.white,   
 
       
       body: SingleChildScrollView(
@@ -71,10 +72,10 @@ class _SettingPageState extends State<SettingPage> {
               
               Card(
                 
-                color: Colors.green[200],
-                elevation: 8.0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
+                color: Colors.white,
+                //elevation: 8.0,
+                // shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(10.0)),
                 child: Column(
                   children: <Widget>[
                     ListTile(

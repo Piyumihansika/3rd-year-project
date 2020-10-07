@@ -63,8 +63,6 @@ router.get('/maxBid/:itemId', async(req,res) => {
        const details = await Auction.findOne({bidValue: maxbid})
        res.status(200).json(details);
     //    console.log(details)
-   
-
     }
 
     
@@ -99,23 +97,47 @@ router.get("/bidItems/:id", async(req,res) => {
     var category = []
     var Polythin = []
     var Aluminium = []
+    var Plastic = []
+    var poItem = []
+
     for(var i=0; i<items.length; i++){
-        var itemDetails = await Item.findOne({_id:items[i].itemId})      
-        category.push(itemDetails.category)
+        
+        var itemDetails = await Item.findOne({_id:items[i].itemId})
+       
         if(itemDetails.category == 'Polythin'){
             Polythin.push(itemDetails)
           
         }else if(itemDetails.category == 'Aluminium'){
             Aluminium.push(itemDetails)
-         
-        }else{
+        
+        }else if(itemDetails.category == "Plastic"){
+            Plastic.push(itemDetails)
+        }
+        else{
             res.json("Invalid category")
         }
     }
 
-   
+    for(var j=0;j<Polythin.length;j++){
+        
+
+        if(poItem[j]!=Polythin[j]._id){
+            poItem.push(Polythin[j]._id)
+        }
+    }
+    console.log(poItem)
+
+    if(Polythin.length != 0 ){
+        category.push("Polythin")
+    }
+    if(Aluminium.length != 0 ){
+        category.push("Aluminium")
+    }
+    if(Plastic.length != 0 ){
+        category.push("Plastic")
+    }
     res.status(200).json({"category":category,"Polythin":Polythin,"Aluminium":Aluminium})
-    // console.log(Polythin)
+    // console.log(items)
 })
 
 router.get('/itemBids/:id', async(req,res) => {
@@ -137,7 +159,5 @@ router.get('/bidValues/:id', async(req,res) => {
     res.json({"bids":bidValues})
     console.log("-------------Bid "+bidValues)
 })
-
-
 
 module.exports = router;

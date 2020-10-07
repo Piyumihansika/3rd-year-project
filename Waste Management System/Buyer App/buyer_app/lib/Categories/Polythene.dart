@@ -165,7 +165,7 @@ class _PolytheneState extends State<Polythene> {
                               ResponseData.duration = data[index]['duration'];
                               ResponseData.customerId =
                                   data[index]['customerId'];
-
+                              ResponseData.endDate = data[index]['finishData'];
                               Navigator.of(context).pushNamed('/bid');
                               print(ResponseData.itemId);
                             }),
