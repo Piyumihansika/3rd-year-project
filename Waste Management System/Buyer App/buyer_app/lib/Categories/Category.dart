@@ -1,3 +1,4 @@
+import 'package:buyerapp/utils/ResponseData.dart';
 import 'package:flutter/material.dart';
 //import 'package:email_validator/email_validator.dart';
 
@@ -125,35 +126,6 @@ class _CategoryState extends State<CategoryPage> {
             ),
 
             //plastic
-            Container(
-              alignment: Alignment(-0.1, 1),
-              child: Column(
-                children: <Widget>[
-                  Padding(padding: EdgeInsets.all(10.5)),
-                  new GestureDetector(
-                      child: Container(
-                          width: 300,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            // color: Colors.white,
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/plastics.jpg"),
-                                fit: BoxFit.cover),
-                            // child: Text("clickMe") // button text
-                          )),
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/plastic');
-                      }),
-                  new Container(
-                    child: Text('Plastic',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-            ),
 
             //polythene
             Container(
@@ -168,11 +140,14 @@ class _CategoryState extends State<CategoryPage> {
                           decoration: BoxDecoration(
                             // color: Colors.white,
                             image: DecorationImage(
-                                image: AssetImage("assets/images/polythene.jpg"),
+                                image:
+                                    AssetImage("assets/images/polythene.jpg"),
                                 fit: BoxFit.cover),
                             // child: Text("clickMe") // button text
                           )),
                       onTap: () {
+                        ResponseData.category = 'Polythin';
+
                         Navigator.of(context).pushNamed('/polythene');
                       }),
                   new Container(
@@ -203,10 +178,42 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
-                        Navigator.of(context).pushNamed('/aluminium');
+                        ResponseData.category = 'Aluminium';
+
+                        Navigator.of(context).pushNamed('/polythene');
                       }),
                   new Container(
                     child: Text('Aluminum',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              alignment: Alignment(-0.1, 1),
+              child: Column(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(10.5)),
+                  new GestureDetector(
+                      child: Container(
+                          width: 300,
+                          height: 200,
+                          decoration: BoxDecoration(
+                            // color: Colors.white,
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/plastics.jpg"),
+                                fit: BoxFit.cover),
+                            // child: Text("clickMe") // button text
+                          )),
+                      onTap: () {
+                        ResponseData.category = 'Plastic';
+                        Navigator.of(context).pushNamed('/plastic');
+                      }),
+                  new Container(
+                    child: Text('Plastic',
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,
@@ -233,6 +240,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Brash';
+
                         Navigator.of(context).pushNamed('/brash');
                       }),
                   new Container(
@@ -263,6 +272,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Copper';
+
                         Navigator.of(context).pushNamed('/copper');
                       }),
                   new Container(
@@ -293,6 +304,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Glass';
+
                         Navigator.of(context).pushNamed('/glass');
                       }),
                   new Container(
@@ -324,6 +337,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Other';
+
                         Navigator.of(context).pushNamed('/othermetals');
                       }),
                   new Container(
@@ -355,6 +370,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Paper';
+
                         Navigator.of(context).pushNamed('/papercardboard');
                       }),
                   new Container(
@@ -386,6 +403,8 @@ class _CategoryState extends State<CategoryPage> {
                                 fit: BoxFit.cover),
                           )),
                       onTap: () {
+                        ResponseData.category = 'Land Concrete';
+
                         Navigator.of(context).pushNamed('/landconcrete');
                       }),
                   new Container(

@@ -108,11 +108,12 @@ class _SellFormState extends State<SellForm> {
                           validator: (value) =>
                               value == null ? 'Enter category is must' : null,
                           items: [
-                            'Polythin',
+                            'Paper',
+                            'Glass',
                             'Metal',
-                            'Organic',
+                            'Electronics',
                             'Plastic',
-                            'Silver',
+                            'Organic',
                           ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -179,6 +180,43 @@ class _SellFormState extends State<SellForm> {
                     if (value.isEmpty) {
                       return 'Please enter some price';
                     }
+                    else if(selectCategory=='Paper'){
+                      if(int.parse(value) >15){
+                       return 'Must be less or equal to Rs.15';
+                      }
+                     }
+
+                    else if(selectCategory=='Glass'){
+                      if(int.parse(value) >25){
+                       return 'Must be less or equal to Rs.25';
+                      }
+                     }
+                     else if(selectCategory=='Metal'){
+                      if(int.parse(value) >30){
+                       return 'Must be less or equal to Rs.30';
+                      }
+                     }
+
+                     else if(selectCategory=='Electronics'){
+                      if(int.parse(value) >30){
+                       return 'Must be less or equal to Rs.30';
+                      }
+                     }
+
+                     else if(selectCategory=='Plastic'){
+                      if(int.parse(value) >15){
+                       return 'Must be less or equal to Rs.15';
+                      }
+                     }
+
+
+                     else if(selectCategory=='Organic'){
+                      if(int.parse(value) >10){
+                       return 'Must be less or equal to Rs.10';
+                      }
+                     }
+
+
                     return null;
                   },
                 ),

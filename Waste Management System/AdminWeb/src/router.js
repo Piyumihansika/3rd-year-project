@@ -21,7 +21,7 @@ export default new Router({
     // ======================
 			path: '/',
             component: () => import('./layout/full/MainContainer.vue'),
-            //component: () => import('./views/Homepage.vue')
+            // component: () => import('./views/Homepage.vue'),
             // ======================
             // Theme routes / pages
             // ======================
@@ -177,12 +177,14 @@ export default new Router({
                     name: 'Reports',
                     index: 34,
                     component: () => import('./views/components/dashboard/reports.vue')
-                },{
-                    path: '/login',
-                    name: 'Login',
-                    index: 35,
-                    component: () => import('./views/components/dashboard/login.vue')
                 },
+
+                // {
+                //     path: '/login',
+                //     name: 'Login',
+                //     index: 35,
+                //     component: () => import('./views/components/dashboard/login.vue')
+                // },
 
                 // {
                 //         path:'/hompagex1',
@@ -203,10 +205,24 @@ export default new Router({
 
             children: [
                 {
-                        path:'/Homepage',
+                        path:'/',
                         name:'Homepage',
                         index: 36,
                         component: () => import('./views/Homepage.vue')
+            
+                     },
+                     {
+                        path:'/publicnews',
+                        name:'news',
+                        index: 36,
+                        component: () => import('./views/publicnews.vue')
+            
+                     },
+                     {
+                        path:'/aboutus',
+                        name:'aboutus',
+                        index: 36,
+                        component: () => import('./views/aboutus.vue')
             
                      },
                      {
@@ -216,6 +232,12 @@ export default new Router({
                         component: () => import('./views/publicCommon/publicHeader.vue')
             
                      },
+                     {
+                        path: '/login',
+                        name: 'Login',
+                        index: 35,
+                        component: () => import('./views/components/dashboard/login.vue')
+                    },
                     
 
             ]
