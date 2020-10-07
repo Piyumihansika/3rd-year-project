@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
 decoration: BoxDecoration(
           image: DecorationImage(
            image: NetworkImage("https://www.robynltherapy.com/wp-content/uploads/2020/05/iStock-1129110491-600x600.jpg"),
-        //https://www.valenciaplastics.com/wp-content/uploads/2018/10/Recycle-and-Globe.png
+       
     fit: BoxFit.cover,
           ),
         ),
