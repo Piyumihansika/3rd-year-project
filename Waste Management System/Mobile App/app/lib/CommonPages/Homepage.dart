@@ -115,6 +115,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
           padding: EdgeInsets.all(5.0),
+          //
+decoration: BoxDecoration(
+          image: DecorationImage(
+           image: NetworkImage("https://i4.aroq.com/3/2019-10-01-17-21-sustainabilityecoglobalwarmingclimate_cropped_90.jpg"),
+        //https://www.valenciaplastics.com/wp-content/uploads/2018/10/Recycle-and-Globe.png
+         fit: BoxFit.cover,
+          ),
+        ),
+
+
+          //
           child: GridView.count(
             crossAxisCount: 2,
             children: <Widget>[
