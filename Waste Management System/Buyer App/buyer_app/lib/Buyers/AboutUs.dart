@@ -99,7 +99,7 @@ class _AboutUsState extends State<About> {
                     padding: EdgeInsets.only(left: 15.0),
                     child: ReadMoreText(
                       'Green wasteland is a platform connecting people for selling & buying waste.',
-                      style: TextStyle(fontSize: 20.0, color: Colors.red),
+                      style: TextStyle(fontSize: 20.0, color: Colors.red,fontWeight:FontWeight.bold),
                     ),
                   ),
                   Divider(
@@ -110,12 +110,30 @@ class _AboutUsState extends State<About> {
                     padding: EdgeInsets.only(left: 15.0),
                     child: ReadMoreText(
                       'To implement a collaborative environment on the web and mobile space to connect people on buying & selling waste items while contributing to reducing environmental pollution. The mobile application running on both Android and IOS  platforms.Platform to sell and buy waste items through the bidding system.Web application for the admin dashboard & public promotions.',
-                      style: TextStyle(fontSize: 20.0, color: Colors.black),
+                      style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight:FontWeight.bold),
                       trimLines: 2,
                       colorClickableText: Colors.pink,
                       trimMode: TrimMode.Line,
                       trimCollapsedText: '...Show more',
                       trimExpandedText: ' show less',
+                    ),
+                  ),
+                   SizedBox(height: 20.0),
+                   Divider(
+                    color: const Color(0xFF167F67),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 55.0),
+                    child: ReadMoreText(
+                      'For more information visit us at',
+                      style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight:FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 95.0),
+                    child: ReadMoreText(
+                      'www.greenwasteland.lk',
+                      style: TextStyle(fontSize: 20.0, color: Colors.blue,fontWeight:FontWeight.bold),
                     ),
                   ),
                 ],

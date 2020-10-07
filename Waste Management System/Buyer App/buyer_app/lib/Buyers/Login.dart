@@ -43,7 +43,7 @@ class _State extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Green wasteland'),
+        title: Text('Login Page'),
         backgroundColor: Colors.green,
       ),
       body: LoginForm(),
@@ -104,10 +104,10 @@ class _State extends State<Login> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.event_note),
-              title: Text('notificationtemp'),
+              leading: Icon(Icons.supervised_user_circle),
+              title: Text('User manual'),
               onTap: () {
-                Navigator.of(context).pushNamed('/notifications');
+                Navigator.of(context).pushNamed('/usermanual');
               },
             ),
 
@@ -119,13 +119,7 @@ class _State extends State<Login> {
               },
             ),
 
-            ListTile(
-              leading: Icon(Icons.event_note),
-              title: Text('bid'),
-              onTap: () {
-                Navigator.of(context).pushNamed('/bid');
-              },
-            ),
+            
           ],
         ),
       ),
@@ -284,28 +278,28 @@ class _LoginFormState extends State<LoginForm> {
                 width: double.infinity,
                 //color: Colors.white,
               ),
-              Positioned(
-                bottom: 10.0,
-                right: 100.0,
-                child: Container(
-                  height: 350.0,
-                  width: 350.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellowAccent),
-                ),
-              ),
-              Positioned(
-                bottom: 20.0,
-                right: 150.0,
-                child: Container(
-                  height: 290.0,
-                  width: 300.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.green[100]),
-                ),
-              ),
+              // Positioned(
+              //   bottom: 10.0,
+              //   right: 100.0,
+              //   child: Container(
+              //     height: 350.0,
+              //     width: 350.0,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(320),
+              //         color: Colors.yellowAccent),
+              //   ),
+              // ),
+              // Positioned(
+              //   bottom: 20.0,
+              //   right: 150.0,
+              //   child: Container(
+              //     height: 290.0,
+              //     width: 300.0,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(320),
+              //         color: Colors.green[100]),
+              //   ),
+              // ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -334,11 +328,11 @@ class _LoginFormState extends State<LoginForm> {
                   Padding(
                     padding: EdgeInsets.only(left: 15.0),
                     child: Text(
-                      'Hi Welcome',
+                      'GREEN WASTELAND',
                       style: TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 30.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87),
+                          color: Colors.green),
                     ),
                   ),
                 ],
@@ -357,8 +351,8 @@ class _LoginFormState extends State<LoginForm> {
                 children: <Widget>[
                   new GestureDetector(
                     child: Container(
-                      width: 140,
-                      height: 140,
+                      width: 150,
+                      height: 150,
                       // child: Icon(
                       //   Icons.account_circle,
                       //   color: Colors.green,

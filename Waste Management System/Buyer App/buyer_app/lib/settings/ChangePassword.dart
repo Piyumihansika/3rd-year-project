@@ -56,66 +56,39 @@ class _PasswordChangeState extends State<PasswordChange> {
               children: <Widget>[
                 Stack(children: <Widget>[
                   Container(
-                    height: 200.0,
+                    height: 180.0,
                     width: double.infinity,
                     color: Colors.white,
                   ),
-                  Positioned(
-                    bottom: 1.0,
-                    right: 90.0,
-                    child: Container(
-                      height: 350.0,
-                      width: 350.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.yellowAccent),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10.0,
-                    right: 130.0,
-                    child: Container(
-                      height: 290.0,
-                      width: 300.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(320),
-                          color: Colors.green[100]),
-                    ),
-                  ),
+                 
+                  
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 14.0),
-                      Row(
-                        children: <Widget>[
-                          SizedBox(width: 14.0),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            height: 45.0,
-                            width: 50.0,
+                      SizedBox(height: 20.0),
+                  Container(
+                    alignment: Alignment(-0.1, 1),
+                    child: Column(
+                      children: <Widget>[
+                        new GestureDetector(
+                          child: Container(
+                            width: 200,
+                            height: 200,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                    color: Colors.white,
-                                    style: BorderStyle.solid,
-                                    width: 2.0),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/logo.jpg'),
-                                )),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15.0),
-                      Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: Text(
-                          'CHANGE PASSWORD',
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                              // color: Colors.white,
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/changepassword.jpg"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        // Padding(padding: EdgeInsets.only(left:10.5)),
+                      ],
+                    ),
+                  ),
+                      
+                     
                     ],
                   ),
                 ]),
@@ -186,7 +159,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
                 new Container(
                     // padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-                    padding: const EdgeInsets.all(60.0),
+                    padding: const EdgeInsets.all(40.0),
                     child: new RaisedButton(
                       child: const Text(
                         'Update',
@@ -194,6 +167,8 @@ class _PasswordChangeState extends State<PasswordChange> {
                           fontSize: 20.0,
                         ),
                       ),
+                      padding: const EdgeInsets.only(
+                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {

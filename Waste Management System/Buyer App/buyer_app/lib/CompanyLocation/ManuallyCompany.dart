@@ -206,10 +206,10 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                   children: <Widget>[
                     FlatButton(
                       padding: const EdgeInsets.only(right: 10.0),
-                      textColor: Colors.green,
+                      textColor: Colors.red,
                       child: Text(
                         'Our terms & conditions',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {
                         //terms and condition page
@@ -220,7 +220,7 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       initialValue: false,
                       label: Text(
                         "I have read and agree to the terms and conditions",
-                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                       validators: [
                         FormBuilderValidators.requiredTrue(
@@ -238,14 +238,7 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                   padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                   child: Row(
                     children: <Widget>[
-                      RaisedButton(
-                        child: const Text('BACK'),
-                        color: Colors.yellow,
-                        textColor: Colors.black,
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/login');
-                        },
-                      ),
+                      
                       RaisedButton(
                           child: const Text(
                             'Sign up',
@@ -253,6 +246,8 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                           ),
                           color: Colors.green,
                           textColor: Colors.white,
+                           padding: const EdgeInsets.only(
+                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
                               register(context);
