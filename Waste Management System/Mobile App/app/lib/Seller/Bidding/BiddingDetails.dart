@@ -74,26 +74,13 @@ class _BiddingDetailsState extends State<BiddingDetails> {
                           ResponseData.bidCategory = category[i];
                           Navigator.of(context).pushNamed('/biddingItems');
                           // print(ResponseData.bidCategory);
-                          // if (categoryCount != null) {
-                          //   Navigator.of(context).pushNamed('/chart');
-                          // } else {
-                          //   Navigator.of(context).pushNamed('/nobids');
-                          // }
+                          
                         },
                       ),
                     ],
                   ),
                 ),
-              Container(
-                  alignment: Alignment(-0.1, 1),
-                  child: new RaisedButton(
-                    child: const Text('LOGIN'),
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    onPressed: () async {
-                      Navigator.of(context).pushNamed('/dashboard');
-                    },
-                  )),
+              
             ],
           ),
         ));
