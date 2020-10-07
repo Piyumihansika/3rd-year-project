@@ -114,7 +114,12 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location Tracking'),
+   leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () => Navigator.of(context).pushNamed('/getlocation'),
+  ), 
+        title: Text("Tracking Location",
+      style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
       ),
       body: Form(

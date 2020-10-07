@@ -113,7 +113,7 @@ class _State extends State<BuyerHome> {
                 Navigator.of(context).pushNamed('/notifications');
               },
             ),
-            
+
             ListTile(
               leading: Icon(Icons.details),
               title: Text('Auction Details'),
@@ -186,14 +186,10 @@ class _BuyerHomeState extends State<Home> {
                 width: double.infinity,
                 //color: Colors.white,
               ),
-              
-              
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 20.0),
-                  
-                 
                   Padding(
                     padding: EdgeInsets.only(left: 15.0),
                     child: Text(

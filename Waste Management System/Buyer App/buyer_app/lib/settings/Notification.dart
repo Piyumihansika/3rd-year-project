@@ -29,7 +29,14 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Notifications'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pushNamed('/buyerhome'),
+          ),
+          title: Text(
+            "Notifications",
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.green,
         ),
         backgroundColor: Colors.white,

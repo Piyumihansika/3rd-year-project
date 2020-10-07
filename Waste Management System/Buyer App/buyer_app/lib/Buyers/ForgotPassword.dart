@@ -10,7 +10,14 @@ class Forgot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ForgotPassword Page'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pushNamed('/login'),
+        ),
+        title: Text(
+          "ForgotPassword Page",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       body: ForgotForm(),
@@ -216,7 +223,7 @@ class _ForgotFormState extends State<ForgotForm> {
                       ),
                       color: Colors.green,
                       padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                          left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       textColor: Colors.white,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {

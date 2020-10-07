@@ -114,7 +114,15 @@ class _TrackingCompanyState extends State<TrackingCompany> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location Tracking'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () =>
+              Navigator.of(context).pushNamed('/getlocationcompany'),
+        ),
+        title: Text(
+          "Location Tracking",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       body: Form(
@@ -124,29 +132,29 @@ class _TrackingCompanyState extends State<TrackingCompany> {
           children: <Widget>[
             // Text(
             //     "latitude: ${_position?.latitude ?? '-'}, longitude: ${_position?.longitude ?? '-'}"),
-             SizedBox(height: 0.0),
-                  Container(
-                    alignment: Alignment(-0.1, 1),
-                    child: Column(
-                      children: <Widget>[
-                        new GestureDetector(
-                          child: Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              // color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/map.png"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+            SizedBox(height: 0.0),
+            Container(
+              alignment: Alignment(-0.1, 1),
+              child: Column(
+                children: <Widget>[
+                  new GestureDetector(
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        // color: Colors.white,
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/map.png"),
+                          fit: BoxFit.cover,
                         ),
-                        // Padding(padding: EdgeInsets.only(left:10.5)),
-                      ],
+                      ),
                     ),
                   ),
-                  
+                  // Padding(padding: EdgeInsets.only(left:10.5)),
+                ],
+              ),
+            ),
+
             SizedBox(
               height: 20,
             ),
@@ -162,7 +170,10 @@ class _TrackingCompanyState extends State<TrackingCompany> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "${_address?.addressLine ?? '-'}",
-                style: TextStyle(fontSize: 18, color: Colors.green,fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold),
               ),
             ),
 
@@ -179,7 +190,8 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                     textColor: Colors.red,
                     child: Text(
                       'Our terms & conditions',
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
                       //terms and condition page
@@ -190,7 +202,10 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                     initialValue: false,
                     label: Text(
                       "I have read and agree to the terms and conditions",
-                      style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     ),
                     validators: [
                       FormBuilderValidators.requiredTrue(
@@ -208,7 +223,6 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: Row(
                   children: <Widget>[
-                   
                     RaisedButton(
                       child: const Text(
                         'Sign up',
@@ -217,7 +231,7 @@ class _TrackingCompanyState extends State<TrackingCompany> {
                       color: Colors.green,
                       textColor: Colors.white,
                       padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                          left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           register(context);

@@ -12,7 +12,14 @@ class _SignUpHouseholdState extends State<SignUpHousehold> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SignUp Page'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pushNamed('/usertype'),
+        ),
+        title: Text(
+          "SignUp Page",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       body: SignHouseholdForm(),
@@ -49,8 +56,6 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
             Stack(children: <Widget>[
               Container(
                   height: 200.0, width: double.infinity, color: Colors.white),
-              
-             
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -76,11 +81,7 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                       ],
                     ),
                   ),
-                  
-                  
                   SizedBox(height: 10.0),
-                  
-                  
                   Padding(
                     padding: EdgeInsets.only(left: 15.0),
                     child: Text(
@@ -285,8 +286,8 @@ class _SignHouseholdFormState extends State<SignHouseholdForm> {
                       ),
                       color: Colors.green,
                       textColor: Colors.white,
-                       padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                      padding: const EdgeInsets.only(
+                          left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           Navigator.of(context).push(MaterialPageRoute(

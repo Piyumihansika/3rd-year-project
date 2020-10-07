@@ -194,7 +194,14 @@ class _ReportState extends State<Report> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Report"),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pushNamed('/buyerhome'),
+          ),
+          title: Text(
+            "Winning Bids",
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.green,
         ),
         body: searchBox());

@@ -45,7 +45,14 @@ class _PasswordChangeState extends State<PasswordChange> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Change Password'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pushNamed('/settings'),
+          ),
+          title: Text(
+            "Change Password",
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.green,
         ),
         body: Form(
@@ -60,35 +67,32 @@ class _PasswordChangeState extends State<PasswordChange> {
                     width: double.infinity,
                     color: Colors.white,
                   ),
-                 
-                  
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(height: 20.0),
-                  Container(
-                    alignment: Alignment(-0.1, 1),
-                    child: Column(
-                      children: <Widget>[
-                        new GestureDetector(
-                          child: Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              // color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/changepassword.jpg"),
-                                fit: BoxFit.cover,
+                      Container(
+                        alignment: Alignment(-0.1, 1),
+                        child: Column(
+                          children: <Widget>[
+                            new GestureDetector(
+                              child: Container(
+                                width: 200,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  // color: Colors.white,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/changepassword.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            // Padding(padding: EdgeInsets.only(left:10.5)),
+                          ],
                         ),
-                        // Padding(padding: EdgeInsets.only(left:10.5)),
-                      ],
-                    ),
-                  ),
-                      
-                     
+                      ),
                     ],
                   ),
                 ]),
@@ -168,7 +172,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                         ),
                       ),
                       padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                          left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {

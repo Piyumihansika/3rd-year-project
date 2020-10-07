@@ -95,7 +95,15 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mannual Location'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () =>
+              Navigator.of(context).pushNamed('/getlocationcompany'),
+        ),
+        title: Text(
+          "Mannnual Location",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       body: Form(
@@ -209,7 +217,8 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       textColor: Colors.red,
                       child: Text(
                         'Our terms & conditions',
-                        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {
                         //terms and condition page
@@ -220,7 +229,10 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                       initialValue: false,
                       label: Text(
                         "I have read and agree to the terms and conditions",
-                        style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                       validators: [
                         FormBuilderValidators.requiredTrue(
@@ -238,7 +250,6 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                   padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
                   child: Row(
                     children: <Widget>[
-                      
                       RaisedButton(
                           child: const Text(
                             'Sign up',
@@ -246,8 +257,11 @@ class _ManuallyCompanyState extends State<ManuallyCompany> {
                           ),
                           color: Colors.green,
                           textColor: Colors.white,
-                           padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                          padding: const EdgeInsets.only(
+                              left: 130.0,
+                              top: 10.0,
+                              bottom: 10.0,
+                              right: 130.0),
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
                               register(context);

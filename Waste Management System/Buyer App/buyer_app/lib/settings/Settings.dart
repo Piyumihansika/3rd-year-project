@@ -47,7 +47,14 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Setting Page'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pushNamed('/buyerhome'),
+        ),
+        title: Text(
+          "Setting Page",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.white,
@@ -62,35 +69,32 @@ class _SettingPageState extends State<SettingPage> {
               width: double.infinity,
               color: Colors.white,
             ),
-           
-           
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: 14.0),
                 SizedBox(height: 20.0),
-                  Container(
-                    alignment: Alignment(-0.1, 1),
-                    child: Column(
-                      children: <Widget>[
-                        new GestureDetector(
-                          child: Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              // color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/setting.jpg"),
-                                fit: BoxFit.cover,
-                              ),
+                Container(
+                  alignment: Alignment(-0.1, 1),
+                  child: Column(
+                    children: <Widget>[
+                      new GestureDetector(
+                        child: Container(
+                          width: 200,
+                          height: 200,
+                          decoration: BoxDecoration(
+                            // color: Colors.white,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/setting.jpg"),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        // Padding(padding: EdgeInsets.only(left:10.5)),
-                      ],
-                    ),
+                      ),
+                      // Padding(padding: EdgeInsets.only(left:10.5)),
+                    ],
                   ),
-                
+                ),
               ],
             ),
           ]),

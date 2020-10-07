@@ -15,7 +15,12 @@ class _SignUpCompanyState extends State<SignUpCompany> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SignUp Page'),
+   leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () => Navigator.of(context).pushNamed('/usertype'),
+  ), 
+        title: Text("SignUp Page",
+      style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
       ),
       body: SignCompanyForm(),

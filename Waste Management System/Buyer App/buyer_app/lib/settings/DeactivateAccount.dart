@@ -100,9 +100,13 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pushNamed('/settings'),
+        ),
         title: Text(
-          'Delete Account',
-          style: TextStyle(fontSize: 18),
+          "Delete Account",
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.green,
       ),
@@ -118,35 +122,31 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
                   width: double.infinity,
                   color: Colors.white,
                 ),
-               
-                
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20.0),
-                  Container(
-                    alignment: Alignment(-0.1, 1),
-                    child: Column(
-                      children: <Widget>[
-                        new GestureDetector(
-                          child: Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              // color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("assets/images/delete.jpg"),
-                                fit: BoxFit.cover,
+                    Container(
+                      alignment: Alignment(-0.1, 1),
+                      child: Column(
+                        children: <Widget>[
+                          new GestureDetector(
+                            child: Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                // color: Colors.white,
+                                image: DecorationImage(
+                                  image: AssetImage("assets/images/delete.jpg"),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        // Padding(padding: EdgeInsets.only(left:10.5)),
-                      ],
+                          // Padding(padding: EdgeInsets.only(left:10.5)),
+                        ],
+                      ),
                     ),
-                  ),
-                   
-                    
                   ],
                 ),
               ]),
@@ -185,11 +185,14 @@ class _DeactivateAccountState extends State<DeactivateAccount> {
               new Container(
                   padding: const EdgeInsets.only(left: 25.0, top: 40.0),
                   child: new RaisedButton(
-                    child: const Text('Delete Account', style: TextStyle(fontSize: 18),),
+                    child: const Text(
+                      'Delete Account',
+                      style: TextStyle(fontSize: 18),
+                    ),
                     color: Colors.green,
                     textColor: Colors.white,
                     padding: const EdgeInsets.only(
-                      left: 120.0, top: 10.0, bottom: 10.0, right: 120.0),
+                        left: 120.0, top: 10.0, bottom: 10.0, right: 120.0),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         if (ResponseData.username == "Company") {

@@ -42,7 +42,14 @@ class _AluminiumState extends State<Aluminium> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Aluminium Items"),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pushNamed('/category'),
+          ),
+          title: Text(
+            "Aluminium Items",
+            style: TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.green,
         ),
         body: searchBox());

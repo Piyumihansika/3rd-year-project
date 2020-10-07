@@ -29,7 +29,6 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactUsState extends State<Contact> {
- 
   TextEditingController email = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController messege = TextEditingController();
@@ -41,7 +40,6 @@ class _ContactUsState extends State<Contact> {
       "email": email.text,
       "name": name.text,
       "messege": messege.text,
-      
     };
     print(messege.text);
     print(
@@ -59,7 +57,8 @@ class _ContactUsState extends State<Contact> {
       print("error occured");
     }
   }
- final _formKey = GlobalKey<FormState>();
+
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -74,34 +73,32 @@ class _ContactUsState extends State<Contact> {
                 width: double.infinity,
                 color: Colors.white,
               ),
-            
-             Padding(
-               padding: const EdgeInsets.only(top:30.0),
-               child: Container(
-                alignment: Alignment(-0.1, 1),
-                child: Column(
-                  children: <Widget>[
-                    new GestureDetector(
-                      child: Container(
-                        width: 180,
-                        height: 180,
-                       
-                        decoration: BoxDecoration(
-                          // color: Colors.white,
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/cotact.png"),
-                            fit: BoxFit.cover,
+
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Container(
+                  alignment: Alignment(-0.1, 1),
+                  child: Column(
+                    children: <Widget>[
+                      new GestureDetector(
+                        child: Container(
+                          width: 180,
+                          height: 180,
+                          decoration: BoxDecoration(
+                            // color: Colors.white,
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/cotact.png"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    // Padding(padding: EdgeInsets.only(left:10.5)),
-                  ],
+                      // Padding(padding: EdgeInsets.only(left:10.5)),
+                    ],
+                  ),
                 ),
-            ),
-             ),
-              
-              
+              ),
+
               // Column(
               //   crossAxisAlignment: CrossAxisAlignment.start,
               //   children: <Widget>[
@@ -136,7 +133,7 @@ class _ContactUsState extends State<Contact> {
               //     //         color: Colors.black87),
               //     //   ),
               //     // ),
-                   
+
               //   ],
               // ),
             ]),
@@ -218,15 +215,18 @@ class _ContactUsState extends State<Contact> {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: const Text('Submit',style: TextStyle(fontSize: 20),),
-                       padding: const EdgeInsets.only(
-                      left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      padding: const EdgeInsets.only(
+                          left: 130.0, top: 10.0, bottom: 10.0, right: 130.0),
                       color: Colors.green,
                       textColor: Colors.white,
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                           contactUs(context);
-                            successdialog(context);
+                          contactUs(context);
+                          successdialog(context);
                         }
                       },
                     ),
@@ -240,11 +240,14 @@ class _ContactUsState extends State<Contact> {
   }
 
   successdialog(BuildContext context) {
-   return showDialog(
+    return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Your Messege Send Successfully !',style: TextStyle(color: Colors.green),),
+            title: Text(
+              'Your Messege Send Successfully !',
+              style: TextStyle(color: Colors.green),
+            ),
             actions: <Widget>[
               MaterialButton(
                 child: Text('OK'),
@@ -256,5 +259,4 @@ class _ContactUsState extends State<Contact> {
           );
         });
   }
-
 }

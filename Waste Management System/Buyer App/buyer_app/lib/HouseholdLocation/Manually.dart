@@ -97,7 +97,12 @@ class _ManuallyState extends State<Manually> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.firstName),
+   leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () => Navigator.of(context).pushNamed('/getlocation'),
+  ), 
+        title: Text(widget.firstName,
+      style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.green,
       ),
       body: Form(
