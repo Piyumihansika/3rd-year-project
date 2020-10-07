@@ -11,7 +11,7 @@ class _SettingPageState extends State<SettingPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Are You sure you want deactivate your account ? '),
+            title: Text('Are You sure you want delete your account ? '),
             actions: <Widget>[
               MaterialButton(
                 child: Text('No'),
@@ -71,7 +71,7 @@ class _SettingPageState extends State<SettingPage> {
               
               Card(
                 
-                color: Colors.green[100],
+                color: Colors.green[200],
                 elevation: 8.0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
