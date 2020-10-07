@@ -1,16 +1,11 @@
 //import 'dart:html';
-
 import 'package:app/CommonPages/Address/Addmanually.dart';
-import 'package:app/CommonPages/Address/Tracking.dart';
+//import 'package:app/CommonPages/Address/Tracking.dart';
 import 'package:app/CommonPages/Homepage.dart';
 //import 'package:app/CommonPages/Address/checkpassdata.dart';
 import 'package:app/CommonPages/Login.dart';
 import 'package:app/CommonPages/Signup.dart';
 import 'package:app/CommonPages/UploadFile.dart';
-
-
-
-
 import 'package:app/Employees/Login.dart';
 import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/Seller/Bidding/Chart.dart';
@@ -96,7 +91,7 @@ class MyApp extends StatelessWidget {
            '/nobids':(context)=>Nobids(),
             '/notification':(context)=>Notifications(),
             '/push':(context)=>Pushnotification(),
-            '/track':(context)=>Tracking(),
+           // '/track':(context)=>Tracking(),
 
 //register pages
 '/choosetype':(context)=>ChooseLocaType(),
