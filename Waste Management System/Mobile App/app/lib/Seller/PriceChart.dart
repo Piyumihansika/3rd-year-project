@@ -70,7 +70,7 @@ body: ListView(children: <Widget>[
                  
                  DataRow(cells: [  
                   DataCell(Text('6')),  
-                  DataCell(Text('Other Organic')),  
+                  DataCell(Text('Organic')),  
                   DataCell(Text('10')),  
                 ]),
 
