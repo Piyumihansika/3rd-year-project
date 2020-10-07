@@ -49,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      backgroundColor: Colors.green[100],   
+      backgroundColor: Colors.green[200],   
 
       
       body: SingleChildScrollView(
@@ -62,11 +62,11 @@ class _SettingPageState extends State<SettingPage> {
               
               Text(
                 "Account",
-                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
                 
               ),
               
- 
+ SizedBox(height: 30),
               //1st card
               
               Card(
@@ -79,7 +79,11 @@ class _SettingPageState extends State<SettingPage> {
                   children: <Widget>[
                     ListTile(
                       leading: Icon(Icons.tag_faces, color: Colors.green),
-                      title: Text("Edit Profile"),
+                      title: Text("Edit Profile",
+                style: TextStyle(
+                        fontSize:20,
+                    
+               ),),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
                         Navigator.of(context).pushNamed('/editProfile');
@@ -93,7 +97,11 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     ListTile(
                       leading: Icon(Icons.location_on, color: Colors.green),
-                      title: Text("Change Location"),
+                      title: Text("Change Location",
+                style: TextStyle(
+                        fontSize:20,
+                    
+               ),),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {},
                     ),
@@ -105,7 +113,11 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     ListTile(
                       leading: Icon(Icons.lock_outline, color: Colors.green),
-                      title: Text("Change Password"),
+                      title: Text("Change Password",
+                style: TextStyle(
+                        fontSize:20,
+                    
+               ),),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
                         Navigator.of(context).pushNamed('/changepassword');
@@ -113,7 +125,11 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     ListTile(
                       leading: Icon(Icons.exit_to_app, color: Colors.green),
-                      title: Text("Delete My Account"),
+                      title: Text("Delete My Account",
+                style: TextStyle(
+                        fontSize:20,
+                    
+               ),),
                       trailing: Icon(Icons.keyboard_arrow_right),
                       onTap: () {
                         createAlertDialog(context);
@@ -124,20 +140,25 @@ class _SettingPageState extends State<SettingPage> {
               ),
 
               const SizedBox(height: 10.0),
-              
+              SizedBox(height: 30),
               Text(
                 
                 "Notification",
-                style: TextStyle(fontSize: 20.0, color: Colors.black,fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
                 
               ),
-
+SizedBox(height: 20),
               SwitchListTile(
                 dense: true,
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: true,
-                title: Text("Receive Notification"),
+                title: Text("Receive Notification",
+                style: TextStyle(
+                        fontSize:20,
+                    
+               ),
+                ),
                 onChanged: (val) {},
               ),
 
@@ -146,8 +167,14 @@ class _SettingPageState extends State<SettingPage> {
                 activeColor: Colors.black,
                 contentPadding: const EdgeInsets.all(0),
                 value: false,
-                title: Text("Receive Offer Notification"),
-                onChanged: (null),
+                title: Text("Receive Offer Notification",
+                style: TextStyle(
+                        fontSize:20,
+                        //fontStyle: FontStyle.italic,
+                        // fontWeight: FontWeight.bold,
+               ),
+                ),
+                onChanged: (val){},
               )
             ],
           )),
