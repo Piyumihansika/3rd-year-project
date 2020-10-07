@@ -53,65 +53,40 @@ class _GetLocationCompanyState extends State<GetLocationCompany> {
                 width: double.infinity,
                 color: Colors.white,
               ),
-              Positioned(
-                bottom: 40.0,
-                right: 80.0,
-                child: Container(
-                  height: 350.0,
-                  width: 350.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.yellowAccent),
-                ),
-              ),
-              Positioned(
-                bottom: 50.0,
-                right: 140.0,
-                child: Container(
-                  height: 290.0,
-                  width: 300.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(320),
-                      color: Colors.green[100]),
-                ),
-              ),
+              
+             
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 14.0),
-                  Row(
-                    children: <Widget>[
-                      SizedBox(width: 14.0),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        height: 45.0,
-                        width: 50.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                color: Colors.white,
-                                style: BorderStyle.solid,
-                                width: 2.0),
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/logo.jpg'),
-                            )),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 15.0),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Text(
-                      'SIGN UP',
-                      style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87),
+                  SizedBox(height: 20.0),
+                  Container(
+                    alignment: Alignment(-0.1, 1),
+                    child: Column(
+                      children: <Widget>[
+                        new GestureDetector(
+                          child: Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              // color: Colors.white,
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/loca.png"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Padding(padding: EdgeInsets.only(left:10.5)),
+                      ],
                     ),
                   ),
+                  
+                  
+                  
+                 
                   SizedBox(height: 45.0),
                   Padding(
-                    padding: EdgeInsets.only(left: 15.0),
+                    padding: EdgeInsets.only(left: 85.0),
                     child: Text(
                       'What is your location ?',
                       style: TextStyle(

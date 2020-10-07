@@ -12,10 +12,7 @@ class _State extends State<Category> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
-        ),
+        
         title: Text('Green wasteland'),
         backgroundColor: Colors.green,
       ),
@@ -38,6 +35,7 @@ class _CategoryState extends State<CategoryPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
+             
               decoration: new BoxDecoration(
                   image: new DecorationImage(
                       image: new AssetImage('assets/images/category.jpg'),
@@ -123,7 +121,7 @@ class _CategoryState extends State<CategoryPage> {
               child: new Container(
                 child: const Text('Select Category You Want!',
                     style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 20,
                         color: Colors.green,
                         fontWeight: FontWeight.bold)),
               ),
