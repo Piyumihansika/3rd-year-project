@@ -13,47 +13,69 @@ class PriceChart extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
 body: ListView(children: <Widget>[  
-            // Center(  
-            //     child: Text(  
-            //       'People-Chart',  
-            //       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),  
-            //     )),  
+  SizedBox(   //Use of SizedBox 
+                height: 30, 
+              ), 
+  
+            Center(  
+                child: Text(  
+                  'For 1 Kg',  
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),  
+                )),  
+                SizedBox(   //Use of SizedBox 
+                height: 15, 
+              ), 
+  
             DataTable(  
               columns: [  
                 DataColumn(label: Text(  
-                    'ID',  
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)  
+                    'No',  
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)  
                 )),  
                 DataColumn(label: Text(  
-                    'Name',  
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)  
+                    'Item',  
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)  
                 )),  
                 DataColumn(label: Text(  
-                    'Profession',  
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)  
+                    'Max Price(Rs)',  
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)  
                 )),  
               ],  
               rows: [  
                 DataRow(cells: [  
                   DataCell(Text('1')),  
-                  DataCell(Text('Stephen')),  
-                  DataCell(Text('Actor')),  
-                ]),  
-                DataRow(cells: [  
-                  DataCell(Text('5')),  
-                  DataCell(Text('John')),  
-                  DataCell(Text('Student')),  
-                ]),  
-                DataRow(cells: [  
-                  DataCell(Text('10')),  
-                  DataCell(Text('Harry')),  
-                  DataCell(Text('Leader')),  
-                ]),  
-                DataRow(cells: [  
+                  DataCell(Text('Paper')),  
                   DataCell(Text('15')),  
-                  DataCell(Text('Peter')),  
-                  DataCell(Text('Scientist')),  
                 ]),  
+                DataRow(cells: [  
+                  DataCell(Text('2')),  
+                  DataCell(Text('Glass')),  
+                  DataCell(Text('25')),  
+                ]),  
+                DataRow(cells: [  
+                  DataCell(Text('3')),  
+                  DataCell(Text('Metal')),  
+                  DataCell(Text('30')),  
+                ]),  
+                DataRow(cells: [  
+                  DataCell(Text('4')),  
+                  DataCell(Text('Electronics')),  
+                  DataCell(Text('30')),  
+                ]),
+ DataRow(cells: [  
+                  DataCell(Text('5')),  
+                  DataCell(Text('Plastic')),  
+                  DataCell(Text('15')),  
+                ]),
+                 
+                 DataRow(cells: [  
+                  DataCell(Text('6')),  
+                  DataCell(Text('Organic')),  
+                  DataCell(Text('10')),  
+                ]),
+
+
+
               ],  
             ),  
 ],

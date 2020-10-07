@@ -28,9 +28,18 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
         body: ListView(
       children: <Widget>[
-        Tile(text: Text("place bid for plastic")),
-        Tile(text: Text("place bid for aluminum")),
-        Tile(text: Text("place bid for polythene")),
+        Tile(text: Text("place bid for plastic", style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black),)),
+        Tile(text: Text("place bid for aluminum", style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black),)),
+        Tile(text: Text("place bid for polythene", style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black),)),
       ],
     ));
   }

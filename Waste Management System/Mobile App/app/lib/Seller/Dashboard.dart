@@ -50,7 +50,9 @@ setState(() {
       
      icon:IconTheme(child: Icon(Icons.home),
    data:IconThemeData(color:Colors.black)),
-      title: Text("Home",
+      // title: Text("Home",
+        // ignore: deprecated_member_use
+        title: Text("Home",
       style: TextStyle(color: Colors.black),
       ),
      backgroundColor: Colors.red,
@@ -98,16 +100,19 @@ BottomNavigationBarItem(
     ],
   ),
  
+  // ignore: deprecated_member_use
   title: Text('Notification',style: TextStyle(color: Colors.black),),
 
 
 ),
+
 
      
 BottomNavigationBarItem(
       
       icon:IconTheme(child: Icon(Icons.settings),
    data:IconThemeData(color:Colors.black)),
+      // ignore: deprecated_member_use
       title: Text("Setting",
       
       style: TextStyle(color: Colors.black),
