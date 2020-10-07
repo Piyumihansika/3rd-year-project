@@ -7,26 +7,27 @@ import 'package:http/http.dart' as http;
 String name = 'Polythin bag';
 String date = '14.5.2020';
 
-class BiddingDetails extends StatefulWidget {
+class BiddingItems extends StatefulWidget {
   @override
-  _BiddingDetailsState createState() => _BiddingDetailsState();
+  _BiddingItemsState createState() => _BiddingItemsState();
 }
 
-class _BiddingDetailsState extends State<BiddingDetails> {
+class _BiddingItemsState extends State<BiddingItems> {
   List<dynamic> category;
-  int categoryCount;
+  List<dynamic> bids;
 
   final String viewitemUrl =
       "${ResponseData.apiUrl}/auction/bidItems/${ResponseData.userId}";
+  final String viewItemBids =
+      "${ResponseData.apiUrl}/auction/itemBids/${ResponseData.bidItemId}";
 
   @override
   void initState() {
     super.initState();
-    this.getPolytheneItems(context);
-    // this.build(context);
+    this.getItems(context);
   }
 
-  void getPolytheneItems(BuildContext context) async {
+  void getItems(BuildContext context) async {
     var response = await http.get(Uri.encodeFull(viewitemUrl),
         headers: {"Accept": "application/json"});
 
@@ -34,10 +35,24 @@ class _BiddingDetailsState extends State<BiddingDetails> {
       setState(() {
         Map<String, dynamic> responseJson = json.decode(response.body);
 
-        print(responseJson.length);
-        category = responseJson["category"];
-        categoryCount = responseJson["category"].length;
+        category = responseJson[ResponseData.bidCategory];
+        // print(category[0]);
       });
+    }
+  }
+
+  void getBids(BuildContext context) async {
+    var response = await http.get(Uri.encodeFull(viewItemBids),
+        headers: {"Accept": "application/json"});
+
+    Map<String, dynamic> responseJson = json.decode(response.body);
+    bids = responseJson["list"];
+    // print(bids);
+
+    if (bids.length != null) {
+      Navigator.of(context).pushNamed('/chart');
+    } else {
+      Navigator.of(context).pushNamed('/nobids');
     }
   }
 
@@ -46,10 +61,10 @@ class _BiddingDetailsState extends State<BiddingDetails> {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
+            onPressed: () => Navigator.of(context).pushNamed('/biddingDetails'),
           ),
           title: Text(
-            (categoryCount).toString() + " CATEGORY/S",
+            "Bidding Items",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.green,
@@ -60,25 +75,19 @@ class _BiddingDetailsState extends State<BiddingDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              for (int i = 0; i < (categoryCount); i++)
+              for (int i = 0; i < category.length; i++)
                 Card(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       ListTile(
                         leading: Icon(Icons.shopping_cart, size: 50),
-                        title: Text(category[i]),
-                        // subtitle: Text('date'),
+                        title: Text("Item " + (i + 1).toString()),
+                        subtitle: Text(category[i]["finishDate"]),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
-                          ResponseData.bidCategory = category[i];
-                          Navigator.of(context).pushNamed('/biddingItems');
-                          // print(ResponseData.bidCategory);
-                          // if (categoryCount != null) {
-                          //   Navigator.of(context).pushNamed('/chart');
-                          // } else {
-                          //   Navigator.of(context).pushNamed('/nobids');
-                          // }
+                          ResponseData.bidItemId = category[i]["_id"];
+                          getBids(context);
                         },
                       ),
                     ],

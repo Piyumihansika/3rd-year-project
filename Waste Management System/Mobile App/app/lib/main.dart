@@ -10,6 +10,7 @@ import 'package:app/Employees/Login.dart';
 import 'package:app/Seller/Bidding/BiddingDetails.dart';
 import 'package:app/Seller/Bidding/Chart.dart';
 import 'package:app/Seller/Bidding/NoBidds.dart';
+import 'package:app/Seller/Bidding/BiddingItems.dart';
 import 'package:app/Seller/Dashboard.dart';
 import 'package:app/Seller/History.dart';
 import 'package:app/Seller/Notifications/Pushnotification.dart';
@@ -33,17 +34,12 @@ import 'Seller/History.dart';
 import 'Seller/Sell_Items/Sellitempage1.dart';
 import 'Seller/Notifications/Notification.dart';
 
-
-
-
-
 void main() {
-  
-runApp(
-  DevicePreview(
-    builder: (context) => MyApp(),
-  ),
-);
+  runApp(
+    DevicePreview(
+      builder: (context) => MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -54,62 +50,54 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.of(context).locale, // <--- Add the locale
       builder: DevicePreview.appBuilder,
       title: 'Waste Management App',
-      home:Login() ,
+      home: Login(),
 
 //To write routes names
 
-      routes: <String,WidgetBuilder>{
+      routes: <String, WidgetBuilder>{
+        //'/second':(context)=>A(),
+        '/login': (context) => Login(),
+        '/register': (context) => SignUp(),
+        '/forgot': (context) => Forgot(),
 
-      //'/second':(context)=>A(),
-      '/login':(context)=>Login(),
-      '/register':(context)=>SignUp(),
-      '/forgot':(context)=>Forgot(),
+        '/homepage': (context) => HomePage(),
+        '/dashboard': (context) => Dashboard(),
+        '/price': (context) => PriceChart(),
 
-      '/homepage':(context)=>HomePage(),
-      '/dashboard':(context)=>Dashboard(),
-      '/price':(context)=>PriceChart(),
+        //seller
 
-     
-
-      //seller
-
- '/dashboard1':(context)=>Dashboard(),
-  '/profile':(context)=>Profile(),
-   '/history':(context)=>History(),
-    '/order':(context)=>Orders(),
-     '/special':(context)=>SpecialPick(),
-      '/scheduled':(context)=>Scheduled(),
-        '/addGarbageList':(context)=>AddList(),
-        '/sell':(context)=>SellItem(),
-        '/test':(context)=>Test(),
-        '/setting':(context)=>SettingPage(),
-         '/editProfile':(context)=>EditProfile(),
-         '/deactivate':(context)=>Deactivate(),
-         '/changepassword':(context)=>Passwordchange(),
-         '/biddingDetails':(context)=>BiddingDetails(),
-         '/chart':(context)=>Chart(),
-           '/nobids':(context)=>Nobids(),
-            '/notification':(context)=>Notifications(),
-            '/push':(context)=>Pushnotification(),
-           // '/track':(context)=>Tracking(),
+        '/dashboard1': (context) => Dashboard(),
+        '/profile': (context) => Profile(),
+        '/history': (context) => History(),
+        '/order': (context) => Orders(),
+        '/special': (context) => SpecialPick(),
+        '/scheduled': (context) => Scheduled(),
+        '/addGarbageList': (context) => AddList(),
+        '/sell': (context) => SellItem(),
+        '/test': (context) => Test(),
+        '/setting': (context) => SettingPage(),
+        '/editProfile': (context) => EditProfile(),
+        '/deactivate': (context) => Deactivate(),
+        '/changepassword': (context) => Passwordchange(),
+        '/biddingDetails': (context) => BiddingDetails(),
+        '/biddingItems': (context) => BiddingItems(),
+        '/chart': (context) => Chart(),
+        '/nobids': (context) => Nobids(),
+        '/notification': (context) => Notifications(),
+        '/push': (context) => Pushnotification(),
+        // '/track':(context)=>Tracking(),
 
 //register pages
-'/choosetype':(context)=>ChooseLocaType(),
-'/addmanualy':(context)=>Address(),
-'/reg3':(context)=>Reglocation(),
+        '/choosetype': (context) => ChooseLocaType(),
+        '/addmanualy': (context) => Address(),
+        '/reg3': (context) => Reglocation(),
 
-    // '/check':(context)=>Check(), 
-//employee 
+        // '/check':(context)=>Check(),
+//employee
 
-  '/logemp':(context)=>Loginemp(),
-    '/upload':(context)=>UploadImageDemo(),
-
+        '/logemp': (context) => Loginemp(),
+        '/upload': (context) => UploadImageDemo(),
       },
-
     );
   }
 }
-
-
-
-

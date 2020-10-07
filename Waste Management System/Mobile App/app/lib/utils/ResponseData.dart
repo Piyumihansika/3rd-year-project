@@ -12,4 +12,7 @@ class ResponseData {
   static String password = "";
   static String userStatus = "";
   static String category = "";
+  static String bidCategory = "";
+  static String bidItemId = "";
+  static String currentMaxBid = "";
 }

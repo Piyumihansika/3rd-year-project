@@ -108,6 +108,7 @@ class _SellFormState extends State<SellForm> {
                               value == null ? 'Enter category is must' : null,
                           items: [
                             'Polythin',
+                            'Aluminium',
                             'Metal',
                             'Organic',
                             'Plastic',
