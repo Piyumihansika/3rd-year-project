@@ -34,15 +34,12 @@ class _CategoryState extends State<CategoryPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-
-
-              
-              // decoration: new BoxDecoration(
-              //     image: new DecorationImage(
-              //         image: new AssetImage('assets/images/category.jpg'),
-              //         fit: BoxFit.cover,
-              //         colorFilter: new ColorFilter.mode(
-              //             Colors.black.withAlpha(0xBF), BlendMode.darken))),
+              decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                      image: new AssetImage('assets/images/category.jpg'),
+                      fit: BoxFit.cover,
+                      colorFilter: new ColorFilter.mode(
+                          Colors.black.withAlpha(0xBF), BlendMode.darken))),
               child: Stack(children: <Widget>[
                 // Container(
                 //   height: 200.0,
