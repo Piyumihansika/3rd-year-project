@@ -446,7 +446,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: new RaisedButton(
                   child: const Text(
                     'Login',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   color: Colors.green,
@@ -462,10 +462,10 @@ class _LoginFormState extends State<LoginForm> {
             FlatButton(
               padding:
                   const EdgeInsets.only(left: 130.0, top: 5.0, right: 130.0),
-              textColor: Colors.green,
+              textColor: Colors.red,
               child: Text(
                 'Forgot Password ?',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
               ),
               onPressed: () {
                 //forgot password screen
@@ -479,13 +479,13 @@ class _LoginFormState extends State<LoginForm> {
               children: <Widget>[
                 Text(
                   'Don\'t have an account ?',
-                  style: TextStyle(fontSize: 17, color: Colors.black),
+                  style: TextStyle(fontSize: 17, color: Colors.black,fontWeight: FontWeight.bold),
                 ),
                 FlatButton(
                   textColor: Colors.green,
                   child: Text(
                     'Create Acount',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamed('/usertype');

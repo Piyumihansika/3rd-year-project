@@ -124,14 +124,14 @@ class _SettingPageState extends State<SettingPage> {
                   height: 1.0,
                   color: Colors.green,
                 ),
-                ListTile(
-                  leading: Icon(Icons.location_on, color: Colors.green),
-                  title: Text("Change Location"),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/usertype');
-                  },
-                ),
+                // ListTile(
+                //   leading: Icon(Icons.location_on, color: Colors.green),
+                //   title: Text("Change Location"),
+                //   trailing: Icon(Icons.keyboard_arrow_right),
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed('/usertype');
+                //   },
+                // ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: double.infinity,

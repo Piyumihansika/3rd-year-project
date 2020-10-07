@@ -36,7 +36,7 @@ dependencies:
   flappy_search_bar: 1.4.1
   flutter_local_notifications: ^0.8.4+2
   horizontal_data_table: ^1.0.6+3
-  carousel_slider: ^2.3.1
+ 
 
 dependency_overrides:
   flutter_chips_input: ^1.9.0-dev.1
