@@ -2,7 +2,7 @@
   <div class="table-responsive">
     <table class="table v-middle border">
       <thead>
-        <tr class="">
+        <tr>
           <th class="border-top-0">Buyer</th>
           <th class="border-top-0">Winning Item</th>
           <th class="border-top-0">Max Bid</th>
@@ -15,7 +15,7 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="mr-2">
-                <vs-avatar color="primary" text="Buyer 1" />
+                <vs-avatar color="primary" text="Buyer" />
               </div>
               <div class="">
                 <h5 class="m-b-0">{{ buyers.firstName }}  {{buyers.lastName}}</h5>

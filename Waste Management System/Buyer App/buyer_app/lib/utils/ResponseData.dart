@@ -35,4 +35,5 @@ class ResponseData {
   static String duration = "";
   static String endDate = "";
   static String customerId = "";
+  static String currentMaxBid = "";
 }
