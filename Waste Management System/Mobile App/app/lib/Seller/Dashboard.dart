@@ -60,17 +60,7 @@ setState(() {
       
       ),
       
-// BottomNavigationBarItem(
-    
-//       icon:IconTheme(child: Icon(Icons.add_alert),
-//    data:IconThemeData(color:Colors.black)),
-//       title: Text("Notification",
-      
-//       style: TextStyle(color: Colors.black),
-//       ),
-      
-      
-//       ),
+
 BottomNavigationBarItem(
   icon: new Stack(
     children: <Widget>[
@@ -131,74 +121,4 @@ BottomNavigationBarItem(
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //5th one
-
-// class MyMenu5 extends StatelessWidget {
-//   MyMenu5({this.title, this.icon, this.warna});
-
-//   final String title;
-//   final IconData icon;
-//   final MaterialColor warna;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       margin: EdgeInsets.all(8.0),
-//       child: InkWell(
-//         onTap: () {
-//           // Navigator.of(context).pushNamed('/history');
-//           // Navigator.of(context).pushNamed('/test');
-//         },
-//         splashColor: Colors.green[100],
-//         child: Center(
-//           child: Column(
-//             mainAxisSize: MainAxisSize.min,
-//             children: <Widget>[
-//               RawMaterialButton(
-//                 onPressed: () {
-//                   //
-//                   Navigator.of(context).pushNamed('/setting');
-//                 },
-//                 elevation: 2.0,
-//                 fillColor: warna,
-//                 child: Icon(
-//                   icon,
-//                   size: 35.0,
-//                   color: Colors.white,
-//                 ),
-//                 padding: EdgeInsets.all(15.0),
-//                 shape: CircleBorder(),
-//               ),
-//               Text(title, style: new TextStyle(fontSize: 17.0))
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
