@@ -6,24 +6,36 @@ class History extends StatefulWidget {
 }
 
 List<String> listItems = [
-  "Hello",
-  "World",
-  "Flutter",
-  "Love"
+  "Congrats!.Your Plastic bid is successfull.",
+  "Congrats!.Your Metal bid is successfull.",
+  "Sorry!.Your Plastic bid is cancel.Check your details",
+  "Sunday Funday..Check our offers today !"
 ]; //dummy list of items
 
 class HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        //title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          appBar: AppBar(
-            title: Text("Swipe List"),
-          ),
+         appBar: AppBar(
+        leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () => Navigator.of(context).pushNamed('/dashboard'),
+  ), 
+        elevation: 4.0,
+        title: Text(
+          'NOTIFICATION HISTORY',
+      style: TextStyle(color: Colors.black),
+          
+        ),
+        backgroundColor: Colors.green,
+        brightness: Brightness.light,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
           body: Container(
               child: ListView.builder(
             itemCount: listItems.length,

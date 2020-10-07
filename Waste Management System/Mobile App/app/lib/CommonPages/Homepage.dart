@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.notifications),
               title: Text('Notifications'),
               onTap: () {
-                Navigator.of(context).pushNamed('/notification');
+                Navigator.of(context).pushNamed('/history');
               },
             ), //ListTitle
             ListTile(
