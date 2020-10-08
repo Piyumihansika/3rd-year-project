@@ -1,12 +1,11 @@
-// import 'dart:convert';
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:app/utils/ResponseData.dart';
 import 'package:http/http.dart' as http;
-// import 'package:path/path.dart';
-// import 'package:dio/dio.dart';
+
 
 final String editUrl =
     "${ResponseData.apiUrl}/customer/updateCustomer/${ResponseData.userId}";
@@ -16,6 +15,10 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () => Navigator.of(context).pushNamed('/setting'),
+  ),
         elevation: 4.0,
         title: Text(
           'Edit Profile',
@@ -65,7 +68,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           );
         });
   }
-  //          Profile pic code
+  
 
   File imageFile;
   openGallery(BuildContext context) async {
@@ -83,6 +86,8 @@ class MyCustomFormState extends State<MyCustomForm> {
       imageFile = pic;
     });
   }
+
+
 
   Future<void> showChoicedialogbox(BuildContext context) {
     return showDialog(
@@ -116,8 +121,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       return CircleAvatar(
         radius: 80,
         backgroundImage: AssetImage('assets/images/icon.jpg'),
-        // backgroundImage: NetworkImage(
-        //     "https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"),
+        
       );
     } else {
       return Image.file(imageFile, width: 150, height: 150);
@@ -173,14 +177,14 @@ class MyCustomFormState extends State<MyCustomForm> {
                     child: Text("Select Image"),
                     onPressed: () {
                       showChoicedialogbox(context);
+                      
                     },
                   ),
                 ],
               ),
             ),
             TextFormField(
-              // controller: TextEditingController(text: ResponseData.firstName),
-              // initialValue: ResponseData.firstName,
+              
 
               decoration: const InputDecoration(
                 icon: const Icon(
@@ -205,8 +209,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               },
             ),
             TextFormField(
-              // initialValue: ResponseData.lastName,
-              // controller: lastName,
+              
+
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.person,
@@ -229,8 +233,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               },
             ),
             TextFormField(
-              // initialValue: ResponseData.contactNumber,
-              // controller: contactNumber,
+              
               decoration: const InputDecoration(
                 icon: const Icon(
                   Icons.phone,
