@@ -84,16 +84,16 @@ class _BiddingDetailsState extends State<BiddingDetails> {
                     ],
                   ),
                 ),
-              Container(
-                  alignment: Alignment(-0.1, 1),
-                  child: new RaisedButton(
-                    child: const Text('LOGIN'),
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    onPressed: () async {
-                      Navigator.of(context).pushNamed('/dashboard');
-                    },
-                  )),
+              // Container(
+              //     alignment: Alignment(-0.1, 1),
+              //     child: new RaisedButton(
+              //       child: const Text('LOGIN'),
+              //       color: Colors.green,
+              //       textColor: Colors.white,
+              //       onPressed: () async {
+              //         Navigator.of(context).pushNamed('/dashboard');
+              //       },
+              //     )),
             ],
           ),
         ));
